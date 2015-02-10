@@ -1,0 +1,43 @@
+
+<div class="col-sm-6 col-md-4">
+	<div class="panel panel-default resilify-dashboard-item">			
+		<div class="panel-body" ng-click="openPlan(plan)">
+			<img class="icon" src="/assets/img/resilify-icon-small@2x.png">
+			<h3 class="panel-title">{{plan.title}}</h3>
+			<p class="text-muted">{{plan.orgName}}</p>
+			<p>{{plan.description}}</p>
+		</div>
+		<ul role="tablist" class="nav nav-justified">
+			<li>
+				<a href="http://clients.jackherbert.com/resilify/dashboard.html#">
+					To Dos
+				</a>
+			</li>
+			<li>
+				<a href="http://clients.jackherbert.com/resilify/dashboard.html#">
+					Discussions
+				</a>
+			</li>
+			<li>
+				<a href="http://clients.jackherbert.com/resilify/dashboard.html#">
+					<i class="fa fa-lg fa-gear"></i>
+				</a>
+			</li>
+		</ul>		
+		<div class="panel-footer">			
+			<ul class="users">
+				<li>
+				<img class="img-circle" src="/assets/img/avatar-mark.gif" data-toggle="tooltip" title="" data-original-title="Mark Leusink">
+				</li>
+				<li>
+					<img class="img-circle" src="/assets/img/avatar-matt.gif" data-toggle="tooltip" title="" data-original-title="Matt White">
+				</li>
+				<li>
+					<a ui-sref="planUsers({ planId : plan.id } )" class="add-user" data-toggle="tooltip" title="" data-original-title="Add a User">
+						<i class="fa fa-plus"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

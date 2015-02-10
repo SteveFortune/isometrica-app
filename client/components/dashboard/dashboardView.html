@@ -1,0 +1,43 @@
+<div>
+
+  <resilify-header></resilify-header>
+
+  <div class="container bootcards-container" id="main">
+  	<div class="row">
+  		<div class="col-xs-12 bootcards-cards">
+  			<div class="row">
+  				<div class="col-sm-6 col-md-4 add-new-plan">
+  					<a href="http://clients.jackherbert.com/resilify/dashboard.html#" class="btn btn-success">
+  						<i class="fa fa-plus"></i>
+  						New Plan
+  					</a>
+  				</div>
+
+  				<div ng-repeat="plan in plans">
+
+  					<div ng-include src="'/components/dashboard/plan.html'"></div>
+
+  				</div>
+  				
+  			</div>					
+  		</div>
+  	</div>
+  </div>
+
+</div>
+
+<script>
+
+  /* Tooltips */
+    
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()  
+  })
+
+  /* Add/Edit Users */
+	
+	/*$( "a.add-user" ).click(function() {
+		$('#addUsersModal').modal('show');
+	});*/	
+	
+</script>

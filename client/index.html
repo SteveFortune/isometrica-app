@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="resilify">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+</head>
+
+<title>Resilify</title>
+  <!-- 1.0.0 -->
+
+	<!-- Bootstrap and Bootcards JS -->
+	<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/assets/libs/bootcards/dist/js/bootcards.min.js"></script>
+	
+	<!-- Bootcards CSS for desktop: -->
+	<link rel="stylesheet" href="/assets/libs/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/libs/bootstrap/dist/css/bootstrap.min.css">
+	
+	<script>
+	// Platform Detection (testing only)
+	$( document ).ready(function() {
+		if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='/assets/libs/bootcards/dist/css/bootcards-ios.css'>");
+			$("head").append(cssLink);	
+			$('body').addClass('ios');	
+     	}
+		else if( navigator.userAgent.match(/Android/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='/assets/libs/bootcards/dist/css/bootcards-android.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('android');
+		}
+		else
+		{
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='/assets/libs/bootcards/dist/css/bootcards-desktop.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('desktop');
+		}
+	});
+	</script>
+	
+	<link rel="stylesheet" href="/assets/css/resilify.css">
+	
+<body class="bootcards-nofooter bootcards-fullheight resilify-dashboard-page has-bootcards-navbar-double desktop">
+
+<ui-view></ui-view>
+
+<script src="/assets/libs/angular/angular.min.js"></script>
+<script src="/assets/libs/angular-resource/angular-resource.min.js"></script>
+<script src="/assets/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+<script src="/app.module.js"></script>
+<script src="/app.routes.js"></script>
+<script type="text/javascript" src="/components/header/headerDirective.js"></script>
+<script type="text/javascript" src="/components/dashboard/dashboardController.js"></script>
+<script type="text/javascript" src="/components/canvas/canvasController.js"></script>
+<script type="text/javascript" src="/components/planUsers/planUsersController.js"></script>
+
+</body>
+
+</html>
