@@ -1,0 +1,289 @@
+// Scrolling on Desktop 
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body.desktop {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-top: 50px;
+  
+  .container#main {
+    height: 100%;
+    width: auto;
+    
+    > .row {
+      height: 100%;
+      
+      .bootcards-cards,
+      .bootcards-list {
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        height: 100%;
+        padding-top: 20px;
+      }
+    }
+  }
+}
+
+// Chat footer on desktop
+
+.desktop .navbar-fixed-bottom {
+  position: fixed;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: #f8f8f8;
+  height: 65px;
+  padding-top: 15px;
+  
+  .container {
+    width: auto; 
+  }
+}
+
+.desktop .container#main > .row {
+  padding-bottom: 65px;
+}
+
+.desktop .navbar-fixed-top {
+  .container {
+    width: auto; 
+  }
+}
+
+// Chat footer on iOS
+
+.ios .navbar-fixed-bottom {
+  height: 65px;
+  padding-top: 15px;
+  
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  .form-control {
+    background: #e5e5e5;
+    padding-left: 10px;
+    border-radius: 4px;
+  }
+  
+  .btn i {
+    margin-left: 5px;
+  }
+}
+
+.ios .container#main > .row {
+  padding-bottom: 65px;
+}
+
+// Chat footer on Android
+
+.android .navbar-fixed-bottom {
+  height: 60px;
+  padding-top: 10px;
+  
+  background-color: #ddd;
+  border-top: 1px solid #b1b1b1;
+  -webkit-box-shadow: inset 0 2px 0 #e5e5e5, 0 -3px 3px rgba(0, 0, 0, 0.07);
+  
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  .btn i {
+    line-height: normal;
+    margin-left: 10px;
+  }
+}
+
+.android .container#main > .row {
+  padding-bottom: 60px;
+}
+
+
+
+
+
+
+
+/* List icons */
+
+.bootcards-list {
+  .list-group-item {
+     i {      
+      opacity: 1;
+      width: auto;
+      margin-right: 12px;
+      font-size: 14px;
+      line-height: 19px;
+    
+      &.text-success {
+        color: #48d641;
+      }
+    }
+  }
+}
+
+/* Chat */
+
+.resilify-chat {
+
+  .alert {
+    margin-bottom: 10px;
+  }
+
+  .resilify-chat-item {
+    position: relative;
+    margin-bottom: 10px;
+    
+    .resilify-chat-avatar {
+      position: absolute;
+      left: 0;
+      bottom: 7px;
+      width: 40px;
+      height: 40px;
+      z-index: 8;
+    }
+    
+    .resilify-chat-item-content {
+      border-radius: 5px;
+      background: #e5e5ea;
+      padding: 8px 12px 10px 12px;
+      float: left;
+      margin-left: 50px;
+      position: relative;
+      
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        bottom: 0;
+      }
+      
+      &:before {
+        background: #e5e5ea;
+        z-index: 6;
+        left: -15px;
+      }
+      
+      &:after {
+        background: white;
+        z-index: 7;
+        left: -20px;
+        border-radius: 0 0 100% 0;
+      }
+      
+      p {
+        margin-bottom: 0;
+      }
+      
+      .resilify-chat-item-attachment {
+        margin-top: 10px;
+      }
+    }
+    
+    &.resilify-chat-item-me {
+      .resilify-chat-item-content {
+        background: #2ca3f8;
+        color: white;
+        float: right;
+        margin-right: 15px;
+        
+        &:before {
+          background: #2ca3f8;
+          left: auto;
+          right: -15px;
+        }
+        
+        &:after {
+          left: auto;
+          right: -20px;
+          border-radius: 0 0 0 100%;
+        }
+        
+        small {
+          color: white;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+}
+
+i.resilify-hazard {
+  display: block;
+  width: 40px !important;
+  height: 40px;
+  background-size: 40px 40px;
+  position: relative;
+  
+  &.resilify-hazard-green {
+    background-image: url("../img/hazard-icons/hazard-icon-green@2x.png");
+  }
+  &.resilify-hazard-grey {
+    background-image: url("../img/hazard-icons/hazard-icon-grey@2x.png");
+  }
+  &.resilify-hazard-red {
+    background-image: url("../img/hazard-icons/hazard-icon-red@2x.png");
+  }
+  
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-size: 34px 34px;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  
+  &.resilify-hazard-building:before {
+    background-image: url("../img/hazard-icons/hazard-icon-building@2x.png");
+  } 
+  &.resilify-hazard-buildingfire:before {
+    background-image: url("../img/hazard-icons/hazard-icon-buildingfire@2x.png");
+  } 
+  &.resilify-hazard-bushfire:before {
+    background-image: url("../img/hazard-icons/hazard-icon-bushfire@2x.png");
+  } 
+  &.resilify-hazard-cyclone:before {
+    background-image: url("../img/hazard-icons/hazard-icon-cyclone@2x.png");
+  } 
+  &.resilify-hazard-earthquake:before {
+    background-image: url("../img/hazard-icons/hazard-icon-earthquake@2x.png");
+  } 
+  &.resilify-hazard-fire:before {
+    background-image: url("../img/hazard-icons/hazard-icon-fire@2x.png");
+  } 
+  &.resilify-hazard-flood:before {
+    background-image: url("../img/hazard-icons/hazard-icon-flood@2x.png");
+  } 
+  &.resilify-hazard-incident:before {
+    background-image: url("../img/hazard-icons/hazard-icon-incident@2x.png");
+  }
+  &.resilify-hazard-landslide:before {
+    background-image: url("../img/hazard-icons/hazard-icon-landslide@2x.png");
+  }
+  &.resilify-hazard-tsunami:before {
+    background-image: url("../img/hazard-icons/hazard-icon-tsunami@2x.png");
+  }
+  &.resilify-hazard-vehicle:before {
+    background-image: url("../img/hazard-icons/hazard-icon-vehicle@2x.png");
+  }
+  &.resilify-hazard-vehiclefire:before {
+    background-image: url("../img/hazard-icons/hazard-icon-vehiclefire@2x.png");
+  }
+  
+}

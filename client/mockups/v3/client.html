@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  
+  <title>Resilify Chat Client</title>
+  <!-- 1.0.0 -->
+
+	<!-- Bootstrap and Bootcards JS -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootcards.min.js"></script>
+	
+	<!-- Bootcards CSS for desktop: -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel='stylesheet' type='text/css' href='../../bootcards/bootcards-framework/dist/css/bootcards.css'>
+	
+	<script>
+	// Platform Detection (testing only)
+	$( document ).ready(function() {
+		if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../../bootcards/bootcards-framework/dist/css/bootcards-ios.css'>");
+			$("head").append(cssLink);	
+			$('body').addClass('ios');	
+     	}
+		else if( navigator.userAgent.match(/Android/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../../bootcards/bootcards-framework/dist/css/bootcards-android.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('android');
+		}
+		else
+		{
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../../bootcards/bootcards-framework/dist/css/bootcards-desktop.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('desktop');
+		}
+	});
+	</script>
+	
+	<link rel="stylesheet" href="css/resilify-client.css">
+	
+	
+</head>
+<body class="bootcards-fullheight bootcards-desktop-scrolling">
+
+<!-- fixed top navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">     
+    <ul class="nav navbar-nav navbar-left">
+      <li>
+        <a href="#" class="btn btn-link btn-menu icon-only">
+    			<i class="fa fa-lg fa-bars"></i> 
+    		</a>
+      </li>
+    </ul>        
+    <div class="navbar-header">
+      <span class="navbar-brand" title="Customers">
+      	Resilify Messages
+      </span>  
+    </div>
+    <div class="navbar-collapse collapse">
+	    <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="#">
+	        	<i class="fa fa-fw fa-comments"></i>
+	        	My Teams
+	        </a>
+        </li>
+        <li>
+          <a href="#">
+	        	<i class="fa fa-fw fa-comments"></i>
+	        	All Teams
+	        </a>
+        </li>
+        <li>
+          <a href="#">
+	        	<i class="fa fa-fw fa-gear"></i>
+	        	Settings
+	        </a>
+        </li>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="#">
+	        	<i class="fa fa-fw fa-lock"></i>
+	        	Logout
+	        </a>
+        </li>	   
+	    </ul>
+    </div>            
+  </div>
+</div>    
+
+<div class="container" id="main">
+  <div class="row">
+    <div class="col-sm-5 bootcards-list">  		
+  		<div class="panel panel-default">  
+        <div class="panel-body">
+					<div class="search-form">
+						<div class="row">
+						    <div class="col-xs-7">
+						      <div class="form-group">
+							      <input type="text" class="form-control" placeholder="Search Activations...">
+							      <i class="fa fa-search"></i>
+						      </div>
+						    </div>
+						    <div class="col-xs-5">
+								<a class="btn btn-success btn-block" href="#">
+									Activate Team
+								</a>
+						    </div>
+						</div>						    
+					</div>					
+				</div>    							
+  			<div class="list-group">		
+					<a class="list-group-item active">
+  					<i class="resilify-hazard resilify-hazard-red resilify-hazard-incident pull-left"></i>
+  					<div class="bootcards-list-group-item-content">
+  						<h4 class="list-group-item-heading">Untitled Activation</h4>
+  						<p class="list-group-item-text">Facilities Team</p>
+  					</div>
+					</a>
+					<a class="list-group-item">
+  					<i class="resilify-hazard resilify-hazard-red resilify-hazard-building pull-left"></i>
+  					<div class="bootcards-list-group-item-content">
+  						<h4 class="list-group-item-heading">Server Outage in Sector 7B</h4>
+  						<p class="list-group-item-text">Information Security Team</p>
+  					</div>
+					</a>
+					<a class="list-group-item">
+  					<i class="resilify-hazard resilify-hazard-green resilify-hazard-incident pull-left"></i>
+  					<div class="bootcards-list-group-item-content">
+  						<h4 class="list-group-item-heading">Media Allegations About Unpaid Interns</h4>
+  						<p class="list-group-item-text">Communication and Media Team</p>
+  					</div>
+					</a>
+					<a class="list-group-item">
+  					<i class="resilify-hazard resilify-hazard-green resilify-hazard-flood pull-left"></i>
+    				<div class="bootcards-list-group-item-content">
+  						<h4 class="list-group-item-heading">Flooding in Basement</h4>
+  						<p class="list-group-item-text">Facilities Team</p>
+    				</div>
+					</a>
+					<a class="list-group-item">
+  					<i class="resilify-hazard resilify-hazard-grey resilify-hazard-vehiclefire pull-left"></i>
+  					<div class="bootcards-list-group-item-content">
+						  <h4 class="list-group-item-heading">Product Recall</h4>
+              <p class="list-group-item-text">Communication and Media Team</p>
+  					</div>
+					</a>
+					<a class="list-group-item">
+  					<i class="resilify-hazard resilify-hazard-grey resilify-hazard-fire pull-left"></i>
+  					<div class="bootcards-list-group-item-content">
+  						<h4 class="list-group-item-heading">Server Outage in Sector 7B</h4>
+  						<p class="list-group-item-text">Information Security Team</p>
+  					</div>
+					</a>
+					<a class="list-group-item">
+  					<i class="resilify-hazard resilify-hazard-grey resilify-hazard-incident pull-left"></i>
+  					<div class="bootcards-list-group-item-content">
+  						<h4 class="list-group-item-heading">Media Allegations About Unpaid Interns</h4>
+  						<p class="list-group-item-text">Communication and Media Team</p>
+  					</div>
+					</a>
+					<a class="list-group-item">
+  					<i class="resilify-hazard resilify-hazard-grey resilify-hazard-earthquake pull-left"></i>
+    				<div class="bootcards-list-group-item-content">
+  						<h4 class="list-group-item-heading">Flooding in Basement</h4>
+  						<p class="list-group-item-text">Facilities Team</p>
+    				</div>
+					</a>
+					<a class="list-group-item">
+  					<i class="resilify-hazard resilify-hazard-grey resilify-hazard-vehicle pull-left"></i>
+  					<div class="bootcards-list-group-item-content">
+						  <h4 class="list-group-item-heading">Product Recall</h4>
+              <p class="list-group-item-text">Communication and Media Team</p>
+  					</div>
+					</a>
+					<a class="list-group-item">
+  					<i class="resilify-hazard resilify-hazard-grey resilify-hazard-fire pull-left"></i>
+  					<div class="bootcards-list-group-item-content">
+  						<h4 class="list-group-item-heading">Server Outage in Sector 7B</h4>
+  						<p class="list-group-item-text">Information Security Team</p>
+  					</div>
+					</a>
+					<a class="list-group-item">
+  					<i class="resilify-hazard resilify-hazard-grey resilify-hazard-incident pull-left"></i>
+  					<div class="bootcards-list-group-item-content">
+  						<h4 class="list-group-item-heading">Media Allegations About Unpaid Interns</h4>
+  						<p class="list-group-item-text">Communication and Media Team</p>
+  					</div>
+					</a>
+					<a class="list-group-item">
+  					<i class="resilify-hazard resilify-hazard-grey resilify-hazard-earthquake pull-left"></i>
+    				<div class="bootcards-list-group-item-content">
+  						<h4 class="list-group-item-heading">Flooding in Basement</h4>
+  						<p class="list-group-item-text">Facilities Team</p>
+    				</div>
+					</a>
+					<a class="list-group-item">
+  					<i class="resilify-hazard resilify-hazard-grey resilify-hazard-vehicle pull-left"></i>
+  					<div class="bootcards-list-group-item-content">
+						  <h4 class="list-group-item-heading">Product Recall</h4>
+              <p class="list-group-item-text">Communication and Media Team</p>
+  					</div>
+					</a>
+  			</div>
+  		</div>       
+   
+    </div>
+  	<div class="col-sm-7 bootcards-cards">			
+
+      <div class="panel panel-default resilify-chat">
+        <div class="panel-heading clearfix">
+  			  <h3 class="panel-title pull-left">Untitled Activation</h3>
+  			  <button class="btn btn-danger pull-right">Deactivate Team</button>
+        </div>
+        <div class="panel-heading clearfix">
+          <span class="text-muted pull-left">Activated 26/01/2015 09:15</span>
+          <span class="text-muted pull-right">9 messages, 4 users</span>
+        </div>
+        <div class="panel-body">
+          
+          <p class="text-center text-muted"><small>26/01/2015 09:15</small></p>
+          
+          <div class="alert alert-success">Facilities Team activated by Steve Ives</div>
+
+          <div class="row">
+            <div class="col-xs-9">
+              <div class="resilify-chat-item clearfix">
+                <img class="resilify-chat-avatar pull-left img-circle" src="img/avatar-steve.gif"/>
+                <div class="resilify-chat-item-content">
+                  <small class="text-muted">Steve Ives</small>
+                  <p>Consectetur adipiscing elit urna ultrices</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-xs-9">
+              <div class="resilify-chat-item clearfix">
+                <img class="resilify-chat-avatar pull-left img-circle" src="img/avatar-mark.gif"/>
+                <div class="resilify-chat-item-content">
+                  <small class="text-muted">Mark Leusink</small>
+                  <p>Praesent ut hendrerit nunc, eget feugiat neque. Nam mattis est tortor, at pretium urna ultrices ac.</p>
+                </div>
+              </div>
+            </div>
+          </div>          
+          
+          <div class="row">
+            <div class="col-xs-9 col-xs-offset-3">
+              <div class="resilify-chat-item resilify-chat-item-me clearfix">
+                <div class="resilify-chat-item-content">
+                  <p>Hendrerit nunc, eget feugiat neque. Nam mattis est tortor, at pretium urna ultrices ac.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <p class="text-center text-muted"><small>26/01/2015 10:34</small></p>
+          
+          <div class="row">
+            <div class="col-xs-9">
+              <div class="resilify-chat-item clearfix">
+                <img class="resilify-chat-avatar pull-left img-circle" src="img/avatar-matt.gif"/>
+                <div class="resilify-chat-item-content">
+                  <small class="text-muted">Matt White</small>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut hendrerit nunc, eget feugiat neque. Nam mattis est tortor, at pretium urna ultrices ac.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-xs-9">
+              <div class="resilify-chat-item clearfix">
+                <img class="resilify-chat-avatar pull-left img-circle" src="img/avatar-steve.gif"/>
+                <div class="resilify-chat-item-content">
+                  <small class="text-muted">Steve Ives</small>
+                  <p>Nam mattis est tortor</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-xs-9 col-xs-offset-3">
+              <div class="resilify-chat-item resilify-chat-item-me clearfix">
+                <div class="resilify-chat-item-content">
+                  <p>Fusce consequat mauris libero.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+                    
+          <p class="text-center text-muted"><small>27/01/2015 14:21</small></p>
+          
+          <div class="row">
+            <div class="col-xs-9">
+              <div class="resilify-chat-item clearfix">
+                <img class="resilify-chat-avatar pull-left img-circle" src="img/avatar-mark.gif"/>
+                <div class="resilify-chat-item-content">
+                  <small class="text-muted">Mark Leusink</small>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut hendrerit nunc, eget feugiat neque. Nam mattis est tortor, at pretium urna ultrices ac.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-xs-9">
+              <div class="resilify-chat-item clearfix">
+                <img class="resilify-chat-avatar pull-left img-circle" src="img/avatar-mark.gif"/>
+                <div class="resilify-chat-item-content">
+                  <small class="text-muted">Mark Leusink</small>
+                  <p>Lorem ipsum dolor sit amet</p>
+                  <img src="img/computer-fire-300x225.jpg" class="img-responsive resilify-chat-item-attachment"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-xs-9 col-xs-offset-3">
+              <div class="resilify-chat-item resilify-chat-item-me clearfix">
+                <div class="resilify-chat-item-content">
+                  <p>Hendrerit nunc, eget feugiat neque. Nam mattis est tortor, at pretium urna ultrices ac.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!--<p class="text-center text-muted"><small>01/02/2015 09:54</small></p>
+          
+          <div class="alert alert-danger">Facilities Team deactivated by Steve Ives</div>-->
+          
+        </div>
+      </div>          
+        					
+  	</div>		
+  </div>
+</div>
+
+<div class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container"> 
+    <div class="row">
+      <div class="col-sm-7 col-sm-offset-5">
+        <form>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Write Message..."/>
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default icononly">
+                <i class="fa fa-lg fa-paperclip"></i>
+              </button> 
+              <button type="submit" class="btn btn-primary">
+                Post
+              </button> 
+            </div>
+          </div>                  
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('.bootcards-cards').animate({scrollTop: $(document).height()}, 'slow');
+</script>
+
+</body>
+</html>
