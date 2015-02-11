@@ -7,7 +7,7 @@
   		<div class="col-xs-12 bootcards-cards">
   			<div class="row">
   				<div class="col-sm-6 col-md-4 add-new-plan">
-  					<a href="http://clients.jackherbert.com/resilify/dashboard.html#" class="btn btn-success">
+  					<a ng-click="addPlan()" class="btn btn-success">
   						<i class="fa fa-plus"></i>
   						New Plan
   					</a>
@@ -25,19 +25,3 @@
   </div>
 
 </div>
-
-<script>
-
-  /* Tooltips */
-    
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()  
-  })
-
-  /* Add/Edit Users */
-	
-	/*$( "a.add-user" ).click(function() {
-		$('#addUsersModal').modal('show');
-	});*/	
-	
-</script>

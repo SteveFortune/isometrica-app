@@ -2,7 +2,10 @@
 var app = angular.module('resilify', [
 
 	'ui.router',
-	'ngResource'
+	'ui.bootstrap',
+	'ngResource',
+	'ngAnimate',
+	'angular-growl'
 
 ] );
 
@@ -12,3 +15,8 @@ app.run( function($state) {
 	$state.go('dashboard');
 
 });
+
+app.config(['growlProvider', function (growlProvider) {
+  growlProvider.globalTimeToLive(3000);
+  growlProvider.globalDisableCountDown(true);
+}]);

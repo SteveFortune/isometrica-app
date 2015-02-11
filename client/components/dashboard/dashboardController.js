@@ -1,13 +1,23 @@
 
 var app = angular.module('resilify');
 
-app.controller( 'DashboardController', function($scope, $state, Plan) {
+app.controller( 'DashboardController', 
+	['$scope', '$modal', '$state', '$timeout', 'PlanFactory', 'growl',
+	function($scope, $modal, $state, $timeout, PlanFactory, growl) {
 
-	// $scope.plans = [
-	// 	{ id : '1', name : 'Plan 1', orgName : 'Organisation', description : 'Optional plan description lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
-	// 	{ id : '2', name : 'plan 2', orgName : 'Organisation', description : 'Optional plan description lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+	var loadPlans = function() {	
+		//retrieve all plans and activate the tooltips
+		PlanFactory.query( { 'filter[order]' : 'title ASC'} )
+		.$promise.then( function(plans) {
 
-	// ];
+			$scope.plans = plans;
+
+			$timeout( function() {
+				angular.element('[data-toggle="tooltip"]').tooltip();
+			}, 400);
+
+		});
+	};
 
 	$scope.openPlan = function(plan) {
 
@@ -15,12 +25,55 @@ app.controller( 'DashboardController', function($scope, $state, Plan) {
 
 	};
 
-	$scope.plans = Plan.query();
+	$scope.addPlan = function() {
 
-});
+		var modalInstance = $modal.open({
+			templateUrl: '/components/planSettings/planSettingsModal.html',
+			controller: 'PlanSettingsController',
+			resolve: {
+				plan : function () {
+				  return {};
+				},
+				isNew : function() {
+					return true;
+				}
+			}
+		});
 
-app.factory( 'Plan', function($resource) {
+		modalInstance.result.then( function(plan) {
+			loadPlans();
+			growl.success('Your plan has been created');
+		});
 
-	return $resource('/api/Plans/:id');
+	};
 
-});
+	$scope.editPlan = function(plan) {
+
+		var modalInstance = $modal.open({
+			templateUrl: '/components/planSettings/planSettingsModal.html',
+			controller: 'PlanSettingsController',
+			resolve: {
+				plan : function () {
+				  return plan;
+				},
+				isNew : function() {
+					return false;
+				}
+			}
+		});
+
+		modalInstance.result.then( function(updatedPlan) {
+			loadPlans();
+			if (typeof updatedPlan === 'undefined') {
+				growl.success('Plan has been deleted');
+			} else {
+				growl.success('Plan settings have been updated');
+			}
+		});
+
+	};
+
+	//initial loading of plans
+	loadPlans();
+
+}]);
