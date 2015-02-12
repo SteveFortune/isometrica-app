@@ -2,12 +2,12 @@
 var app = angular.module('resilify');
 
 app.controller( 'DashboardController', 
-	['$scope', '$modal', '$state', '$timeout', 'PlanFactory', 'growl',
-	function($scope, $modal, $state, $timeout, PlanFactory, growl) {
+	['$scope', '$modal', '$state', '$timeout', 'Plan', 'growl',
+	function($scope, $modal, $state, $timeout, Plan, growl) {
 
 	var loadPlans = function() {	
 		//retrieve all plans and activate the tooltips
-		PlanFactory.query( { 'filter[order]' : 'title ASC'} )
+		Plan.query( { 'filter[order]' : 'title ASC'} )
 		.$promise.then( function(plans) {
 
 			$scope.plans = plans;

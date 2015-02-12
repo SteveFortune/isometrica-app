@@ -2,8 +2,8 @@
 var app = angular.module('resilify');
 
 app.controller( 'PlanSettingsController', 
-	['$scope', '$modalInstance', 'PlanFactory', 'plan', 'isNew',
-	function($scope, $modalInstance, PlanFactory, plan, isNew) {
+	['$scope', '$modalInstance', 'Plan', 'plan', 'isNew',
+	function($scope, $modalInstance, Plan, plan, isNew) {
 
 	$scope.plan = angular.copy(plan);
 	$scope.isNew = isNew;
@@ -15,17 +15,19 @@ app.controller( 'PlanSettingsController',
 			return;
 		}
 
-		var plan = new PlanFactory($scope.plan);
-
 		if (isNew) {
 
-			plan.$save( function(plan) {
+			Plan.create($scope.plan).$promise
+			.then( function(p) {
 				$modalInstance.close(plan);
+
 			});
 
 		} else {
 
-			plan.$update( function(plan) {
+			var plan = new Plan($scope.plan);
+
+			plan.$save( function(plan) {
 				$modalInstance.close(plan);
 			});
 
@@ -34,8 +36,8 @@ app.controller( 'PlanSettingsController',
 	};
 
 	$scope.deletePlan = function(plan) {
-		PlanFactory.delete( { id : plan.id } )
-		.$promise.then( function(deletedPlan) {
+		Plan.delete( { id : plan.id } ).$promise
+		.then( function(deletedPlan) {
 			$modalInstance.close();
 		});
 	};

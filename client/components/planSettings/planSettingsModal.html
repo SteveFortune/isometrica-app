@@ -36,8 +36,11 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-danger pull-left" ng-click="deletePlan(plan)" ng-if="!isNew">
-        <i class="fa fa-times"></i>Delete plan</button>
-        <button type="button" class="btn btn-link" ng-click="cancel()">Cancel</button>
+          <i class="fa fa-times"></i>Delete plan
+        </button>
+        <button type="button" class="btn btn-link" ng-click="cancel()">
+          Cancel
+        </button>
         <button type="button" ng-click="savePlan(planForm)" class="btn btn-primary">
           <i class="fa fa-check"></i>
           <span ng-if="isNew">Create plan</span>

@@ -5,6 +5,9 @@ var app = angular.module('resilify', [
 	'ui.bootstrap',
 	'ngResource',
 	'ngAnimate',
+
+	'lbServices', 
+	
 	'angular-growl'
 
 ] );
