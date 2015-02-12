@@ -11,31 +11,30 @@
   <!-- 1.0.0 -->
 
 	<!-- Bootstrap and Bootcards JS -->
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/bootcards.min.js"></script>
+	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/bower_components/bootcards/dist/js/bootcards.min.js"></script>
 	
 	<!-- Bootcards CSS for desktop: -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="../bootcards/bootcards-framework/dist/css/bootcards.css">
+	<link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
 	
 	<script>
 	// Platform Detection (testing only)
 	$( document ).ready(function() {
 		if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
-			var cssLink = $("<link rel='stylesheet' type='text/css' href='../bootcards/bootcards-framework/dist/css/bootcards-ios.css'>");
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='/bower_components/bootcards/dist/css/bootcards-ios-lite.css'>");
 			$("head").append(cssLink);	
 			$('body').addClass('ios');	
      	}
 		else if( navigator.userAgent.match(/Android/i) ) {
-			var cssLink = $("<link rel='stylesheet' type='text/css' href='../bootcards/bootcards-framework/dist/css/bootcards-android.css'>");
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='/bower_components/bootcards/dist/css/bootcards-android-lite.css'>");
 			$("head").append(cssLink);
 			$('body').addClass('android');
 		}
 		else
 		{
-			var cssLink = $("<link rel='stylesheet' type='text/css' href='../bootcards/bootcards-framework/dist/css/bootcards-desktop.css'>");
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='/bower_components/bootcards/dist/css/bootcards-desktop-lite.css'>");
 			$("head").append(cssLink);
 			$('body').addClass('desktop');
 		}
@@ -128,11 +127,7 @@
       			</div>
       		</div>          
         </div>
-      </div>
-
-
-	
-  					
+      </div>			
   	</div>		
   </div>
 </div>
