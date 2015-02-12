@@ -101,7 +101,7 @@
 		<div class="canvas-row items">
 
 			<!--activities/ assets -->
-			<div class="canvas-section" id="activitiesAndAssets" ng-click="addCanvasItem('asset')">
+			<div class="canvas-section" id="activitiesAndAssets" ng-click="addCanvasItem($event, 'asset')">
 				<h4>
 					<a href="#" class="table-view-link">
 						<i class="fa fa-fw fa-table"></i>
@@ -110,13 +110,13 @@
 					</a>
 				</h4>
 				<div class="canvas-item" ng-repeat="item in assetItems" 
-					ng-style="{'left' : item.offsetLeft, 'top' : item.offsetTop}"
-					ng-click="editCanvasItem(item)">
+					ng-style="{'left' : item.offsetLeft + '%', 'top' : item.offsetTop + '%'}"
+					ng-click="editCanvasItem($event, item)">
 					{{item.name}}
 				</div>									
 			</div>
 
-			<div class="canvas-section" id="impactAnalysis" ng-click="addCanvasItem('impact')">
+			<div class="canvas-section" id="impactAnalysis" ng-click="addCanvasItem($event, 'impact')">
 				<h4>
 					<a href="#" class="table-view-link">
 						<i class="fa fa-fw fa-table"></i>
@@ -125,12 +125,12 @@
 					</a>
 				</h4>	
 				<div class="canvas-item" ng-repeat="item in impactItems" 
-				ng-style="{'left' : item.offsetLeft, 'top' : item.offsetTop}"
-				ng-click="editCanvasItem(item)">
+				ng-style="{'left' : item.offsetLeft + '%', 'top' : item.offsetTop + '%'}"
+				ng-click="editCanvasItem($event, item)">
 					{{item.name}}
 				</div>	
 			</div>
-			<div class="canvas-section" id="riskAnalysis" ng-click="addCanvasItem('risk')">
+			<div class="canvas-section" id="riskAnalysis" ng-click="addCanvasItem($event, 'risk')">
 				<h4>
 					<a href="#" class="table-view-link">
 						<i class="fa fa-fw fa-table"></i>
@@ -139,12 +139,12 @@
 					</a>
 				</h4>	
 				<div class="canvas-item" ng-repeat="item in riskItems" 
-				ng-style="{'left' : item.offsetLeft, 'top' : item.offsetTop}"
-				ng-click="editCanvasItem(item)">
+				ng-style="{'left' : item.offsetLeft + '%', 'top' : item.offsetTop + '%'}"
+				ng-click="editCanvasItem($event, item)">
 					{{item.name}}
 				</div>							
 			</div>
-			<div class="canvas-section" id="strategiesAndResources" ng-click="addCanvasItem('strategy')">
+			<div class="canvas-section" id="strategiesAndResources" ng-click="addCanvasItem($event, 'strategy')">
 				<h4>
 					<a href="#" class="table-view-link">
 						<i class="fa fa-fw fa-table"></i>
@@ -153,12 +153,12 @@
 					</a>
 				</h4>
 				<div class="canvas-item" ng-repeat="item in strategyItems" 
-				ng-style="{'left' : item.offsetLeft, 'top' : item.offsetTop}"
-				ng-click="editCanvasItem(item)">
+				ng-style="{'left' : item.offsetLeft + '%', 'top' : item.offsetTop + '%'}"
+				ng-click="editCanvasItem($event, item)">
 					{{item.name}}
 				</div>								
 			</div>
-			<div class="canvas-section" id="responseProcedures" ng-click="addCanvasItem('procedure')">
+			<div class="canvas-section" id="responseProcedures" ng-click="addCanvasItem($event, 'procedure')">
 				<h4>
 					<a href="#" class="table-view-link">
 						<i class="fa fa-fw fa-table"></i>
@@ -167,14 +167,14 @@
 					</a>
 				</h4>
 				<div class="canvas-item" ng-repeat="item in procedureItems" 
-				ng-style="{'left' : item.offsetLeft, 'top' : item.offsetTop}"
-				ng-click="editCanvasItem(item)">
+				ng-style="{'left' : item.offsetLeft + '%', 'top' : item.offsetTop + '%'}"
+				ng-click="editCanvasItem($event, item)">
 					{{item.name}}
 				</div>							
 			</div>
 		</div>
 		<div class="canvas-row notes">
-			<div class="canvas-section" id="backgroundAndContext" ng-click="addCanvasItem('background')">
+			<div class="canvas-section" id="backgroundAndContext" ng-click="addCanvasItem($event, 'background')">
 				<h4>
 					<a href="#" class="table-view-link">
 						<i class="fa fa-fw fa-file-text-o"></i>
@@ -183,8 +183,8 @@
 					</a>
 				</h4>	
 				<div class="canvas-item note" ng-repeat="item in backgroundItems" 
-				ng-style="{'left' : item.offsetLeft, 'top' : item.offsetTop}"
-				ng-click="editCanvasItem(item)">
+				ng-style="{'left' : item.offsetLeft + '%', 'top' : item.offsetTop + '%'}"
+				ng-click="editCanvasItem($event, item)">
 					{{item.name}}
 				</div>					
 			</div>			

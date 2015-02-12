@@ -10,15 +10,30 @@
     "location": {
       "type": "string"
     },
+    "offsetLeft": {
+      "type": "number"
+    },
+    "offsetTop": {
+      "type": "number"
+    },
     "criticality": {
       "type": "number"
     },
     "details": {
       "type": "string"
+    },
+    "planId" : {
+      "type": "string"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "plan": {
+      "type": "belongsTo",
+      "model": "Plan",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": []
 }
