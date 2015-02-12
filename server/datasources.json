@@ -4,8 +4,8 @@
     "connector": "memory"
   },
   "mongodb": {
+    "database": "resilify",
     "name": "mongodb",
-    "connector": "mongodb",
-    "database": "resilify"
+    "connector": "mongodb"
   }
 }

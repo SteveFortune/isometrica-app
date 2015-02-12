@@ -1,0 +1,51 @@
+<div>
+
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" ng-if="isNew">Create a plan</h4>
+        <h4 class="modal-title" ng-if="!isNew">Edit plan</h4>
+      </div>
+      <div class="modal-body">
+
+        <form name="planForm">
+
+          <div class="form-group" ng-class="{ 'has-error': planForm.title.$dirty && planForm.title.$invalid }">
+            <label class="control-label" for="inputTitle">Title *</label>
+            <input type="text" id="inputTitle" class="form-control" 
+              autofocus
+              name="title"
+              ng-required="true"
+              ng-model="plan.title" placeholder="Enter a title" />
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-error': planForm.orgName.$dirty && planForm.orgName.$invalid }">
+            <label class="control-label" for="inputOrg">Organisation</label>
+            <input type="text" id="inputOrg" class="form-control" 
+              ng-model="plan.orgName" placeholder="Enter an organisation name" />
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-error': planForm.description.$dirty && planForm.description.$invalid }">
+            <label class="control-label" for="inputDescription">Description</label>
+            <textarea id="inputDescription" class="form-control" 
+              ng-model="plan.description" placeholder="Enter a description" />
+          </div>
+
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger pull-left" ng-click="deletePlan(plan)" ng-if="!isNew">
+          <i class="fa fa-times"></i>Delete plan
+        </button>
+        <button type="button" class="btn btn-link" ng-click="cancel()">
+          Cancel
+        </button>
+        <button type="button" ng-click="savePlan(planForm)" class="btn btn-primary">
+          <i class="fa fa-check"></i>
+          <span ng-if="isNew">Create plan</span>
+          <span ng-if="!isNew">Update plan</span>
+        </button>
+      </div>
+
+</div>

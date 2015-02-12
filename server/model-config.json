@@ -29,5 +29,9 @@
   "Plan": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Asset": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }
