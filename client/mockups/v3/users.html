@@ -17,24 +17,24 @@
 	
 	<!-- Bootcards CSS for desktop: -->
 	<link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/assets/libs/bootstrap/dist/css/bootstrap.min.css">
 	
 	<script>
 	// Platform Detection (testing only)
 	$( document ).ready(function() {
 		if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
-			var cssLink = $("<link rel='stylesheet' type='text/css' href='/bower_components/bootcards/dist/css/bootcards-ios-lite.css'>");
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='/assets/libs/bootcards/dist/css/bootcards-ios.css'>");
 			$("head").append(cssLink);	
 			$('body').addClass('ios');	
      	}
 		else if( navigator.userAgent.match(/Android/i) ) {
-			var cssLink = $("<link rel='stylesheet' type='text/css' href='/bower_components/bootcards/dist/css/bootcards-android-lite.css'>");
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='/assets/libs/bootcards/dist/css/bootcards-android.css'>");
 			$("head").append(cssLink);
 			$('body').addClass('android');
 		}
 		else
 		{
-			var cssLink = $("<link rel='stylesheet' type='text/css' href='/bower_components/bootcards/dist/css/bootcards-desktop-lite.css'>");
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='/assets/libs/bootcards/dist/css/bootcards-desktop.css'>");
 			$("head").append(cssLink);
 			$('body').addClass('desktop');
 		}
