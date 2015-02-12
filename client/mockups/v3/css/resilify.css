@@ -9,6 +9,13 @@ body {
   position: fixed; }
 
 /* NAV */
+.desktop .resilify-navbar-centered .navbar-brand {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: -1; }
+
 .desktop .navbar-inverse {
   background: #444; }
   .desktop .navbar-inverse .navbar-brand {
@@ -75,7 +82,7 @@ body {
           display: none; } }
     @media (min-width: 768px) {
       .add-new-plan .btn {
-        height: 237px; }
+        height: 262px; }
         .add-new-plan .btn i {
           display: block;
           font-size: 48px;
@@ -87,7 +94,7 @@ body {
   .resilify-dashboard-item:hover, .resilify-dashboard-item:active {
     border-color: #bbb; }
   .resilify-dashboard-item .panel-body {
-    height: 135px;
+    height: 160px;
     overflow: hidden; }
     @media (max-width: 767px) {
       .resilify-dashboard-item .panel-body {
@@ -107,6 +114,8 @@ body {
       overflow: hidden;
       margin: 0;
       margin-bottom: 5px; }
+    .resilify-dashboard-item .panel-body .progress {
+      margin-bottom: 15px; }
   .resilify-dashboard-item .nav {
     border-top: 1px solid #ddd; }
     .resilify-dashboard-item .nav.nav-justified > li {
@@ -595,3 +604,35 @@ body {
   .resilify-toggle-lowmediumhigh button.high:hover, .resilify-toggle-lowmediumhigh button.high.active {
     color: #da8080;
     border-color: #da8080; }
+
+/* USERS */
+.ios .resilify-users-invite .form-group {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd; }
+.ios .resilify-users-invite .btn {
+  padding: 0; }
+
+.android .resilify-users-invite .btn {
+  background: #99CC00;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.3); }
+  .android .resilify-users-invite .btn:hover, .android .resilify-users-invite .btn:active {
+    background: #669900;
+    box-shadow: none; }
+
+.resilify-existing-users .list-group-item img {
+  margin-right: 12px; }
+
+/* USER ACTIVITY */
+.resilify-user-activity.bootcards-richtext > .panel-body {
+  max-width: none; }
+.resilify-user-activity h4 {
+  margin-top: 0; }
+@media (max-width: 767px) {
+  .resilify-user-activity .resilify-user-activity-time {
+    text-align: left; } }
