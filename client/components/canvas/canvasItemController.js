@@ -2,36 +2,49 @@
 var app = angular.module('resilify');
 
 app.controller( 'CanvasItemController', [
-	'$scope', '$modalInstance', 'canvasItem', 'isNew',
-	function($scope, $modalInstance, canvasItem, isNew) {
+	'$scope', '$modalInstance', 'canvasItem', 'isNew', 'Asset',
+	function($scope, $modalInstance, canvasItem, isNew, Asset) {
 
-	$scope.item = canvasItem || {};
+	$scope.item = canvasItem;
 	$scope.isNew = isNew;
 
 	$scope.saveItem = function(form) {
 
 		if (!form.$valid) { 
-			form.title.$dirty = true;
+			form['name'].$dirty = true;
+			alert("Enter a title");
 			return;
 		}
 
 		if (isNew) {
 
-			/*Plan.create($scope.plan).$promise
-			.then( function(p) {
-				$modalInstance.close(plan);
+			switch( $scope.item.itemType) {
+				case 'asset':
+				Asset.create($scope.item).$promise
+				.then( function(p) {
+					$modalInstance.close(p);
+				});
 
-			});*/
+			}
 
 		} else {
 
-			/*var plan = new Plan($scope.plan);
+			var item = new Asset($scope.item);
 
-			plan.$save( function(plan) {
-				$modalInstance.close(plan);
-			});*/
+			item.$save( function(plan) {
+				$modalInstance.close(item);
+			});
 
 		}
+
+	};
+
+	$scope.deleteItem = function(item) {
+
+		Asset.delete( { id : item.id } ).$promise
+		.then( function(deletedItem) {
+			$modalInstance.close();
+		});
 
 	};
 
