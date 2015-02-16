@@ -9,7 +9,9 @@
 		    <button type="button" class="btn btn-link icon-only pull-right" ng-click="saveItem(canvasItemForm)">
 	      	<i class="fa fa-times fa-lg"></i>
 	      </button>
-        <button type="button" class="btn btn-link icon-only pull-right" ng-click="deleteItem(item)">
+        <button type="button" class="btn btn-link icon-only pull-right" 
+          ng-if="!isNew"
+          ng-click="deleteItem(item)">
           <i class="fa fa-trash fa-lg"></i>
         </button>
 	    </div>
@@ -19,7 +21,6 @@
         <form name="canvasItemForm">
 
           <textarea class="form-control canvas-item-title"
-          autofocus="true" 
           name="name"
           ng-model="item.name" placeholder="Enter title..."
           ng-required="true"></textarea>

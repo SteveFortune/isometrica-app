@@ -2,8 +2,8 @@
 var app = angular.module('resilify');
 
 app.controller( 'CanvasItemController', [
-	'$scope', '$modalInstance', 'canvasItem', 'isNew', 'Asset',
-	function($scope, $modalInstance, canvasItem, isNew, Asset) {
+	'$scope', '$modalInstance', 'canvasItem', 'isNew', 'CanvasItem',
+	function($scope, $modalInstance, canvasItem, isNew, CanvasItem) {
 
 	$scope.item = canvasItem;
 	$scope.isNew = isNew;
@@ -18,20 +18,19 @@ app.controller( 'CanvasItemController', [
 
 		if (isNew) {
 
-			switch( $scope.item.itemType) {
-				case 'asset':
-				Asset.create($scope.item).$promise
-				.then( function(p) {
-					$modalInstance.close(p);
-				});
-
-			}
+			CanvasItem.create($scope.item).$promise
+			.then( function(item) {
+				console.log('saved', item);
+				$modalInstance.close(item);
+			});
 
 		} else {
 
-			var item = new Asset($scope.item);
+			var item = new CanvasItem($scope.item);
 
-			item.$save( function(plan) {
+			item.$save( function(item) {
+				console.log('updated', item);
+
 				$modalInstance.close(item);
 			});
 
@@ -41,7 +40,7 @@ app.controller( 'CanvasItemController', [
 
 	$scope.deleteItem = function(item) {
 
-		Asset.delete( { id : item.id } ).$promise
+		CanvasItem.delete( { id : item.id } ).$promise
 		.then( function(deletedItem) {
 			$modalInstance.close();
 		});

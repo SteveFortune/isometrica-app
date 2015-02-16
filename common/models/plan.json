@@ -12,6 +12,12 @@
     },
     "orgName": {
       "type": "string"
+    },
+    "created" : {
+      "type": "date"
+    },
+    "updated" : {
+      "type": "date"
     }
   },
   "validations": [],
@@ -19,6 +25,11 @@
     "assets": {
       "type": "hasMany",
       "model": "Asset",
+      "foreignKey": "planId"
+    },
+    "canvasItems": {
+      "type": "hasMany",
+      "model": "CanvasItem",
       "foreignKey": "planId"
     }
   },
