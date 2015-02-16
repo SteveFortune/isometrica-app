@@ -28,6 +28,9 @@
     },
     "updated" : {
       "type": "date"
+    },
+    "location" : {
+      "type": "string"
     }
   },
   "validations": [],

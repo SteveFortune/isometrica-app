@@ -1,0 +1,45 @@
+<div>
+	<div class="modal-header">
+	    <div class="btn-group pull-left visible-xs">
+		    <button class="btn btn-link icon-only">
+	      	<i class="fa fa-lg fa-print"></i>
+	      </button>	      
+	    </div>
+	    <div class="btn-group pull-right">
+		    <button class="btn btn-link icon-only hidden-xs">
+	      	<i class="fa fa-lg fa-print"></i>
+	      </button>
+		    <button href="#" class="btn btn-link icon-only" ng-click="cancel()">
+	      	<i class="fa fa-lg fa-times"></i>
+	      </button>
+	    </div>
+	    <h4 class="modal-title">Activities &amp; assets</h4>	      
+	</div>
+    <div class="modal-body">
+		<div class="table-responsive">
+			<table class="table resilify-table">
+				<thead>
+					<tr>
+						<th><i class="fa fa-check"></i></th>
+						<th>Name</th>
+						<th>Location</th>
+						<th>Details</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in items">
+						<td>
+							<a class="canvas-toggle" ng-click="toggleShowOnCanvas(item)" ng-class="{'active':item.showOnCanvas}">
+  								<i class="fa fa-check"></i>
+							</a>
+						</td>
+						<td>{{item.name}}</td>
+						<td>{{item.location}}</td>
+						<td>{{item.details}}</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

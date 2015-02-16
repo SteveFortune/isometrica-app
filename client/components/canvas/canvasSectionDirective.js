@@ -12,6 +12,7 @@ app.directive('draggable', function() {
         	el.addEventListener(
 	            'dragstart',
 	            function(ev) {
+	            	ev.dataTransfer.effectAllowed = 'move';
 	            	ev.target.style.opacity = '0.4';
     				ev.dataTransfer.setData("text", ev.target.id);
 
@@ -41,7 +42,7 @@ app.directive('droppable', function(CanvasItem) {
 	            'drop',
 	            function(ev) {
 	           		ev.preventDefault();
-				    var itemId = ev.dataTransfer.getData("text");
+				    var itemId = ev.dataTransfer.getData('text');
 				    
 				    CanvasItem.prototype$updateAttributes({ id: itemId }, {showOnCanvas : false})
   					.$promise.then(function(res) {
@@ -50,10 +51,10 @@ app.directive('droppable', function(CanvasItem) {
 					            	
 	            });
 
-
         	el.addEventListener(
 	            'dragover',
 	            function(ev) {
+	            	ev.dataTransfer.dropEffect = 'move';
 	           		ev.preventDefault();            	
 	            });
 
@@ -68,33 +69,35 @@ app.directive('droppableMove', function(CanvasItem) {
 		restrict : 'AE',
 		
 		link : function(scope, element, attr) {
+			console.log('setup ');
 			var el = element[0];
         	el.droppable = true;
 
         	el.addEventListener(
+			    'dragover',
+			    function(ev) {
+			        ev.dataTransfer.dropEffect = 'move';
+			        // allows us to drop
+			        if (ev.preventDefault) ev.preventDefault();
+			        this.classList.add('over');
+			        return false;
+			    },
+			    false
+			);
+
+        	el.addEventListener(
 	            'drop',
 	            function(ev) {
-	            	console.log('drop');
-	           		ev.preventDefault();
+	            	ev.preventDefault();
 				    var itemId = ev.dataTransfer.getData("text");
 
-				    console.log(itemId);
-				    return;
-				    
-				    CanvasItem.prototype$updateAttributes({ id: itemId }, {showOnCanvas : false})
+				    var dropLocation = scope.getRelativeClickPos(ev, 'asset');
+				   
+				    CanvasItem.prototype$updateAttributes({ id: itemId }, dropLocation)
   					.$promise.then(function(res) {
   						scope.loadData();
-  					});
-					            	
+  					});          	
 	            });
-
-/*
-        	el.addEventListener(
-	            'dragover',
-	            function(ev) {
-	           		ev.preventDefault();            	
-	            });
-*/
 
 		}
 	};
@@ -102,24 +105,6 @@ app.directive('droppableMove', function(CanvasItem) {
 });
  
 app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
-
-	var getRelativeClickPos = function(ev, type) {
-
-		var col = $( ev.target || ev.srcElement).parent('.canvas-row').first();
-		var colHeight = col[0].offsetHeight;
-
-		var numColumns = (type == 'background' ? 1 : 5);
-		var colWidth = col[0].offsetWidth / numColumns;
-
-		var offsetTop = Math.round( (ev.offsetY / colHeight) * 100 ) - 6;
-		var offsetLeft = Math.round( (ev.offsetX / colWidth) * 100 ) - 12;
-
-		return {
-			offsetTop : offsetTop ,
-			offsetLeft : offsetLeft 
-		};
-
-	};
 
 	var showEditModal = function(ev, editItem, $scope, isNew, $timeout) {
 
@@ -167,15 +152,12 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 		controller : function($scope) {
 
 			$scope.loadData = function() {
-				CanvasItem.find( { filter : { where : { 'and' : [{ 'planId' : $scope.planId }, { 'type' : $scope.itemType }] } } },
-					function(canvasItems) {
-						$scope.items = [];
-						angular.forEach( canvasItems, function(i) {
-							$scope.items.push(i);
-						});
-					}
-				);
-			};
+				CanvasItem.find( { filter : 
+				{ where : { 'and' : [{ 'planId' : $scope.planId }, { 'type' : $scope.itemType }] } } }, 
+				function(res) {
+					$scope.items = res;
+				});
+			};	
 
 	      	//load data for this section
 			$scope.items = [];
@@ -187,7 +169,7 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 
 			$scope.addCanvasItem = function(ev, type) {
 
-				var newItem = getRelativeClickPos(ev, type);
+				var newItem = $scope.getRelativeClickPos(ev, type);
 				newItem.type = type;
 				newItem.planId = $scope.planId;
 
@@ -195,6 +177,52 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 
 			};
 
+			$scope.viewSectionWorksheet = function(ev) {
+
+				var templateUrl = '/components/canvas/' + $scope.itemType + '/' + $scope.itemType + 'WorksheetModal.html'; 
+				var ctrl = $scope.itemType.substring(0,1).toUpperCase() + $scope.itemType.substring(1) + 'WorksheetController';
+
+				var modalInstance = $modal.open({
+					templateUrl: templateUrl,
+					controller : ctrl,
+					size : 'lg',
+					resolve : {
+						planId : function() {
+							return $scope.planId;
+						},
+						loadData : function() {
+							return $scope.loadData;
+						}
+					}
+				});
+/*
+				modalInstance.result.then( function(item) {
+					$scope.loadData();	
+				});*/
+
+				//stop propagation to not call the 'add' function on the container
+				ev.stopPropagation();
+
+			};
+
+			$scope.getRelativeClickPos = function(ev, type) {
+
+				var col = $( ev.target || ev.srcElement).parent('.canvas-row').first();
+				var colHeight = col[0].offsetHeight;
+
+				var numColumns = (type == 'background' ? 1 : 5);
+				var colWidth = col[0].offsetWidth / numColumns;
+
+				var offsetTop = Math.round( (ev.offsetY / colHeight) * 100 ) - 6;
+				var offsetLeft = Math.round( (ev.offsetX / colWidth) * 100 ) - 12;
+
+				return {
+					offsetTop : offsetTop ,
+					offsetLeft : offsetLeft 
+				};
+
+
+			};
 			
 
 		}
