@@ -1,10 +1,15 @@
-(function(doc) {
+
+var dragDropShim = function(doc) {
+
+  console.log('calling bla');
 
   log = noop; // noOp, remove this line to enable debugging
 
   var coordinateSystemForElementFromPoint;
 
   function main(config) {
+
+    console.log('calling main)');
     config = config || {};
 
     coordinateSystemForElementFromPoint = navigator.userAgent.match(/OS [1-4](?:_\d+)+ like Mac/) ? "page" : "client";
@@ -364,7 +369,7 @@
 
   function noop() {}
 
+  console.log('m');
   main(window.iosDragDropShim);
 
-
-})(document);
+};

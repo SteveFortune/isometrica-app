@@ -16,14 +16,17 @@
         </button>
 	    </div>
 
-      <div class="modal-body">
+      <div class="modal-body" style="z-index:1100">
 
         <form name="canvasItemForm">
 
-          <textarea class="form-control canvas-item-title"
-          name="name"
-          ng-model="item.name" placeholder="Enter title..."
-          ng-required="true"></textarea>
+          <textarea 
+            class="form-control canvas-item-title"
+            autofocus="true"
+            name="name"
+            ng-model="item.name" placeholder="Enter title..."
+            ng-required="true">
+          </textarea>
 
         </form>
 

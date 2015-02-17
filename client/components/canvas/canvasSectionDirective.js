@@ -127,10 +127,13 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 		});
 
 		modalInstance.opened.then( function() {
+
 			//set focus on text field in modal
 			$timeout( function() {
-				$("form[name='canvasItemForm'] textarea").focus();
-			}, 200);
+				var ta = $("form[name='canvasItemForm'] textarea")
+				console.log('f', ta.length);
+				if (ta.length) { ta.focus(); }
+			});
 		});
 
 		//stop propagation to not call the 'add' function on the container
