@@ -6,7 +6,7 @@
 		      	<i class="fa fa-lg fa-gear"></i>
 		      </button>
 				  <ul class="dropdown-menu" role="menu">
-				    <li><a href="#">
+				    <li><a ng-click="toggleMitigation()">
 					    <i class="fa fa-lg fa-eye-slash"></i> 
 					    Hide Mitigation
 					  </a></li>
@@ -18,16 +18,16 @@
 				  </ul>		      
 		    </div>
 		    <div class="btn-group pull-right">
-			    <button class="btn btn-link hidden-xs">
+			    <button class="btn btn-link hidden-xs" ng-click="toggleMitigation()">
 		      	<i class="fa fa-lg fa-eye-slash"></i>
 		      	<span>Hide Mitigation</span>
 		      </button>
 			    <button class="btn btn-link icon-only hidden-xs">
 		      	<i class="fa fa-lg fa-print"></i>
 		      </button>
-			    <button href="#" class="btn btn-link icon-only" data-dismiss="modal">
-		      	<i class="fa fa-lg fa-times"></i>
-		      </button>
+			    <button href="#" class="btn btn-link icon-only" ng-click="cancel()">
+	      		<i class="fa fa-lg fa-times"></i>
+			</button>
 		    </div>
 		    <h4 class="modal-title">Risk Analysis</h4>	      
 	    </div>
@@ -44,6 +44,7 @@
 								<th colspan="5" class="text-center">Impacts</th>
 								<th rowspan="2" class="text-center">Overall Risk Rating</th>
 							</tr>
+
 							<tr>
 								<th class="text-center">
 									<i class="fa fa-2x fa-users"></i>
@@ -68,54 +69,32 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-    							<a href="#" class="canvas-toggle active">
-      							<i class="fa fa-check"></i>
-    							</a>
-  							</td>
-								<td>
-									Sales
+
+							<tr ng-repeat-start="item in items">
+								<td rowspan="{{(showMitigation ? '5' : '1')}}">
+									<a class="canvas-toggle" ng-click="toggleShowOnCanvas(item)" ng-class="{'active':item.showOnCanvas}">
+		  								<i class="fa fa-check"></i>
+									</a>
 								</td>
-								<td>
-									Loss of invoicing system
+								<td rowspan="{{(showMitigation ? '5' : '1')}}">{{item.name}}</td>
+								<td rowspan="{{(showMitigation ? '5' : '1')}}">Loss of invoicing system
 									<span class="subtitle">Likely Causes: Electrical Failure</span>
 								</td>
-								<td><span class="low">L</span></td>
-								<td><span class="low">L</span></td>
+								<td rowspan="{{(showMitigation ? '5' : '1')}}"><span class="low">L</span></td>
+								<td rowspan="{{(showMitigation ? '5' : '1')}}"><span class="low">L</span></td>
 								<td><span class="low">L</span></td>
 								<td><span class="medium">M</span></td>
 								<td><span class="high">H</span></td>
 								<td><span class="medium">M</span></td>
 								<td><span class="high">H</span></td>
 								<td><span class="rating">6</span></td>
+
 							</tr>
-							<tr>
-								<td rowspan="5">
-    							<a href="#" class="canvas-toggle active">
-      							<i class="fa fa-check"></i>
-    							</a>
-  							</td>
-								<td rowspan="5">
-									Technical support
-								</td>
-								<td rowspan="5">
-									Loss of building
-									<span class="subtitle">Likely Causes: Fire, Flood, Earthquake</span>
-								</td>
-								<td rowspan="5"><span class="low">L</span></td>
-								<td rowspan="5"><span class="low">L</span></td>
-								<td><span class="low">L</span></td>
-								<td><span class="medium">M</span></td>
-								<td><span class="high">H</span></td>
-								<td><span class="medium">M</span></td>
-								<td><span class="high">H</span></td>
-								<td><span class="rating">6</span></td>	
-							</tr>
-							<tr class="mitigation">
+
+							<tr class="mitigation" ng-show="showMitigation">
 								<th colspan="6">MITIGATION OPPORTUNITY: Name Goes Here Lorem Ipsum</th>
 							</tr>
-							<tr class="mitigation">
+							<tr class="mitigation" ng-show="showMitigation">
 								<td><span class="low">L</span></td>
 								<td><span class="low">L</span></td>
 								<td><span class="medium">M</span></td>
@@ -123,10 +102,10 @@
 								<td><span class="medium">M</span></td>
 								<td><span class="rating">3</span></td>								
 							</tr>
-							<tr class="mitigation">
+							<tr class="mitigation" ng-show="showMitigation">
 								<th colspan="6">MITIGATION OPPORTUNITY: Name Goes Here Lorem Ipsum</th>
 							</tr>
-							<tr class="mitigation">
+							<tr class="mitigation" ng-show="showMitigation" ng-repeat-end>
 								<td><span class="low">L</span></td>
 								<td><span class="low">L</span></td>
 								<td><span class="low">L</span></td>

@@ -6,7 +6,7 @@
 		      	<i class="fa fa-gear"></i>
 		      </button>
 				  <ul class="dropdown-menu" role="menu">
-				    <li><a href="#">
+				    <li><a ng-click="toggleMitigation()">
 					    <i class="fa fa-lg fa-eye-slash"></i> 
 					    Hide Alternatives
 					  </a></li>
@@ -18,16 +18,16 @@
 				  </ul>		      
 		    </div>
 		    <div class="btn-group pull-right">
-			    <button class="btn btn-link hidden-xs">
+			    <button class="btn btn-link hidden-xs" ng-click="toggleMitigation()">
 		      	<i class="fa fa-lg fa-eye-slash"></i>
 		      	<span>Hide Alternatives</span>
 		      </button>
 			    <button class="btn btn-link icon-only hidden-xs">
 		      	<i class="fa fa-lg fa-print"></i>
 		      </button>
-			    <button href="#" class="btn btn-link icon-only" data-dismiss="modal">
-		      	<i class="fa fa-lg fa-times"></i>
-		      </button>
+			    <button href="#" class="btn btn-link icon-only" ng-click="cancel()">
+	      		<i class="fa fa-lg fa-times"></i>
+			</button>
 		    </div>
 		    <h4 class="modal-title">Strategies &amp; Resources</h4>	 
 	    </div>
@@ -48,24 +48,25 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td rowspan="3">
-    							<a href="#" class="canvas-toggle active">
-      							<i class="fa fa-check"></i>
-    							</a>
-  							</td>
-								<td rowspan="3">
-									Sales
+							<tr ng-repeat-start="item in items">
+								<td rowspan="{{(showMitigation ? '3' : '1')}}">
+									<a class="canvas-toggle" ng-click="toggleShowOnCanvas(item)" ng-class="{'active':item.showOnCanvas}">
+		  								<i class="fa fa-check"></i>
+									</a>
 								</td>
-								<td rowspan="3">Loss of entire building</td>
-								<td>Work from home</td>
+								<td rowspan="{{(showMitigation ? '3' : '1')}}">{{item.name}}</td>
+								<td rowspan="{{(showMitigation ? '3' : '1')}}">Work from home</td>
+
+								<!--non mitigation-->
 								<td>Employee homes</td>
 								<td>0</td>
 								<td>0</td>
 								<td>0</td>
 								<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+
 							</tr>
-							<tr class="mitigation">
+
+							<tr class="mitigation" ng-show="showMitigation">
 								<td>Relocate to Stevenage location</td>
 								<td>Temporary office in Stevenage</td>
 								<td>7 days</td>
@@ -73,7 +74,7 @@
 								<td>$21k</td>
 								<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </td>
 							</tr>
-							<tr class="mitigation">
+							<tr class="mitigation" ng-show="showMitigation" ng-repeat-end>
 								<td>Relocate to London location</td>
 								<td>Temporary office in London</td>
 								<td>30 days</td>
@@ -81,31 +82,7 @@
 								<td>$150k</td>
 								<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </td>
 							</tr>
-							<tr>
-								<td rowspan="2">
-    							<a href="#" class="canvas-toggle active">
-      							<i class="fa fa-check"></i>
-    							</a>
-  							</td>
-								<td rowspan="2">
-									Technical support
-								</td>
-								<td rowspan="2">Fire in building</td>
-								<td>Work from home</td>
-								<td>Employee homes</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </td>
-							</tr>
-							<tr class="mitigation">
-								<td>Relocate to London location</td>
-								<td>Temporary office in London</td>
-								<td>30 days</td>
-								<td>$5k/day</td>
-								<td>$150k</td>
-								<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </td>
-							</tr>
+							
 						</tbody>
 					</table>
 				</div>

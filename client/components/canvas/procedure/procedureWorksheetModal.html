@@ -10,9 +10,9 @@
 			    <button class="btn btn-link icon-only hidden-xs">
 		      	<i class="fa fa-lg fa-print"></i>
 		      </button>
-			    <button href="#" class="btn btn-link icon-only" data-dismiss="modal">
-		      	<i class="fa fa-lg fa-times"></i>
-		      </button>
+			    <button href="#" class="btn btn-link icon-only" ng-click="cancel()">
+	      		<i class="fa fa-lg fa-times"></i>
+			</button>
 		    </div>
 		    <h4 class="modal-title">Response Procedures</h4>
 	    </div>
@@ -30,23 +30,23 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<tr ng-repeat="item in items">
 								<td rowspan="7">
-    							<a href="#" class="canvas-toggle active">
-      							<i class="fa fa-check"></i>
-    							</a>
-  							</td>
-								<td rowspan="7">
-									Building
+									<a class="canvas-toggle" ng-click="toggleShowOnCanvas(item)" ng-class="{'active':item.showOnCanvas}">
+		  								<i class="fa fa-check"></i>
+									</a>
 								</td>
+								<td rowspan="7">{{item.name}}</td>
 								<td rowspan="7">
-  								Loss of Entire Building
-                  <span class="subtitle">Likely Causes: Fire, Flood, Earthquake</span>
-  						  </td>
+	  								Loss of Entire Building
+	                  				<span class="subtitle">Likely Causes: Fire, Flood, Earthquake</span>
+	  						 	 </td>
 								<td>1. Activate team</td>
 								<td rowspan="2">Activation</td>
 								<td></td>
+
 							</tr>
+
 							<tr>
 								<td>2. Get background info</td>
 								<td></td>
@@ -69,53 +69,11 @@
 								<td rowspan="2">Deactivation</td>
 								<td></td>
 							</tr>
-							<tr>
+							<tr ng-repeat-end>
 								<td>7. Head count</td>
 								<td></td>
 							</tr>
-							<tr>
-								<td rowspan="7">
-    							<a href="#" class="canvas-toggle active">
-      							<i class="fa fa-check"></i>
-    							</a>
-  							</td>
-								<td rowspan="7">
-									Building
-								</td>
-								<td rowspan="7">
-  								Loss of Building - single floor
-                  <span class="subtitle">Likely Causes: Fire, Flood, Earthquake</span>
-  						  </td>
-								<td>1. Activate team</td>
-								<td rowspan="2">Activation</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>2. Get background info</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>3. Lorem ipsum</td>
-								<td rowspan="3">Ongoing</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>4. Ipsum dolor</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>5. Dolor est compendium</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>6. Est compendium</td>
-								<td rowspan="2">Deactivation</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>7. Head count</td>
-								<td></td>
-							</tr>
+			
 						</tbody>
 					</table>
 				</div>

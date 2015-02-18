@@ -2,8 +2,8 @@
 var app = angular.module('resilify');
 
 app.controller( 'CanvasItemController', [
-	'$scope', '$modalInstance', 'canvasItem', 'isNew', 'CanvasItem',
-	function($scope, $modalInstance, canvasItem, isNew, CanvasItem) {
+	'$scope', '$modalInstance', '$modal', 'canvasItem', 'isNew', 'CanvasItem',
+	function($scope, $modalInstance, $modal, canvasItem, isNew, CanvasItem) {
 
 	$scope.item = canvasItem;
 	$scope.isNew = isNew;
@@ -20,7 +20,7 @@ app.controller( 'CanvasItemController', [
 
 			CanvasItem.create($scope.item).$promise
 			.then( function(item) {
-				console.log('saved', item);
+				//console.log('saved', item);
 				$modalInstance.close(item);
 			});
 
@@ -29,12 +29,33 @@ app.controller( 'CanvasItemController', [
 			var item = new CanvasItem($scope.item);
 
 			item.$save( function(item) {
-				console.log('updated', item);
+				//console.log('updated', item);
 
 				$modalInstance.close(item);
 			});
 
 		}
+
+	};
+
+	$scope.editDetails = function(item) {
+
+		$modalInstance.close();
+
+		//@TODO: make dynamic
+		//var templateUrl = '/components/canvas/' + item.type + '/' + item.type + 'DetailsModal.html';
+		var templateUrl = '/components/canvas/asset/AssetDetailsModal.html';
+		var ctrl = item.type.substring(0,1).toUpperCase() + item.type.substring(1) + 'DetailsController';
+
+		$modal.open({
+			templateUrl: templateUrl,
+			controller : ctrl,
+			resolve : {
+				item : function() {
+					return item;
+				}
+			}
+		});
 
 	};
 

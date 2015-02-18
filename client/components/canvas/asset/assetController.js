@@ -2,26 +2,30 @@
 var app = angular.module('resilify');
 
 app.controller( 'AssetWorksheetController', [
-	'$scope', '$modalInstance', 'planId', 'loadData', 'CanvasItem',
-	function($scope, $modalInstance, planId, loadData, CanvasItem) {
+	'$scope', '$controller', '$modalInstance', 'planId', 'loadData', 'CanvasItem',
+	function($scope, $controller, $modalInstance, planId, loadData, CanvasItem) {
 
-	$scope.items = CanvasItem.find( { filter : 
-		{ where : { 'and' : [{ 'planId' : planId }, { 'type' : 'asset' }] } } } );	
-
-	$scope.cancel = function() {
-		$modalInstance.dismiss('cancel');
-	};
-
-	$scope.toggleShowOnCanvas = function(item) {
-
-		var to = !item.showOnCanvas;
-
-	    CanvasItem.prototype$updateAttributes({ id: item.id }, {showOnCanvas : to})
-			.$promise.then(function(res) {
-				item.showOnCanvas = to;
-				loadData();
-			});
-
-	};
-
+	// instantiate base controller
+	$controller('WorksheetBaseController', { 
+		$scope: $scope, 
+		$modalInstance : $modalInstance,
+		CanvasItem : CanvasItem,
+		loadData : loadData,
+		itemType : 'asset',
+		planId : planId
+	});
+	
 } ]);
+
+
+app.controller( 'AssetDetailsController', [
+	'$scope', '$modalInstance', 'item', 'CanvasItem',
+	function($scope, $modalInstance, item, CanvasItem) {
+
+	$scope.item = item;
+
+	$scope.done = function() {
+		$modalInstance.dismiss('done');
+	};	
+
+}] );
