@@ -1,7 +1,5 @@
 
-var dragDropShim = function(doc) {
-
-  console.log('calling bla');
+var dragDropShim = function(doc, config) {
 
   log = noop; // noOp, remove this line to enable debugging
 
@@ -9,7 +7,6 @@ var dragDropShim = function(doc) {
 
   function main(config) {
 
-    console.log('calling main)');
     config = config || {};
 
     coordinateSystemForElementFromPoint = navigator.userAgent.match(/OS [1-4](?:_\d+)+ like Mac/) ? "page" : "client";
@@ -142,9 +139,9 @@ var dragDropShim = function(doc) {
 
       if (target) {
         log("found drop target " + target.tagName);
-        this.dispatchDrop(target, event)
+        this.dispatchDrop(target, event);
       } else {
-        log("no drop target")
+        log("no drop target");
       }
 
       var dragendEvt = doc.createEvent("Event");
@@ -158,8 +155,11 @@ var dragDropShim = function(doc) {
       var touch = event.changedTouches[0];
       var x = touch[coordinateSystemForElementFromPoint + 'X'];
       var y = touch[coordinateSystemForElementFromPoint + 'Y'];
-      dropEvt.offsetX = x - target.x;
-      dropEvt.offsetY = y - target.y;
+
+      var targetOffset = getOffset(target);
+
+      dropEvt.offsetX = x - targetOffset.x;
+      dropEvt.offsetY = y - targetOffset.y;
 
       dropEvt.dataTransfer = {
         types: this.dragDataTypes,
@@ -307,7 +307,18 @@ var dragDropShim = function(doc) {
       touch[coordinateSystemForElementFromPoint + "X"],
       touch[coordinateSystemForElementFromPoint + "Y"]
     );
+
+
     return target
+  }
+
+  //calculate the offset position of an element (relative to the window, not the document)
+  function getOffset(el) {
+    var rect = el.getBoundingClientRect();
+    return {
+      "x": rect.left,
+      "y": rect.top
+    };
   }
 
   function onEvt(el, event, handler, context) {
@@ -369,7 +380,7 @@ var dragDropShim = function(doc) {
 
   function noop() {}
 
-  console.log('m');
-  main(window.iosDragDropShim);
+ // main(window.iosDragDropShim);
+ main(config);
 
 };

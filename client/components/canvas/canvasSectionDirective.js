@@ -29,7 +29,7 @@ app.directive('draggable', function() {
 
 });
 
-app.directive('droppable', function(CanvasItem) {
+app.directive('resTitleRollup', function(CanvasItem) {
 
 	return {
 		restrict : 'AE',
@@ -41,6 +41,7 @@ app.directive('droppable', function(CanvasItem) {
         	el.addEventListener(
 	            'drop',
 	            function(ev) {
+	            	ev.stopPropagation();
 	           		ev.preventDefault();
 				    var itemId = ev.dataTransfer.getData('text');
 				    
@@ -54,8 +55,16 @@ app.directive('droppable', function(CanvasItem) {
         	el.addEventListener(
 	            'dragover',
 	            function(ev) {
+	            	element.addClass('active');
+
 	            	ev.dataTransfer.dropEffect = 'move';
 	           		ev.preventDefault();            	
+	            });
+
+        	el.addEventListener(
+	            'dragleave',
+	            function(ev) {
+	            	element.removeClass('active');          	
 	            });
 
 		}
@@ -69,7 +78,6 @@ app.directive('droppableMove', function(CanvasItem) {
 		restrict : 'AE',
 		
 		link : function(scope, element, attr) {
-			console.log('setup ');
 			var el = element[0];
         	el.droppable = true;
 
@@ -78,6 +86,7 @@ app.directive('droppableMove', function(CanvasItem) {
 			    function(ev) {
 			        ev.dataTransfer.dropEffect = 'move';
 			        // allows us to drop
+	
 			        if (ev.preventDefault) ev.preventDefault();
 			        this.classList.add('over');
 			        return false;
@@ -88,11 +97,12 @@ app.directive('droppableMove', function(CanvasItem) {
         	el.addEventListener(
 	            'drop',
 	            function(ev) {
+	            	ev.stopPropagation();
 	            	ev.preventDefault();
 				    var itemId = ev.dataTransfer.getData("text");
 
-				    var dropLocation = scope.getRelativeClickPos(ev, 'asset');
-				   
+				    var dropLocation = scope.getRelativeEventPosition(ev, 'asset');
+
 				    CanvasItem.prototype$updateAttributes({ id: itemId }, dropLocation)
   					.$promise.then(function(res) {
   						scope.loadData();
@@ -131,7 +141,6 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 			//set focus on text field in modal
 			$timeout( function() {
 				var ta = $("form[name='canvasItemForm'] textarea")
-				console.log('f', ta.length);
 				if (ta.length) { ta.focus(); }
 			});
 		});
@@ -171,8 +180,7 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 			};
 
 			$scope.addCanvasItem = function(ev, type) {
-
-				var newItem = $scope.getRelativeClickPos(ev, type);
+				var newItem = $scope.getRelativeEventPosition(ev, type);
 				newItem.type = type;
 				newItem.planId = $scope.planId;
 
@@ -208,7 +216,7 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 
 			};
 
-			$scope.getRelativeClickPos = function(ev, type) {
+			$scope.getRelativeEventPosition = function(ev, type) {
 
 				var col = $( ev.target || ev.srcElement).parent('.canvas-row').first();
 				var colHeight = col[0].offsetHeight;
