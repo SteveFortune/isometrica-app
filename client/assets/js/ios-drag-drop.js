@@ -294,7 +294,8 @@ var dragDropShim = function(doc, config) {
           el.dispatchEvent(clickEvt);
           log("Simulating click to anchor");
         }
-        evt.preventDefault();
+        //ml:disabled to allow clicks on notes to change them
+        //evt.preventDefault();
         new DragDrop(evt,el);
       }
     } while((el = el.parentNode) && el !== doc.body)
