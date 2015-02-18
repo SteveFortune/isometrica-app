@@ -5,6 +5,7 @@ var app = angular.module('resilify', [
 	'ui.bootstrap',
 	'ngResource',
 	'ngAnimate',
+	'ngTouch',
 
 	'lbServices', 
 	
