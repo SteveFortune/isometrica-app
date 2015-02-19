@@ -1,0 +1,10 @@
+{
+  "name": "ResilifyUser",
+  "base": "User",
+  "idInjection": true,
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
