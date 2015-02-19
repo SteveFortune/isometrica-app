@@ -40,11 +40,19 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a ui-sref="login">
+						<i class="fa fa-fw fa-lock"></i>
+
+						{{currentUser}}
+						Login
+					</a>
+				</li>
+				<li>
+					<a ng-click="logout()">
 						<i class="fa fa-fw fa-lock"></i>
 						Logout
 					</a>
-				</li>	   
+				</li>		   
 			</ul>
 			<ul class="nav navbar-nav navbar-right bootcards-nav-primary">
 				<li>

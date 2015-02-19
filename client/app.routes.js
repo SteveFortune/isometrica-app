@@ -22,6 +22,12 @@ app.config( function($stateProvider) {
 		    url: '/canvas/:planId',
 		    templateUrl: '/components/canvas/canvasView.html',
 		    controller : 'CanvasController'
+		})
+
+		.state('login', { 	
+		    url: '/login',
+		    templateUrl: '/components/login/loginView.html',
+		    controller : 'LoginController'
 		});
 
 } );

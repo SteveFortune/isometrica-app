@@ -1,7 +1,7 @@
 
 var app = angular.module('resilify');
 
-app.directive('resilifyHeader', function() {
+app.directive('resilifyHeader', function($state, ResilifyUser) {
 
 	return {
 
@@ -10,7 +10,16 @@ app.directive('resilifyHeader', function() {
 		templateUrl : '/components/header/headerView.html',
 		transclude : true,
 
-		controller : function($scope) {
+		controller : function($scope, $state, ResilifyUser) {
+
+			 $scope.logout = function() {
+			 		ResilifyUser.logout( function() {
+			 			$state.go('login');
+				 	});
+				 };
+
+
+				 
 
 /*
 			$scope.showBackButton = false;

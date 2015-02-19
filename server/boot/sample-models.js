@@ -26,9 +26,9 @@ module.exports = function(app) {
 
   };
 
-  createIfNotExists(User, {username: 'Steve', email: 'steve@resilify.com', password: 'resilify'});
-  createIfNotExists(User, {username: 'Jack', email: 'jack@resilify.com', password: 'resilify'});
-  createIfNotExists(User, {username: 'Mark', email: 'mark@resilify.com', password: 'resilify'});
+  createIfNotExists(User, {name : 'Steve', username: 'Steve', email: 'steve@resilify.com', password: 'resilify'});
+  createIfNotExists(User, {name : 'Jack', username: 'Jack', email: 'jack@resilify.com', password: 'resilify'});
+  createIfNotExists(User, {name : 'Mark', username: 'Mark', email: 'mark@resilify.com', password: 'resilify'});
   
 /*
     // create project 1 and make john the owner

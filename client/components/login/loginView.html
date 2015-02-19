@@ -1,0 +1,49 @@
+
+<div>
+
+  <resilify-header></resilify-header>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-4 col-sm-offset-4">
+
+        <form name="loginForm" ng-submit="login(credentials)">
+
+        <div class="form-group" 
+          ng-class="{ 'has-error': loginForm.userName.$dirty && loginForm.userName.$invalid }">
+          <label class="control-label" for="inputEmail">E-mail address *</label>
+          <input type="text" id="inputEmail" class="form-control" 
+          autofocus
+          ng-required="true"
+          ng-model="credentials.email" />
+        </div>
+
+        <div class="form-group" 
+          ng-class="{ 'has-error': loginForm.password.$dirty && loginForm.password.$invalid }">
+          <label class="control-label" for="inputPassword">Password *</label>
+          <input type="text" id="inputPassword" class="form-control" 
+          ng-required="true"
+          ng-model="credentials.password" />
+        </div>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="rememberMe"> Remember me
+          </label>
+        </div>
+
+        <div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+
+        </form>
+
+        <div style="margin-top:10px;" class="alert alert-danger" ng-if="hasError">{{errorMsg}}</div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,8 +1,15 @@
 module.exports = function(Plan) {
 /*
-	var CanvasItem = require('./canvas-item');
-
+	
 	Plan.observe('before delete', function(ctx, next) {
+	console.log(ctx.where)
+		console.log('c' + ctx.where['id']);
+
+		app.models.CanvasItem.find( { where : {planId : ctx.where.id } }, function(err, items) {
+			console.log('b');
+			console.log('found ' + items.length + ' related');
+
+		} )
 
 		//console.log(CanvasItem);
 
