@@ -1,14 +1,20 @@
 module.exports = function(CanvasItem) {
 
-	CanvasItem.beforeCreate = function(next, modelInstance) {
-		modelInstance.created = new Date();
-		modelInstance.showOnCanvas = true;
-		next();
-	};
+	CanvasItem.observe('before save', function updateTimestamp(ctx, next) {
 
-	CanvasItem.beforeUpdate = function(next, modelInstance) {
-		modelInstance.updated = new Date();
-		next();
-	};
+	  if (ctx.instance) {
+	  	
+	  	//create
+	  	ctx.instance.created = new Date();
+	    ctx.instance.updated = new Date();
+	    ctx.instance.showOnCanvas = true;
+
+	  } else {
+	  	//update
+	  	ctx.data.updated = new Date();
+	  }
+
+	  next();
+	});
 
 };

@@ -13,10 +13,10 @@
     "orgName": {
       "type": "string"
     },
-    "created" : {
+    "created": {
       "type": "date"
     },
-    "updated" : {
+    "updated": {
       "type": "date"
     }
   },

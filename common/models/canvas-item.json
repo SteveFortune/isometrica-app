@@ -20,16 +20,43 @@
     "details": {
       "type": "string"
     },
-    "showOnCanvas" : {
+    "showOnCanvas": {
       "type": "boolean"
     },
-    "created" : {
+    "created": {
       "type": "date"
     },
-    "updated" : {
+    "updated": {
       "type": "date"
     },
-    "location" : {
+    "location": {
+      "type": "string"
+    },
+    "potentialEvent": {
+      "type": "string"
+    },
+    "asset": {
+      "type": "string"
+    },
+    "riskScenario": {
+      "type": "string"
+    },
+    "probability": {
+      "type": "string"
+    },
+    "impactPeople": {
+      "type": "string"
+    },
+    "impactOperations": {
+      "type": "string"
+    },
+    "impactInfoTech": {
+      "type": "string"
+    },
+    "impactEnvironment": {
+      "type": "string"
+    },
+    "overallRiskRating": {
       "type": "string"
     }
   },
