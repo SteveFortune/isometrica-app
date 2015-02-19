@@ -18,9 +18,13 @@
 				  </ul>		      
 		    </div>
 		    <div class="btn-group pull-right">
-			    <button class="btn btn-link hidden-xs" ng-click="toggleMitigation()">
+			    <button class="btn btn-link hidden-xs" ng-click="toggleMitigation()" ng-show="showMitigation">
 		      	<i class="fa fa-lg fa-eye-slash"></i>
 		      	<span>Hide Alternatives</span>
+		      </button>
+		      <button class="btn btn-link hidden-xs" ng-click="toggleMitigation()" ng-hide="showMitigation">
+		      	<i class="fa fa-lg fa-eye"></i>
+		      	<span>Show Alternatives</span>
 		      </button>
 			    <button class="btn btn-link icon-only hidden-xs">
 		      	<i class="fa fa-lg fa-print"></i>
@@ -36,7 +40,6 @@
 					<table class="table resilify-table">
 						<thead>
 							<tr>
-								<th><i class="fa fa-check"></i></th>
 								<th>Activity/asset</th>
 								<th>Potential event</th>
 								<th>Strategy option</th>
@@ -45,25 +48,25 @@
 								<th>Cost per unit</th>
 								<th>Total cost</th>
 								<th>Details</th>
+  							<th class="resilify-show-toggle">On canvas?</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr ng-repeat-start="item in items">
-								<td rowspan="{{(showMitigation ? '3' : '1')}}">
-									<a class="canvas-toggle" ng-click="toggleShowOnCanvas(item)" ng-class="{'active':item.showOnCanvas}">
-		  								<i class="fa fa-check"></i>
-									</a>
-								</td>
 								<td rowspan="{{(showMitigation ? '3' : '1')}}">{{item.name}}</td>
-								<td rowspan="{{(showMitigation ? '3' : '1')}}">Work from home</td>
-
+								<td rowspan="{{(showMitigation ? '3' : '1')}}">Loss of entire building</td>
+								<td>Work from home</td>
 								<!--non mitigation-->
 								<td>Employee homes</td>
 								<td>0</td>
 								<td>0</td>
 								<td>0</td>
 								<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-
+                <td rowspan="{{(showMitigation ? '3' : '1')}}">
+									<a class="canvas-toggle" ng-click="toggleShowOnCanvas(item)" ng-class="{'active':item.showOnCanvas}">
+		  								<i class="fa fa-check"></i>
+									</a>
+								</td>
 							</tr>
 
 							<tr class="mitigation" ng-show="showMitigation">

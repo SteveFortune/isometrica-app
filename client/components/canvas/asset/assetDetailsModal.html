@@ -1,10 +1,44 @@
 <div>
-	<div class="modal-header clearfix">
-	    <!-- <div class="btn-group pull-left">
-		    <button type="button" class="btn btn-default btn-back" ng-click="done()">
-	      	Edit Label
-	      </button>
-	    </div> -->
+
+  <div class="modal-header clearfix">
+    <div class="btn-group pull-left">
+	    <button type="button" class="btn btn-default" ng-click="done()">
+      	Back
+      </button>
+    </div>
+    <div class="btn-group pull-right">
+	    <button type="button" class="btn btn-success" ng-click="done()">
+      	Done
+      </button>
+    </div>		    
+    <h4 class="modal-title">Edit details</h4>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label class="control-label col-sm-5">Name</label>
+        <div class="col-sm-7">
+	        <input class="form-control" type="text" placeholder="Name..." value="{{item.name}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-5">Location</label>
+        <div class="col-sm-7">
+	        <input class="form-control" type="text" placeholder="Location..." value="{{item.location}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-5">Details</label>
+        <div class="col-sm-7">
+	        <textarea class="form-control" rows="5" placeholder="Details...">{{item.details}}</textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+
+	<!--
+		<div class="modal-header clearfix">
+
 	    <div class="btn-group pull-right">
 		    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="saveItem(canvasItemForm)">
 	      	Done
@@ -90,4 +124,5 @@
 	        </div>
 	    </form>
 	</div>
+	-->
 </div>

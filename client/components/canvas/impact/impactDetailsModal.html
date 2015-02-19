@@ -1,115 +1,283 @@
 <div>
-	<div class="modal-header clearfix">
-	    <div class="btn-group pull-left">
-		    <button type="button" class="btn btn-default btn-back" ng-click="done()">
-	      	Edit Label
-	      </button>
-	    </div>
-	    <div class="btn-group pull-right">
-		    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="done()">
-	      	Done
-	      </button>
-	    </div>		    
-	  <h4 class="modal-title">Edit Details</h4>
-	</div>
-	<div class="modal-body">
-	    <form class="form-horizontal">
-	    	<div class="form-group">
-		        <label class="control-label col-sm-5">Label</label>
-		        <div class="col-sm-7">
-			        <input class="form-control" type="text" placeholder="Label" ng-model="item.name">
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Potential Event</label>
-		        <div class="col-sm-7">
-			        <input class="form-control" type="text" placeholder="Potential Event...">
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Asset/Activity</label>
-		        <div class="col-sm-7">
-			        <input class="form-control" type="text" placeholder="Asset/Activity...">
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Risk Scenario</label>
-		        <div class="col-sm-7">
-			        <input class="form-control" type="text" placeholder="Risk Scenario...">
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Probability</label>
-		        <div class="col-sm-7">
-			        <div class="btn-group bootcards-radio-buttons">
-				      	<button type="button" class="btn btn-default active">Low</button>
-				      	<button type="button" class="btn btn-default">Medium</button>
-				      	<button type="button" class="btn btn-default">High</button>
-			        </div>
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Impact (People)</label>
-		        <div class="col-sm-7">
-			        <div class="btn-group bootcards-radio-buttons">
-				      	<button type="button" class="btn btn-default">Low</button>
-				      	<button type="button" class="btn btn-default">Medium</button>
-				      	<button type="button" class="btn btn-default active">High</button>
-			        </div>
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Impact (Property)</label>
-		        <div class="col-sm-7">
-			        <div class="btn-group bootcards-radio-buttons">
-				      	<button type="button" class="btn btn-default">Low</button>
-				      	<button type="button" class="btn btn-default active">Medium</button>
-				      	<button type="button" class="btn btn-default">High</button>
-			        </div>
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Impact (Operations)</label>
-		        <div class="col-sm-7">
-			        <div class="btn-group bootcards-radio-buttons">
-				      	<button type="button" class="btn btn-default">Low</button>
-				      	<button type="button" class="btn btn-default active">Medium</button>
-				      	<button type="button" class="btn btn-default">High</button>
-			        </div>
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Impact (Infotech)</label>
-		        <div class="col-sm-7">
-			        <div class="btn-group bootcards-radio-buttons">
-				      	<button type="button" class="btn btn-default">Low</button>
-				      	<button type="button" class="btn btn-default active">Medium</button>
-				      	<button type="button" class="btn btn-default">High</button>
-			        </div>
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Impact (Environment)</label>
-		        <div class="col-sm-7">
-			        <div class="btn-group bootcards-radio-buttons">
-				      	<button type="button" class="btn btn-default">Low</button>
-				      	<button type="button" class="btn btn-default">Medium</button>
-				      	<button type="button" class="btn btn-default active">High</button>
-			        </div>
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Overall Risk Rating</label>
-		        <div class="col-sm-7">
-			        <input class="form-control" type="text" placeholder="">
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Mitigation Opportunities</label>
-		        <div class="col-sm-7">
-			      	<button class="btn btn-default">Add Mitigation Opportunity</button>
-		        </div>
-	        </div>
-	    </form>
-	</div>
+
+  <div class="modal-header clearfix">
+    <div class="btn-group pull-left">
+	    <button type="button" class="btn btn-default" ng-click="done()">
+      	Back
+      </button>
+    </div>
+    <div class="btn-group pull-right">
+	    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="done()">
+      	Done
+      </button>
+    </div>		    
+    <h4 class="modal-title">Edit details</h4>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label class="control-label col-sm-5">Activity/asset</label>
+        <div class="col-sm-7">
+	        <input class="form-control" type="text" placeholder="Activity/asset..." value="Sales call centre">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-5">MTPD days</label>
+        <div class="col-sm-7">
+	        <input class="form-control" type="text" placeholder="MTPD days..." value="7">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-5">RTO days</label>
+        <div class="col-sm-7">
+	        <input class="form-control" type="text" placeholder="RTO days..." value="7">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-5">RPO</label>
+        <div class="col-sm-7">
+	        <input class="form-control" type="text" placeholder="RPO (optional)..." value="">
+        </div>
+      </div>
+      <legend>Event magnitude</legend>
+
+      <div class="panel-group" id="impactAnalysis-magnitude" role="tablist">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="impactAnalysis-magnitude-heading-1" data-toggle="collapse" data-parent="#impactAnalysis-magnitude" href="#impactAnalysis-magnitude-1">
+            <h4 class="panel-title">
+              1 hour
+            </h4>
+          </div>
+          <div id="impactAnalysis-magnitude-1" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Event magnitude</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Event magnitude..." value="1 hour">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Impact (operational)</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Impact (operational)..." value="Small">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Impact ($)</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Impact ($)..." value="30K">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Details</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Details..." value="Q1, Q2, Q3">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+      	        <div class="col-sm-7 col-sm-offset-5">
+        	        <button type="button" class="btn btn-danger">
+        	          Delete Magnitude
+        	        </button>
+      	        </div>
+    	        </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="impactAnalysis-magnitude-heading-2" data-toggle="collapse" data-parent="#impactAnalysis-magnitude" href="#impactAnalysis-magnitude-2">
+            <h4 class="panel-title">
+              1 day
+            </h4>
+          </div>
+          <div id="impactAnalysis-magnitude-2" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Event magnitude</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Event magnitude..." value="1 day">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Impact (operational)</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Impact (operational)..." value="Medium">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Impact ($)</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Impact ($)..." value="250K">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Details</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Details..." value="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+      	        <div class="col-sm-7 col-sm-offset-5">
+        	        <button type="button" class="btn btn-danger">
+        	          Delete Magnitude
+        	        </button>
+      	        </div>
+    	        </div>        	      
+    	      </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="impactAnalysis-magnitude-heading-3" data-toggle="collapse" data-parent="#impactAnalysis-magnitude" href="#impactAnalysis-magnitude-3">
+            <h4 class="panel-title">
+              Add event magnitude
+            </h4>
+          </div>
+          <div id="impactAnalysis-magnitude-3" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Event magnitude</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Event magnitude..." value="">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Impact (operational)</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Impact (operational)..." value="">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Impact ($)</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Impact ($)..." value="">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Details</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Details..." value="">
+    		        </div>
+    	        </div>
+      	      <div class="form-group">
+      	        <div class="col-sm-7 col-sm-offset-5">
+        	        <button type="button" class="btn btn-success">
+        	          Add
+        	        </button>
+        	        <button type="button" class="btn btn-danger">
+        	          Cancel
+        	        </button>
+      	        </div>
+    	        </div>        	                	      
+    	      </div>
+          </div>
+        </div>     
+      </div>	        
+
+      <legend>Mitigation Opportunities</legend>
+      
+      <div class="panel-group" id="impactAnalysis-mitigation" role="tablist">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="impactAnalysis-mitigation-heading-1" data-toggle="collapse" data-parent="#impactAnalysis-mitigation" href="#impactAnalysis-mitigation-1">
+            <h4 class="panel-title">
+              2nd call centre
+            </h4>
+          </div>
+          <div id="impactAnalysis-mitigation-1" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Mitigation opportunity</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Mitigation opportunity..." value="2nd Call Centre">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Event magnitude</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Event magnitude..." value="1 day">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Impact (operational)</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Impact (operational)..." value="Small">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Impact ($)</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Impact ($)..." value="15K">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Details</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Details..." value="Dolor sit amet, consectetur adipiscing elit.">
+    		        </div>
+    	        </div>
+  		        <div class="form-group">
+      	        <div class="col-sm-7 col-sm-offset-5">
+        	        <button type="button" class="btn btn-danger">
+        	          Delete Mitigation Opportunity
+        	        </button>
+      	        </div>
+    	        </div>
+  	        </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="impactAnalysis-mitigation-heading-2" data-toggle="collapse" data-parent="#impactAnalysis-mitigation" href="#impactAnalysis-mitigation-2">
+            <h4 class="panel-title">
+              Add mitigation opportunity
+            </h4>
+          </div>
+          <div id="impactAnalysis-mitigation-2" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Mitigation opportunity</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Mitigation opportunity..." value="">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Event magnitude</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Event magnitude..." value="">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Impact (operational)</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Impact (operational)..." value="">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Impact ($)</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Impact ($)..." value="">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+    		        <label class="control-label col-sm-5">Details</label>
+    		        <div class="col-sm-7">
+    			        <input class="form-control" type="text" placeholder="Details..." value="">
+    		        </div>
+    	        </div>
+    	        <div class="form-group">
+      	        <div class="col-sm-7 col-sm-offset-5">
+        	        <button type="button" class="btn btn-success">
+        	          Add
+        	        </button>
+        	        <button type="button" class="btn btn-danger">
+        	          Cancel
+        	        </button>
+      	        </div>
+    	        </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </form>
+  </div>
 </div>
+

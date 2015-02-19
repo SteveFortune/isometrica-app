@@ -45,13 +45,14 @@ app.controller( 'CanvasItemController', [
 		$modalInstance.close();
 
 		//@TODO: make dynamic
-		//var templateUrl = '/components/canvas/' + item.type + '/' + item.type + 'DetailsModal.html';
-		var templateUrl = '/components/canvas/asset/AssetDetailsModal.html';
-		var ctrl = item.type.substring(0,1).toUpperCase() + item.type.substring(1) + 'DetailsController';
+		var templateUrl = '/components/canvas/' + item.type + '/' + item.type + 'DetailsModal.html';
+		//var templateUrl = '/components/canvas/asset/AssetDetailsModal.html';
+		//var ctrl = item.type.substring(0,1).toUpperCase() + item.type.substring(1) + 'DetailsController';
 
 		var modalInstance = $modal.open({
 			templateUrl: templateUrl,
 			controller : 'CanvasItemController',
+			windowClass : 'edit-item-details',
 			resolve : {
 				canvasItem : function () {
 				  return item;
