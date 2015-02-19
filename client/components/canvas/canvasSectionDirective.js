@@ -84,6 +84,7 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 				var modalInstance = $modal.open({
 					templateUrl: templateUrl,
 					controller : ctrl,
+					windowClass : 'table-view-modal',
 					size : 'lg',
 					resolve : {
 						planId : function() {
