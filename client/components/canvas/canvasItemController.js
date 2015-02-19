@@ -2,11 +2,12 @@
 var app = angular.module('resilify');
 
 app.controller( 'CanvasItemController', [
-	'$scope', '$modalInstance', '$modal', 'canvasItem', 'isNew', 'CanvasItem',
-	function($scope, $modalInstance, $modal, canvasItem, isNew, CanvasItem) {
+	'$scope', '$modalInstance', '$modal', 'canvasItem', 'isNew', 'loadData', 'CanvasItem',
+	function($scope, $modalInstance, $modal, canvasItem, isNew, loadData, CanvasItem) {
 
 	$scope.item = canvasItem;
 	$scope.isNew = isNew;
+	$scope.loadData = loadData;
 
 	$scope.saveItem = function(form) {
 
@@ -38,6 +39,7 @@ app.controller( 'CanvasItemController', [
 
 	};
 
+	//show the 'edit details' form
 	$scope.editDetails = function(item) {
 
 		$modalInstance.close();
@@ -47,14 +49,24 @@ app.controller( 'CanvasItemController', [
 		var templateUrl = '/components/canvas/asset/AssetDetailsModal.html';
 		var ctrl = item.type.substring(0,1).toUpperCase() + item.type.substring(1) + 'DetailsController';
 
-		$modal.open({
+		var modalInstance = $modal.open({
 			templateUrl: templateUrl,
-			controller : ctrl,
+			controller : 'CanvasItemController',
 			resolve : {
-				item : function() {
-					return item;
+				canvasItem : function () {
+				  return item;
+				},
+				isNew : function() {
+					return $scope.isNew;
+				},
+				loadData : function() {
+					return $scope.loadData;
 				}
 			}
+		});
+
+		modalInstance.result.then( function(item) {
+			$scope.loadData();	
 		});
 
 	};

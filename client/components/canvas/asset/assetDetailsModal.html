@@ -1,23 +1,25 @@
 <div>
 	<div class="modal-header clearfix">
-	    <div class="btn-group pull-left">
+	    <!-- <div class="btn-group pull-left">
 		    <button type="button" class="btn btn-default btn-back" ng-click="done()">
 	      	Edit Label
 	      </button>
-	    </div>
+	    </div> -->
 	    <div class="btn-group pull-right">
-		    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="done()">
+		    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="saveItem(canvasItemForm)">
 	      	Done
 	      </button>
 	    </div>		    
 	  <h4 class="modal-title">Edit Details</h4>
 	</div>
 	<div class="modal-body">
-	    <form class="form-horizontal">
+	    <form name="canvasItemForm" class="form-horizontal">
 	    	<div class="form-group">
 		        <label class="control-label col-sm-5">Label</label>
 		        <div class="col-sm-7">
-			        <input class="form-control" type="text" placeholder="Label" ng-model="item.name">
+			        <input class="form-control" type="text" placeholder="Label" ng-model="item.name"
+			        ng-required="true"
+			        name="name">
 		        </div>
 	        </div>
 	        <div class="form-group">
