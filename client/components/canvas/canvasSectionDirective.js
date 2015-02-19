@@ -121,7 +121,7 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 		var modalInstance = $modal.open({
 			templateUrl: '/components/canvas/canvasItemModal.html',
 			controller: 'CanvasItemController',
-			windowClass : 'sticky-note-modal' + (editItem.type === 'background' ? ' note' : ''),
+			windowClass : 'edit-item-title' + (editItem.type === 'background' ? ' note' : ''),
 			resolve: {
 				canvasItem : function () {
 				  return editItem;

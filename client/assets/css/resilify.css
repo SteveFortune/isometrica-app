@@ -9,13 +9,7 @@ body {
   position: fixed; }
 
 /* NAV */
-.desktop .resilify-navbar-centered .navbar-brand {
-  position: absolute;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: -1; }
-
+/* Desktop Navbar Inverse Styles */
 .desktop .navbar-inverse {
   background: #444; }
   .desktop .navbar-inverse .navbar-brand {
@@ -28,35 +22,39 @@ body {
   .desktop .navbar-inverse a.navbar-brand:hover,
   .desktop .navbar-inverse .navbar-nav > li > a:hover {
     color: white; }
+  .desktop .navbar-inverse .btn i {
+    font-size: 24px; }
+  .desktop .navbar-inverse .btn .fa-share-square-o {
+    /* Tweak share icon */
+    top: 2px;
+    position: relative; }
+  @media (max-width: 767px) {
+    .desktop .navbar-inverse .navbar-nav {
+      margin: 4px 0; } }
+  .desktop .navbar-inverse .navbar-nav.navbar-left {
+    float: left;
+    margin-left: -15px; }
+  .desktop .navbar-inverse .navbar-nav.navbar-right {
+    float: right;
+    margin-right: -15px; }
 
+/* Centered Desktop Navbar */
+.desktop .resilify-navbar-centered .navbar-brand {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  z-index: -1;
+  font-size: 18px !important;
+  /* BUG: To override unwanted "has navbar-double" class on body */ }
+
+/* Larger branding on Dashboard */
 @media (min-width: 768px) {
   .resilify-dashboard-page.desktop .navbar-brand {
     font-size: 36px; } }
 
-.resilify-canvas-page.desktop .navbar-brand {
-  text-align: center;
-  display: block;
-  margin: 0;
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: -1; }
-.resilify-canvas-page.desktop .btn i {
-  font-size: 24px; }
-.resilify-canvas-page.desktop .btn .fa-share-square-o {
-  /* Tweak share icon */
-  top: 2px;
-  position: relative; }
-@media (max-width: 767px) {
-  .resilify-canvas-page.desktop .navbar-nav {
-    margin: 4px 0; } }
-.resilify-canvas-page.desktop .navbar-nav.navbar-left {
-  float: left;
-  margin-left: -15px; }
-.resilify-canvas-page.desktop .navbar-nav.navbar-right {
-  float: right;
-  margin-right: -15px; }
-
+/* Hide Dropdown menu on mobile */
 .ios .navbar-collapse,
 .android .navbar-collapse {
   display: none !important; }

@@ -20,55 +20,26 @@ body {
 
 /* NAV */
 
-.desktop .resilify-navbar-centered {
+/* Desktop Navbar Inverse Styles */
+
+.desktop .navbar-inverse {
+  background: #444;
+  
   .navbar-brand {
-    position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center;    
-    z-index: -1;
+    font-weight: 500; 
+    
   }
-}
-
-.desktop {
-  .navbar-inverse {
-    background: #444;
-    
-    .navbar-brand {
-      font-weight: 500; 
-    }
-    
-    .navbar-brand,
-    .navbar-text,
-    .navbar-nav>li>a {
-      color: #bbb;
-    }
-    
-    span.navbar-brand,
-    a.navbar-brand:hover,
-    .navbar-nav>li>a:hover {
-      color: white;
-    }
-  }  
-}
-
-.resilify-dashboard-page.desktop {
-  @media (min-width: 768px) {
-    .navbar-brand {
-      font-size: 36px;
-    }    
+  
+  .navbar-brand,
+  .navbar-text,
+  .navbar-nav>li>a {
+    color: #bbb;
   }
-}
-
-.resilify-canvas-page.desktop {
-  .navbar-brand {
-    text-align: center;
-    display: block;
-    margin: 0;
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: -1;
+  
+  span.navbar-brand,
+  a.navbar-brand:hover,
+  .navbar-nav>li>a:hover {
+    color: white;
   }
   
   .btn {
@@ -98,6 +69,32 @@ body {
   	}
   }
 }
+
+/* Centered Desktop Navbar */
+
+.desktop .resilify-navbar-centered {
+  .navbar-brand {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0;
+    text-align: center;    
+    z-index: -1;
+    font-size: 18px !important; /* BUG: To override unwanted "has navbar-double" class on body */
+  }
+}
+
+/* Larger branding on Dashboard */
+
+.resilify-dashboard-page.desktop {
+  @media (min-width: 768px) {
+    .navbar-brand {
+      font-size: 36px;
+    }    
+  }
+}
+
+/* Hide Dropdown menu on mobile */
 
 .ios .navbar-collapse,
 .android .navbar-collapse {

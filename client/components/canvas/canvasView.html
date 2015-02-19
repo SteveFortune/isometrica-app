@@ -1,47 +1,55 @@
+ 
 
-  <!-- fixed top navbar -->
-  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	  <div class="container-fluid">
-	    <ul class="nav navbar-nav navbar-left">
-	      <li>
-	        <a class="btn btn-link icon-only" ui-sref="dashboard">
-	        	<i class="fa fa-lg fa-arrow-left"></i>
-	        </a>
-	      </li>
-	    </ul>  
-	    <ul class="nav navbar-nav navbar-right">
-	      <li>
-	        <p class="navbar-text hidden-xs">Last synced 12 mins ago</p>
-	      </li>
-	      <li>
-	        <a class="btn btn-link icon-only hidden-xs" href="#">
-	        	<i class="fa fa-lg fa-refresh"></i>
-	        </a>
-	      </li>
-	      <li>
-	        <a class="btn btn-link icon-only hidden-xs" href="#">
-	  	      <i class="fa fa-lg fa-question-circle"></i>
-	        </a>
-	      </li>
-	      <li>
-	        <a class="btn btn-link icon-only hidden-xs" href="#">
-	        	<i class="fa fa-lg fa-gear"></i>
-	        </a>
-	      </li>
-	      <li>
-	        <a class="btn btn-link icon-only visible-xs" href="#">
-	        	<i class="fa fa-lg fa-bars"></i>
-	        </a>
-	      </li>
-	    </ul>  
-	      
-	    <div class="navbar-header">
-	      <span class="navbar-brand" title="Customers">
-	      	{{plan.title}}
-	      </span>  
-	    </div>        
-	  </div>
-  </div>   
+<!-- fixed top navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top resilify-navbar-centered" role="navigation">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-left">
+      <li>
+        <a class="btn btn-link icon-only" ui-sref="dashboard">
+        	<i class="fa fa-lg fa-arrow-left"></i>
+        </a>
+      </li>
+      <li>
+        <a class="btn btn-link icon-only hidden-xs" href="#">
+        	<i class="fa fa-lg fa-share-square-o"></i>
+        </a>
+      </li>
+    </ul>  
+    <ul class="nav navbar-nav navbar-right">
+      <!--<li>
+        <p class="navbar-text hidden-xs">Offline</p>
+      </li>-->
+      <li>
+        <a class="btn btn-link icon-only hidden-xs" href="#">
+  	      <i class="fa fa-lg fa-question-circle"></i>
+        </a>
+      </li>
+      <li>
+        <a class="btn btn-link icon-only hidden-xs" href="#">
+        	<i class="fa fa-lg fa-gear"></i>
+        </a>
+      </li>
+      <li>
+        <a class="btn btn-link icon-only visible-xs" href="#">
+        	<i class="fa fa-lg fa-share-square-o"></i>
+        </a>
+      </li>
+      <li>
+        <a class="btn btn-link icon-only hidden-xs" href="#">
+        	<i class="fa fa-lg fa-refresh"></i>
+        </a>
+      </li>
+    </ul>  
+      
+    <div class="navbar-header">
+      <span class="navbar-brand" title="{{plan.title}}">
+      	{{plan.title}}
+      </span>  
+    </div>        
+  </div>
+</div>  
+  
+  
 
 <!--mobile canvas (list)-->
   <div class="container visible-xs">
@@ -50,8 +58,18 @@
 			  <div class="panel panel-default">
 			    <div class="list-group bootcards-no-indicators resilify-mobile-categories" id="mobileCategories">
 			      <a class="list-group-item clearfix" href="#">
+			        <i class="fa fa-fw fa-users fa-2x pull-left"></i>
+			        <h4 class="list-group-item-heading">Emergency contacts (?)</h4>
+			        <span class="badge">3</span>
+			      </a>
+			      <a class="list-group-item clearfix" href="#">
 			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
-			        <h4 class="list-group-item-heading">Activities &amp; assets</h4>
+			        <h4 class="list-group-item-heading">Response procedures</h4>
+			        <span class="badge">{{procedureItems.length}}</span>
+			      </a>
+			      <a class="list-group-item clearfix" href="#">
+			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
+			        <h4 class="list-group-item-heading">Entities at risk</h4>
 			        <span class="badge">{{assetItems.length}}</span>
 			      </a>
 			      <a class="list-group-item clearfix" href="#">
@@ -68,39 +86,42 @@
 			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
 			        <h4 class="list-group-item-heading">Strategies &amp; resources</h4>
 			        <span class="badge">{{strategyItems.length}}</span>
-			      </a>
-			      <a class="list-group-item clearfix" href="#">
-			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
-			        <h4 class="list-group-item-heading">Response procedures</h4>
-			        <span class="badge">{{procedureItems.length}}</span>
-			      </a>
+			      </a>			      
 			      <a class="list-group-item clearfix" href="#">
 			        <i class="fa fa-fw fa-file-o fa-2x pull-left"></i>
 			        <h4 class="list-group-item-heading">Background &amp; context</h4>
 			        <span class="badge">{{backgroundItems.length}}</span>
-			      </a>
-			      <a class="list-group-item clearfix" href="#">
-			        <i class="fa fa-fw fa-users fa-2x pull-left"></i>
-			        <h4 class="list-group-item-heading">Interested parties (?)</h4>
-			        <span class="badge">3</span>
-			      </a>
-			      <a class="list-group-item clearfix" href="#">
-			        <i class="fa fa-fw fa-users fa-2x pull-left"></i>
-			        <h4 class="list-group-item-heading">Emergency contacts (?)</h4>
-			        <span class="badge">3</span>
-			      </a>
+			      </a>			      
 			    </div>
 			  </div>		    
 	    </div>
     </div>
   </div>
 
+
+<!--canvas help overlays-->
+<div class="overlays hidden-xs">
+  <div class="overlay overlay-1">
+    1. Where are we vulnerable?
+  </div>
+  <div class="overlay overlay-2">
+    2. What could go wrong?
+  </div>
+  <div class="overlay overlay-3">
+    3. What could we do about it?
+  </div>
+  <button type="button" class="btn btn-link icon-only">
+    <i class="fa fa-2x fa-times"></i>
+  </button>
+</div>
+
+
 <!--canvas-->
 <div class="resilify-canvas hidden-xs">
 
 	<div class="canvas-row items">
 
-		<div res-canvas-section item-type="asset" section-title="Activities &amp; assets" plan-id="{{planId}}"></div>
+		<div res-canvas-section item-type="asset" section-title="Entities at risk" plan-id="{{planId}}"></div>
 		<div res-canvas-section item-type="impact" section-title="Impact analysis" plan-id="{{planId}}"></div>
 		<div res-canvas-section item-type="risk" section-title="Risk analysis" plan-id="{{planId}}"></div>
 		<div res-canvas-section item-type="strategy" section-title="Strategies &amp; resources" plan-id="{{planId}}"></div> 
