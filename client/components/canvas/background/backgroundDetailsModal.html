@@ -1,115 +1,222 @@
 <div>
-	<div class="modal-header clearfix">
-	    <div class="btn-group pull-left">
-		    <button type="button" class="btn btn-default btn-back" ng-click="done()">
-	      	Edit Label
-	      </button>
-	    </div>
-	    <div class="btn-group pull-right">
-		    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="done()">
-	      	Done
-	      </button>
-	    </div>		    
-	  <h4 class="modal-title">Edit Details</h4>
-	</div>
-	<div class="modal-body">
-	    <form class="form-horizontal">
-	    	<div class="form-group">
-		        <label class="control-label col-sm-5">Label</label>
+  
+  <div class="modal-header clearfix">
+    <div class="btn-group pull-left">
+	    <button type="button" class="btn btn-default" ng-click="done()">
+      	Back
+      </button>
+    </div>
+    <div class="btn-group pull-right">
+	    <button type="button" class="btn btn-success" ng-click="done()">
+      	Done
+      </button>
+    </div>		    
+    <h4 class="modal-title">Edit details</h4>
+  </div>
+  
+  <div class="modal-body">
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+		  	<a href="#editDetails-backgroundAndContext-note" data-toggle="tab" class="btn btn-default">
+			  	Text note
+			  </a>
+			</div>
+		  <div class="btn-group">
+			  <a href="#editDetails-backgroundAndContext-file" data-toggle="tab" class="btn btn-default">
+			  	File attachment
+			  </a>
+		  </div>
+		  <div class="btn-group">
+			  <a href="#editDetails-backgroundAndContext-improvement" data-toggle="tab" class="btn btn-default">
+			  	Improvement
+			  </a>
+		  </div>
+		  <div class="btn-group">
+			  <a href="#editDetails-backgroundAndContext-interestedParty" data-toggle="tab" class="btn btn-default">
+			  	Interested party
+			  </a>
+		  </div>
+		</div>
+		
+		<hr>
+		
+		<div class="tab-content">
+			
+			<div role="tabpanel" class="tab-pane" id="editDetails-backgroundAndContext-note">
+        <form class="form-horizontal">
+	        <div class="form-group">
+		        <label class="control-label col-sm-5">Title</label>
 		        <div class="col-sm-7">
-			        <input class="form-control" type="text" placeholder="Label" ng-model="item.name">
+			        <input class="form-control" type="text" placeholder="Title...">
 		        </div>
 	        </div>
 	        <div class="form-group">
-		        <label class="control-label col-sm-5">Potential Event</label>
+		        <label class="control-label col-sm-5">Details</label>
 		        <div class="col-sm-7">
-			        <input class="form-control" type="text" placeholder="Potential Event...">
+			        <textarea class="form-control" placeholder="Details..."></textarea>
+		        </div>
+	        </div>
+        </form>  					
+			</div>
+			
+			<div role="tabpanel" class="tab-pane" id="editDetails-backgroundAndContext-file">
+        <form class="form-horizontal">
+	        <div class="form-group">
+		        <label class="control-label col-sm-5">Title</label>
+		        <div class="col-sm-7">
+			        <input class="form-control" type="text" placeholder="Title...">
 		        </div>
 	        </div>
 	        <div class="form-group">
-		        <label class="control-label col-sm-5">Asset/Activity</label>
+		        <label class="control-label col-sm-5">Details</label>
 		        <div class="col-sm-7">
-			        <input class="form-control" type="text" placeholder="Asset/Activity...">
+			        <textarea class="form-control" placeholder="Details..."></textarea>
 		        </div>
 	        </div>
 	        <div class="form-group">
-		        <label class="control-label col-sm-5">Risk Scenario</label>
+		        <label class="control-label col-sm-5">File</label>
 		        <div class="col-sm-7">
-			        <input class="form-control" type="text" placeholder="Risk Scenario...">
+			        <button type="button" class="btn btn-default">Upload File</button>
+		        </div>
+	        </div>
+        </form>  					
+			</div>
+			
+			<div role="tabpanel" class="tab-pane" id="editDetails-backgroundAndContext-improvement">
+        <form class="form-horizontal">
+	        <div class="form-group">
+		        <label class="control-label col-sm-5">Improvement Opportunity</label>
+		        <div class="col-sm-7">
+			        <input class="form-control" type="text" placeholder="Title...">
 		        </div>
 	        </div>
 	        <div class="form-group">
-		        <label class="control-label col-sm-5">Probability</label>
+		        <label class="control-label col-sm-5">Details</label>
 		        <div class="col-sm-7">
-			        <div class="btn-group bootcards-radio-buttons">
-				      	<button type="button" class="btn btn-default active">Low</button>
-				      	<button type="button" class="btn btn-default">Medium</button>
-				      	<button type="button" class="btn btn-default">High</button>
-			        </div>
+			        <textarea class="form-control" placeholder="Details..."></textarea>
+		        </div>
+	        </div>
+        </form>  					
+			</div>
+			
+			<div role="tabpanel" class="tab-pane" id="editDetails-backgroundAndContext-interestedParty">
+        <form class="form-horizontal">
+	        <div class="form-group">
+		        <label class="control-label col-sm-5">Interested party</label>
+		        <div class="col-sm-7">
+			        <input class="form-control" type="text" placeholder="Title...">
 		        </div>
 	        </div>
 	        <div class="form-group">
-		        <label class="control-label col-sm-5">Impact (People)</label>
+		        <label class="control-label col-sm-5">Contact name</label>
 		        <div class="col-sm-7">
-			        <div class="btn-group bootcards-radio-buttons">
-				      	<button type="button" class="btn btn-default">Low</button>
-				      	<button type="button" class="btn btn-default">Medium</button>
-				      	<button type="button" class="btn btn-default active">High</button>
-			        </div>
+			        <input class="form-control" type="text" placeholder="Title...">
 		        </div>
 	        </div>
 	        <div class="form-group">
-		        <label class="control-label col-sm-5">Impact (Property)</label>
+		        <label class="control-label col-sm-5">Email</label>
 		        <div class="col-sm-7">
-			        <div class="btn-group bootcards-radio-buttons">
-				      	<button type="button" class="btn btn-default">Low</button>
-				      	<button type="button" class="btn btn-default active">Medium</button>
-				      	<button type="button" class="btn btn-default">High</button>
-			        </div>
+			        <input class="form-control" type="email" placeholder="Title...">
 		        </div>
 	        </div>
 	        <div class="form-group">
-		        <label class="control-label col-sm-5">Impact (Operations)</label>
+		        <label class="control-label col-sm-5">Phone</label>
 		        <div class="col-sm-7">
-			        <div class="btn-group bootcards-radio-buttons">
-				      	<button type="button" class="btn btn-default">Low</button>
-				      	<button type="button" class="btn btn-default active">Medium</button>
-				      	<button type="button" class="btn btn-default">High</button>
-			        </div>
+			        <input class="form-control" type="phone" placeholder="Title...">
 		        </div>
 	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Impact (Infotech)</label>
-		        <div class="col-sm-7">
-			        <div class="btn-group bootcards-radio-buttons">
-				      	<button type="button" class="btn btn-default">Low</button>
-				      	<button type="button" class="btn btn-default active">Medium</button>
-				      	<button type="button" class="btn btn-default">High</button>
-			        </div>
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Impact (Environment)</label>
-		        <div class="col-sm-7">
-			        <div class="btn-group bootcards-radio-buttons">
-				      	<button type="button" class="btn btn-default">Low</button>
-				      	<button type="button" class="btn btn-default">Medium</button>
-				      	<button type="button" class="btn btn-default active">High</button>
-			        </div>
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Overall Risk Rating</label>
-		        <div class="col-sm-7">
-			        <input class="form-control" type="text" placeholder="">
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label col-sm-5">Mitigation Opportunities</label>
-		        <div class="col-sm-7">
-			      	<button class="btn btn-default">Add Mitigation Opportunity</button>
-		        </div>
-	        </div>
-	    </form>
-	</div>
+	        <legend>Requirements</legend>
+	        
+          <div class="panel-group" id="editDetails-backgroundAndContext-interestedParty-requirements" role="tablist">
+            <div class="panel panel-default">
+              
+              <div class="panel-heading" role="tab" id="editDetails-backgroundAndContext-interestedParty-requirements-heading-1" data-toggle="collapse" data-parent="#editDetails-backgroundAndContext-interestedParty-requirements" href="#editDetails-backgroundAndContext-interestedParty-requirements-1">
+                <h4 class="panel-title">
+                  1. Safety
+                </h4>
+              </div>
+              <div id="editDetails-backgroundAndContext-interestedParty-requirements-1" class="panel-collapse collapse" role="tabpanel">
+                <div class="panel-body">
+        	        <div class="form-group">
+        		        <div class="col-sm-2">
+        			        <input class="form-control" type="text" value="1">
+        		        </div>
+        		        <div class="col-sm-10">
+        			        <input class="form-control" type="text" value="Safety">
+        		        </div>		        
+        	        </div>
+        	        <div class="form-group">
+          	        <div class="col-sm-12">
+            	        <textarea class="form-control">Etiam auctor vehicula odio, quis finibus lorem volutpat malesuada</textarea>
+          	        </div>
+        	        </div>
+        	        <button type="button" class="btn btn-danger">
+        	          Delete requirement
+        	        </button>
+      	        </div>
+              </div>
+              
+              <div class="panel-heading" role="tab" id="editDetails-backgroundAndContext-interestedParty-requirements-heading-2" data-toggle="collapse" data-parent="#editDetails-backgroundAndContext-interestedParty-requirements" href="#editDetails-backgroundAndContext-interestedParty-requirements-2">
+                <h4 class="panel-title">
+                  2. What to do
+                </h4>
+              </div>
+              <div id="editDetails-backgroundAndContext-interestedParty-requirements-2" class="panel-collapse collapse" role="tabpanel">
+                <div class="panel-body">
+        	        <div class="form-group">
+        		        <div class="col-sm-2">
+        			        <input class="form-control" type="text" value="2">
+        		        </div>
+        		        <div class="col-sm-10">
+        			        <input class="form-control" type="text" value="What to do">
+        		        </div>		        
+        	        </div>
+        	        <div class="form-group">
+          	        <div class="col-sm-12">
+            	        <textarea class="form-control">Finibus lorem volutpat malesuada</textarea>
+          	        </div>
+        	        </div>
+        	        <button type="button" class="btn btn-danger">
+        	          Delete requirement
+        	        </button>
+      	        </div>
+              </div>
+              
+              <div class="panel-heading" role="tab" id="editDetails-backgroundAndContext-interestedParty-requirements-heading-add" data-toggle="collapse" data-parent="#editDetails-backgroundAndContext-interestedParty-requirements" href="#editDetails-backgroundAndContext-interestedParty-requirements-add">
+                <h4 class="panel-title">
+                  Add requirement
+                </h4>
+              </div>
+              <div id="editDetails-backgroundAndContext-interestedParty-requirements-add" class="panel-collapse collapse" role="tabpanel">
+                <div class="panel-body">
+        	        <div class="form-group">
+        		        <div class="col-sm-2">
+        			        <input class="form-control" type="text" value="">
+        		        </div>
+        		        <div class="col-sm-10">
+        			        <input class="form-control" type="text" value="">
+        		        </div>		        
+        	        </div>
+        	        <div class="form-group">
+          	        <div class="col-sm-12">
+            	        <textarea class="form-control"></textarea>
+          	        </div>
+        	        </div>
+        	        <button type="button" class="btn btn-success">
+        	          Save
+        	        </button>
+        	        <button type="button" class="btn btn-danger">
+        	          Cancel
+        	        </button>
+      	        </div>
+              </div>
+              
+            </div>
+          </div> 
+        </form>  					
+			</div>
+		</div>
+  </div>	
+	
+	
 </div>
