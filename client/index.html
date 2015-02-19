@@ -51,32 +51,46 @@
 	
 <body class="bootcards-nofooter bootcards-fullheight resilify-dashboard-page has-bootcards-navbar-double desktop">
 
-<ui-view></ui-view>
+	<ui-view></ui-view>
 
-<div growl></div>
+	<div growl></div>
 
-<script type="text/javascript" src="/assets/libs/angular/angular.min.js"></script>
-<script type="text/javascript" src="/assets/libs/angular-resource/angular-resource.min.js"></script>
-<script type="text/javascript" src="/assets/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
-<script type="text/javascript" src="/assets/libs/angular-bootstrap/ui-bootstrap.min.js"></script>
-<script type="text/javascript" src="/assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-<script type="text/javascript" src="/assets/libs/angular-animate/angular-animate.min.js"></script>
+	<script type="text/javascript" src="/assets/libs/angular/angular.min.js"></script>
+	<script type="text/javascript" src="/assets/libs/angular-resource/angular-resource.min.js"></script>
+	<script type="text/javascript" src="/assets/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="/assets/libs/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script type="text/javascript" src="/assets/libs/angular-animate/angular-animate.min.js"></script>
+	<script type="text/javascript" src="/assets/libs/angular-touch/angular-touch.min.js"></script>
 
-<script type="text/javascript" src="/assets/libs/angular-growl-2/build/angular-growl.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/assets/libs/angular-growl-2/build/angular-growl.min.css">
+	<script type="text/javascript" src="/assets/libs/angular-growl-2/build/angular-growl.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/assets/libs/angular-growl-2/build/angular-growl.min.css">
 
-<script type="text/javascript" src="/assets/js/lb-services.js"></script>
+	<script type="text/javascript" src="/assets/js/lb-services.js"></script>
+	<script type="text/javascript" src="/assets/js/ios-drag-drop.js"></script>
 
-<script src="/app.module.js"></script>
-<script src="/app.routes.js"></script>
-<script type="text/javascript" src="/components/header/headerDirective.js"></script>
-<script type="text/javascript" src="/components/dashboard/dashboardController.js"></script>
+	<script src="/app.module.js"></script>
+	<script src="/app.routes.js"></script>
+	<script type="text/javascript" src="/components/header/headerDirective.js"></script>
+	<script type="text/javascript" src="/components/dashboard/dashboardController.js"></script>
 
-<script type="text/javascript" src="/components/canvas/canvasController.js"></script>
-<script type="text/javascript" src="/components/canvas/canvasItemController.js"></script>
+	<script type="text/javascript" src="/components/canvas/canvasController.js"></script>
+	<script type="text/javascript" src="/components/canvas/canvasItemController.js"></script>
+	<script type="text/javascript" src="/components/canvas/canvasSectionDirective.js"></script>
+	<script type="text/javascript" src="/components/canvas/canvasWorksheetBaseController.js"></script>
+	<script type="text/javascript" src="/components/canvas/asset/assetController.js"></script>
+	<script type="text/javascript" src="/components/canvas/impact/impactController.js"></script>
+	<script type="text/javascript" src="/components/canvas/risk/riskController.js"></script>
+	<script type="text/javascript" src="/components/canvas/procedure/procedureController.js"></script>
+	<script type="text/javascript" src="/components/canvas/strategy/strategyController.js"></script>
+	<script type="text/javascript" src="/components/canvas/background/backgroundController.js"></script>
+	<script type="text/javascript" src="/components/formControls/buttonToggle.js"></script>
 
-<script type="text/javascript" src="/components/planUsers/planUsersController.js"></script>
-<script type="text/javascript" src="/components/planSettings/planSettingsController.js"></script>
+
+	<script type="text/javascript" src="/components/planUsers/planUsersController.js"></script>
+	<script type="text/javascript" src="/components/planSettings/planSettingsController.js"></script>
+
+	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
 </body>
 

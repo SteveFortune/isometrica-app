@@ -1,14 +1,16 @@
 module.exports = function(Plan) {
 
-	Plan.observe('before save', function updateTimestamp(ctx, next) {
-
-		if (ctx.instance) {
-			ctx.instance.updated = new Date();
-		} else {
-			ctx.data.updated = new Date();
-		}
+	Plan.beforeCreate = function(next, modelInstance) {
+		modelInstance.created = new Date();
+	
 		next();
+	};
 
-	});
+	Plan.beforeUpdate = function(next, modelInstance) {
+		modelInstance.created = new Date();
+		
+		next();
+	};
+
 
 };

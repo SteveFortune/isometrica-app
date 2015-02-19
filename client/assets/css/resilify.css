@@ -298,8 +298,6 @@ body {
       vertical-align: 0; }
     .ios .modal-dialog .modal-header .btn span {
       font-size: 14px; }
-.ios .modal-dialog .modal-body {
-  z-index: -1; }
 
 .android .table-view-modal .modal-dialog {
   margin: 0; }
@@ -490,3 +488,8 @@ body {
   .resilify-table .high {
     color: #da8080;
     border-color: #da8080; }
+
+/* 'over' class on canvas section title*/
+.canvas-section-title.active a, .canvas-section-title.active i {
+  color: #3a87ad;
+}

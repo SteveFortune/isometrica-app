@@ -2,14 +2,16 @@
 
       <div class="modal-header clearfix">
 
-        <button class="btn btn-link show-details-form pull-left" ng-click="cancel()">
+        <button class="btn btn-link show-details-form pull-left" ng-click="editDetails(item)">
   	    	Edit Details
         </button>
 
 		    <button type="button" class="btn btn-link icon-only pull-right" ng-click="saveItem(canvasItemForm)">
 	      	<i class="fa fa-times fa-lg"></i>
 	      </button>
-        <button type="button" class="btn btn-link icon-only pull-right" ng-click="deleteItem(item)">
+        <button type="button" class="btn btn-link icon-only pull-right" 
+          ng-if="!isNew"
+          ng-click="deleteItem(item)">
           <i class="fa fa-trash fa-lg"></i>
         </button>
 	    </div>
@@ -18,11 +20,13 @@
 
         <form name="canvasItemForm">
 
-          <textarea class="form-control canvas-item-title"
-          autofocus="true" 
-          name="name"
-          ng-model="item.name" placeholder="Enter title..."
-          ng-required="true"></textarea>
+          <textarea 
+            class="form-control canvas-item-title"
+            autofocus="true"
+            name="name"
+            ng-model="item.name" placeholder="Enter title..."
+            ng-required="true">
+          </textarea>
 
         </form>
 

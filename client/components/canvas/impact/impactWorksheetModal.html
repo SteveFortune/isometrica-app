@@ -1,0 +1,86 @@
+
+<div>
+	<div class="modal-header">
+	    <div class="btn-group pull-left visible-xs">
+		    <button class="btn btn-link icon-only" data-toggle="dropdown" aria-expanded="false">
+	      	<i class="fa fa-lg fa-gear"></i>
+	      </button>
+
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a href="#">
+				    <i class="fa fa-lg fa-eye-slash"></i> 
+				    Hide Mitigation
+				  </a></li>
+			    <li class="divider"></li>
+			    <li><a href="#">
+				    <i class="fa fa-lg fa-print"></i> 
+				    Print
+				  </a></li>
+			  </ul>		      
+	    </div>
+	    <div class="btn-group pull-right">
+		    <button class="btn btn-link hidden-xs" ng-click="toggleMitigation()">
+	      	<i class="fa fa-lg fa-eye-slash"></i>
+	      	<span>Hide Mitigation</span>
+	      </button>
+		    <button class="btn btn-link icon-only hidden-xs">
+	      	<i class="fa fa-lg fa-print"></i>
+	      </button>
+		   <button href="#" class="btn btn-link icon-only" ng-click="cancel()">
+	  		<i class="fa fa-lg fa-times"></i>
+		</button>
+	    </div>
+	    <h4 class="modal-title">Business Impact Analysis</h4>	      
+	</div>
+	<div class="modal-body">
+		<div class="table-responsive">
+			<table class="table resilify-table">
+				<thead>
+					<tr>
+						<th><i class="fa fa-check"></i></th>
+						<th>Activity / asset</th>
+						<th>MTPD days</th>
+						<th>RTO days</th>
+						<th>RPO</th>
+						<th>Event magnitude</th>
+						<th>Impact (operational)</th>
+						<th>Impact ($)</th>
+						<th>Details</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat-start="item in items">
+						<td rowspan="{{(showMitigation ? '4' : '2')}}">
+							<a class="canvas-toggle" ng-click="toggleShowOnCanvas(item)" ng-class="{'active':item.showOnCanvas}">
+									<i class="fa fa-check"></i>
+							</a>
+						</td>
+						<td rowspan="{{(showMitigation ? '4' : '2')}}">{{item.name}}</td>
+						<td rowspan="{{(showMitigation ? '4' : '2')}}">7</td>
+						<td rowspan="{{(showMitigation ? '4' : '2')}}">7</td>
+						<td rowspan="{{(showMitigation ? '4' : '2')}}">n/a</td>
+						<td>1 hour</td>
+						<td>Small</td>
+						<td>30K</td>
+						<td>Q1, Q2, Q3</td>
+					</tr>
+					<tr>
+						<td>1 day</td>
+						<td>Medium</td>
+						<td>250K</td>
+						<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+					</tr>
+					<tr class="mitigation" ng-show="showMitigation">
+						<th colspan="4">MITIGATION OPPORTUNITY: 2nd Call Centre</th>
+					</tr>
+					<tr class="mitigation" ng-show="showMitigation" ng-repeat-end>
+						<td>1 day</td>
+						<td>Small</td>
+						<td>15K</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

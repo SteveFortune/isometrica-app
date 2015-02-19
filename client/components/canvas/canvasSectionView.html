@@ -1,0 +1,22 @@
+
+<div class="canvas-section" ng-click="addCanvasItem($event, itemType)" droppable-move>
+
+	<div class="canvas-section-title" res-title-rollup>
+		<h4>
+			<a class="table-view-link" ng-click="viewSectionWorksheet($event)">
+				<i class="fa fa-fw fa-table"></i>
+				<span class="badge">{{items.length}}</span>
+				{{sectionTitle}}
+			</a>
+		</h4>
+	</div>
+
+	<div class="canvas-item" ng-class="{'note' : itemType=='background'}" ng-repeat="item in items | filter : { showOnCanvas : true}"
+		draggable
+		id="{{item.id}}"
+		ng-style="{'left' : item.offsetLeft + '%', 'top' : item.offsetTop + '%'}"
+		ng-click="editCanvasItem($event, item)">
+		{{item.name}}
+	</div>
+
+</div>

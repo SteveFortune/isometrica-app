@@ -1,28 +1,35 @@
 {
-  "name": "Asset",
+  "name": "CanvasItem",
   "base": "PersistedModel",
   "idInjection": true,
   "properties": {
+    "type": {
+      "type": "string",
+      "required": true
+    },
     "name": {
       "type": "string",
       "required": true
     },
-    "location": {
-      "type": "string"
-    },
-    "offsetLeft": {
-      "type": "number"
-    },
     "offsetTop": {
       "type": "number"
     },
-    "criticality": {
+    "offsetLeft": {
       "type": "number"
     },
     "details": {
       "type": "string"
     },
-    "planId" : {
+    "showOnCanvas" : {
+      "type": "boolean"
+    },
+    "created" : {
+      "type": "date"
+    },
+    "updated" : {
+      "type": "date"
+    },
+    "location" : {
       "type": "string"
     }
   },
@@ -31,7 +38,7 @@
     "plan": {
       "type": "belongsTo",
       "model": "Plan",
-      "foreignKey": ""
+      "foreignKey": "planId"
     }
   },
   "acls": [],
