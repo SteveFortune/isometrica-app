@@ -43,6 +43,10 @@ body {
   z-index: -1; }
 .resilify-canvas-page.desktop .btn i {
   font-size: 24px; }
+.resilify-canvas-page.desktop .btn .fa-share-square-o {
+  /* Tweak share icon */
+  top: 2px;
+  position: relative; }
 @media (max-width: 767px) {
   .resilify-canvas-page.desktop .navbar-nav {
     margin: 4px 0; } }
@@ -183,8 +187,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    width: 100%;
-    height: 100%; }
+    width: 100%; }
     .resilify-canvas .canvas-row {
       display: -webkit-box;
       /* OLD - iOS 6-, Safari 3.1-6 */
@@ -197,9 +200,9 @@ body {
       display: flex;
       /* NEW, Spec - Opera 12.1, Firefox 20+ */ }
       .resilify-canvas .canvas-row:first-child {
-        height: 75%; }
+        height: 80%; }
       .resilify-canvas .canvas-row:last-child {
-        height: 25%; }
+        height: 20%; }
       .resilify-canvas .canvas-row .canvas-section {
         vertical-align: top;
         padding: 18px 15px;
@@ -207,7 +210,7 @@ body {
         border-left: 2px solid #ddd;
         border-top: 2px solid #ddd;
         cursor: pointer;
-        -webkit-transition: background 0.5s ease;
+        transition: all 0.3s ease;
         -webkit-box-flex: 1;
         /* OLD - iOS 6-, Safari 3.1-6 */
         -moz-box-flex: 1;
@@ -224,12 +227,80 @@ body {
           border-left: 0; }
         .resilify-canvas .canvas-row .canvas-section:hover, .resilify-canvas .canvas-row .canvas-section:active {
           background: #fff; }
+        .resilify-canvas .canvas-row .canvas-section #emergencyContacts {
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          left: 80%;
+          background: #ddd;
+          margin: 20px;
+          padding: 15px;
+          margin-left: 0; }
+          .resilify-canvas .canvas-row .canvas-section #emergencyContacts h4 {
+            height: 100%; } }
+          @media (min-width: 768px) and (max-width: 991px) {
+            .resilify-canvas .canvas-row .canvas-section #emergencyContacts h4 {
+              font-size: 16px; } }
+@media (min-width: 768px) {
+            .resilify-canvas .canvas-row .canvas-section #emergencyContacts h4 a {
+              display: block;
+              height: 100%; }
 
   .ios .resilify-canvas {
     top: 42px; }
 
   .android .resilify-canvas {
     top: 48px; } }
+/* Overlays */
+.overlays {
+  display: none; }
+
+.resilify-canvas-show-overlays.ios .overlays {
+  top: 44px !important; }
+.resilify-canvas-show-overlays.android .overlays {
+  top: 50px !important; }
+.resilify-canvas-show-overlays .overlays {
+  display: block;
+  position: fixed;
+  top: 53px;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  z-index: 999;
+  font-size: 18px;
+  text-align: center; }
+  .resilify-canvas-show-overlays .overlays .overlay {
+    padding: 15px;
+    float: left; }
+    .resilify-canvas-show-overlays .overlays .overlay.overlay-1 {
+      width: 40%; }
+    .resilify-canvas-show-overlays .overlays .overlay.overlay-2 {
+      width: 20%; }
+    .resilify-canvas-show-overlays .overlays .overlay.overlay-3 {
+      width: 40%;
+      padding-right: 45px; }
+  .resilify-canvas-show-overlays .overlays button {
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    color: #ccc;
+    padding-left: 10px;
+    padding-right: 10px; }
+    .resilify-canvas-show-overlays .overlays button:hover, .resilify-canvas-show-overlays .overlays button:active {
+      color: white; }
+    .resilify-canvas-show-overlays .overlays button i {
+      font-size: 24px; }
+.resilify-canvas-show-overlays .items .canvas-section {
+  /* Leave space for overlays */ }
+  @media (max-width: 1179px) {
+    .resilify-canvas-show-overlays .items .canvas-section {
+      padding-top: 100px !important; } }
+  @media (min-width: 1180px) {
+    .resilify-canvas-show-overlays .items .canvas-section {
+      padding-top: 70px !important; } }
+
 /* Mobile Layout */
 @media (max-width: 767px) {
   .resilify-mobile-categories .list-group-item .list-group-item-heading {
@@ -288,6 +359,7 @@ body {
   width: 80px;
   padding: 10px;
   font-size: 16px;
+  line-height: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
   position: absolute;
@@ -309,12 +381,25 @@ body {
     background: #ffd89b; }
   .canvas-item:hover {
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); }
-  .canvas-item:nth-child(3n) {
-    -webkit-transform: rotate(3deg); }
-  .canvas-item:nth-child(3n+1) {
-    -webkit-transform: rotate(-2deg); }
-  .canvas-item:nth-child(3n+2) {
-    -webkit-transform: rotate(-4deg); }
+
+.canvas-section:nth-child(3n) .canvas-item:nth-child(3n) {
+  -webkit-transform: rotate(3deg); }
+.canvas-section:nth-child(3n) .canvas-item:nth-child(3n+1) {
+  -webkit-transform: rotate(-2deg); }
+.canvas-section:nth-child(3n) .canvas-item:nth-child(3n+2) {
+  -webkit-transform: rotate(-4deg); }
+.canvas-section:nth-child(3n+1) .canvas-item:nth-child(3n) {
+  -webkit-transform: rotate(-3deg); }
+.canvas-section:nth-child(3n+1) .canvas-item:nth-child(3n+1) {
+  -webkit-transform: rotate(1deg); }
+.canvas-section:nth-child(3n+1) .canvas-item:nth-child(3n+2) {
+  -webkit-transform: rotate(4deg); }
+.canvas-section:nth-child(3n+2) .canvas-item:nth-child(3n) {
+  -webkit-transform: rotate(2deg); }
+.canvas-section:nth-child(3n+2) .canvas-item:nth-child(3n+1) {
+  -webkit-transform: rotate(-4deg); }
+.canvas-section:nth-child(3n+2) .canvas-item:nth-child(3n+2) {
+  -webkit-transform: rotate(-2deg); }
 
 /* Modals */
 .ios .table-view-modal .modal-dialog {
@@ -489,7 +574,7 @@ body {
   font-size: 16px; }
   .resilify-table thead {
     background: #eee; }
-    .resilify-table thead th:last-child {
+    .resilify-table thead th.resilify-show-toggle {
       width: 40px;
       text-align: center; }
     .resilify-table thead th i {
@@ -572,6 +657,9 @@ body {
   .resilify-table .high {
     color: #da8080;
     border-color: #da8080; }
+  .resilify-table a {
+    white-space: nowrap;
+    /* Phone numbers & emails */ }
 
 #riskAnalysisTableModal tr:first-child th:nth-child(3),
 #riskAnalysisTableModal tr:first-child th:nth-child(4),

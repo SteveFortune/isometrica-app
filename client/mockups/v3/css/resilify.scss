@@ -75,6 +75,11 @@ body {
     i {
       font-size: 24px;
     }
+    
+    .fa-share-square-o { /* Tweak share icon */
+      top: 2px;
+      position: relative;
+    }
   }
   
   .navbar-nav {
@@ -286,7 +291,6 @@ body {
 		right: 0;
 		bottom: 0;
 		width: 100%;
-		height: 100%;
 		
 		.canvas-row {
 			display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
@@ -296,10 +300,10 @@ body {
 		  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */			
 			
 			&:first-child {
-				height: 75%;
+				height: 80%;
 			}
 			&:last-child {
-				height: 25%;
+				height: 20%;
 			}
 			
 			.canvas-section {
@@ -309,7 +313,8 @@ body {
 				border-left: 2px solid #ddd;
 				border-top: 2px solid #ddd;
 				cursor: pointer;
-				-webkit-transition: background 0.5s ease;
+				transition: all 0.3s ease;
+				
 				
 			  -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
 			  -moz-box-flex: 1;         /* OLD - Firefox 19- */
@@ -325,6 +330,29 @@ body {
 				&:hover, &:active {
 					background: #fff; 
 				}				
+				
+				#emergencyContacts {
+  				position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          left: 80%;
+          background: #ddd;
+          margin: 20px;
+          padding: 15px;
+          margin-left: 0;
+          
+          h4 {
+            height: 100%;
+            @media (max-width: 991px) {
+              font-size: 16px;
+            }
+            a {
+              display: block;
+              height: 100%;
+            }
+          }
+				}
 			}
 		}
 	}	
@@ -336,6 +364,81 @@ body {
 	.android .resilify-canvas {
 		top: 48px;
 	}
+}
+
+/* Overlays */
+
+.overlays {
+  display: none;
+}
+
+.resilify-canvas-show-overlays {
+  &.ios .overlays {
+    top: 44px !important;
+  }
+  
+  &.android .overlays {
+    top: 50px !important;
+  }
+  
+  .overlays {
+    display: block;
+    position: fixed;
+    top: 53px;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    z-index: 999;
+    font-size: 18px;
+    text-align: center;
+
+    .overlay {
+      padding: 15px;
+      float: left;
+      
+      &.overlay-1 {
+        width: 40%;
+      }
+      
+      &.overlay-2 {
+        width: 20%;
+      }
+      
+      &.overlay-3 {
+        width: 40%;
+        padding-right: 45px;
+      }
+    }
+    
+    button {
+      position: absolute;
+      right: 5px;
+      top: 8px;
+      color: #ccc;
+      padding-left: 10px;
+      padding-right: 10px;
+      
+      &:hover,
+      &:active {
+        color: white;
+      }
+      
+      i {
+        font-size: 24px;
+      }
+    }
+
+  }
+  
+  .items .canvas-section { /* Leave space for overlays */
+    @media (max-width: 1179px) {
+      padding-top: 100px !important;
+    }
+    @media (min-width: 1180px) {
+      padding-top: 70px !important;
+    }
+  }
 }
 
 /* Mobile Layout */
@@ -420,6 +523,7 @@ body {
 	width: 80px;
 	padding: 10px;
 	font-size: 16px;
+	line-height: 20px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	position: absolute;
@@ -447,18 +551,48 @@ body {
 	&:hover {
 		box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
 	}
-	
-	&:nth-child(3n) {
-		-webkit-transform: rotate(3deg);
-	}
-	
-	&:nth-child(3n+1) {
-		-webkit-transform: rotate(-2deg);
-	}
-	
-	&:nth-child(3n+2) {
-		-webkit-transform: rotate(-4deg);
-	}
+}
+
+.canvas-section {
+  &:nth-child(3n) {
+    .canvas-item {
+    	&:nth-child(3n) {
+    		-webkit-transform: rotate(3deg);
+    	}    	
+    	&:nth-child(3n+1) {
+    		-webkit-transform: rotate(-2deg);
+    	}    	
+    	&:nth-child(3n+2) {
+    		-webkit-transform: rotate(-4deg);
+    	}      
+    }
+  }
+  &:nth-child(3n+1) {
+    .canvas-item {
+    	&:nth-child(3n) {
+    		-webkit-transform: rotate(-3deg);
+    	}    	
+    	&:nth-child(3n+1) {
+    		-webkit-transform: rotate(1deg);
+    	}    	
+    	&:nth-child(3n+2) {
+    		-webkit-transform: rotate(4deg);
+    	}      
+    }
+  }
+  &:nth-child(3n+2) {
+    .canvas-item {
+    	&:nth-child(3n) {
+    		-webkit-transform: rotate(2deg);
+    	}    	
+    	&:nth-child(3n+1) {
+    		-webkit-transform: rotate(-4deg);
+    	}    	
+    	&:nth-child(3n+2) {
+    		-webkit-transform: rotate(-2deg);
+    	}      
+    }
+  }
 }
 
 
@@ -748,7 +882,7 @@ body {
 		
 		th {
 			
-			&:last-child {
+			&.resilify-show-toggle {
   			width: 40px;
   			text-align: center;
 			}
@@ -862,6 +996,10 @@ body {
 	.high {
 		color: $red-color;
 		border-color: $red-color;
+	}
+	
+	a {
+  	white-space: nowrap; /* Phone numbers & emails */
 	}
 }
 
