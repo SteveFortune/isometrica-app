@@ -8,7 +8,8 @@
     ]
   },
   "User": {
-    "dataSource": "mongodb"
+    "dataSource": "mongodb",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "mongodb",
@@ -33,5 +34,12 @@
   "CanvasItem": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "ResilifyUser": {
+    "dataSource": "mongodb"
+  },
+  "Email": {
+    "dataSource": "email",
+    "public": false
   }
 }
