@@ -14,64 +14,64 @@
 	      		<i class="fa fa-lg fa-times"></i>
 			</button>
 		    </div>
-		    <h4 class="modal-title">Response Procedures</h4>
+		    <h4 class="modal-title">Response procedures</h4>
 	    </div>
       <div class="modal-body">
 				<div class="table-responsive">
 					<table class="table resilify-table">
 						<thead>
 							<tr>
-								<th><i class="fa fa-check"></i></th>
 								<th>Activity/asset</th>
 								<th>Potential event</th>
 								<th>Response tasks</th>
 								<th>Type</th>
 								<th>Details</th>
+  							<th class="resilify-show-toggle">On canvas?</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr ng-repeat="item in items">
+								
+								<td rowspan="7">{{item.name}}</td>
 								<td rowspan="7">
+	  								Loss of entire building
+	                  				<span class="subtitle">Likely causes: Fire, Flood, Earthquake</span>
+	  						 	 </td>
+								<td>1. Activate team</td>
+								<td rowspan="2">Activation</td>
+								<td>Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</td>
+                <td rowspan="7">
 									<a class="canvas-toggle" ng-click="toggleShowOnCanvas(item)" ng-class="{'active':item.showOnCanvas}">
 		  								<i class="fa fa-check"></i>
 									</a>
 								</td>
-								<td rowspan="7">{{item.name}}</td>
-								<td rowspan="7">
-	  								Loss of Entire Building
-	                  				<span class="subtitle">Likely Causes: Fire, Flood, Earthquake</span>
-	  						 	 </td>
-								<td>1. Activate team</td>
-								<td rowspan="2">Activation</td>
-								<td></td>
-
 							</tr>
 
 							<tr>
 								<td>2. Get background info</td>
-								<td></td>
+								<td>Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</td>
 							</tr>
 							<tr>
 								<td>3. Lorem ipsum</td>
 								<td rowspan="3">Ongoing</td>
-								<td></td>
+								<td>Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</td>
 							</tr>
 							<tr>
 								<td>4. Ipsum dolor</td>
-								<td></td>
+								<td>Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</td>
 							</tr>
 							<tr>
 								<td>5. Dolor est compendium</td>
-								<td></td>
+								<td>Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</td>
 							</tr>
 							<tr>
 								<td>6. Est compendium</td>
 								<td rowspan="2">Deactivation</td>
-								<td></td>
+								<td>Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</td>
 							</tr>
 							<tr ng-repeat-end>
 								<td>7. Head count</td>
-								<td></td>
+								<td>Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</td>
 							</tr>
 			
 						</tbody>

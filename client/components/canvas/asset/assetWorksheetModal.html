@@ -13,31 +13,34 @@
 	      		<i class="fa fa-lg fa-times"></i>
 			</button>
 	    </div>
-	    <h4 class="modal-title">Activities &amp; assets</h4>	      
+	    <h4 class="modal-title">Entities at risk</h4>	      
 	</div>
     <div class="modal-body">
 		<div class="table-responsive">
 			<table class="table resilify-table">
 				<thead>
 					<tr>
-						<th><i class="fa fa-check"></i></th>
 						<th>Name</th>
 						<th>Location</th>
 						<th>Details</th>
+						<th class="text-center">Business criticality</th>
+						<th class="resilify-show-toggle">On canvas?</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="item in items">
 						<td>
-							<a class="canvas-toggle" ng-click="toggleShowOnCanvas(item)" ng-class="{'active':item.showOnCanvas}">
-  								<i class="fa fa-check"></i>
-							</a>
+							Activity name here
 						</td>
-						<td>{{item.name}}</td>
-						<td>{{item.location}}</td>
-						<td>{{item.details}}</td>
+						<td>Location goes here</td>
+						<td>Notes go here lorem ipsum dolor</td>
+						<td><span class="low">L</span></td>
+						<td>
+							<a href="#" class="canvas-toggle" ng-click="toggleShowOnCanvas(item)" ng-class="{'active':item.showOnCanvas}">
+  							<i class="fa fa-check fa-lg"></i>
+							</a>
+						</td>						
 					</tr>
-					
 				</tbody>
 			</table>
 		</div>
