@@ -7,14 +7,14 @@
       </button>
     </div>
     <div class="btn-group pull-right">
-	    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="done()">
+	    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="saveItem(canvasItemForm)">
       	Done
       </button>
     </div>		    
     <h4 class="modal-title">Edit details</h4>
   </div>
   <div class="modal-body">
-    <form class="form-horizontal">
+    <form name="canvasItemForm" class="form-horizontal">
       <div class="form-group">
         <label class="control-label col-sm-5">Activity/asset</label>
         <div class="col-sm-7">
