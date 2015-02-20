@@ -6,6 +6,7 @@ body {
   display: none; }
 
 .modal-backdrop.in {
+  bottom: 0;
   position: fixed; }
 
 /* NAV */
@@ -39,7 +40,8 @@ body {
     margin-right: -15px; }
 
 /* Centered Desktop Navbar */
-.desktop .resilify-navbar-centered .navbar-brand {
+.desktop .resilify-navbar-centered .navbar-brand,
+.android .resilify-navbar-centered .navbar-brand {
   position: absolute;
   left: 0;
   right: 0;
@@ -69,14 +71,14 @@ body {
     box-shadow: none;
     text-align: center;
     display: block;
-    border: 2px dashed #ddd;
+    border: 2px dashed #ccc;
     color: #aaa;
     font-size: 16px;
     font-weight: 500; }
     .add-new-plan .btn:hover {
-      background: white;
+      background: #fafafa;
       transition: all 0.3s ease;
-      color: #333; }
+      color: #777; }
     @media (max-width: 767px) {
       .add-new-plan .btn {
         margin-bottom: 15px !important; }
@@ -84,17 +86,26 @@ body {
           display: none; } }
     @media (min-width: 768px) {
       .add-new-plan .btn {
-        height: 262px; }
+        padding: 0;
+        margin: 0; }
         .add-new-plan .btn i {
           display: block;
           font-size: 48px;
           line-height: 48px;
           margin-top: 75px; } }
 
+@media (min-width: 768px) {
+  .desktop .add-new-plan .btn {
+    height: 264px; }
+
+  .ios .add-new-plan .btn {
+    height: 262px; }
+
+  .android .add-new-plan .btn {
+    height: 264px; } }
 .resilify-dashboard-item {
-  cursor: pointer; }
-  .resilify-dashboard-item:hover, .resilify-dashboard-item:active {
-    border-color: #bbb; }
+  cursor: pointer;
+  border-color: #BBB; }
   .resilify-dashboard-item .panel-body {
     height: 160px;
     overflow: hidden; }
@@ -520,8 +531,51 @@ body {
     background: #f9f19e; }
   .modal.edit-item-details#editDetails-backgroundAndContext .modal-header {
     background: #ffd89b; }
-  .modal.edit-item-details .modal-content {
-    overflow: hidden; }
+  .modal.edit-item-details legend {
+    margin: 0;
+    padding: 10px 15px;
+    background: #eee;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative; }
+    .modal.edit-item-details legend .btn.pull-right {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: #bbb;
+      transition: all 0.3s ease;
+      width: 50px; }
+      .modal.edit-item-details legend .btn.pull-right:hover, .modal.edit-item-details legend .btn.pull-right:active {
+        color: #5cb85c; }
+      .modal.edit-item-details legend .btn.pull-right i {
+        font-size: 24px;
+        line-height: 28px; }
+  .modal.edit-item-details .form-group:last-child {
+    margin-bottom: 0; }
+  .modal.edit-item-details .list-group {
+    margin: 0; }
+    .modal.edit-item-details .list-group .list-group-item {
+      border-radius: 0;
+      border-left: 0;
+      border-right: 0;
+      border-top: 0;
+      margin-bottom: 0;
+      background: transparent; }
+      .modal.edit-item-details .list-group .list-group-item .btn.pull-right {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -21px;
+        color: #ccc;
+        transition: all 0.3s ease;
+        width: 50px; }
+        .modal.edit-item-details .list-group .list-group-item .btn.pull-right:hover, .modal.edit-item-details .list-group .list-group-item .btn.pull-right:active {
+          color: #d9534f; }
+        .modal.edit-item-details .list-group .list-group-item .btn.pull-right i {
+          opacity: 1;
+          width: auto;
+          font-size: 24px;
+          line-height: 28px; }
 
 #editTableItem {
   z-index: 1052; }

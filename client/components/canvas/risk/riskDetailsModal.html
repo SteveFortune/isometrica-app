@@ -14,8 +14,10 @@
     <h4 class="modal-title">Edit details</h4>
   </div>
 
-  <div class="modal-body">
-    <form name="canvasItemForm" class="form-horizontal">
+  <form name="canvasItemForm" class="form-horizontal">
+
+    <div class="modal-body">
+    
       <div class="form-group">
         <label class="control-label col-sm-5">Asset/activity</label>
         <div class="col-sm-7">
@@ -54,281 +56,183 @@
 	        </div>
         </div>
       </div>
-      <legend>Impacts</legend>
-      <div class="resilify-impacts">
-        <div class="form-group">
-	        <label class="control-label col-sm-5">
-	          <i class="fa fa-2x fa-users"></i>
-	          People
-	        </label>
-	        <div class="col-sm-7">
-		        <div class="btn-group resilify-toggle-lowmediumhigh">
-			      	<button type="button" class="low active">L</button>
-			      	<button type="button" class="medium">M</button>
-			      	<button type="button" class="high">H</button>
-		        </div>
+    </div>
+    <legend>Impacts</legend>
+    <div class="modal-body">
+      <div class="form-group resilify-impacts">
+        <label class="control-label col-sm-5">
+          <i class="fa fa-2x fa-users"></i>
+          People
+        </label>
+        <div class="col-sm-7">
+	        <div class="btn-group resilify-toggle-lowmediumhigh">
+		      	<button type="button" class="low active">L</button>
+		      	<button type="button" class="medium">M</button>
+		      	<button type="button" class="high">H</button>
 	        </div>
         </div>
-        <div class="form-group">
-	        <label class="control-label col-sm-5">
-	          <i class="fa fa-2x fa-building"></i>
-	          Property
-	        </label>
-	        <div class="col-sm-7">
-		        <div class="btn-group resilify-toggle-lowmediumhigh">
-			      	<button type="button" class="low">L</button>
-			      	<button type="button" class="medium active">M</button>
-			      	<button type="button" class="high">H</button>
-		        </div>
+      </div>
+      <div class="form-group resilify-impacts">
+        <label class="control-label col-sm-5">
+          <i class="fa fa-2x fa-building"></i>
+          Property
+        </label>
+        <div class="col-sm-7">
+	        <div class="btn-group resilify-toggle-lowmediumhigh">
+		      	<button type="button" class="low">L</button>
+		      	<button type="button" class="medium active">M</button>
+		      	<button type="button" class="high">H</button>
 	        </div>
         </div>
-        <div class="form-group">
-	        <label class="control-label col-sm-5">
-	          <i class="fa fa-2x fa-gears"></i>
-	          Operations
-	        </label>
-	        <div class="col-sm-7">
-		        <div class="btn-group resilify-toggle-lowmediumhigh">
-			      	<button type="button" class="low">L</button>
-			      	<button type="button" class="medium">M</button>
-			      	<button type="button" class="high active">H</button>
-		        </div>
+      </div>
+      <div class="form-group resilify-impacts">
+        <label class="control-label col-sm-5">
+          <i class="fa fa-2x fa-gears"></i>
+          Operations
+        </label>
+        <div class="col-sm-7">
+	        <div class="btn-group resilify-toggle-lowmediumhigh">
+		      	<button type="button" class="low">L</button>
+		      	<button type="button" class="medium">M</button>
+		      	<button type="button" class="high active">H</button>
 	        </div>
         </div>
-        <div class="form-group">
-	        <label class="control-label col-sm-5">
-	          <i class="fa fa-2x fa-database"></i>
-	          Infotech
-	        </label>
-	        <div class="col-sm-7">
-		        <div class="btn-group resilify-toggle-lowmediumhigh">
-			      	<button type="button" class="low">L</button>
-			      	<button type="button" class="medium active">M</button>
-			      	<button type="button" class="high">H</button>
-		        </div>
+      </div>
+      <div class="form-group resilify-impacts">
+        <label class="control-label col-sm-5">
+          <i class="fa fa-2x fa-database"></i>
+          Infotech
+        </label>
+        <div class="col-sm-7">
+	        <div class="btn-group resilify-toggle-lowmediumhigh">
+		      	<button type="button" class="low">L</button>
+		      	<button type="button" class="medium active">M</button>
+		      	<button type="button" class="high">H</button>
 	        </div>
         </div>
-        <div class="form-group">
-	        <label class="control-label col-sm-5">
-	          <i class="fa fa-2x fa-leaf"></i> 
-	          Environment
-	        </label>
-	        <div class="col-sm-7">
-		        <div class="btn-group resilify-toggle-lowmediumhigh">
-			      	<button type="button" class="low">L</button>
-			      	<button type="button" class="medium">M</button>
-			      	<button type="button" class="high active">H</button>
-		        </div>
+      </div>
+      <div class="form-group resilify-impacts">
+        <label class="control-label col-sm-5">
+          <i class="fa fa-2x fa-leaf"></i> 
+          Environment
+        </label>
+        <div class="col-sm-7">
+	        <div class="btn-group resilify-toggle-lowmediumhigh">
+		      	<button type="button" class="low">L</button>
+		      	<button type="button" class="medium">M</button>
+		      	<button type="button" class="high active">H</button>
 	        </div>
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-5">Overall risk rating (max 25)</label>
         <div class="col-sm-7">
-	        <input class="form-control" type="text" placeholder="" value="6">
+	        <input class="form-control" type="text" placeholder="" value="6" disabled="disabled">
         </div>
       </div>
-      
-      <legend>Mitigation opportunities</legend>
-      
-      <div class="panel-group" id="riskAnalysis-mitigation" role="tablist">
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="riskAnalysis-mitigation-heading-1" data-toggle="collapse" data-parent="#riskAnalysis-mitigation" href="#riskAnalysis-mitigation-1">
-            <h4 class="panel-title">
-              2nd call centre
-            </h4>
-          </div>
-          <div id="riskAnalysis-mitigation-1" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body">
+    </div>
 
-    	        <div class="form-group">
-    		        <label class="control-label col-sm-5">Mitigation opportunity</label>
-    		        <div class="col-sm-7">
-    			        <input class="form-control" type="text" placeholder="" value="2nd call centre">
-    		        </div>
-    	        </div>
-
-    	        <div class="resilify-impacts">
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-5">
-      		          <i class="fa fa-2x fa-users"></i>
-      		          People
-      		        </label>
-      		        <div class="col-sm-7">
-      			        <div class="btn-group resilify-toggle-lowmediumhigh">
-      				      	<button type="button" class="low active">L</button>
-      				      	<button type="button" class="medium">M</button>
-      				      	<button type="button" class="high">H</button>
-      			        </div>
-      		        </div>
-      	        </div>
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-5">
-      		          <i class="fa fa-2x fa-building"></i>
-      		          Property
-      		        </label>
-      		        <div class="col-sm-7">
-      			        <div class="btn-group resilify-toggle-lowmediumhigh">
-      				      	<button type="button" class="low active">L</button>
-      				      	<button type="button" class="medium">M</button>
-      				      	<button type="button" class="high">H</button>
-      			        </div>
-      		        </div>
-      	        </div>
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-5">
-      		          <i class="fa fa-2x fa-gears"></i>
-      		          Operations
-      		        </label>
-      		        <div class="col-sm-7">
-      			        <div class="btn-group resilify-toggle-lowmediumhigh">
-      				      	<button type="button" class="low">L</button>
-      				      	<button type="button" class="medium active">M</button>
-      				      	<button type="button" class="high">H</button>
-      			        </div>
-      		        </div>
-      	        </div>
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-5">
-      		          <i class="fa fa-2x fa-database"></i>
-      		          Infotech
-      		        </label>
-      		        <div class="col-sm-7">
-      			        <div class="btn-group resilify-toggle-lowmediumhigh">
-      				      	<button type="button" class="low active">L</button>
-      				      	<button type="button" class="medium">M</button>
-      				      	<button type="button" class="high">H</button>
-      			        </div>
-      		        </div>
-      	        </div>
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-5">
-      		          <i class="fa fa-2x fa-leaf"></i> 
-      		          Environment
-      		        </label>
-      		        <div class="col-sm-7">
-      			        <div class="btn-group resilify-toggle-lowmediumhigh">
-      				      	<button type="button" class="low">L</button>
-      				      	<button type="button" class="medium active">M</button>
-      				      	<button type="button" class="high">H</button>
-      			        </div>
-      		        </div>
-      	        </div>	        
-    	        </div>
-    	        <div class="form-group">
-    		        <label class="control-label col-sm-5">Overall risk rating (max 25)</label>
-    		        <div class="col-sm-7">
-    			        <input class="form-control" type="text" placeholder="" value="6">
-    		        </div>
-    	        </div>
-
-  		        <div class="form-group">
-      	        <div class="col-sm-7 col-sm-offset-5">
-        	        <button type="button" class="btn btn-danger">
-        	          Delete Mitigation Opportunity
-        	        </button>
-      	        </div>
-    	        </div>
-  	        </div>
-          </div>
+    <legend>
+      Mitigation opportunities
+      <button type="button" class="btn btn-link pull-right icon-only">
+        <i class="fa fa-plus-circle"></i>
+      </button> 
+    </legend>   
+    
+    <div class="list-group" id="riskAnalysis-mitigation">
+      <div class="list-group-item" data-toggle="collapse" data-parent="#riskAnalysis-mitigation" href="#riskAnalysis-mitigation-1">
+        <h4 class="list-group-item-heading">
+          2nd call centre
+        </h4>
+        <p class="list-group-item-text">
+          Operational impact: Low; Financial impact: $15K
+        </p>
+        <button type="button" class="btn btn-link pull-right icon-only">
+          <i class="fa fa-minus-circle"></i>
+        </button>        
+      </div>
+      <div class="collapse" id="riskAnalysis-mitigation-1">
+        <div class="list-group-item">
+ 	        <div class="form-group">
+		        <label class="control-label col-sm-5">Mitigation opportunity</label>
+		        <div class="col-sm-7">
+			        <input class="form-control" type="text" placeholder="" value="2nd call centre">
+		        </div>
+	        </div>
+	        <div class="form-group resilify-impacts">
+		        <label class="control-label col-sm-5">
+		          <i class="fa fa-2x fa-users"></i>
+		          People
+		        </label>
+		        <div class="col-sm-7">
+			        <div class="btn-group resilify-toggle-lowmediumhigh">
+				      	<button type="button" class="low active">L</button>
+				      	<button type="button" class="medium">M</button>
+				      	<button type="button" class="high">H</button>
+			        </div>
+		        </div>
+	        </div>
+	        <div class="form-group resilify-impacts">
+		        <label class="control-label col-sm-5">
+		          <i class="fa fa-2x fa-building"></i>
+		          Property
+		        </label>
+		        <div class="col-sm-7">
+			        <div class="btn-group resilify-toggle-lowmediumhigh">
+				      	<button type="button" class="low active">L</button>
+				      	<button type="button" class="medium">M</button>
+				      	<button type="button" class="high">H</button>
+			        </div>
+		        </div>
+	        </div>
+	        <div class="form-group resilify-impacts">
+		        <label class="control-label col-sm-5">
+		          <i class="fa fa-2x fa-gears"></i>
+		          Operations
+		        </label>
+		        <div class="col-sm-7">
+			        <div class="btn-group resilify-toggle-lowmediumhigh">
+				      	<button type="button" class="low">L</button>
+				      	<button type="button" class="medium active">M</button>
+				      	<button type="button" class="high">H</button>
+			        </div>
+		        </div>
+	        </div>
+	        <div class="form-group resilify-impacts">
+		        <label class="control-label col-sm-5">
+		          <i class="fa fa-2x fa-database"></i>
+		          Infotech
+		        </label>
+		        <div class="col-sm-7">
+			        <div class="btn-group resilify-toggle-lowmediumhigh">
+				      	<button type="button" class="low active">L</button>
+				      	<button type="button" class="medium">M</button>
+				      	<button type="button" class="high">H</button>
+			        </div>
+		        </div>
+	        </div>
+	        <div class="form-group resilify-impacts">
+		        <label class="control-label col-sm-5">
+		          <i class="fa fa-2x fa-leaf"></i> 
+		          Environment
+		        </label>
+		        <div class="col-sm-7">
+			        <div class="btn-group resilify-toggle-lowmediumhigh">
+				      	<button type="button" class="low">L</button>
+				      	<button type="button" class="medium active">M</button>
+				      	<button type="button" class="high">H</button>
+			        </div>
+		        </div>
+	        </div>	        
+	        <div class="form-group">
+		        <label class="control-label col-sm-5">Overall risk rating (max 25)</label>
+		        <div class="col-sm-7">
+			        <input class="form-control" type="text" placeholder="" value="6" disabled="disabled">
+		        </div>
+	        </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="riskAnalysis-mitigation-heading-2" data-toggle="collapse" data-parent="#riskAnalysis-mitigation" href="#riskAnalysis-mitigation-2">
-            <h4 class="panel-title">
-              Add mitigation opportunity
-            </h4>
-          </div>
-          <div id="riskAnalysis-mitigation-2" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body">
-    	        <div class="resilify-impacts">
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-5">
-      		          <i class="fa fa-2x fa-users"></i>
-      		          People
-      		        </label>
-      		        <div class="col-sm-7">
-      			        <div class="btn-group resilify-toggle-lowmediumhigh">
-      				      	<button type="button" class="low">L</button>
-      				      	<button type="button" class="medium">M</button>
-      				      	<button type="button" class="high">H</button>
-      			        </div>
-      		        </div>
-      	        </div>
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-5">
-      		          <i class="fa fa-2x fa-building"></i>
-      		          Property
-      		        </label>
-      		        <div class="col-sm-7">
-      			        <div class="btn-group resilify-toggle-lowmediumhigh">
-      				      	<button type="button" class="low">L</button>
-      				      	<button type="button" class="medium">M</button>
-      				      	<button type="button" class="high">H</button>
-      			        </div>
-      		        </div>
-      	        </div>
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-5">
-      		          <i class="fa fa-2x fa-gears"></i>
-      		          Operations
-      		        </label>
-      		        <div class="col-sm-7">
-      			        <div class="btn-group resilify-toggle-lowmediumhigh">
-      				      	<button type="button" class="low">L</button>
-      				      	<button type="button" class="medium">M</button>
-      				      	<button type="button" class="high">H</button>
-      			        </div>
-      		        </div>
-      	        </div>
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-5">
-      		          <i class="fa fa-2x fa-database"></i>
-      		          Infotech
-      		        </label>
-      		        <div class="col-sm-7">
-      			        <div class="btn-group resilify-toggle-lowmediumhigh">
-      				      	<button type="button" class="low">L</button>
-      				      	<button type="button" class="medium">M</button>
-      				      	<button type="button" class="high">H</button>
-      			        </div>
-      		        </div>
-      	        </div>
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-5">
-      		          <i class="fa fa-2x fa-leaf"></i> 
-      		          Environment
-      		        </label>
-      		        <div class="col-sm-7">
-      			        <div class="btn-group resilify-toggle-lowmediumhigh">
-      				      	<button type="button" class="low">L</button>
-      				      	<button type="button" class="medium">M</button>
-      				      	<button type="button" class="high">H</button>
-      			        </div>
-      		        </div>
-      	        </div>	        
-    	        </div>
-    	        <div class="form-group">
-    		        <label class="control-label col-sm-5">Overall risk rating (max 25)</label>
-    		        <div class="col-sm-7">
-    			        <input class="form-control" type="text" placeholder="" value="6">
-    		        </div>
-    	        </div>
-    	        <div class="form-group">
-      	        <div class="col-sm-7 col-sm-offset-5">
-        	        <button type="button" class="btn btn-success">
-        	          Add
-        	        </button>
-        	        <button type="button" class="btn btn-danger">
-        	          Cancel
-        	        </button>
-      	        </div>
-    	        </div>
-            </div>
-          </div>
-        </div>
-      </div>	        
-
-    </form>
-  </div>
-
+      </div>      
+      
+    </div>
+  </form>
 </div>

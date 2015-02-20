@@ -12,8 +12,8 @@
     </div>		    
     <h4 class="modal-title">Edit details</h4>
   </div>
-  <div class="modal-body">
-    <form name="canvasItemForm" class="form-horizontal">
+  <form name="canvasItemForm" class="form-horizontal">
+    <div class="modal-body">
       <div class="form-group">
         <label class="control-label col-sm-5">Activity/asset</label>
         <div class="col-sm-7">
@@ -32,236 +32,146 @@
 	        <input class="form-control" type="text" value="fire, flood, earthquake">
         </div>
       </div>
-      <legend>Response tasks</legend>
+    </div>
 
-
-      <div class="panel-group" id="responseProcedures-tasks" role="tablist">
-        
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="responseProcedures-tasks-heading-1" data-toggle="collapse" data-parent="#responseProcedures-tasks" href="#responseProcedures-tasks-1">
-            <h4 class="panel-title">
-              1. Activate team
-            </h4>
-          </div>
-          <div id="responseProcedures-tasks-1" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body">
-    	        <div class="form-group">
-    		        <div class="col-sm-2">
-    			        <input class="form-control" type="text" value="1">
-    		        </div>
-    		        <div class="col-sm-6">
-    			        <input class="form-control" type="text" value="Activate team">
-    		        </div>
-    		        <div class="col-sm-4">
-    			        <select class="form-control">
-      			        <option>Select type</option>
-      			        <option selected="selected">Activation</option>
-      			        <option>Ongoing</option>
-      			        <option>Deactivation</option>
-    			        </select>
-    		        </div>		        
-    	        </div>
-              <div class="form-group">
-                <div class="col-sm-12">
-                  <textarea class="form-control">Lorem ipsum dolor</textarea>
-                </div>
-              </div>
-    	        <button type="button" class="btn btn-danger">
-    	          Delete task
-    	        </button>
-  	        </div>
-          </div>
-        </div>
-        
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="responseProcedures-tasks-heading-2" data-toggle="collapse" data-parent="#responseProcedures-tasks" href="#responseProcedures-tasks-2">
-            <h4 class="panel-title">
-              2. Get background info
-            </h4>
-          </div>
-          <div id="responseProcedures-tasks-2" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body">
-    	        <div class="form-group">
-    		        <div class="col-sm-2">
-    			        <input class="form-control" type="text" value="2">
-    		        </div>
-    		        <div class="col-sm-6">
-    			        <input class="form-control" type="text" value="Get background info">
-    		        </div>
-    		        <div class="col-sm-4">
-    			        <select class="form-control">
-      			        <option>Select type</option>
-      			        <option selected="selected">Activation</option>
-      			        <option>Ongoing</option>
-      			        <option>Deactivation</option>
-    			        </select>
-    		        </div>		        
-    	        </div>
-              <div class="form-group">
-                <div class="col-sm-12">
-                  <textarea class="form-control">Lorem ipsum dolor</textarea>
-                </div>
-              </div>
-    	        <button type="button" class="btn btn-danger">
-    	          Delete task
-    	        </button>
-  	        </div>
+    <legend>
+      Activation tasks
+      <button type="button" class="btn btn-link pull-right icon-only">
+        <i class="fa fa-plus-circle"></i>
+      </button> 
+    </legend>   
+    
+    <div class="list-group" id="responseProcedures-activation">
+      <div class="list-group-item" data-toggle="collapse" data-parent="#responseProcedures-activation" href="#responseProcedures-activation-1">
+        <h4 class="list-group-item-heading">
+          1. Activate team
+        </h4>
+        <p class="list-group-item-text">
+          Lorem ipsum dolor
+        </p>
+        <button type="button" class="btn btn-link pull-right icon-only">
+          <i class="fa fa-minus-circle"></i>
+        </button>        
+      </div>
+      <div class="collapse" id="responseProcedures-activation-1">
+        <div class="list-group-item">
+	        <div class="form-group">
+		        <div class="col-sm-2">
+			        <input class="form-control" type="text" value="1">
+		        </div>
+		        <div class="col-sm-6">
+			        <input class="form-control" type="text" value="Activate team">
+		        </div>
+		        <div class="col-sm-4">
+			        <select class="form-control">
+  			        <option>Select type</option>
+  			        <option selected="selected">Activation</option>
+  			        <option>Ongoing</option>
+  			        <option>Deactivation</option>
+			        </select>
+		        </div>		        
+	        </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <textarea class="form-control">Lorem ipsum dolor</textarea>
+            </div>
           </div>
         </div>
-        
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="responseProcedures-tasks-heading-3" data-toggle="collapse" data-parent="#responseProcedures-tasks" href="#responseProcedures-tasks-3">
-            <h4 class="panel-title">
-              3. Lorem ipsum
-            </h4>
-          </div>
-          <div id="responseProcedures-tasks-3" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body">
-    	        <div class="form-group">
-    		        <div class="col-sm-2">
-    			        <input class="form-control" type="text" value="3">
-    		        </div>
-    		        <div class="col-sm-6">
-    			        <input class="form-control" type="text" value="Lorem ipsum">
-    		        </div>
-    		        <div class="col-sm-4">
-    			        <select class="form-control">
-      			        <option>Select type</option>
-      			        <option selected="selected">Activation</option>
-      			        <option>Ongoing</option>
-      			        <option>Deactivation</option>
-    			        </select>
-    		        </div>		        
-    	        </div>
-              <div class="form-group">
-                <div class="col-sm-12">
-                  <textarea class="form-control">Lorem ipsum dolor</textarea>
-                </div>
-              </div>
-    	        <button type="button" class="btn btn-danger">
-    	          Delete task
-    	        </button>
-  	        </div>
-          </div>
-        </div>
-        
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="responseProcedures-tasks-heading-4" data-toggle="collapse" data-parent="#responseProcedures-tasks" href="#responseProcedures-tasks-4">
-            <h4 class="panel-title">
-              4. Lorem ipsum
-            </h4>
-          </div>
-          <div id="responseProcedures-tasks-4" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body">
-    	        <div class="form-group">
-    		        <div class="col-sm-2">
-    			        <input class="form-control" type="text" value="4">
-    		        </div>
-    		        <div class="col-sm-6">
-    			        <input class="form-control" type="text" value="Lorem ipsum">
-    		        </div>
-    		        <div class="col-sm-4">
-    			        <select class="form-control">
-      			        <option>Select type</option>
-      			        <option selected="selected">Activation</option>
-      			        <option>Ongoing</option>
-      			        <option>Deactivation</option>
-    			        </select>
-    		        </div>		        
-    	        </div>
-              <div class="form-group">
-                <div class="col-sm-12">
-                  <textarea class="form-control">Lorem ipsum dolor</textarea>
-                </div>
-              </div>
-    	        <button type="button" class="btn btn-danger">
-    	          Delete task
-    	        </button>
-  	        </div>
+      </div>
+    </div>
+    
+    <legend>
+      Ongoing tasks
+      <button type="button" class="btn btn-link pull-right icon-only">
+        <i class="fa fa-plus-circle"></i>
+      </button> 
+    </legend>   
+    
+    <div class="list-group" id="responseProcedures-ongoing">
+      <div class="list-group-item" data-toggle="collapse" data-parent="#responseProcedures-ongoing" href="#responseProcedures-ongoing-1">
+        <h4 class="list-group-item-heading">
+          2. Get background info
+        </h4>
+        <p class="list-group-item-text">
+          Lorem ipsum dolor
+        </p>
+        <button type="button" class="btn btn-link pull-right icon-only">
+          <i class="fa fa-minus-circle"></i>
+        </button>        
+      </div>
+      <div class="collapse" id="responseProcedures-ongoing-1">
+        <div class="list-group-item">
+	        <div class="form-group">
+		        <div class="col-sm-2">
+			        <input class="form-control" type="text" value="1">
+		        </div>
+		        <div class="col-sm-6">
+			        <input class="form-control" type="text" value="Activate team">
+		        </div>
+		        <div class="col-sm-4">
+			        <select class="form-control">
+  			        <option>Select type</option>
+  			        <option selected="selected">Activation</option>
+  			        <option>Ongoing</option>
+  			        <option>Deactivation</option>
+			        </select>
+		        </div>		        
+	        </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <textarea class="form-control">Lorem ipsum dolor</textarea>
+            </div>
           </div>
         </div>
-        
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="responseProcedures-tasks-heading-5" data-toggle="collapse" data-parent="#responseProcedures-tasks" href="#responseProcedures-tasks-5">
-            <h4 class="panel-title">
-              5. Lorem ipsum
-            </h4>
-          </div>
-          <div id="responseProcedures-tasks-5" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body">
-    	        <div class="form-group">
-    		        <div class="col-sm-2">
-    			        <input class="form-control" type="text" value="5">
-    		        </div>
-    		        <div class="col-sm-6">
-    			        <input class="form-control" type="text" value="Lorem ipsum">
-    		        </div>
-    		        <div class="col-sm-4">
-    			        <select class="form-control">
-      			        <option>Select type</option>
-      			        <option selected="selected">Activation</option>
-      			        <option>Ongoing</option>
-      			        <option>Deactivation</option>
-    			        </select>
-    		        </div>		        
-    	        </div>
-              <div class="form-group">
-                <div class="col-sm-12">
-                  <textarea class="form-control">Lorem ipsum dolor</textarea>
-                </div>
-              </div>
-    	        <button type="button" class="btn btn-danger">
-    	          Delete task
-    	        </button>
-  	        </div>
-          </div>
-        </div>
-        
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="responseProcedures-tasks-heading-add" data-toggle="collapse" data-parent="#responseProcedures-tasks" href="#responseProcedures-tasks-add">
-            <h4 class="panel-title">
-              Add task
-            </h4>
-          </div>
-          <div id="responseProcedures-tasks-add" class="panel-collapse collapse" role="tabpanel">
-            <div class="panel-body">
-    	        <div class="form-group">
-    		        <div class="col-sm-2">
-    			        <input class="form-control" type="text" value="">
-    		        </div>
-    		        <div class="col-sm-6">
-    			        <input class="form-control" type="text" value="">
-    		        </div>
-    		        <div class="col-sm-4">
-    			        <select class="form-control">
-      			        <option>Select type</option>
-      			        <option>Activation</option>
-      			        <option>Ongoing</option>
-      			        <option>Deactivation</option>
-    			        </select>
-    		        </div>		        
-    	        </div>
-              <div class="form-group">
-                <div class="col-sm-12">
-                  <textarea class="form-control"></textarea>
-                </div>
-              </div>
-    	        <button type="button" class="btn btn-success">
-    	          Save
-    	        </button>
-    	        <button type="button" class="btn btn-danger">
-    	          Cancel
-    	        </button>
-  	        </div>
+      </div>
+    </div>
+    
+    <legend>
+      Deactivation tasks
+      <button type="button" class="btn btn-link pull-right icon-only">
+        <i class="fa fa-plus-circle"></i>
+      </button> 
+    </legend>   
+    
+    <div class="list-group" id="responseProcedures-deactivation">
+      <div class="list-group-item" data-toggle="collapse" data-parent="#responseProcedures-deactivation" href="#responseProcedures-deactivation-1">
+        <h4 class="list-group-item-heading">
+          3. Deactivate team
+        </h4>
+        <p class="list-group-item-text">
+          Lorem ipsum dolor
+        </p>
+        <button type="button" class="btn btn-link pull-right icon-only">
+          <i class="fa fa-minus-circle"></i>
+        </button>        
+      </div>
+      <div class="collapse" id="responseProcedures-deactivation-1">
+        <div class="list-group-item">
+	        <div class="form-group">
+		        <div class="col-sm-2">
+			        <input class="form-control" type="text" value="1">
+		        </div>
+		        <div class="col-sm-6">
+			        <input class="form-control" type="text" value="Activate team">
+		        </div>
+		        <div class="col-sm-4">
+			        <select class="form-control">
+  			        <option>Select type</option>
+  			        <option selected="selected">Activation</option>
+  			        <option>Ongoing</option>
+  			        <option>Deactivation</option>
+			        </select>
+		        </div>		        
+	        </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <textarea class="form-control">Lorem ipsum dolor</textarea>
+            </div>
           </div>
         </div>
-        
-      </div>	        
-
+      </div>
 
     </form>
   </div>
-	
-	
 	
 </div>

@@ -15,6 +15,7 @@ body {
 }
 
 .modal-backdrop.in {
+  bottom: 0;
   position: fixed;
 }
 
@@ -72,7 +73,8 @@ body {
 
 /* Centered Desktop Navbar */
 
-.desktop .resilify-navbar-centered {
+.desktop .resilify-navbar-centered,
+.android .resilify-navbar-centered {
   .navbar-brand {
     position: absolute;
     left: 0;
@@ -114,15 +116,15 @@ body {
   	box-shadow:none;
   	text-align: center;
   	display: block;
-  	border: 2px dashed #ddd;
+  	border: 2px dashed #ccc;
   	color: #aaa;
   	font-size: 16px;
   	font-weight: 500;
     
     &:hover {
-      background: white;
+      background: #fafafa;
       transition: all 0.3s ease;
-      color: #333;
+      color: #777;
     }
     
     @media (max-width: 767px) {
@@ -134,7 +136,8 @@ body {
     }
   
   	@media (min-width: 768px) {
-  		height: 262px;
+    	padding: 0;
+    	margin: 0;
   		
   	  i {
         display: block;
@@ -146,11 +149,25 @@ body {
   }
 }
 
+@media (min-width: 768px) {
+  .desktop .add-new-plan .btn {
+    height: 264px;
+  }
+  .ios .add-new-plan .btn {
+    height: 262px;
+  }
+  .android .add-new-plan .btn {
+    height: 264px;
+  }
+}
+
+
 .resilify-dashboard-item {
 	cursor: pointer;
+	border-color: #BBB;
 	
 	&:hover, &:active {
-		border-color: #bbb;
+		//border-color: #bbb;
 	}
 		
 	.panel-body {
@@ -784,10 +801,75 @@ body {
 	&#editDetails-backgroundAndContext .modal-header {
   	background: $sticky-color-note;
 	}
+		
+	legend {
+  	margin: 0;
+    padding: 10px 15px;
+    background: #eee;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    
+    .btn.pull-right {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: #bbb;
+      transition: all 0.3s ease;
+      width: 50px;
+
+    	&:hover,
+    	&:active {
+      	color: #5cb85c;
+    	}
+      
+    	i {
+      	font-size: 24px;
+        line-height: 28px;
+    	}
+    }
+	}
 	
-	.modal-content {
-  	overflow: hidden; // Clip rounded corners from header bg
-	}	
+	.form-group {
+  	&:last-child {
+    	margin-bottom: 0;
+  	}
+	}
+	
+	.list-group {
+  	margin: 0;
+  	
+  	.list-group-item {
+    	border-radius: 0;
+    	border-left: 0;
+    	border-right: 0;
+    	border-top: 0;
+    	margin-bottom: 0;
+    	background: transparent;
+    	
+    	.btn.pull-right {
+      	position: absolute;
+      	right: 0;
+      	top: 50%;
+      	margin-top: -21px;
+      	color: #ccc;
+      	transition: all 0.3s ease;
+      	width: 50px;
+      	
+      	&:hover,
+      	&:active {
+        	color: #d9534f;
+      	}
+      	
+      	i {
+        	opacity: 1;
+        	width: auto;
+        	font-size: 24px;
+          line-height: 28px;
+      	}
+    	}
+  	}
+	}
 }
 
 
