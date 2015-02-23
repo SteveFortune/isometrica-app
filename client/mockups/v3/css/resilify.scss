@@ -1097,14 +1097,26 @@ body {
     max-width: none;
   }
   
+  .avatar {
+    margin-right: 15px;
+    margin-top: 3px;
+  }
+  
+  .details {
+    overflow: hidden;
+  }
+  
   h4 {
     margin-top: 0;
   }
   
+  p {
+    margin-bottom: 0;
+  }
+
   .resilify-user-activity-time {
     @media (max-width:767px) {
       text-align: left;
     }
   }
-  
 }

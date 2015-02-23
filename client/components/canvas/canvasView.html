@@ -1,267 +1,269 @@
- 
+<div class="resilify-canvas-page resilify-canvas-show-overlays">
 
-<!-- fixed top navbar -->
-<div class="navbar navbar-inverse navbar-fixed-top resilify-navbar-centered" role="navigation">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav navbar-left">
-      <li>
-        <a class="btn btn-link icon-only" ui-sref="dashboard">
-        	<i class="fa fa-lg fa-arrow-left"></i>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-link icon-only hidden-xs" href="#">
-        	<i class="fa fa-lg fa-share-square-o"></i>
-        </a>
-      </li>
-    </ul>  
-    <ul class="nav navbar-nav navbar-right">
-      <!--<li>
-        <p class="navbar-text hidden-xs">Offline</p>
-      </li>-->
-      <li>
-        <a class="btn btn-link icon-only hidden-xs" href="#">
-  	      <i class="fa fa-lg fa-question-circle"></i>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-link icon-only hidden-xs" href="#">
-        	<i class="fa fa-lg fa-gear"></i>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-link icon-only visible-xs" href="#">
-        	<i class="fa fa-lg fa-share-square-o"></i>
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-link icon-only hidden-xs" href="#">
-        	<i class="fa fa-lg fa-refresh"></i>
-        </a>
-      </li>
-    </ul>  
-      
-    <div class="navbar-header">
-      <span class="navbar-brand" title="{{plan.title}}">
-      	{{plan.title}}
-      </span>  
-    </div>        
+  <!-- fixed top navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top resilify-navbar-centered" role="navigation">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-left">
+        <li>
+          <a class="btn btn-link icon-only" ui-sref="dashboard">
+          	<i class="fa fa-lg fa-arrow-left"></i>
+          </a>
+        </li>
+        <li>
+          <a class="btn btn-link icon-only hidden-xs" href="#">
+          	<i class="fa fa-lg fa-share-square-o"></i>
+          </a>
+        </li>
+      </ul>  
+      <ul class="nav navbar-nav navbar-right">
+        <!--<li>
+          <p class="navbar-text hidden-xs">Offline</p>
+        </li>-->
+        <li>
+          <a class="btn btn-link icon-only hidden-xs" href="#">
+    	      <i class="fa fa-lg fa-question-circle"></i>
+          </a>
+        </li>
+        <li>
+          <a class="btn btn-link icon-only hidden-xs" href="#">
+          	<i class="fa fa-lg fa-gear"></i>
+          </a>
+        </li>
+        <li>
+          <a class="btn btn-link icon-only visible-xs" href="#">
+          	<i class="fa fa-lg fa-share-square-o"></i>
+          </a>
+        </li>
+        <li>
+          <a class="btn btn-link icon-only hidden-xs" href="#">
+          	<i class="fa fa-lg fa-refresh"></i>
+          </a>
+        </li>
+      </ul>  
+        
+      <div class="navbar-header">
+        <span class="navbar-brand" title="{{plan.title}}">
+        	{{plan.title}}
+        </span>  
+      </div>        
+    </div>
+  </div>  
+    
+    
+  
+  <!--mobile canvas (list)-->
+    <div class="container visible-xs">
+      <div class="row">
+  	    <div class="col-sm-5 bootcards-list">
+  			  <div class="panel panel-default">
+  			    <div class="list-group bootcards-no-indicators resilify-mobile-categories" id="mobileCategories">
+  			      <a class="list-group-item clearfix" href="#">
+  			        <i class="fa fa-fw fa-users fa-2x pull-left"></i>
+  			        <h4 class="list-group-item-heading">Emergency contacts</h4>
+  			        <span class="badge">3</span>
+  			      </a>
+  			      <a class="list-group-item clearfix" href="#">
+  			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
+  			        <h4 class="list-group-item-heading">Response tasks</h4>
+  			        <span class="badge">{{procedureItems.length}}</span>
+  			      </a>
+  			      <a class="list-group-item clearfix" href="#">
+  			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
+  			        <h4 class="list-group-item-heading">Entities at risk</h4>
+  			        <span class="badge">{{assetItems.length}}</span>
+  			      </a>
+  			      <a class="list-group-item clearfix" href="#">
+  			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
+  			        <h4 class="list-group-item-heading">Impact analysis</h4>
+  			        <span class="badge">{{impactItems.length}}</span>
+  			      </a>
+  			      <a class="list-group-item clearfix" href="#">
+  			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
+  			        <h4 class="list-group-item-heading">Risk Analysis</h4>
+  			        <span class="badge">{{riskItems.length}}</span>
+  			      </a>
+  			      <a class="list-group-item clearfix" href="#">
+  			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
+  			        <h4 class="list-group-item-heading">Strategies &amp; resources</h4>
+  			        <span class="badge">{{strategyItems.length}}</span>
+  			      </a>			      
+  			      <a class="list-group-item clearfix" href="#">
+  			        <i class="fa fa-fw fa-file-o fa-2x pull-left"></i>
+  			        <h4 class="list-group-item-heading">Background &amp; context</h4>
+  			        <span class="badge">{{backgroundItems.length}}</span>
+  			      </a>			      
+  			    </div>
+  			  </div>		    
+  	    </div>
+      </div>
+    </div>
+  
+  <!--canvas help overlays-->
+  <div class="overlays hidden-xs">
+    <div class="overlay overlay-1">
+      1. Where are we vulnerable?
+    </div>
+    <div class="overlay overlay-2">
+      2. What could go wrong?
+    </div>
+    <div class="overlay overlay-3">
+      3. What could we do about it?
+    </div>
+    <button type="button" class="btn btn-link icon-only">
+      <i class="fa fa-2x fa-times"></i>
+    </button>
   </div>
-</div>  
+  
+  <div class="resilify-canvas hidden-xs">
+  
+  	<div class="canvas-row items">
+  
+  		<div res-canvas-section item-type="asset" section-title="Entities at risk" plan-id="{{planId}}"></div>
+  		<div res-canvas-section item-type="impact" section-title="Impact analysis" plan-id="{{planId}}"></div>
+  		<div res-canvas-section item-type="risk" section-title="Risk analysis" plan-id="{{planId}}"></div>
+  		<div res-canvas-section item-type="strategy" section-title="Strategies &amp; resources" plan-id="{{planId}}"></div> 
+  		<div res-canvas-section item-type="procedure" section-title="Response tasks" plan-id="{{planId}}"></div>
+  
+  	</div>
+  
+  	<div class="canvas-row notes">
+  
+  		<div res-canvas-section item-type="background" section-title="Background &amp; context" plan-id="{{planId}}"></div>
+  		
+  	</div>
+  		
+  </div>
   
   
-
-<!--mobile canvas (list)-->
-  <div class="container visible-xs">
-    <div class="row">
-	    <div class="col-sm-5 bootcards-list">
-			  <div class="panel panel-default">
-			    <div class="list-group bootcards-no-indicators resilify-mobile-categories" id="mobileCategories">
-			      <a class="list-group-item clearfix" href="#">
-			        <i class="fa fa-fw fa-users fa-2x pull-left"></i>
-			        <h4 class="list-group-item-heading">Emergency contacts (?)</h4>
-			        <span class="badge">3</span>
-			      </a>
-			      <a class="list-group-item clearfix" href="#">
-			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
-			        <h4 class="list-group-item-heading">Response procedures</h4>
-			        <span class="badge">{{procedureItems.length}}</span>
-			      </a>
-			      <a class="list-group-item clearfix" href="#">
-			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
-			        <h4 class="list-group-item-heading">Entities at risk</h4>
-			        <span class="badge">{{assetItems.length}}</span>
-			      </a>
-			      <a class="list-group-item clearfix" href="#">
-			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
-			        <h4 class="list-group-item-heading">Impact analysis</h4>
-			        <span class="badge">{{impactItems.length}}</span>
-			      </a>
-			      <a class="list-group-item clearfix" href="#">
-			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
-			        <h4 class="list-group-item-heading">Risk Analysis</h4>
-			        <span class="badge">{{riskItems.length}}</span>
-			      </a>
-			      <a class="list-group-item clearfix" href="#">
-			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
-			        <h4 class="list-group-item-heading">Strategies &amp; resources</h4>
-			        <span class="badge">{{strategyItems.length}}</span>
-			      </a>			      
-			      <a class="list-group-item clearfix" href="#">
-			        <i class="fa fa-fw fa-file-o fa-2x pull-left"></i>
-			        <h4 class="list-group-item-heading">Background &amp; context</h4>
-			        <span class="badge">{{backgroundItems.length}}</span>
-			      </a>			      
-			    </div>
-			  </div>		    
-	    </div>
+  <!-- Mobile List -->
+  <div class="modal fade table-view-modal" id="mobileListModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  	    <div class="modal-header">
+  		    <div class="btn-group pull-left visible-xs">
+  			    <button class="btn btn-link icon-only icon-only">
+  		      	<i class="fa fa-lg fa-print"></i>
+  		      </button>
+  		    </div>
+  		    <div class="btn-group pull-right">
+  			    <button class="btn btn-link icon-only icon-only hidden-xs">
+  		      	<i class="fa fa-lg fa-print"></i>
+  		      </button>
+  			    <button href="#" class="btn btn-link icon-only icon-only" data-dismiss="modal">
+  		      	<i class="fa fa-lg fa-times"></i>
+  		      </button>
+  		    </div>
+  		    <h4 class="modal-title">Risk analysis</h4>
+  	    </div>
+  			<div class="modal-body">
+  		    <div class="list-group resilify-mobile-list" id="mobileList">
+  		      <a class="list-group-item clearfix" href="#">
+  		        <h4 class="list-group-item-heading">Sales</h4>
+  		        <p class="list-group-item-text">Loss of invoicing system</p>
+  		      </a>
+  		      <a class="list-group-item clearfix" href="#">
+  		        <h4 class="list-group-item-heading">Technical Support</h4>
+  		        <p class="list-group-item-text">Loss of building</p>
+  		      </a>
+  		    </div>
+      	</div>
+      </div>
     </div>
   </div>
-
-<!--canvas help overlays-->
-<div class="overlays hidden-xs">
-  <div class="overlay overlay-1">
-    1. Where are we vulnerable?
-  </div>
-  <div class="overlay overlay-2">
-    2. What could go wrong?
-  </div>
-  <div class="overlay overlay-3">
-    3. What could we do about it?
-  </div>
-  <button type="button" class="btn btn-link icon-only">
-    <i class="fa fa-2x fa-times"></i>
-  </button>
-</div>
-
-<div class="resilify-canvas hidden-xs">
-
-	<div class="canvas-row items">
-
-		<div res-canvas-section item-type="asset" section-title="Entities at risk" plan-id="{{planId}}"></div>
-		<div res-canvas-section item-type="impact" section-title="Impact analysis" plan-id="{{planId}}"></div>
-		<div res-canvas-section item-type="risk" section-title="Risk analysis" plan-id="{{planId}}"></div>
-		<div res-canvas-section item-type="strategy" section-title="Strategies &amp; resources" plan-id="{{planId}}"></div> 
-		<div res-canvas-section item-type="procedure" section-title="Response procedures" plan-id="{{planId}}"></div>
-
-	</div>
-
-	<div class="canvas-row notes">
-
-		<div res-canvas-section item-type="background" section-title="Background &amp; context" plan-id="{{planId}}"></div>
-		
-	</div>
-		
-</div>
-
-
-<!-- Mobile List -->
-<div class="modal fade table-view-modal" id="mobileListModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-	    <div class="modal-header">
-		    <div class="btn-group pull-left visible-xs">
-			    <button class="btn btn-link icon-only icon-only">
-		      	<i class="fa fa-lg fa-print"></i>
-		      </button>
-		    </div>
-		    <div class="btn-group pull-right">
-			    <button class="btn btn-link icon-only icon-only hidden-xs">
-		      	<i class="fa fa-lg fa-print"></i>
-		      </button>
-			    <button href="#" class="btn btn-link icon-only icon-only" data-dismiss="modal">
-		      	<i class="fa fa-lg fa-times"></i>
-		      </button>
-		    </div>
-		    <h4 class="modal-title">Risk analysis</h4>
-	    </div>
-			<div class="modal-body">
-		    <div class="list-group resilify-mobile-list" id="mobileList">
-		      <a class="list-group-item clearfix" href="#">
-		        <h4 class="list-group-item-heading">Sales</h4>
-		        <p class="list-group-item-text">Loss of invoicing system</p>
-		      </a>
-		      <a class="list-group-item clearfix" href="#">
-		        <h4 class="list-group-item-heading">Technical Support</h4>
-		        <p class="list-group-item-text">Loss of building</p>
-		      </a>
-		    </div>
-    	</div>
+  
+  <!-- Mobile Details -->
+  <div class="modal fade table-view-modal" id="mobileDetailsModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  	    <div class="modal-header">
+  		    <div class="btn-group pull-left">
+  			    <button href="#" class="btn btn-link edit-button">
+  		      	Edit
+  		      </button>
+  		    </div>
+  		    <div class="btn-group pull-right">
+  			    <button href="#" class="btn btn-link icon-only icon-only" data-dismiss="modal">
+  		      	<i class="fa fa-lg fa-times"></i>
+  		      </button>
+  		    </div>
+  		    <h4 class="modal-title">Details</h4>
+  	    </div>
+  			<div class="modal-body">
+  		    <div class="list-group resilify-mobile-details">
+  		      <div class="list-group-item">
+  		        <p class="list-group-item-text">Activity/asset</p>
+  		        <h4 class="list-group-item-heading">Sales</h4>
+  		      </div>
+  		      <div class="list-group-item">
+  		        <p class="list-group-item-text">Potential event</p>
+  		        <h4 class="list-group-item-heading">Loss of invoicing system</h4>
+  		      </div>
+  		      <div class="list-group-item">
+  		        <p class="list-group-item-text">Probability</p>
+  		        <h4 class="list-group-item-heading">Low</h4>
+  		      </div>
+  		      <div class="list-group-item">
+  		        <p class="list-group-item-text">Impact (People)</p>
+  		        <h4 class="list-group-item-heading">Medium</h4>
+  		      </div>
+  		      <div class="list-group-item">
+  		        <p class="list-group-item-text">Impact (Property)</p>
+  		        <h4 class="list-group-item-heading">High</h4>
+  		      </div>
+  		      <div class="list-group-item">
+  		        <p class="list-group-item-text">Impact (Operations)</p>
+  		        <h4 class="list-group-item-heading">Medium</h4>
+  		      </div>
+  		      <div class="list-group-item">
+  		        <p class="list-group-item-text">Impact (Infotech)</p>
+  		        <h4 class="list-group-item-heading">Medium</h4>
+  		      </div>
+  		      <div class="list-group-item">
+  		        <p class="list-group-item-text">Impact (Environment)</p>
+  		        <h4 class="list-group-item-heading">Medium</h4>
+  		      </div>
+  		      <div class="list-group-item">
+  		        <p class="list-group-item-text">Overall Risk Rating</p>
+  		        <h4 class="list-group-item-heading">6</h4>
+  		      </div>
+  		      <div class="list-group-item">
+  		        <p class="list-group-item-text">Notes go here lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris tellus, vehicula ut tellus id, suscipit dapibus tortor. Integer viverra turpis ac fringilla hendrerit.</p>
+  		        <p class="list-group-item-text">Sed faucibus posuere felis et pellentesque. Cras varius tortor vitae molestie tempor. Proin ut viverra elit, ac gravida tortor.</p>
+  		      </div>
+  		    </div>
+      	</div>
+      </div>
     </div>
   </div>
+  
+  
+  
+  <script>
+  	
+  	
+  	/* Details */
+  	
+  	// $( ".show-details-form" ).click(function() {
+  	// 	$('#editCanvasItemDetails').modal('show');
+  	// });
+  	
+  	/* Edit Table Row */
+  	
+  	// $( ".resilify-table tr" ).click(function() {
+  	// 	$('#editCanvasItemDetails').modal('show');
+  	// });
+  	
+  	/* Mobile */
+  	
+  	// $( "#mobileCategories .list-group-item" ).click(function() {
+  	// 	$('#mobileListModal').modal('show');
+  	// });	
+  	
+  	// $( "#mobileList .list-group-item" ).click(function() {
+  	// 	$('#mobileDetailsModal').modal('show');
+  	// });	
+  
+  
+  </script>
+
 </div>
-
-<!-- Mobile Details -->
-<div class="modal fade table-view-modal" id="mobileDetailsModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-	    <div class="modal-header">
-		    <div class="btn-group pull-left">
-			    <button href="#" class="btn btn-link edit-button">
-		      	Edit
-		      </button>
-		    </div>
-		    <div class="btn-group pull-right">
-			    <button href="#" class="btn btn-link icon-only icon-only" data-dismiss="modal">
-		      	<i class="fa fa-lg fa-times"></i>
-		      </button>
-		    </div>
-		    <h4 class="modal-title">Details</h4>
-	    </div>
-			<div class="modal-body">
-		    <div class="list-group resilify-mobile-details">
-		      <div class="list-group-item">
-		        <p class="list-group-item-text">Activity/asset</p>
-		        <h4 class="list-group-item-heading">Sales</h4>
-		      </div>
-		      <div class="list-group-item">
-		        <p class="list-group-item-text">Potential event</p>
-		        <h4 class="list-group-item-heading">Loss of invoicing system</h4>
-		      </div>
-		      <div class="list-group-item">
-		        <p class="list-group-item-text">Probability</p>
-		        <h4 class="list-group-item-heading">Low</h4>
-		      </div>
-		      <div class="list-group-item">
-		        <p class="list-group-item-text">Impact (People)</p>
-		        <h4 class="list-group-item-heading">Medium</h4>
-		      </div>
-		      <div class="list-group-item">
-		        <p class="list-group-item-text">Impact (Property)</p>
-		        <h4 class="list-group-item-heading">High</h4>
-		      </div>
-		      <div class="list-group-item">
-		        <p class="list-group-item-text">Impact (Operations)</p>
-		        <h4 class="list-group-item-heading">Medium</h4>
-		      </div>
-		      <div class="list-group-item">
-		        <p class="list-group-item-text">Impact (Infotech)</p>
-		        <h4 class="list-group-item-heading">Medium</h4>
-		      </div>
-		      <div class="list-group-item">
-		        <p class="list-group-item-text">Impact (Environment)</p>
-		        <h4 class="list-group-item-heading">Medium</h4>
-		      </div>
-		      <div class="list-group-item">
-		        <p class="list-group-item-text">Overall Risk Rating</p>
-		        <h4 class="list-group-item-heading">6</h4>
-		      </div>
-		      <div class="list-group-item">
-		        <p class="list-group-item-text">Notes go here lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris tellus, vehicula ut tellus id, suscipit dapibus tortor. Integer viverra turpis ac fringilla hendrerit.</p>
-		        <p class="list-group-item-text">Sed faucibus posuere felis et pellentesque. Cras varius tortor vitae molestie tempor. Proin ut viverra elit, ac gravida tortor.</p>
-		      </div>
-		    </div>
-    	</div>
-    </div>
-  </div>
-</div>
-
-
-
-<script>
-	
-	
-	/* Details */
-	
-	// $( ".show-details-form" ).click(function() {
-	// 	$('#editCanvasItemDetails').modal('show');
-	// });
-	
-	/* Edit Table Row */
-	
-	// $( ".resilify-table tr" ).click(function() {
-	// 	$('#editCanvasItemDetails').modal('show');
-	// });
-	
-	/* Mobile */
-	
-	// $( "#mobileCategories .list-group-item" ).click(function() {
-	// 	$('#mobileListModal').modal('show');
-	// });	
-	
-	// $( "#mobileList .list-group-item" ).click(function() {
-	// 	$('#mobileDetailsModal').modal('show');
-	// });	
-
-
-</script>

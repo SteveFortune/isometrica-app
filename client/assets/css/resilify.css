@@ -263,14 +263,7 @@ body {
     top: 48px; } }
 /* Overlays */
 .overlays {
-  display: none; }
-
-.resilify-canvas-show-overlays.ios .overlays {
-  top: 44px !important; }
-.resilify-canvas-show-overlays.android .overlays {
-  top: 50px !important; }
-.resilify-canvas-show-overlays .overlays {
-  display: block;
+  display: none;
   position: fixed;
   top: 53px;
   left: 0;
@@ -280,27 +273,36 @@ body {
   z-index: 999;
   font-size: 18px;
   text-align: center; }
-  .resilify-canvas-show-overlays .overlays .overlay {
+  .overlays .overlay {
     padding: 15px;
     float: left; }
-    .resilify-canvas-show-overlays .overlays .overlay.overlay-1 {
+    .overlays .overlay.overlay-1 {
       width: 40%; }
-    .resilify-canvas-show-overlays .overlays .overlay.overlay-2 {
+    .overlays .overlay.overlay-2 {
       width: 20%; }
-    .resilify-canvas-show-overlays .overlays .overlay.overlay-3 {
+    .overlays .overlay.overlay-3 {
       width: 40%;
       padding-right: 45px; }
-  .resilify-canvas-show-overlays .overlays button {
+  .overlays button {
     position: absolute;
     right: 5px;
     top: 8px;
     color: #ccc;
     padding-left: 10px;
     padding-right: 10px; }
-    .resilify-canvas-show-overlays .overlays button:hover, .resilify-canvas-show-overlays .overlays button:active {
+    .overlays button:hover, .overlays button:active {
       color: white; }
-    .resilify-canvas-show-overlays .overlays button i {
+    .overlays button i {
       font-size: 24px; }
+
+.ios .overlays {
+  top: 44px; }
+
+.android .overlays {
+  top: 50px; }
+
+.resilify-canvas-show-overlays .overlays {
+  display: block; }
 .resilify-canvas-show-overlays .items .canvas-section {
   /* Leave space for overlays */ }
   @media (max-width: 1179px) {
@@ -521,7 +523,7 @@ body {
           background: rgba(0, 0, 0, 0.2); }
           .modal.edit-item-title .modal-dialog .modal-content .modal-footer .btn:hover:after {
             border-left-color: rgba(0, 0, 0, 0.2); }
-.modal.edit-item-title#addItem-backgroundAndContext .modal-content, .modal.edit-item-title#editItem-backgroundAndContext .modal-content {
+.modal.edit-item-title.note .modal-content {
   background: #ffd89b; }
 
 /* Details Modal */
@@ -529,7 +531,7 @@ body {
   z-index: 1051; }
   .modal.edit-item-details .modal-header {
     background: #f9f19e; }
-  .modal.edit-item-details#editDetails-backgroundAndContext .modal-header {
+  .modal.edit-item-details.note .modal-header {
     background: #ffd89b; }
   .modal.edit-item-details legend {
     margin: 0;
@@ -576,6 +578,27 @@ body {
           width: auto;
           font-size: 24px;
           line-height: 28px; }
+  .modal.edit-item-details .modal-footer {
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    height: 50px;
+    background: #f9f19e;
+    margin-top: 60px; }
+    .modal.edit-item-details .modal-footer:after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      bottom: 10px;
+      border-style: solid;
+      border-width: 40px;
+      border-color: transparent;
+      border-left-color: #f9f19e;
+      -webkit-transform: rotate(45deg); }
+  .modal.edit-item-details.note .modal-footer {
+    background: #ffd89b; }
+    .modal.edit-item-details.note .modal-footer:after {
+      border-left-color: #ffd89b; }
 
 #editTableItem {
   z-index: 1052; }
@@ -732,7 +755,7 @@ body {
   background: white;
   padding: 0;
   float: left;
-  margin-right: 5px;
+  margin-right: 12px;
   transition: all 0.3s ease;
   text-align: center; }
   .resilify-toggle-lowmediumhigh button.low:hover, .resilify-toggle-lowmediumhigh button.low.active {
@@ -771,8 +794,15 @@ body {
 /* USER ACTIVITY */
 .resilify-user-activity.bootcards-richtext > .panel-body {
   max-width: none; }
+.resilify-user-activity .avatar {
+  margin-right: 15px;
+  margin-top: 3px; }
+.resilify-user-activity .details {
+  overflow: hidden; }
 .resilify-user-activity h4 {
   margin-top: 0; }
+.resilify-user-activity p {
+  margin-bottom: 0; }
 @media (max-width: 767px) {
   .resilify-user-activity .resilify-user-activity-time {
     text-align: left; } }

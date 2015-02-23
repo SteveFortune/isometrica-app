@@ -2,8 +2,8 @@
 
   <div class="modal-header clearfix">
     <div class="btn-group pull-left">
-	    <button type="button" class="btn btn-default" ng-click="done()">
-      	Back
+	    <button type="button" class="btn btn-link" ng-click="done()">
+      	<i class="fa fa-lg fa-arrow-left"></i>
       </button>
     </div>
     <div class="btn-group pull-right">
@@ -11,7 +11,7 @@
       	Done
       </button>
     </div>		    
-    <h4 class="modal-title">Edit details</h4>
+    <h4 class="modal-title">Entities at risk</h4>
   </div>
   <div class="modal-body">
     <form name="canvasItemForm" class="form-horizontal">
@@ -33,7 +33,19 @@
 	        <textarea class="form-control" rows="5" placeholder="Details..." ng-model="item.details"></textarea>
         </div>
       </div>
+      <div class="form-group">
+        <label class="control-label col-sm-5">Business Criticality</label>
+        <div class="col-sm-7">
+	        <div class="btn-group resilify-toggle-lowmediumhigh">
+		      	<button type="button" class="low active">L</button>
+		      	<button type="button" class="medium">M</button>
+		      	<button type="button" class="high">H</button>
+	        </div>
+        </div>
+      </div>
     </form>
   </div>
-
+  <div class="modal-footer">
+    
+  </div>
 </div>

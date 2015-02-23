@@ -52,7 +52,7 @@ app.controller( 'CanvasItemController', [
 		var modalInstance = $modal.open({
 			templateUrl: templateUrl,
 			controller : 'CanvasItemController',
-			windowClass : 'edit-item-details',
+			windowClass : 'edit-item-details' + (canvasItem.type === 'background' ? ' note' : ''),
 			resolve : {
 				canvasItem : function () {
 				  return item;

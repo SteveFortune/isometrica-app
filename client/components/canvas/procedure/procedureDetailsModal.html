@@ -1,8 +1,8 @@
 <div>	
   <div class="modal-header clearfix">
     <div class="btn-group pull-left">
-	    <button type="button" class="btn btn-default" ng-click="done()">
-      	Back
+	    <button type="button" class="btn btn-link" ng-click="done()">
+      	<i class="fa fa-lg fa-arrow-left"></i>
       </button>
     </div>
     <div class="btn-group pull-right">
@@ -10,7 +10,7 @@
       	Done
       </button>
     </div>		    
-    <h4 class="modal-title">Edit details</h4>
+    <h4 class="modal-title">Response tasks</h4>
   </div>
   <form name="canvasItemForm" class="form-horizontal">
     <div class="modal-body">
@@ -55,29 +55,82 @@
       </div>
       <div class="collapse" id="responseProcedures-activation-1">
         <div class="list-group-item">
-	        <div class="form-group">
-		        <div class="col-sm-2">
-			        <input class="form-control" type="text" value="1">
-		        </div>
-		        <div class="col-sm-6">
-			        <input class="form-control" type="text" value="Activate team">
-		        </div>
-		        <div class="col-sm-4">
-			        <select class="form-control">
-  			        <option>Select type</option>
-  			        <option selected="selected">Activation</option>
-  			        <option>Ongoing</option>
-  			        <option>Deactivation</option>
-			        </select>
-		        </div>		        
-	        </div>
           <div class="form-group">
-            <div class="col-sm-12">
-              <textarea class="form-control">Lorem ipsum dolor</textarea>
+            <label class="control-label col-sm-5">Number</label>
+            <div class="col-sm-7">
+    	        <input class="form-control" type="text" value="1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Task</label>
+            <div class="col-sm-7">
+    	        <input class="form-control" type="text" value="Activate team">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Type</label>
+            <div class="col-sm-7">
+    	        <select class="form-control">
+      	        <option></option>
+      	        <option selected="selected">Activation</option>
+      	        <option>Ongoing</option>
+      	        <option>Deactivation</option>
+    	        </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Details</label>
+            <div class="col-sm-7">
+    	        <textarea class="form-control" rows="2">Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</textarea>
             </div>
           </div>
         </div>
       </div>
+      <div class="list-group-item" data-toggle="collapse" data-parent="#responseProcedures-ongoing" href="#responseProcedures-ongoing-1">
+        <h4 class="list-group-item-heading">
+          2. Dolor est
+        </h4>
+        <p class="list-group-item-text">
+          Lorem ipsum dolor
+        </p>
+        <button type="button" class="btn btn-link pull-right icon-only">
+          <i class="fa fa-minus-circle"></i>
+        </button>        
+      </div>
+      <div class="collapse" id="responseProcedures-ongoing-1">
+        <div class="list-group-item">
+          <div class="form-group">
+            <label class="control-label col-sm-5">Number</label>
+            <div class="col-sm-7">
+    	        <input class="form-control" type="text" value="1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Task</label>
+            <div class="col-sm-7">
+    	        <input class="form-control" type="text" value="Activate team">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Type</label>
+            <div class="col-sm-7">
+    	        <select class="form-control">
+      	        <option></option>
+      	        <option selected="selected">Activation</option>
+      	        <option>Ongoing</option>
+      	        <option>Deactivation</option>
+    	        </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Details</label>
+            <div class="col-sm-7">
+    	        <textarea class="form-control" rows="2">Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
     
     <legend>
@@ -90,7 +143,7 @@
     <div class="list-group" id="responseProcedures-ongoing">
       <div class="list-group-item" data-toggle="collapse" data-parent="#responseProcedures-ongoing" href="#responseProcedures-ongoing-1">
         <h4 class="list-group-item-heading">
-          2. Get background info
+          3. Get background info
         </h4>
         <p class="list-group-item-text">
           Lorem ipsum dolor
@@ -101,25 +154,77 @@
       </div>
       <div class="collapse" id="responseProcedures-ongoing-1">
         <div class="list-group-item">
-	        <div class="form-group">
-		        <div class="col-sm-2">
-			        <input class="form-control" type="text" value="1">
-		        </div>
-		        <div class="col-sm-6">
-			        <input class="form-control" type="text" value="Activate team">
-		        </div>
-		        <div class="col-sm-4">
-			        <select class="form-control">
-  			        <option>Select type</option>
-  			        <option selected="selected">Activation</option>
-  			        <option>Ongoing</option>
-  			        <option>Deactivation</option>
-			        </select>
-		        </div>		        
-	        </div>
           <div class="form-group">
-            <div class="col-sm-12">
-              <textarea class="form-control">Lorem ipsum dolor</textarea>
+            <label class="control-label col-sm-5">Number</label>
+            <div class="col-sm-7">
+    	        <input class="form-control" type="text" value="1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Task</label>
+            <div class="col-sm-7">
+    	        <input class="form-control" type="text" value="Activate team">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Type</label>
+            <div class="col-sm-7">
+    	        <select class="form-control">
+      	        <option></option>
+      	        <option selected="selected">Activation</option>
+      	        <option>Ongoing</option>
+      	        <option>Deactivation</option>
+    	        </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Details</label>
+            <div class="col-sm-7">
+    	        <textarea class="form-control" rows="2">Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list-group-item" data-toggle="collapse" data-parent="#responseProcedures-ongoing" href="#responseProcedures-ongoing-1">
+        <h4 class="list-group-item-heading">
+          4. Dolor est
+        </h4>
+        <p class="list-group-item-text">
+          Lorem ipsum dolor
+        </p>
+        <button type="button" class="btn btn-link pull-right icon-only">
+          <i class="fa fa-minus-circle"></i>
+        </button>        
+      </div>
+      <div class="collapse" id="responseProcedures-ongoing-1">
+        <div class="list-group-item">
+          <div class="form-group">
+            <label class="control-label col-sm-5">Number</label>
+            <div class="col-sm-7">
+    	        <input class="form-control" type="text" value="1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Task</label>
+            <div class="col-sm-7">
+    	        <input class="form-control" type="text" value="Activate team">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Type</label>
+            <div class="col-sm-7">
+    	        <select class="form-control">
+      	        <option></option>
+      	        <option selected="selected">Activation</option>
+      	        <option>Ongoing</option>
+      	        <option>Deactivation</option>
+    	        </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Details</label>
+            <div class="col-sm-7">
+    	        <textarea class="form-control" rows="2">Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</textarea>
             </div>
           </div>
         </div>
@@ -136,7 +241,7 @@
     <div class="list-group" id="responseProcedures-deactivation">
       <div class="list-group-item" data-toggle="collapse" data-parent="#responseProcedures-deactivation" href="#responseProcedures-deactivation-1">
         <h4 class="list-group-item-heading">
-          3. Deactivate team
+          5. Dolor est
         </h4>
         <p class="list-group-item-text">
           Lorem ipsum dolor
@@ -147,31 +252,88 @@
       </div>
       <div class="collapse" id="responseProcedures-deactivation-1">
         <div class="list-group-item">
-	        <div class="form-group">
-		        <div class="col-sm-2">
-			        <input class="form-control" type="text" value="1">
-		        </div>
-		        <div class="col-sm-6">
-			        <input class="form-control" type="text" value="Activate team">
-		        </div>
-		        <div class="col-sm-4">
-			        <select class="form-control">
-  			        <option>Select type</option>
-  			        <option selected="selected">Activation</option>
-  			        <option>Ongoing</option>
-  			        <option>Deactivation</option>
-			        </select>
-		        </div>		        
-	        </div>
           <div class="form-group">
-            <div class="col-sm-12">
-              <textarea class="form-control">Lorem ipsum dolor</textarea>
+            <label class="control-label col-sm-5">Number</label>
+            <div class="col-sm-7">
+    	        <input class="form-control" type="text" value="1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Task</label>
+            <div class="col-sm-7">
+    	        <input class="form-control" type="text" value="Activate team">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Type</label>
+            <div class="col-sm-7">
+    	        <select class="form-control">
+      	        <option></option>
+      	        <option selected="selected">Activation</option>
+      	        <option>Ongoing</option>
+      	        <option>Deactivation</option>
+    	        </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Details</label>
+            <div class="col-sm-7">
+    	        <textarea class="form-control" rows="2">Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</textarea>
             </div>
           </div>
         </div>
       </div>
+      <div class="list-group-item" data-toggle="collapse" data-parent="#responseProcedures-deactivation" href="#responseProcedures-deactivation-1">
+        <h4 class="list-group-item-heading">
+          6. Deactivate team
+        </h4>
+        <p class="list-group-item-text">
+          Lorem ipsum dolor
+        </p>
+        <button type="button" class="btn btn-link pull-right icon-only">
+          <i class="fa fa-minus-circle"></i>
+        </button>        
+      </div>
+      <div class="collapse" id="responseProcedures-deactivation-1">
+        <div class="list-group-item">
+          <div class="form-group">
+            <label class="control-label col-sm-5">Number</label>
+            <div class="col-sm-7">
+    	        <input class="form-control" type="text" value="1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Task</label>
+            <div class="col-sm-7">
+    	        <input class="form-control" type="text" value="Activate team">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Type</label>
+            <div class="col-sm-7">
+    	        <select class="form-control">
+      	        <option></option>
+      	        <option selected="selected">Activation</option>
+      	        <option>Ongoing</option>
+      	        <option>Deactivation</option>
+    	        </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Details</label>
+            <div class="col-sm-7">
+    	        <textarea class="form-control" rows="2">Sed varius libero ut lectus molestie, eu imperdiet dolor commodo</textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
 
     </form>
+  </div>
+  <div class="modal-footer">
+    
   </div>
 	
 </div>

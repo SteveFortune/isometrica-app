@@ -719,8 +719,15 @@ body {
 /* USER ACTIVITY */
 .resilify-user-activity.bootcards-richtext > .panel-body {
   max-width: none; }
+.resilify-user-activity .avatar {
+  margin-right: 15px;
+  margin-top: 3px; }
+.resilify-user-activity .details {
+  overflow: hidden; }
 .resilify-user-activity h4 {
   margin-top: 0; }
+.resilify-user-activity p {
+  margin-bottom: 0; }
 @media (max-width: 767px) {
   .resilify-user-activity .resilify-user-activity-time {
     text-align: left; } }

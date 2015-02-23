@@ -25,6 +25,23 @@
     </form>
 
   </div>
+  <div class="btn-group btn-group-justified" ng-if="canvasItem.type == 'background' ">
+		<div class="btn-group">
+	  	<a class="btn btn-default btn-sm active">
+		  	Text note
+		  </a>
+		</div>
+	  <div class="btn-group">
+		  <a class="btn btn-default btn-sm">
+		  	File attachment
+		  </a>
+	  </div>
+	  <div class="btn-group">
+		  <a class="btn btn-default btn-sm">
+		  	Improvement opportunity
+		  </a>
+	  </div>
+	</div>
   <div class="modal-footer">
     <button class="btn btn-block" ng-click="editDetails(item)">
     	Edit
