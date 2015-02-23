@@ -30,6 +30,16 @@ body.desktop {
   }
 }
 
+.desktop .container#main > .row {
+  padding-bottom: 65px;
+}
+
+.desktop .navbar-fixed-top {
+  .container {
+    width: auto; 
+  }
+}
+
 // Chat footer on desktop
 
 .desktop .navbar-fixed-bottom {
@@ -43,15 +53,10 @@ body.desktop {
   .container {
     width: auto; 
   }
-}
-
-.desktop .container#main > .row {
-  padding-bottom: 65px;
-}
-
-.desktop .navbar-fixed-top {
-  .container {
-    width: auto; 
+  
+  .btn i {
+    position: relative;
+    top: 2px;
   }
 }
 
@@ -220,11 +225,13 @@ body.desktop {
 }
 
 i.resilify-hazard {
+  
   display: block;
-  width: 40px !important;
-  height: 40px;
-  background-size: 40px 40px;
+  width: 54px !important;
+  height: 54px;
+  background-size: 100% 100%;
   position: relative;
+  top: -6px;
   
   &.resilify-hazard-green {
     background-image: url("../img/hazard-icons/hazard-icon-green@2x.png");
@@ -236,53 +243,53 @@ i.resilify-hazard {
     background-image: url("../img/hazard-icons/hazard-icon-red@2x.png");
   }
   
-  &:before {
+  /*&:before {
     content: '';
     display: block;
     position: absolute;
     left: 0;
     top: 0;
-    width: 40px;
-    height: 40px;
-    background-size: 34px 34px;
+    width: 43px;
+    height: 43px;
+    background-size: 43px 43px;
     background-position: center center;
     background-repeat: no-repeat;
-  }
+  }*/
   
-  &.resilify-hazard-building:before {
+  &.resilify-hazard-building {
     background-image: url("../img/hazard-icons/hazard-icon-building@2x.png");
   } 
-  &.resilify-hazard-buildingfire:before {
+  &.resilify-hazard-buildingfire {
     background-image: url("../img/hazard-icons/hazard-icon-buildingfire@2x.png");
   } 
-  &.resilify-hazard-bushfire:before {
+  &.resilify-hazard-bushfire {
     background-image: url("../img/hazard-icons/hazard-icon-bushfire@2x.png");
   } 
-  &.resilify-hazard-cyclone:before {
+  &.resilify-hazard-cyclone {
     background-image: url("../img/hazard-icons/hazard-icon-cyclone@2x.png");
   } 
-  &.resilify-hazard-earthquake:before {
+  &.resilify-hazard-earthquake {
     background-image: url("../img/hazard-icons/hazard-icon-earthquake@2x.png");
   } 
-  &.resilify-hazard-fire:before {
+  &.resilify-hazard-fire {
     background-image: url("../img/hazard-icons/hazard-icon-fire@2x.png");
   } 
-  &.resilify-hazard-flood:before {
+  &.resilify-hazard-flood {
     background-image: url("../img/hazard-icons/hazard-icon-flood@2x.png");
   } 
-  &.resilify-hazard-incident:before {
+  &.resilify-hazard-incident {
     background-image: url("../img/hazard-icons/hazard-icon-incident@2x.png");
   }
-  &.resilify-hazard-landslide:before {
+  &.resilify-hazard-landslide {
     background-image: url("../img/hazard-icons/hazard-icon-landslide@2x.png");
   }
-  &.resilify-hazard-tsunami:before {
+  &.resilify-hazard-tsunami {
     background-image: url("../img/hazard-icons/hazard-icon-tsunami@2x.png");
   }
-  &.resilify-hazard-vehicle:before {
+  &.resilify-hazard-vehicle {
     background-image: url("../img/hazard-icons/hazard-icon-vehicle@2x.png");
   }
-  &.resilify-hazard-vehiclefire:before {
+  &.resilify-hazard-vehiclefire {
     background-image: url("../img/hazard-icons/hazard-icon-vehiclefire@2x.png");
   }
   

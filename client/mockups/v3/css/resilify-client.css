@@ -20,6 +20,12 @@ body.desktop {
         height: 100%;
         padding-top: 20px; }
 
+.desktop .container#main > .row {
+  padding-bottom: 65px; }
+
+.desktop .navbar-fixed-top .container {
+  width: auto; }
+
 .desktop .navbar-fixed-bottom {
   position: fixed;
   padding-top: 0;
@@ -29,12 +35,9 @@ body.desktop {
   padding-top: 15px; }
   .desktop .navbar-fixed-bottom .container {
     width: auto; }
-
-.desktop .container#main > .row {
-  padding-bottom: 65px; }
-
-.desktop .navbar-fixed-top .container {
-  width: auto; }
+  .desktop .navbar-fixed-bottom .btn i {
+    position: relative;
+    top: 2px; }
 
 .ios .navbar-fixed-bottom {
   height: 65px;
@@ -136,48 +139,50 @@ body.desktop {
 
 i.resilify-hazard {
   display: block;
-  width: 40px !important;
-  height: 40px;
-  background-size: 40px 40px;
-  position: relative; }
+  width: 54px !important;
+  height: 54px;
+  background-size: 100% 100%;
+  position: relative;
+  top: -6px;
+  /*&:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 43px;
+    height: 43px;
+    background-size: 43px 43px;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }*/ }
   i.resilify-hazard.resilify-hazard-green {
     background-image: url("../img/hazard-icons/hazard-icon-green@2x.png"); }
   i.resilify-hazard.resilify-hazard-grey {
     background-image: url("../img/hazard-icons/hazard-icon-grey@2x.png"); }
   i.resilify-hazard.resilify-hazard-red {
     background-image: url("../img/hazard-icons/hazard-icon-red@2x.png"); }
-  i.resilify-hazard:before {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 40px;
-    height: 40px;
-    background-size: 34px 34px;
-    background-position: center center;
-    background-repeat: no-repeat; }
-  i.resilify-hazard.resilify-hazard-building:before {
+  i.resilify-hazard.resilify-hazard-building {
     background-image: url("../img/hazard-icons/hazard-icon-building@2x.png"); }
-  i.resilify-hazard.resilify-hazard-buildingfire:before {
+  i.resilify-hazard.resilify-hazard-buildingfire {
     background-image: url("../img/hazard-icons/hazard-icon-buildingfire@2x.png"); }
-  i.resilify-hazard.resilify-hazard-bushfire:before {
+  i.resilify-hazard.resilify-hazard-bushfire {
     background-image: url("../img/hazard-icons/hazard-icon-bushfire@2x.png"); }
-  i.resilify-hazard.resilify-hazard-cyclone:before {
+  i.resilify-hazard.resilify-hazard-cyclone {
     background-image: url("../img/hazard-icons/hazard-icon-cyclone@2x.png"); }
-  i.resilify-hazard.resilify-hazard-earthquake:before {
+  i.resilify-hazard.resilify-hazard-earthquake {
     background-image: url("../img/hazard-icons/hazard-icon-earthquake@2x.png"); }
-  i.resilify-hazard.resilify-hazard-fire:before {
+  i.resilify-hazard.resilify-hazard-fire {
     background-image: url("../img/hazard-icons/hazard-icon-fire@2x.png"); }
-  i.resilify-hazard.resilify-hazard-flood:before {
+  i.resilify-hazard.resilify-hazard-flood {
     background-image: url("../img/hazard-icons/hazard-icon-flood@2x.png"); }
-  i.resilify-hazard.resilify-hazard-incident:before {
+  i.resilify-hazard.resilify-hazard-incident {
     background-image: url("../img/hazard-icons/hazard-icon-incident@2x.png"); }
-  i.resilify-hazard.resilify-hazard-landslide:before {
+  i.resilify-hazard.resilify-hazard-landslide {
     background-image: url("../img/hazard-icons/hazard-icon-landslide@2x.png"); }
-  i.resilify-hazard.resilify-hazard-tsunami:before {
+  i.resilify-hazard.resilify-hazard-tsunami {
     background-image: url("../img/hazard-icons/hazard-icon-tsunami@2x.png"); }
-  i.resilify-hazard.resilify-hazard-vehicle:before {
+  i.resilify-hazard.resilify-hazard-vehicle {
     background-image: url("../img/hazard-icons/hazard-icon-vehicle@2x.png"); }
-  i.resilify-hazard.resilify-hazard-vehiclefire:before {
+  i.resilify-hazard.resilify-hazard-vehiclefire {
     background-image: url("../img/hazard-icons/hazard-icon-vehiclefire@2x.png"); }
