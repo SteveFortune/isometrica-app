@@ -1,4 +1,4 @@
-<div class="resilify-canvas-page resilify-canvas-show-overlays">
+<div class="resilify-canvas-page" ng-class="{ 'resilify-canvas-show-overlays' : showOverlays}">
 
   <!-- fixed top navbar -->
   <div class="navbar navbar-inverse navbar-fixed-top resilify-navbar-centered" role="navigation">
@@ -109,7 +109,7 @@
     <div class="overlay overlay-3">
       3. What could we do about it?
     </div>
-    <button type="button" class="btn btn-link icon-only">
+    <button type="button" class="btn btn-link icon-only" ng-click="toggleOverlays()">
       <i class="fa fa-2x fa-times"></i>
     </button>
   </div>

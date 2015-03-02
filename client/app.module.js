@@ -54,10 +54,13 @@ app.constant('AUTH_EVENTS', {
 });
 
 app.controller('AppController', 
-	function ($scope, $compile) {
+	function ($rootScope, $scope, $compile) {
   $scope.currentUser = null;
   //$scope.userRoles = USER_ROLES;
   //$scope.isAuthorized = AuthService.isAuthorized;
+
+  $scope.showOverlays = true;
+  $rootScope.showOverlays = $scope.showOverlays;
 
   var isIOS = navigator.userAgent.match(/iPhone|iPad|iPod/i);
   var isAndroid = navigator.userAgent.match(/Android/i);
@@ -95,4 +98,9 @@ app.controller('AppController',
   	//$sessionStorage.userId = user.id;
     $scope.currentUser = user;
   };
+
+  $scope.toggleOverlays = function() {
+    $scope.showOverlays = !$scope.showOverlays;
+    $rootScope.showOverlays = $scope.showOverlays;
+  }
 });
