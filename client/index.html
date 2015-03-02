@@ -10,46 +10,15 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
- 
-</head>
 
-<title>Resilify</title>
-  <!-- 1.0.0 -->
-
-	<!-- Bootstrap and Bootcards JS -->
-	<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
-	<script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="/assets/libs/bootcards/dist/js/bootcards.min.js"></script>
+	<title>Resilify</title>
 	
-	<!-- Bootcards CSS for desktop: -->
 	<link rel="stylesheet" href="/assets/libs/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/assets/libs/bootstrap/dist/css/bootstrap.min.css">
 	
-	<script>
-	// Platform Detection (testing only)
-	$( document ).ready(function() {
-		if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
-			var cssLink = $("<link rel='stylesheet' type='text/css' href='/assets/libs/bootcards/dist/css/bootcards-ios.css'>");
-			$("head").append(cssLink);	
-			$('body').addClass('ios');	
-     	}
-		else if( navigator.userAgent.match(/Android/i) ) {
-			var cssLink = $("<link rel='stylesheet' type='text/css' href='/assets/libs/bootcards/dist/css/bootcards-android.css'>");
-			$("head").append(cssLink);
-			$('body').addClass('android');
-		}
-		else
-		{
-			var cssLink = $("<link rel='stylesheet' type='text/css' href='/assets/libs/bootcards/dist/css/bootcards-desktop.css'>");
-			$("head").append(cssLink);
-			$('body').addClass('desktop');
-		}
-	});
-	</script>
+</head>
 	
-	<link rel="stylesheet" href="/assets/css/resilify.css">
-	
-<body class="bootcards-nofooter bootcards-fullheight has-bootcards-navbar-double">
+<body class="bootcards-nofooter bootcards-fullheight has-bootcards-navbar-double" ng-controller="AppController">
 
 	<ui-view></ui-view>
 

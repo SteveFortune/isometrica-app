@@ -12,9 +12,17 @@ app.controller( 'DashboardController',
 
 			$scope.plans = plans;
 
-			$timeout( function() {
-				angular.element('[data-toggle="tooltip"]').tooltip();
-			}, 400);
+			//Attach some sample users / @TODO: make dynamic
+			var planUsers = [
+				{'name' : 'Mark Leusink', profileUrl : '/assets/img/avatar-mark.gif'},
+				{'name' : 'Matt White', profileUrl : '/assets/img/avatar-matt.gif'},
+				{'name' : 'Steve Ives', profileUrl : '/assets/img/avatar-steve.gif'},
+				{'name' : 'Jack Herbert', profileUrl : '/assets/img/avatar-jack.gif'}
+			];
+
+			angular.forEach( $scope.plans, function(plan) {
+				plan.users = planUsers;
+			});
 
 		});
 	};

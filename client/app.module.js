@@ -54,11 +54,41 @@ app.constant('AUTH_EVENTS', {
 });
 
 app.controller('AppController', 
-	function ($scope, $sessionStorage) {
+	function ($scope, $compile) {
   $scope.currentUser = null;
   //$scope.userRoles = USER_ROLES;
   //$scope.isAuthorized = AuthService.isAuthorized;
- 
+
+  var isIOS = navigator.userAgent.match(/iPhone|iPad|iPod/i);
+  var isAndroid = navigator.userAgent.match(/Android/i);
+
+  var head = angular.element(document.querySelector('head'));
+  var body = angular.element(document.querySelector('body'));
+
+  if(head.scope().injectedStylesheets === undefined)
+  {
+      head.scope().injectedStylesheets = [];
+      head.append(
+        $compile(
+          "<link data-ng-repeat='stylesheet in injectedStylesheets' data-ng-href='{{stylesheet.href}}' rel='stylesheet' />")
+        ($scope)); 
+  }
+
+  if (isIOS) {
+    head.scope().injectedStylesheets.push({href: '/assets/libs/bootcards/dist/css/bootcards-ios.css'});
+    body.addClass('ios');
+  } else if (isAndroid) {
+    head.scope().injectedStylesheets.push({href: '/assets/libs/bootcards/dist/css/bootcards-android.css'});
+    body.addClass('android');
+  } else {
+    head.scope().injectedStylesheets.push({href: '/assets/libs/bootcards/dist/css/bootcards-desktop.css'});
+    body.addClass('desktop');
+
+  }
+
+  //load resilify css
+  head.scope().injectedStylesheets.push({href: "/assets/css/resilify.css"});
+
   $scope.setCurrentUser = function (user) {
   	console.log('token is', user.token);
   	//$sessionStorage.token = user.token;

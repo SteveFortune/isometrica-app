@@ -32,20 +32,8 @@
 		</ul>		
 		<div class="panel-footer">			
 			<ul class="users">
-				<li>
-				  <img class="img-circle" src="/assets/img/avatar-mark.gif" data-toggle="tooltip" title="" data-original-title="Mark Leusink">
-				</li>
-				<li>
-					<img class="img-circle" src="/assets/img/avatar-matt.gif" data-toggle="tooltip" title="" data-original-title="Matt White">
-				</li>
-				<li>
-				  <img class="img-circle" src="/assets/img/avatar-steve.gif" data-toggle="tooltip" title="" data-original-title="Steve Ives">
-				</li>
-				<li>
-					<img class="img-circle" src="/assets/img/avatar-jack.gif" data-toggle="tooltip" title="" data-original-title="Jack Herbert">
-				</li>
-				<li>
-				  <img class="img-circle" src="/assets/img/avatar-mark.gif" data-toggle="tooltip" title="" data-original-title="Mark Leusink">
+				<li ng-repeat="user in plan.users">
+					<img class="img-circle" ng-src="{{user.profileUrl}}" tooltip="{{user.name}}">
 				</li>
 				<li>
 					<a ui-sref="planUsers({ planId : plan.id } )" class="add-user" data-toggle="tooltip" title="" data-original-title="Add a User">
