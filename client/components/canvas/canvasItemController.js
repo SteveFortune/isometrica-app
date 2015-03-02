@@ -9,6 +9,7 @@ app.controller( 'CanvasItemController', [
 	$scope.isNew = isNew;
 	$scope.loadData = loadData;
 
+	//client validations, saves the item in the data store, closes the model
 	$scope.saveItem = function(form) {
 
 		if (!form.$valid) { 
@@ -30,8 +31,6 @@ app.controller( 'CanvasItemController', [
 			var item = new CanvasItem($scope.item);
 
 			item.$save( function(item) {
-				//console.log('updated', item);
-
 				$modalInstance.close(item);
 			});
 
@@ -44,10 +43,7 @@ app.controller( 'CanvasItemController', [
 
 		$modalInstance.close();
 
-		//@TODO: make dynamic
 		var templateUrl = '/components/canvas/' + item.type + '/' + item.type + 'DetailsModal.html';
-		//var templateUrl = '/components/canvas/asset/AssetDetailsModal.html';
-		//var ctrl = item.type.substring(0,1).toUpperCase() + item.type.substring(1) + 'DetailsController';
 
 		var modalInstance = $modal.open({
 			templateUrl: templateUrl,
@@ -67,6 +63,7 @@ app.controller( 'CanvasItemController', [
 		});
 
 		modalInstance.result.then( function(item) {
+			//if the modal is closed: reload the data
 			$scope.loadData();	
 		});
 

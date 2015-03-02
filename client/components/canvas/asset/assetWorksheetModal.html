@@ -30,10 +30,12 @@
 				<tbody>
 					<tr ng-repeat="item in items">
 						<td>
-							Activity name here
+							<a ng-click="editDetails(item)">
+								{{item.name}}
+							</a>
 						</td>
-						<td>Location goes here</td>
-						<td>Notes go here lorem ipsum dolor</td>
+						<td>{{item.location}}</td>
+						<td>{{item.details}}</td>
 						<td><span class="low">L</span></td>
 						<td>
 							<a href="#" class="canvas-toggle" ng-click="toggleShowOnCanvas(item)" ng-class="{'active':item.showOnCanvas}">
