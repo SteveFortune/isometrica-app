@@ -1,0 +1,50 @@
+
+<div>
+	<div class="modal-header">
+		<div class="btn-group pull-left visible-xs">
+			<button class="btn btn-link icon-only">
+				<i class="fa fa-lg fa-print"></i>
+			</button>
+		</div>
+		<div class="btn-group pull-right">
+			<button class="btn btn-link icon-only icon-only hidden-xs" ng-click="addContact()">
+				<i class="fa fa-lg fa-plus"></i>
+			</button>
+			<button class="btn btn-link icon-only icon-only hidden-xs">
+				<i class="fa fa-lg fa-print"></i>
+			</button>
+			<button class="btn btn-link icon-only icon-only" ng-click="cancel()">
+				<i class="fa fa-lg fa-times"></i>
+			</button>
+		</div>
+		<h4 class="modal-title">Emergency contacts</h4>
+	</div>
+
+	<div class="modal-body">				          
+		<div class="table-responsive">
+			<table class="table resilify-table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Role</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Notes</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr ng-repeat="contact in contacts">
+						<td>{{contact.name}}</td>
+						<td>{{contact.role}}</td>
+						<td><a href="mailto:{{contact.email}}">{{contact.email}}</a></td>
+						<td><a href="tel:{{contact.phone}}">{{contact.phone}}</a></td>
+						<td>{{contact.notes}}</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>				
+	</div>
+
+</div>
