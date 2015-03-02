@@ -1,6 +1,6 @@
 var app = angular.module('resilify');
  
-app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
+app.directive('resCanvasSection', function($modal, $rootScope, CanvasItem, $timeout) {
 
 	var showEditModal = function(ev, canvasItem, $scope, isNew, $timeout) {
 
@@ -16,7 +16,7 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 					return isNew;
 				},
 				loadData : function() {
-					return $scope.loadData
+					return $scope.loadData;
 				}
 			}
 		});
@@ -27,10 +27,14 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 
 		modalInstance.opened.then( function() {
 
+
 			//set focus on text field in modal
 			$timeout( function() {
-				var ta = $("form[name='canvasItemForm'] textarea");
-				if (ta.length) { ta.focus(); }
+				var ta = document.querySelector('textarea');
+				if (ta) { ta.focus(); }
+				else {
+					console.error("textarea not found");
+				}
 			});
 		});
 
@@ -50,7 +54,7 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 		replace: 'true',
 		templateUrl: '/components/canvas/canvasSectionView.html',
 
-		controller : function($scope) {
+		controller : function($scope, $element) {
 
 			$scope.loadData = function() {
 				CanvasItem.find( { filter : 
@@ -105,22 +109,31 @@ app.directive('resCanvasSection', function($modal, CanvasItem, $timeout) {
 
 			};
 
+			
+
 			$scope.getRelativeEventPosition = function(ev, type) {
 
-				var col = $( ev.target || ev.srcElement).parent('.canvas-row').first();
-				var colHeight = col[0].offsetHeight;
+				var rect = $element[0].getBoundingClientRect();
+				
+				var x = ev.offsetX;
+				var y = ev.offsetY;
 
-				var numColumns = (type == 'background' ? 1 : 5);
-				var colWidth = col[0].offsetWidth / numColumns;
+				//compensate for overlays
+				if ($rootScope.showOverlays) {
+					y -= 58;
+				}
 
-				var offsetTop = Math.round( (ev.offsetY / colHeight) * 100 ) - 6;
-				var offsetLeft = Math.round( (ev.offsetX / colWidth) * 100 ) - 12;
+				//componsate for canvas item (80x80px)
+				var offsetTop = Math.round( (y / rect.height ) * 100 ) -6;
+				var offsetLeft = Math.round( (x / rect.width ) * 100 ) -12;
+
+				offsetTop = Math.min(offsetTop, 99);
+				offsetLeft = Math.min(offsetLeft, 99);
 
 				return {
 					offsetTop : offsetTop ,
 					offsetLeft : offsetLeft 
 				};
-
 
 			};
 			
