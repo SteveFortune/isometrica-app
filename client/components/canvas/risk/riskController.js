@@ -17,15 +17,3 @@ app.controller( 'RiskWorksheetController', [
 	
 } ]);
 
-
-app.controller( 'RiskDetailsController', [
-	'$scope', '$modalInstance', 'item', 'CanvasItem',
-	function($scope, $modalInstance, item, CanvasItem) {
-
-	$scope.item = item;
-
-	$scope.done = function() {
-		$modalInstance.dismiss('done');
-	};	
-
-}] );

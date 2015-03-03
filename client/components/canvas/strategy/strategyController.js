@@ -17,15 +17,3 @@ app.controller( 'StrategyWorksheetController', [
 	
 } ]);
 
-
-app.controller( 'StrategyDetailsController', [
-	'$scope', '$modalInstance', 'item', 'CanvasItem',
-	function($scope, $modalInstance, item, CanvasItem) {
-
-	$scope.item = item;
-
-	$scope.done = function() {
-		$modalInstance.dismiss('done');
-	};	
-
-}] );

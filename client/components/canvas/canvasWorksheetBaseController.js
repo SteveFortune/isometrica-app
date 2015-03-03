@@ -8,6 +8,9 @@ app.controller( "WorksheetBaseController", [
 	function($scope, $modal, $modalInstance, CanvasItem, loadData, itemType, planId) {
 
 	$scope.showMitigation = true;
+	$scope.itemType = itemType;
+	$scope.planId = planId;
+	$scope.loadData = loadData;
 
 	$scope.cancel = function() {
 		$modalInstance.dismiss('cancel');
@@ -38,6 +41,8 @@ app.controller( "WorksheetBaseController", [
 
 		var templateUrl = '/components/canvas/' + item.type + '/' + item.type + 'DetailsModal.html';
 
+		console.log('lo', $scope.loadData);
+
 		var modalInstance = $modal.open({
 			templateUrl: templateUrl,
 			controller : 'CanvasItemController',
@@ -62,27 +67,35 @@ app.controller( "WorksheetBaseController", [
 
 	};
 
+	$scope.addNew = function() {
+
+		$modalInstance.dismiss('cancel');
+
+		//create dialog to add a new item
+		var modalInstance = $modal.open({
+			templateUrl: '/components/canvas/contact/contactDetailsModal.html',
+			controller: 'CanvasItemController',
+			resolve : {
+				canvasItem : function() {
+					return {
+						type : $scope.itemType,
+						planId : $scope.planId
+					};
+				},
+				isNew : function() {
+					return true;
+				},
+				loadData : function() {
+					return $scope.loadData;
+				}
+				
+			}
+		});
+
+	};
+
 	$scope.items = CanvasItem.find( { filter : 
 		{ where : { 'and' : [{ 'planId' : planId }, { 'type' : itemType }] } } } );	
 
-
-}]);
-
-app.controller( "WorksheetDetailsController", [
-	'$scope', '$modalInstance', 'CanvasItem', 'itemType', 'planId',
-	function($scope, $modalInstance, CanvasItem, itemType, planId) {
-
-	$scope.cancel = function() {
-		$modalInstance.dismiss('cancel');
-	};
-
-	$scope.saveItem = function() {
-		$modalInstance.dismiss('cancel');
-	};
-
-	//back to the worksheet or post-it
-	$scope.back = function() {
-		$modalInstance.dismiss('cancel');
-	};
 
 }]);

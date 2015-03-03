@@ -11,12 +11,15 @@ app.controller( 'CanvasItemController', [
 
 	//client validations, saves the item in the data store, closes the model
 	$scope.saveItem = function(form) {
+		console.log('save', form);
 
 		if (!form.$valid) { 
 			form['name'].$dirty = true;
 			alert("Enter a title");
 			return;
 		}
+
+		console.log(isNew, $scope.item);
 
 		if (isNew) {
 
@@ -38,7 +41,7 @@ app.controller( 'CanvasItemController', [
 
 	};
 
-	//show the 'edit details' form
+	//close the current modal, show the 'edit details' form
 	$scope.editDetails = function(item) {
 
 		$modalInstance.close();
@@ -48,7 +51,7 @@ app.controller( 'CanvasItemController', [
 		var modalInstance = $modal.open({
 			templateUrl: templateUrl,
 			controller : 'CanvasItemController',
-			windowClass : 'edit-item-details' + (canvasItem.type === 'background' ? ' note' : ''),
+			windowClass : 'edit-item-details' + (item.type === 'background' ? ' note' : ''),
 			resolve : {
 				canvasItem : function () {
 				  return item;

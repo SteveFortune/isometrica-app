@@ -5,31 +5,31 @@ app.directive('resEmergencyContacts', ['$modal', 'CanvasItem', function($modal, 
 
 	return {
 		restrict : 'AE',
-	    templateUrl: '/components/canvas/contacts/contactsBadge.html',
+	    templateUrl: '/components/canvas/contact/contactBadge.html',
 	    scope : {
 			planId : '@'
 		},
 	    controller : function($scope) {
 
-	    	$scope.itemType = 'contacts';
+	    	$scope.itemType = 'contact';
 
-	    	$scope.loadContacts = function() {
+	    	$scope.loadData = function() {
 				CanvasItem.find( { filter : 
 				{ where : { 'and' : [{ 'planId' : $scope.planId }, { 'type' : $scope.itemType }] } } }, 
 				function(res) {
-					$scope.contacts = res;
+					$scope.items = res;
 				});
 			};	
 
 	      	//load data for this section
-			$scope.contacts = [];
-			$scope.loadContacts();
+			$scope.items = [];
+			$scope.loadData();
 
 	    	$scope.viewContacts = function(ev) {
 
 	    		//show dialog with all contacts
 	    		var modalInstance = $modal.open({
-					templateUrl: '/components/canvas/contacts/contactsWorksheetModal.html',
+					templateUrl: '/components/canvas/contact/contactWorksheetModal.html',
 					controller: 'ContactsWorksheetController',
 					windowClass : 'table-view-modal',
 					size : 'lg',
@@ -64,48 +64,8 @@ app.controller( 'ContactsWorksheetController', [
 		$modalInstance : $modalInstance,
 		CanvasItem : CanvasItem,
 		loadData : loadData,
-		itemType : 'contacts',
+		itemType : 'contact',
 		planId : planId
 	});
-
-	$scope.addContact = function() {
-
-		$modalInstance.dismiss('cancel');
-
-		//create dialog to add a new contact
-		var modalInstance = $modal.open({
-			templateUrl: '/components/canvas/contacts/contactDetailsModal.html',
-			controller: 'ContactDetailsController',
-			resolve : {
-				planId : function() {
-					return $scope.planId;
-				},
-				loadData : function() {
-					return $scope.loadData;
-				},
-				item : function() {
-					return {};
-				},
-			}
-		});
-
-	};
 	
 } ]);
-
-app.controller( 'ContactDetailsController', [
-	'$scope', '$controller', '$modalInstance', 'item', 'CanvasItem',
-	function($scope, $controller, $modalInstance, item, CanvasItem) {
-
-	// instantiate base controller
-	$controller('WorksheetDetailsController', { 
-		$scope: $scope, 
-		$modalInstance : $modalInstance,
-		CanvasItem : CanvasItem,
-		itemType : 'contacts',
-		planId : null
-	});
-
-	$scope.item = item;
-
-}] );

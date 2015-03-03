@@ -16,16 +16,3 @@ app.controller( 'AssetWorksheetController', [
 	});
 	
 } ]);
-
-
-app.controller( 'AssetDetailsController', [
-	'$scope', '$modalInstance', 'item', 'CanvasItem',
-	function($scope, $modalInstance, item, CanvasItem) {
-
-	$scope.item = item;
-
-	$scope.done = function() {
-		$modalInstance.dismiss('done');
-	};	
-
-}] );
