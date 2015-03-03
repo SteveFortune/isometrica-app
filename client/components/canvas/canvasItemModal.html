@@ -25,19 +25,19 @@
     </form>
 
   </div>
-  <div class="btn-group btn-group-justified" ng-if="canvasItem.type == 'background' ">
+  <div class="btn-group btn-group-justified" ng-if="item.type == 'background' ">
 		<div class="btn-group">
-	  	<a class="btn btn-default btn-sm active">
+	  	<a class="btn btn-default btn-sm" ng-class="{'active' : item.subType == 'text'}" ng-click="setSubType('text')">
 		  	Text note
 		  </a>
 		</div>
 	  <div class="btn-group">
-		  <a class="btn btn-default btn-sm">
+		  <a class="btn btn-default btn-sm" ng-class="{'active' : item.subType == 'file'}" ng-click="setSubType('file')">
 		  	File attachment
 		  </a>
 	  </div>
 	  <div class="btn-group">
-		  <a class="btn btn-default btn-sm">
+		  <a class="btn btn-default btn-sm" ng-class="{'active' : item.subType == 'improvement'}" ng-click="setSubType('improvement')">
 		  	Improvement opportunity
 		  </a>
 	  </div>

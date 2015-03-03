@@ -5,9 +5,17 @@ app.controller( 'CanvasItemController', [
 	'$scope', '$modalInstance', '$modal', 'canvasItem', 'isNew', 'loadData', 'CanvasItem',
 	function($scope, $modalInstance, $modal, canvasItem, isNew, loadData, CanvasItem) {
 
+	if (canvasItem.type === 'background' && !canvasItem.hasOwnProperty('subType')) {
+		canvasItem.subType = 'text';
+	}
+
 	$scope.item = canvasItem;
 	$scope.isNew = isNew;
 	$scope.loadData = loadData;
+
+	$scope.setSubType = function(to) {
+		$scope.item.subType = to;
+	};
 
 	//client validations, saves the item in the data store, closes the model
 	$scope.saveItem = function(form) {
@@ -18,8 +26,6 @@ app.controller( 'CanvasItemController', [
 			alert("Enter a title");
 			return;
 		}
-
-		console.log(isNew, $scope.item);
 
 		if (isNew) {
 
