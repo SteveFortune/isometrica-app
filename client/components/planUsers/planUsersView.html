@@ -10,8 +10,8 @@
     </ul>  
       
     <div class="navbar-header">
-      <span class="navbar-brand" title="Customers">
-      	Users
+      <span class="navbar-brand" title="Users">
+      	Users for {{plan.title}}
       </span>  
     </div>        
   </div>
@@ -55,33 +55,15 @@
       			  <h3 class="panel-title">Already added</h3>
             </div>
       			<div class="list-group">		
-    					<a class="list-group-item">
-    						<img src="/assets/img/avatar-jack.gif" class="img-circle pull-left">
-    						<h4 class="list-group-item-heading">Jack Herbert</h4>
-    						<p class="list-group-item-text">jack@teamstudio.com</p>
-    					</a>
-    					<a class="list-group-item">
-    						<img src="/assets/img/avatar-mark.gif" class="img-circle pull-left">
-    						<h4 class="list-group-item-heading">Mark Leusink</h4>
-    						<p class="list-group-item-text">mark@teamstudio.com</p>
-    					</a>
-    					<a class="list-group-item">
-    						<img src="/assets/img/avatar-matt.gif" class="img-circle pull-left">
-    						<h4 class="list-group-item-heading">Matt White</h4>
-    						<p class="list-group-item-text">matt@teamstudio.com</p>
-    					</a>
-    					<a class="list-group-item">
-    						<img src="/assets/img/avatar-steve.gif" class="img-circle pull-left">
-    						<h4 class="list-group-item-heading">Steve Ives</h4>
-    						<p class="list-group-item-text">steve@teamstudio.com</p>
+    					<a class="list-group-item" ng-repeat="user in plan.users" ui-sref="userActivity({userId: user.id})">
+    						<img ng-src="{{user.profileUrl}}" class="img-circle pull-left">
+    						<h4 class="list-group-item-heading">{{user.name}}</h4>
+    						<p class="list-group-item-text">{{user.email}}</p>
     					</a>
       			</div>
       		</div>          
         </div>
       </div>
-
-
-	
   					
   	</div>		
   </div>

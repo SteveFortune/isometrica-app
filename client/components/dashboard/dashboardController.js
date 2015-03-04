@@ -14,10 +14,10 @@ app.controller( 'DashboardController',
 
 			//Attach some sample users / @TODO: make dynamic
 			var planUsers = [
-				{'name' : 'Mark Leusink', profileUrl : '/assets/img/avatar-mark.gif'},
-				{'name' : 'Matt White', profileUrl : '/assets/img/avatar-matt.gif'},
-				{'name' : 'Steve Ives', profileUrl : '/assets/img/avatar-steve.gif'},
-				{'name' : 'Jack Herbert', profileUrl : '/assets/img/avatar-jack.gif'}
+				{'name' : 'Mark Leusink', profileUrl : '/assets/img/avatar-mark.gif', id : 'mark', email : 'mark@teamstudio.com'},
+				{'name' : 'Matt White', profileUrl : '/assets/img/avatar-matt.gif', id : 'matt', email : 'matt@teamstudio.com'},
+				{'name' : 'Steve Ives', profileUrl : '/assets/img/avatar-steve.gif', id : 'steve', email : 'steve@teamstudio.com'},
+				{'name' : 'Jack Herbert', profileUrl : '/assets/img/avatar-jack.gif', id : 'jack', email : 'jack@teamstudio.com'}
 			];
 
 			angular.forEach( $scope.plans, function(plan) {

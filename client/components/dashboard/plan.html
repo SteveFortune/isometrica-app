@@ -33,7 +33,9 @@
 		<div class="panel-footer">			
 			<ul class="users">
 				<li ng-repeat="user in plan.users">
-					<img class="img-circle" ng-src="{{user.profileUrl}}" tooltip="{{user.name}}">
+					<a ui-sref="userActivity({userId : user.id} )">
+						<img class="img-circle" ng-src="{{user.profileUrl}}" tooltip="{{user.name}}">
+					</a>
 				</li>
 				<li>
 					<a ui-sref="planUsers({ planId : plan.id } )" class="add-user" data-toggle="tooltip" title="" data-original-title="Add a User">

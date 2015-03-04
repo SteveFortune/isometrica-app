@@ -24,6 +24,12 @@ app.config( function($stateProvider) {
 		    controller : 'CanvasController'
 		})
 
+		.state('userActivity', { 	
+		    url: '/user/:userId/activity',
+		    templateUrl: '/components/userActivity/userActivityView.html',
+		    controller : 'UserActivityController'
+		})
+
 		.state('login', { 	
 		    url: '/login',
 		    templateUrl: '/components/login/loginView.html',
