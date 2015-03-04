@@ -102,5 +102,26 @@ app.controller('AppController',
   $scope.toggleOverlays = function() {
     $scope.showOverlays = !$scope.showOverlays;
     $rootScope.showOverlays = $scope.showOverlays;
-  }
+  };
 });
+
+//global directive to be able to set the focus on elements created inline
+app.directive('autofocus', function ($timeout) {
+  return {
+    restrict: 'A',
+    link: function (scope, element) {
+      $timeout( function() {
+        element[0].focus();
+      });
+    }
+  };
+});
+
+//filter to show a text if a value is blank
+app.filter('blankString', function() {
+    return function(input) {
+      var empty = !input;
+        return empty ? '(empty)' : input;
+    };
+});
+

@@ -25,19 +25,6 @@ app.directive('resCanvasSection', function($modal, $rootScope, CanvasItem, $time
 			$scope.loadData();	
 		});
 
-		modalInstance.opened.then( function() {
-
-
-			//set focus on text field in modal
-			$timeout( function() {
-				var ta = document.querySelector('textarea');
-				if (ta) { ta.focus(); }
-				else {
-					console.error("textarea not found");
-				}
-			});
-		});
-
 		//stop propagation to not call the 'add' function on the container
 		ev.stopPropagation();
 

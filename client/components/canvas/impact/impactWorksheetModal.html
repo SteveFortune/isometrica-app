@@ -10,7 +10,7 @@
 			    <li>
 			      <a href="#">
 				      <i class="fa fa-lg fa-eye-slash"></i> 
-              Hide Mitigation
+              			Hide Mitigation
 				    </a>
 				  </li>
 			    <li class="divider"></li>
@@ -56,10 +56,12 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat-start="item in items">
-						<td rowspan="{{(showMitigation ? '4' : '2')}}">{{item.name}}</td>
-						<td rowspan="{{(showMitigation ? '4' : '2')}}">7</td>
-						<td rowspan="{{(showMitigation ? '4' : '2')}}">7</td>
-						<td rowspan="{{(showMitigation ? '4' : '2')}}">n/a</td>
+						<td rowspan="{{(showMitigation ? '4' : '2')}}">
+							<a ng-click="editDetails(item)">{{item.name}}</a>
+						</td>
+						<td rowspan="{{(showMitigation ? '4' : '2')}}" click-to-edit="mtpdDays" item="item"></td>
+						<td rowspan="{{(showMitigation ? '4' : '2')}}" click-to-edit="rtoDays" item="item"></td>
+						<td rowspan="{{(showMitigation ? '4' : '2')}}" click-to-edit="rpo" item="item"></td>
 						<td>1 hour</td>
 						<td><span class="medium">M</span></td>
 						<td>30K</td>

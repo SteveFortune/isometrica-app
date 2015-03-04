@@ -29,9 +29,21 @@
     "updated": {
       "type": "date"
     },
+
     "location": {
       "type": "string"
     },
+
+    "mtpdDays": {
+      "type": "number"
+    },
+    "rtoDays": {
+      "type": "number"
+    },
+    "rpo" : {
+      "type": "string"
+    },
+
     "potentialEvent": {
       "type": "string"
     },

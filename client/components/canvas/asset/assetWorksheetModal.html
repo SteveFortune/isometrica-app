@@ -34,8 +34,8 @@
 								{{item.name}}
 							</a>
 						</td>
-						<td>{{item.location}}</td>
-						<td>{{item.details}}</td>
+						<td click-to-edit="location" item="item"></td>
+						<td click-to-edit="details" item="item"></td>
 						<td><span class="low">L</span></td>
 						<td>
 							<a href="#" class="canvas-toggle" ng-click="toggleShowOnCanvas(item)" ng-class="{'active':item.showOnCanvas}">

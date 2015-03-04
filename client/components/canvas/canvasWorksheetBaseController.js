@@ -41,8 +41,6 @@ app.controller( "WorksheetBaseController", [
 
 		var templateUrl = '/components/canvas/' + item.type + '/' + item.type + 'DetailsModal.html';
 
-		console.log('lo', $scope.loadData);
-
 		var modalInstance = $modal.open({
 			templateUrl: templateUrl,
 			controller : 'CanvasItemController',
