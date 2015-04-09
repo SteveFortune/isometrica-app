@@ -18,3 +18,12 @@ My development notes: a place to document my working assumptions.
 - I'm going to arbitrarily map the forms to the different sections in the core system design for now.
 - My assumption is that this is ok for the scope of the assessment.
 - Might amend the v5 HTML sections later down the line to be inline with 5a.
+
+### Hack: Copied Scraped CSS into Client
+
+- Jack Herbert's HTML is generated using SASS
+- The existing SASS file does not include some of the styling of the new v5 design
+- I've copied the CSS directly from my scraped site into the client's `resilify.css` file
+- This has broken the Business Overview page.
+- At one point, I tried 'merging' the two auto-generated css files using `git add --patch` and manually editing hunks to be committed.
+- Did not work. For the purposes of this assessment I've had to hack in the CSS.
