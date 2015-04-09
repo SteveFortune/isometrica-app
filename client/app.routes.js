@@ -6,7 +6,7 @@ app.config( function($stateProvider) {
 	//setup the routes
 	$stateProvider
 
-	  	.state('dashboard', { 	
+	  	.state('dashboard', {
 		    url: '/dashboard',
 		    templateUrl: '/components/dashboard/dashboardView.html',
 		    controller : 'DashboardController'
@@ -18,24 +18,28 @@ app.config( function($stateProvider) {
 			controller : 'PlanUsersController'
 		})
 
-		.state('canvas', { 	
+		.state('canvas', {
 		    url: '/canvas/:planId',
 		    templateUrl: '/components/canvas/canvasView.html',
 		    controller : 'CanvasController'
 		})
 
-		.state('userActivity', { 	
+		.state('core-system', {
+			url: '/core-system/:planId',
+			templateUrl: '/components/coreSystem/coreSystemView.html',
+			controller: 'CoreSystemController'
+		})
+
+		.state('userActivity', {
 		    url: '/user/:userId/activity',
 		    templateUrl: '/components/userActivity/userActivityView.html',
 		    controller : 'UserActivityController'
 		})
 
-		.state('login', { 	
+		.state('login', {
 		    url: '/login',
 		    templateUrl: '/components/login/loginView.html',
 		    controller : 'LoginController'
 		});
 
 } );
-
-

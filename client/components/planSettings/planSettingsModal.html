@@ -11,7 +11,7 @@
 
           <div class="form-group" ng-class="{ 'has-error': planForm.title.$dirty && planForm.title.$invalid }">
             <label class="control-label" for="inputTitle">Title *</label>
-            <input type="text" id="inputTitle" class="form-control" 
+            <input type="text" id="inputTitle" class="form-control"
               autofocus
               name="title"
               ng-required="true"
@@ -20,24 +20,25 @@
 
           <div class="form-group">
             <label class="control-label" for="inputType">Type</label>
-            <select class="form-control" id="inputType">
+            <select class="form-control" id="inputType" ng-model="plan.type">
                 <option></option>
                 <option>Business Continuity Plan (ISO)</option>
                 <option>Business Continuity Plan (simple)</option>
                 <option>IT Disaster Recovery Plan</option>
                 <option>Crisis Communications Plan</option>
+                <option>V5 Core System</option>
             </select>
           </div>
 
           <div class="form-group" ng-class="{ 'has-error': planForm.orgName.$dirty && planForm.orgName.$invalid }">
             <label class="control-label" for="inputOrg">Organisation</label>
-            <input type="text" id="inputOrg" class="form-control" 
+            <input type="text" id="inputOrg" class="form-control"
               ng-model="plan.orgName" placeholder="Enter an organisation name" />
           </div>
 
           <div class="form-group" ng-class="{ 'has-error': planForm.description.$dirty && planForm.description.$invalid }">
             <label class="control-label" for="inputDescription">Description</label>
-            <textarea id="inputDescription" class="form-control" 
+            <textarea id="inputDescription" class="form-control"
               ng-model="plan.description" placeholder="Enter a description"></textarea>
           </div>
 

@@ -1,11 +1,11 @@
 
 var app = angular.module('resilify');
 
-app.controller( 'DashboardController', 
+app.controller( 'DashboardController',
 	['$scope', '$modal', '$state', '$timeout', 'Plan', 'growl',
 	function($scope, $modal, $state, $timeout, Plan, growl) {
 
-	var loadPlans = function() {	
+	var loadPlans = function() {
 		//retrieve all plans and activate the tooltips
 		Plan.query( { 'filter[order]' : 'title ASC'} )
 		.$promise.then( function(plans) {
@@ -27,9 +27,29 @@ app.controller( 'DashboardController',
 		});
 	};
 
+	/**
+	 *	Crudely maps a given plan entity to a route state.
+	 *
+	 * 	@param 		plan	Plan
+	 *  @returns	string	A state for a route
+	 *	@author 	Steve Fortune
+	 */
+	var stateForPlan = function(plan) {
+		var state;
+		switch (plan.type) {
+			case 'V5 Core System' :
+				state = 'core-system';
+				break;
+			default :
+				state = 'canvas';
+				break;
+		}
+		return state;
+	};
+
 	$scope.openPlan = function(plan) {
 
-		$state.transitionTo('canvas', {planId : plan.id});
+		$state.transitionTo(stateForPlan(plan), {planId : plan.id});
 
 	};
 
