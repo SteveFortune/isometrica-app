@@ -9,9 +9,9 @@ var app = angular.module('resilify');
  */
 app.controller('CoreSystemController',
 	['$scope', '$modal', '$state', '$stateParams', '$timeout', 'growl', 'CoreSystemService',
-	function($scope, $modal, $state, $timeout, growl, CoreSystemService) {
+	function($scope, $modal, $state, $stateParams, $timeout, growl, CoreSystemService) {
 
-		var planId = stateParam.planId;
+		var planId = $stateParams.planId;
 		var plan = CoreSystemService.findPlan(planId);
 
 		if (!plan) {
@@ -33,6 +33,7 @@ app.directive('resilifyCoreSystemNavigation', function() {
 	return {
 		templateUrl: '/components/coreSystem/coreSystemNavigation.html',
 		restrict: 'AE',
+		transclude: true,
 	};
 });
 
@@ -44,11 +45,19 @@ app.directive('resilifyCoreSystemNavigation', function() {
  * - title, string property
  * - @todo What else?
  *
+ * See the directive's isolated scope for attributes.
+ *
  * @author Steve Fortune
  */
 app.directive('resilifyCoreSystemSection', function(){
 	return {
 		templateUrl: '/components/coreSystem/coreSystemSection.html',
 		restrict: 'AE',
+		transclude: true,
+		scope: {
+			'collection': '=',
+			'sectionId': '@',
+			'tileIcon': '@'
+		}
 	};
 });

@@ -4,67 +4,41 @@
 <resilify-core-system-navigation></resilify-core-system-navigation>
 
 <div class="panel panel-default core-panel" id="corePanel">
+
 	<div class="panel-body">
 	<h2>{{ plan.orgName }}</h2>
+
 	<div class="panel panel-default">
+
+		<!-- Interested parties -->
+
 		<div class="offset right" id="interested-parties">
-		<i class="fa fa-long-arrow-left left-arrow"></i>
-		<i class="fa fa-long-arrow-right right-arrow"></i>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-			<h4 class="panel-title">Interested parties (e.g. customers)</h4>
+			<i class="fa fa-long-arrow-left left-arrow"></i>
+			<i class="fa fa-long-arrow-right right-arrow"></i>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">Interested parties (e.g. customers)</h4>
+				</div>
 			</div>
 		</div>
-		</div>
+
+		<!-- / -->
+
+		<!-- Context -->
+
 		<div class="panel-heading" data-toggle="collapse" data-target="#context">
 		<h3 class="panel-title">Context</h3>
 		</div>
-		<div class="collapse" id="context">
-		<div class="panel-body">
-			<ul class="core-items">
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			</ul>
-		</div>
-		</div>
+
+		<resilify-core-system-section
+			collection="plan.purposes"
+			section-id="context">
+		</resilify-core-system-section>
+
+		<!-- / -->
+
+		<!-- Depts, roles, support, products and services -->
+
 		<div class="row core-split-sections">
 		<div class="col-sm-4">
 			<div class="panel-heading" data-toggle="collapse" data-target="#departments" data-parent="#corePanel">
@@ -82,97 +56,37 @@
 			</div>
 		</div>
 		</div>
-		<div class="collapse" id="departments">
-		<div class="panel-body">
-			<ul class="core-items">
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item core-item-empty">
-				<i class="fa fa-plus-circle"></i>
-				<h4 class="core-item-title">Add</h4>
-				</div>
-			</li>
-			</ul>
-		</div>
-		</div>
-		<div class="collapse" id="responsibilities">
-		<div class="panel-body">
-			<ul class="core-items">
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item core-item-empty">
-				<i class="fa fa-plus-circle"></i>
-				<h4 class="core-item-title">Add</h4>
-				</div>
-			</li>
-			</ul>
-		</div>
-		</div>
-		<div class="collapse" id="support">
-		<div class="panel-body">
-			<ul class="core-items">
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item core-item-empty">
-				<i class="fa fa-plus-circle"></i>
-				<h4 class="core-item-title">Add</h4>
-				</div>
-			</li>
-			</ul>
-		</div>
-		</div>
+
+		<resilify-core-system-section
+			collection="plan.departments"
+			section-id="departments">
+		</resilify-core-system-section>
+
+		<resilify-core-system-section
+			collection="plan.roles"
+			section-id="responsibilities">
+		</resilify-core-system-section>
+
+		<resilify-core-system-section
+			collection="plan.suppliersOutsourcePartners"
+			section-id="support">
+		</resilify-core-system-section>
+
+		<!-- / -->
+
+		<!-- Products and services -->
+
 		<div class="panel-heading" data-toggle="collapse" data-target="#products">
 		<h3 class="panel-title">Products &amp; services</h3>
 		</div>
-		<div class="collapse" id="products">
-		<div class="panel-body">
-			<ul class="core-items">
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item">
-				<h4 class="core-item-title">Item Title</h4>
-				</div>
-			</li>
-			<li>
-				<div class="core-item core-item-empty">
-				<i class="fa fa-plus-circle"></i>
-				<h4 class="core-item-title">Add</h4>
-				</div>
-			</li>
-			</ul>
-		</div>
-		</div>
+
+		<resilify-core-system-section
+			collection="plan.productsServices"
+			section-id="products">
+		</resilify-core-system-section>
+
+		<!-- / -->
+
 	</div>
 	</div>
 	<div class="activities-and-dependencies">
