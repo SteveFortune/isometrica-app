@@ -14,7 +14,7 @@
       "type": "string"
     },
     "scope" : {
-      "type": "scope"
+      "type": "string"
     },
     "created": {
       "type": "date"
