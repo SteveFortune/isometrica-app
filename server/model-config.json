@@ -41,5 +41,9 @@
   "Email": {
     "dataSource": "email",
     "public": false
+  },
+  "DataObject" : {
+    "dataSource": "mongodb",
+    "public": true
   }
 }
