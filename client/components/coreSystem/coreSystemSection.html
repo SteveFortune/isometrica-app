@@ -1,13 +1,13 @@
 
-<div class="collapse" id="{{ sectionId }}">
+<div ng-class="{'collapse': isCollapsed()}" id="{{ sectionId }}">
 	<div class="panel-body">
-		<ul class="core-items {{ isPanelLast ? 'panel-last' : '' }}">
+		<ul ng-class="{'panel-last': isPanelLast, 'core-items': true}">
 			<li ng-repeat='item in collection'>
 				<div class="core-item">
 					<h4 class="core-item-title">{{ item.title }}</h4>
-				</div>
-				<div ng-if='tileIcon'>
-					<i ng-class="['fa', tileIcon]"></i>
+					<div ng-if='tileIcon'>
+						<i ng-class="['fa', tileIcon]"></i>
+					</div>
 				</div>
 			</li>
 			<li>

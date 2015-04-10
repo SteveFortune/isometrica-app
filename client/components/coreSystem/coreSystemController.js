@@ -70,8 +70,21 @@ app.directive('resilifyCoreSystemSection', function(){
 		scope: {
 			'collection': '=',
 			'sectionId': '@',
-			'tileIcon': '@'
-			'isPanelLast': '@'
-		}
+			'tileIcon': '@',
+			'isPanelLast': '@',
+			'collapsed': '@'
+		},
+		controller: ['$scope', function($scope) {
+
+			/**
+			 * Is the directive initialised as collapsed? Work around to the fact that
+			 * you can't use the `typeof` operator in templation expressions.
+			 *
+			 * @return boolean
+			 */
+			$scope.isCollapsed = function() {
+				return typeof $scope.collapsed === 'undefined' || $scope.collapsed === true;
+			};
+		}],
 	};
 });
