@@ -27,3 +27,9 @@ My development notes: a place to document my working assumptions.
 - This has broken the Business Overview page.
 - At one point, I tried 'merging' the two auto-generated css files using `git add --patch` and manually editing hunks to be committed.
 - Did not work. For the purposes of this assessment I've had to hack in the CSS.
+
+### Convention: Avoiding Doing Anything Clever in Directives
+
+- I've avoided querying any data or doing anything other than DOM manipulation in directives.
+- I read somewhere (can't remember where) that directives should be treated as views and shouldn't have to handle complex business logic. They are only responsible for interacting with the DOM API.
+- I've exposed a callback API for directives that might want to trigger subsequent events on interaction.

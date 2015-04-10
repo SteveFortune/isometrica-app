@@ -2,11 +2,15 @@
 var app = angular.module('resilify');
 
 /**
- * Service for the core system. Exposes business logic for the core system.
+ * Service for the performing CRUD operations on Plans. The reason I've implemented
+ * a service here is to abstract away data access operations from the controller layer.
+ * In the future for example, if we move away from loopback we'd be able to refactor
+ * the data access operations more easily because they would all be encapsulated in
+ * services.
  *
  * @author Steve Fortune
  */
-app.factory('CoreSystemService', ['Plan', function(Plan) {
+app.service('PlanService', ['Plan', function(Plan) {
 
 	/**
  	 * Creates a mock associated objects with the given title.

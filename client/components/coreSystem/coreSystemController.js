@@ -8,11 +8,11 @@ var app = angular.module('resilify');
  * @author Steve Fortune
  */
 app.controller('CoreSystemController',
-	['$scope', '$modal', '$state', '$stateParams', '$timeout', 'growl', 'CoreSystemService',
-	function($scope, $modal, $state, $stateParams, $timeout, growl, CoreSystemService) {
+	['$scope', '$modal', '$state', '$stateParams', '$timeout', 'growl', 'PlanService',
+	function($scope, $modal, $state, $stateParams, $timeout, growl, PlanService) {
 
 		var planId = $stateParams.planId;
-		var plan = CoreSystemService.findPlan(planId);
+		var plan = PlanService.findPlan(planId);
 
 		if (!plan) {
 			// @todo Redirect to 404, or throw an error that's caught by the routing
