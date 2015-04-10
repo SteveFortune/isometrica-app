@@ -29,9 +29,22 @@ app.controller('CoreSystemController',
  *
  * @author Steve Fortune
  */
-app.directive('resilifyCoreSystemNavigation', function() {
+app.directive('resilifyCoreSystemHeader', function() {
 	return {
-		templateUrl: '/components/coreSystem/coreSystemNavigation.html',
+		templateUrl: '/components/coreSystem/coreSystemHeader.html',
+		restrict: 'AE',
+		transclude: true,
+	};
+});
+
+/**
+ * Simple directive for the core system navigation footer.
+ *
+ * @author Steve Fortune
+ */
+app.directive('resilifyCoreSystemFooter', function() {
+	return {
+		templateUrl: '/components/coreSystem/coreSystemFooter.html',
 		restrict: 'AE',
 		transclude: true,
 	};
@@ -58,6 +71,7 @@ app.directive('resilifyCoreSystemSection', function(){
 			'collection': '=',
 			'sectionId': '@',
 			'tileIcon': '@'
+			'isPanelLast': '@'
 		}
 	};
 });

@@ -14,7 +14,7 @@
       "type": "string"
     },
     "type": {
-      "type": "string",
+      "type": "string"
     },
     "created": {
       "type": "date"
