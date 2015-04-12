@@ -105,7 +105,7 @@ app.directive('resilifyCoreSystemFooter', function() {
 });
 
 /**
- * Directive that renders a collection of given items in a grid. The icon displayed
+ * Directive that renders a collection of given items in a table. The icon displayed
  * in each tile of the grid is configurable, as is the icon of the '+' tile.
  *
  * Items in the collection must have a `name` attribute.

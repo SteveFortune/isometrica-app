@@ -2,8 +2,6 @@
 var app = angular.module('resilify');
 
 /**
- * Modal controller for the role form.
- *
  * @author Steve Fortune
  */
 app.controller('RoleModalController', [
