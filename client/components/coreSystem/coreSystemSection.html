@@ -1,7 +1,7 @@
 
 <ul class="core-items">
 	<li ng-repeat='item in collection' ng-click="onEditItem({collection: collection, entity: entity, index: $index})">
-		<div class="core-item">
+		<div class="core-item core-item-empty">
 			<i ng-if='tileIcon' class="fa {{ tileIcon || '' }}"></i>
 			<h4 class="core-item-title">{{ item.name }}</h4>
 		</div>
