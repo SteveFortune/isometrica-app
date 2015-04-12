@@ -3,7 +3,7 @@
 		<form class="form-horizontal">
 			<div class="modal-header clearfix">
 				<div class="btn-group pull-right">
-					<button type="button" class="btn btn-link" data-dismiss="modal">
+					<button type="button" class="btn btn-link" ng-click="saveAndClose()">
 						<i class="fa fa-lg fa-check"></i>
 					</button>
 				</div>
@@ -15,14 +15,14 @@
 						<div class="form-group">
 							<label class="control-label col-sm-3">Role Name</label>
 							<div class="col-sm-9">
-								<input class="form-control" type="text" value="Customer service">
+								<input class="form-control" type="text" ng-model="entity.name">
 							</div>
 						</div>
 						<div class="collapse" id="roles-1">
 							<div class="form-group">
 								<label class="control-label col-sm-3">Notes</label>
 								<div class="col-sm-9">
-									<textarea class="form-control" placeholder="optional"></textarea>
+									<textarea class="form-control" placeholder="optional" ng-model="entity.notes"></textarea>
 								</div>
 							</div>
 						</div>

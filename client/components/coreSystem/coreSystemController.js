@@ -42,41 +42,43 @@ app.controller('CoreSystemController',
 		};
 
 		/**
-		 * @param 	entity			object
-		 * @param	controllerName	string
+		 * @param 	ev				object
+		 * @param 	type			string	The type specifier (used to contruct urls/routes)
+		 * @param 	entity			object	The entity being edited || falsy
+		 * @return	object	The new modal dialog
 		 * @private
 		 */
 		var showModalDialog = function(type, entity) {
-
-			var modalDialog = $modal.open({
+			return $modal.open({
 				templateUrl: '/components/coreSystem/' + plurify(type) + '/' + type + 'Modal.html',
 				controller : firstLetterToUpper(type) + 'ModalController',
 				resolve : {
 					entity : function () {
-					  return entity;
+					  return angular.copy(entity);
 					}
 				}
 			});
-
-			modalDialog.result.then(function(item) {
-				// If is new, append to the collection, Else refresh item
-			});
-
 		};
 
 		/**
 		 * @private
 		 */
-		$scope.$on('collection.item.edit', function(e, args) {
-			showModalDialog(args.entityType, args.entity);
+		$scope.$on('collection.entity.edit', function(ev, type, collection, index) {
+			var entity = collection[index];
+			showModalDialog(type, entity).result.then(function(args) {
+				collection[index] = args.entity;
+			});
 		});
 
 		/**
-		 * @see `collection.item.edit`
+		 * Pushes the new entity to the collection.
+		 *
 		 * @private
 		 */
-		$scope.$on('collection.item.new', function(e, args) {
-			showModalDialog(args.entityType);
+		$scope.$on('collection.entity.new', function(ev, type, collection) {
+			showModalDialog(type).result.then(function(args) {
+				collection.push(args.entity);
+			});
 		});
 
 	}
@@ -150,17 +152,19 @@ app.directive('resilifyCoreSystemSection', function(){
 			};
 
 			/**
-			 * @param	entity	object
+			 * @param	index	number
 			 * @protected
 			 */
-			$scope.emitEdit = function(entity) {
+			$scope.emitEdit = function(index) {
 				if (!$scope.canEmit()) {
 					return;
 				}
-				$scope.$emit('collection.item.edit', {
-					entity: entity,
-					entityType: $scope.entityType
-				});
+				$scope.$emit(
+					'collection.entity.edit',
+					$scope.entityType,
+					$scope.collection,
+					index
+				);
 			};
 
 			/**
@@ -170,9 +174,11 @@ app.directive('resilifyCoreSystemSection', function(){
 				if (!$scope.canEmit()) {
 					return;
 				}
-				$scope.$emit('collection.item.new', {
-					entityType: $scope.entityType
-				});
+				$scope.$emit(
+					'collection.entity.new',
+					$scope.entityType,
+					$scope.collection
+				);
 			};
 
 		}],

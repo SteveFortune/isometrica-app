@@ -7,8 +7,8 @@ var app = angular.module('resilify');
  * @author Steve Fortune
  */
 app.controller('AbstractModelController', [
-	'entity', '$scope',
-	function(entity, $scope) {
+	'entity', '$scope', '$modal', '$modalInstance',
+	function(entity, $scope, $modal, $modalInstance) {
 
 	/**
 	 * Returns the entity's name, or an appropriate alternative string.
@@ -32,7 +32,7 @@ app.controller('AbstractModelController', [
 	 *
 	 * @var object | null
 	 */
-	$scope.entity = entity;
+	$scope.entity = entity || {};
 
 	/**
 	 * Is the entity being manipulated new?
@@ -42,14 +42,14 @@ app.controller('AbstractModelController', [
 	$scope.isNew = !entity;
 
 	/**
-	 * Emits a save event for parent controllers.
+	 * Closes the controller with, passing an hash representing its state.
 	 *
 	 * @protected
 	 */
-	$scope.emitSave = function() {
-		$scope.$emit('entity.save', {
-			entity: entity,
-			isNew: $scope.isNew,
+	$scope.saveAndClose = function() {
+		$modalInstance.close({
+			entity: $scope.entity,
+			isNew: $scope.isNew
 		});
 	};
 

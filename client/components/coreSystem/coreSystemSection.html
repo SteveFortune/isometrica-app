@@ -3,7 +3,7 @@
 	<div class="panel-body">
 		<ul ng-class="{'panel-last': isPanelLast, 'core-items': true}">
 			<li ng-repeat='item in collection'>
-				<a ng-click="emitEdit(item)">
+				<a ng-click="emitEdit($index)">
 					<div class="core-item">
 						<h4 class="core-item-title">{{ item.name }}</h4>
 						<div ng-if='tileIcon'>
