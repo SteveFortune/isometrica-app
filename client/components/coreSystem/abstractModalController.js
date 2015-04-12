@@ -31,14 +31,13 @@ app.controller('AbstractModelController', [
 	};
 
 	/**
-	 * Can we delete the collection at the moment? Currently just returns true.
+	 * Can we delete the collection at the moment?
 	 *
-	 * @todo What are the requirements here?
 	 * @return boolean
 	 * @protected
 	 */
 	$scope.canDelete = function() {
-		return true;
+		return $scope.collection.length > 0;
 	};
 
 	/**
@@ -72,7 +71,16 @@ app.controller('AbstractModelController', [
 	 * @todo How do we manage delete?
 	 * @protected
 	 */
-	$scope.delete = function() {};
+	$scope.delete = function() {
+		$modal.open({
+			templateUrl: '/components/coreSystem/confirm/confirmModal.html',
+			controller : 'ConfirmModalController',
+		}).result.then(function(confirmed) {
+			if (confirmed) {
+				$scope.collection = [];				
+			}
+		});
+	};
 
 	/**
 	 * Appends an empty object onto the collection.

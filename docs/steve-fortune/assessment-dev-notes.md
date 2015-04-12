@@ -40,3 +40,9 @@ _Implemented v6 design. Found Jack Herbert's HTML_
 
 	- The rendering of the role entities might change completely independently of the products and services.
 	- Implementing a 'generic' modal dialog might tie us into a limiting design that we may have to revert later down the line anyway, if the 2 entity attributes diverge significantly.
+
+
+### Assumption: Deleting Lists
+
+- Not sure how the 'trash' button is meant to be implemented.
+- Assumed that its meant to just clear the list.
