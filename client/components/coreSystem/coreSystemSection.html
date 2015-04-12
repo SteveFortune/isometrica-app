@@ -3,18 +3,22 @@
 	<div class="panel-body">
 		<ul ng-class="{'panel-last': isPanelLast, 'core-items': true}">
 			<li ng-repeat='item in collection'>
-				<div class="core-item">
-					<h4 class="core-item-title">{{ item.title }}</h4>
-					<div ng-if='tileIcon'>
-						<i ng-class="['fa', tileIcon]"></i>
+				<a ng-click="emitEdit(item)">
+					<div class="core-item">
+						<h4 class="core-item-title">{{ item.name }}</h4>
+						<div ng-if='tileIcon'>
+							<i ng-class="['fa', tileIcon]"></i>
+						</div>
 					</div>
-				</div>
+				</a>
 			</li>
 			<li>
-				<div class="core-item core-item-empty">
-					<i class="fa fa-plus-circle"></i>
-					<h4 class="core-item-title">Add</h4>
-				</div>
+				<a ng-click="emitNew()">
+					<div class="core-item core-item-empty">
+						<i class="fa fa-plus-circle"></i>
+						<h4 class="core-item-title">Add</h4>
+					</div>
+				</a>
 			</li>
 		</ul>
 	</div>

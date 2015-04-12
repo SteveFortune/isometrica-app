@@ -8,22 +8,11 @@ var app = angular.module('resilify');
  * the data access operations more easily because they would all be encapsulated in
  * services.
  *
+ * It also encapsulates all of the nasty mocking I've done for demonstration.
+ *
  * @author Steve Fortune
  */
 app.service('PlanService', ['Plan', function(Plan) {
-
-	/**
- 	 * Creates a mock associated objects with the given title.
-	 *
-	 * @private
-	 * @param	title	A string title for the object
-	 * @return 	object
-	 */
-	var mockAssociatedObject = function(title) {
-		return {
-			title: title,
-		};
-	};
 
 	/**
 	 * A private method / function that attaches some fake data to a plan.
@@ -34,8 +23,10 @@ app.service('PlanService', ['Plan', function(Plan) {
 	 */
 	var mockAssociatedData = function(plan) {
 
-		var mapEnum = function(title) {
-			return mockAssociatedObject(title);
+		var mapEnum = function(name) {
+			return {
+				name: name,
+			};
 		};
 
 		return angular.extend({

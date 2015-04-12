@@ -2,14 +2,12 @@
 var app = angular.module('resilify');
 
 /**
- * The controller for the core system view.
- *
  * @route `/core-system/:planId`
  * @author Steve Fortune
  */
 app.controller('CoreSystemController',
-	['$scope', '$modal', '$state', '$stateParams', '$timeout', 'growl', 'PlanService',
-	function($scope, $modal, $state, $stateParams, $timeout, growl, PlanService) {
+	['$scope', '$modal', '$state', '$stateParams', 'PlanService',
+	function($scope, $modal, $state, $stateParams, PlanService) {
 
 		var planId = $stateParams.planId;
 		var plan = PlanService.findPlan(planId);
@@ -21,12 +19,70 @@ app.controller('CoreSystemController',
 			$scope.plan = plan;
 		}
 
+		/**
+		 * @note Handles -y endings as well.
+		 * @param	str		string
+		 * @return 	string	Plurified string
+		 */
+		var plurify = function(str) {
+			if (str.slice(-1) === 'y') {
+				str = str.substring(0, str.length - 1) + 'ies';
+			} else {
+				str = str + 's';
+			}
+			return str;
+		};
+
+		/**
+		 * @param 	str 	string
+		 * @return 	string
+		 */
+		var firstLetterToUpper = function(str) {
+			return str.charAt(0).toUpperCase() + str.slice(1);
+		};
+
+		/**
+		 * @param 	entity			object
+		 * @param	controllerName	string
+		 * @private
+		 */
+		var showModalDialog = function(type, entity) {
+
+			var modalDialog = $modal.open({
+				templateUrl: '/components/coreSystem/' + plurify(type) + '/' + type + 'Modal.html',
+				controller : firstLetterToUpper(type) + 'ModalController',
+				resolve : {
+					entity : function () {
+					  return entity;
+					}
+				}
+			});
+
+			modalDialog.result.then(function(item) {
+				// If is new, append to the collection, Else refresh item
+			});
+
+		};
+
+		/**
+		 * @private
+		 */
+		$scope.$on('collection.item.edit', function(e, args) {
+			showModalDialog(args.entityType, args.entity);
+		});
+
+		/**
+		 * @see `collection.item.edit`
+		 * @private
+		 */
+		$scope.$on('collection.item.new', function(e, args) {
+			showModalDialog(args.entityType);
+		});
+
 	}
 ]);
 
 /**
- * Simple directive for the core system navigation header.
- *
  * @author Steve Fortune
  */
 app.directive('resilifyCoreSystemHeader', function() {
@@ -38,8 +94,6 @@ app.directive('resilifyCoreSystemHeader', function() {
 });
 
 /**
- * Simple directive for the core system navigation footer.
- *
  * @author Steve Fortune
  */
 app.directive('resilifyCoreSystemFooter', function() {
@@ -54,12 +108,13 @@ app.directive('resilifyCoreSystemFooter', function() {
  * Directive that renders a collection of given items in a grid. The icon displayed
  * in each tile of the grid is configurable, as is the icon of the '+' tile.
  *
- * Items in the collection must conform to the following inferred protocol:
- * - title, string property
- * - @todo What else?
+ * Items in the collection must have a `name` attribute.
  *
- * See the directive's isolated scope for attributes.
+ * The entity-type attribute is particularly important, as it allows parent scopes to
+ * differentiate between the source of events. If the entity-type attribute is omitted
+ * from the directive, events are not emitted.
  *
+ * @see The directive's isolated scope for attributes.
  * @author Steve Fortune
  */
 app.directive('resilifyCoreSystemSection', function(){
@@ -69,6 +124,7 @@ app.directive('resilifyCoreSystemSection', function(){
 		transclude: true,
 		scope: {
 			'collection': '=',
+			'entityType': '@',
 			'sectionId': '@',
 			'tileIcon': '@',
 			'isPanelLast': '@',
@@ -77,14 +133,48 @@ app.directive('resilifyCoreSystemSection', function(){
 		controller: ['$scope', function($scope) {
 
 			/**
-			 * Is the directive initialised as collapsed? Work around to the fact that
-			 * you can't use the `typeof` operator in templation expressions.
-			 *
 			 * @return boolean
 			 */
 			$scope.isCollapsed = function() {
 				return typeof $scope.collapsed === 'undefined' || $scope.collapsed === true;
 			};
+
+			/**
+			 * This directive will only emit events if it has been configured with an
+			 * entityType.
+			 *
+			 * @return boolean
+			 */
+			$scope.canEmit = function() {
+				return typeof $scope.entityType !== 'undefined';
+			};
+
+			/**
+			 * @param	entity	object
+			 * @protected
+			 */
+			$scope.emitEdit = function(entity) {
+				if (!$scope.canEmit()) {
+					return;
+				}
+				$scope.$emit('collection.item.edit', {
+					entity: entity,
+					entityType: $scope.entityType
+				});
+			};
+
+			/**
+			 * @protected
+			 */
+			$scope.emitNew = function() {
+				if (!$scope.canEmit()) {
+					return;
+				}
+				$scope.$emit('collection.item.new', {
+					entityType: $scope.entityType
+				});
+			};
+
 		}],
 	};
 });

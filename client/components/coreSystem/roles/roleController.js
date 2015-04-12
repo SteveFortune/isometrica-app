@@ -6,13 +6,13 @@ var app = angular.module('resilify');
  *
  * @author Steve Fortune
  */
-app.controller('RoleController', [
-	'role', '$controller',
-	function(role, $controller){
+app.controller('RoleModalController', [
+	'entity', '$controller', '$scope',
+	function(entity, $controller, $scope){
 
 	$controller('AbstractModelController', {
 		$scope: $scope,
-		entity: role,
+		entity: entity
 	});
 
 }]);
