@@ -2,13 +2,8 @@
 var app = angular.module('resilify');
 
 /**
- * Service for the performing CRUD operations on Plans. The reason I've implemented
- * a service here is to abstract away data access operations from the controller layer.
- * In the future for example, if we move away from loopback we'd be able to refactor
- * the data access operations more easily because they would all be encapsulated in
- * services.
- *
- * It also encapsulates all of the nasty mocking I've done for demonstration.
+ * Service for the encapsulating my CRUD operations and hide away all the
+ * ugly mocking I'm doing for the purpose of the assessment.
  *
  * @author Steve Fortune
  */
@@ -19,7 +14,7 @@ app.service('PlanService', ['Plan', function(Plan) {
 	 * This is used as demonstrational data for an assessment.
 	 *
 	 * @private
-	 * @param	plan	A plan to attach mock associated objects to.
+	 * @param	plan	object	A plan to attach mock associated objects to.
 	 */
 	var mockAssociatedData = function(plan) {
 
