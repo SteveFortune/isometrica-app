@@ -57,14 +57,14 @@
                 <i class="fa fa-long-arrow-right right-arrow"></i>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Suppliers &amp; outsource partners <span class="badge">{{ plan.activitiesProcesses.length }}</span></h4>
+                        <h4 class="panel-title">Suppliers &amp; outsource partners <span class="badge">4</span></h4>
                     </div>
                 </div>
             </div>
 
             <div ng-click="showModalDialog('activitiesProcesses')">
                 <div class="panel-heading panel-heading-activities">
-                    <h3 class="panel-title">Activities &amp; processes <span class="badge">6</span></h3>
+                    <h3 class="panel-title">Activities &amp; processes <span class="badge">{{ plan.activitiesProcesses.length }}</span></h3>
                     <resilify-core-system-section
                         new="false"
                         collection="plan.activitiesProcesses"
