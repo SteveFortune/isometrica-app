@@ -1,19 +1,19 @@
 
-<div ng-class="{'collapse': isCollapsed()}" id="{{ sectionId }}">
+<div id="{{ sectionId }}">
 	<div class="panel-body">
-		<ul ng-class="{'panel-last': isPanelLast, 'core-items': true}">
+		<ul ng-class="core-items">
 			<li ng-repeat='item in collection'>
-				<a ng-click="emitEdit($index)">
+				<a ng-click="onEditItem({collection: collection, entity: entity, index: $index})">
 					<div class="core-item">
 						<h4 class="core-item-title">{{ item.name }}</h4>
 						<div ng-if='tileIcon'>
-							<i ng-class="['fa', tileIcon]"></i>
+							<i class="fa {{ tileIcon || '' }}"></i>
 						</div>
 					</div>
 				</a>
 			</li>
 			<li>
-				<a ng-click="emitNew()">
+				<a ng-click="onNewItem({collection: collection})">
 					<div class="core-item core-item-empty">
 						<i class="fa fa-plus-circle"></i>
 						<h4 class="core-item-title">Add</h4>

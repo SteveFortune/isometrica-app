@@ -20,20 +20,7 @@ app.controller('CoreSystemController',
 		}
 
 		/**
-		 * @note Handles -y endings as well.
-		 * @param	str		string
-		 * @return 	string	Plurified string
-		 */
-		var plurify = function(str) {
-			if (str.slice(-1) === 'y') {
-				str = str.substring(0, str.length - 1) + 'ies';
-			} else {
-				str = str + 's';
-			}
-			return str;
-		};
-
-		/**
+		 * @private
 		 * @param 	str 	string
 		 * @return 	string
 		 */
@@ -48,38 +35,39 @@ app.controller('CoreSystemController',
 		 * @return	object	The new modal dialog
 		 * @private
 		 */
-		var showModalDialog = function(type, entity) {
-			return $modal.open({
-				templateUrl: '/components/coreSystem/' + plurify(type) + '/' + type + 'Modal.html',
-				controller : firstLetterToUpper(type) + 'ModalController',
+		$scope.showModalDialog = function(collectionKey) {
+
+			if (!$scope.plan[collectionKey]) {
+				throw collectionKey + " is an invalid colleciton key";
+			}
+
+			$modal.open({
+				templateUrl: '/components/coreSystem/' + collectionKey + '/' + collectionKey + 'Modal.html',
+				controller : firstLetterToUpper(collectionKey) + 'ModalController',
 				resolve : {
-					entity : function () {
-					  return entity;
+					collection : function() {
+					  return $scope.plan[collectionKey];
 					}
 				}
+			}).result.then(function(args) {
+				$scope.plan[collectionKey] = args.collection;
 			});
+			
 		};
 
 		/**
 		 * @private
 		 */
-		$scope.$on('collection.entity.edit', function(ev, type, collection, index) {
-			var entity = collection[index];
-			showModalDialog(type, entity).result.then(function(args) {
-				collection[index] = args.entity;
-			});
-		});
+		$scope.onEditActivity = function(collection, entity, index) {
+			/// @todo Handle this somehow... ?
+		};
 
 		/**
-		 * Pushes the new entity to the collection.
-		 *
 		 * @private
 		 */
-		$scope.$on('collection.entity.new', function(ev, type, collection) {
-			showModalDialog(type).result.then(function(args) {
-				collection.push(args.entity);
-			});
-		});
+		$scope.onNewActivity = function(collection) {
+			/// @todo Handle this somehow... ?
+		};
 
 	}
 ]);
@@ -112,11 +100,9 @@ app.directive('resilifyCoreSystemFooter', function() {
  *
  * Items in the collection must have a `name` attribute.
  *
- * The entity-type attribute is particularly important, as it allows parent scopes to
- * differentiate between the source of events. If the entity-type attribute is omitted
- * from the directive, events are not emitted.
+ * Provide `onItemClick` and `onNewItem` attribute callbacks to handle manipulating the
+ * collection.
  *
- * @see The directive's isolated scope for attributes.
  * @author Steve Fortune
  */
 app.directive('resilifyCoreSystemSection', function(){
@@ -126,61 +112,10 @@ app.directive('resilifyCoreSystemSection', function(){
 		transclude: true,
 		scope: {
 			'collection': '=',
-			'entityType': '@',
 			'sectionId': '@',
 			'tileIcon': '@',
-			'isPanelLast': '@',
-			'collapsed': '@'
-		},
-		controller: ['$scope', function($scope) {
-
-			/**
-			 * @return boolean
-			 */
-			$scope.isCollapsed = function() {
-				return typeof $scope.collapsed === 'undefined' || $scope.collapsed === true;
-			};
-
-			/**
-			 * This directive will only emit events if it has been configured with an
-			 * entityType.
-			 *
-			 * @return boolean
-			 */
-			$scope.canEmit = function() {
-				return typeof $scope.entityType !== 'undefined';
-			};
-
-			/**
-			 * @param	index	number
-			 * @protected
-			 */
-			$scope.emitEdit = function(index) {
-				if (!$scope.canEmit()) {
-					return;
-				}
-				$scope.$emit(
-					'collection.entity.edit',
-					$scope.entityType,
-					$scope.collection,
-					index
-				);
-			};
-
-			/**
-			 * @protected
-			 */
-			$scope.emitNew = function() {
-				if (!$scope.canEmit()) {
-					return;
-				}
-				$scope.$emit(
-					'collection.entity.new',
-					$scope.entityType,
-					$scope.collection
-				);
-			};
-
-		}],
+			'onEditItem': '&',
+			'onNewItem': '&'
+		}
 	};
 });

@@ -7,53 +7,91 @@ var app = angular.module('resilify');
  * @author Steve Fortune
  */
 app.controller('AbstractModelController', [
-	'entity', '$scope', '$modal', '$modalInstance',
-	function(entity, $scope, $modal, $modalInstance) {
+	'$scope', '$modal', '$modalInstance', 'title', 'collection', 'limit',
+	function($scope, $modal, $modalInstance, title, collection, limit) {
 
 	/**
-	 * Returns the entity's name, or an appropriate alternative string.
+	 * The title of the dialog.
 	 *
-	 * @return string
+	 * @var string
 	 */
- 	$scope.entityName = function() {
-		var name;
-		if ($scope.isNew) {
-			name = 'New'
-		} else if ($scope.entity.name) {
-			name = $scope.entity.name;
-		} else {
-			name = 'Entity';
-		}
-		return name;
+ 	$scope.title = title;
+
+	/**
+	 * The collection of entities that we're manipulating in our modal form.
+	 *
+	 * @note A working copy of this collection is manipulated. Parent controllers
+	 * 		 should replace their collection with this copy via the result promise.
+	 * @var object
+	 */
+	$scope.collection = collection ? angular.copy(collection) : [];
+
+	/**
+	 * Can we save the collection? Determined based on whether a collection form
+	 * exists with the scope and its valid.
+	 *
+	 * @return boolean
+	 * @protected
+	 */
+	$scope.canSave = function() {
+		console.log('Is valid? ' + $scope.collectionForm.$valid);
+		return !$scope.collectionForm || $scope.collectionForm.$valid;
 	};
 
 	/**
-	 * The entity that we're manipulating in our modal form.
+	 * Can we delete the collection at the moment? Currently just returns true.
 	 *
-	 * @var object
+	 * @todo What are the requirements here?
+	 * @return boolean
+	 * @protected
 	 */
-	$scope.entity = entity ? angular.copy(entity) : {};
+	$scope.canDelete = function() {
+		return true;
+	};
 
 	/**
-	 * Is the entity being manipulated new?
+	 * Has the collection reached its limit?
 	 *
-	 * @var boolean
+	 * @return boolean
+	 * @protected
 	 */
-	$scope.isNew = !entity;
+	$scope.canAdd = function() {
+		return $scope.collection.length < limit;
+	};
 
 	/**
-	 * Closes the controller with, passing an hash representing its state.
+	 * Closes the modal instance and passes a hash containing the working collection
+	 * copy to persist.
 	 *
 	 * @protected
 	 */
-	$scope.saveAndClose = function() {
-		if ($scope.entityForm && !$scope.entityForm.$valid) {
+	$scope.save = function() {
+		if (!$scope.canSave()) {
 			return;
 		}
 		$modalInstance.close({
-			entity: $scope.entity,
-			isNew: $scope.isNew
+			collection: $scope.collection,
 		});
+	};
+
+	/**
+	 * Does nothing yet.
+	 *
+	 * @todo How do we manage delete?
+	 * @protected
+	 */
+	$scope.delete = function() {};
+
+	/**
+	 * Appends an empty object onto the collection.
+	 *
+	 * @protected
+	 */
+	$scope.addToCollection = function() {
+		if (!$scope.canAdd()) {
+			return;
+		}
+		$scope.collection.push({});
 	};
 
 }]);
