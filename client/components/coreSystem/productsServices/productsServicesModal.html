@@ -1,36 +1,37 @@
+
 <div class="modal-content">
-	<form name="collectionForm" class="form-horizontal" novalidate>
+	<form class="form-horizontal" name="collectionForm" novalidate>
 		<resilify-modal-header
+			title="Products &amp; Services"
 			can-save="canSave()"
 			can-delete="canDelete()"
 			on-delete="delete()"
-			title="Roles"
 			on-save="save()">
 		</resilify-modal-header>
 		<div class="modal-body">
 			<div class="panel panel-default" ng-repeat="item in collection">
-				<div class="panel-heading" href="#role-{{ $index }}" data-toggle="collapse">
+				<div class="panel-heading" href="#products-{{ $index }}" data-toggle="collapse">
 					<div class="form-group">
-						<label class="control-label col-sm-3">Role Name</label>
+						<label class="control-label col-sm-3">Name</label>
 						<div class="col-sm-9">
-							<input name="roleName{{ $index }}" class="form-control" type="text" ng-model="item.name" required="">
-							<div ng-show="collectionForm['roleName' + $index].$touched && collectionForm['roleName' + $index].$error.required">
+							<input name="name{{ $index }}" class="form-control" type="text" ng-model="item.name" required="">
+							<div ng-show="collectionForm['name' + $index].$touched && collectionForm['name' + $index].$error.required">
 								<div>Please enter a role name.</div>
 							</div>
 						</div>
 					</div>
-					<div class="collapse" id="role-{{ $index }}">
+					<div class="collapse" id="products-{{ $index }}">
 						<div class="form-group">
 							<label class="control-label col-sm-3">Notes</label>
 							<div class="col-sm-9">
-								<textarea class="form-control" placeholder="Optional" ng-model="item.notes"></textarea>
+								<textarea class="form-control" ng-model="item.notes" placeholder="Optional"></textarea>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<resilify-modal-footer
-				title="Add another role"
+				title="Add another product or service"
 				can-add="canAdd()"
 				on-add="addToCollection()">
 			</resilify-modal-footer>

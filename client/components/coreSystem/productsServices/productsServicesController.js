@@ -2,9 +2,11 @@
 var app = angular.module('resilify');
 
 /**
+ * @note This collection is rendered almost identically to the roles collection.
+ *    	 Maybe we could have a generic 'BasicCollectionModalController'... ?
  * @author Steve Fortune
  */
-app.controller('RolesModalController', [
+app.controller('ProductsServicesModalController', [
 	'$controller', '$scope', '$modal', '$modalInstance', 'collection',
 	function($controller, $scope, $modal, $modalInstance, collection){
 
@@ -12,6 +14,7 @@ app.controller('RolesModalController', [
 		$scope: $scope,
 		$modal: $modal,
 		$modalInstance: $modalInstance,
+		title: 'Products and Services',
 		collection: collection,
 		limit: 20
 	});

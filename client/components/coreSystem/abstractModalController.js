@@ -7,15 +7,8 @@ var app = angular.module('resilify');
  * @author Steve Fortune
  */
 app.controller('AbstractModelController', [
-	'$scope', '$modal', '$modalInstance', 'title', 'collection', 'limit',
-	function($scope, $modal, $modalInstance, title, collection, limit) {
-
-	/**
-	 * The title of the dialog.
-	 *
-	 * @var string
-	 */
- 	$scope.title = title;
+	'$scope', '$modal', '$modalInstance', 'collection', 'limit',
+	function($scope, $modal, $modalInstance, collection, limit) {
 
 	/**
 	 * The collection of entities that we're manipulating in our modal form.
@@ -34,7 +27,6 @@ app.controller('AbstractModelController', [
 	 * @protected
 	 */
 	$scope.canSave = function() {
-		console.log('Is valid? ' + $scope.collectionForm.$valid);
 		return !$scope.collectionForm || $scope.collectionForm.$valid;
 	};
 
