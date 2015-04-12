@@ -7,8 +7,8 @@ var app = angular.module('resilify');
  * @author Steve Fortune
  */
 app.controller('AbstractModelController', [
-	'$scope', '$modal', '$modalInstance', 'collection', 'limit',
-	function($scope, $modal, $modalInstance, collection, limit) {
+	'$scope', '$modal', '$modalInstance', 'collection', 'limit', '$rootScope',
+	function($scope, $modal, $modalInstance, collection, limit, $rootScope) {
 
 	/**
 	 * The collection of entities that we're manipulating in our modal form.
@@ -77,7 +77,7 @@ app.controller('AbstractModelController', [
 			controller : 'ConfirmModalController',
 		}).result.then(function(confirmed) {
 			if (confirmed) {
-				$scope.collection = [];				
+				$scope.collection = [];
 			}
 		});
 	};
@@ -93,5 +93,32 @@ app.controller('AbstractModelController', [
 		}
 		$scope.collection.push({});
 	};
+
+	/**
+	 * Listens to close events on the modal stack to prevent closing immediately if
+	 * the form is dirty
+  	 *
+	 * @warning This *does not work*. At all.
+	 * @protected
+	 */
+	$scope.$on('modal.closing', function() {
+		if ($scope.collectionForm.$dirty) {
+			$modal.open({
+				templateUrl: '/components/coreSystem/confirm/confirmModal.html',
+				controller : 'ConfirmModalController',
+				resolve: {
+					title: function() {
+						return 'Are you sure you want to exit without saving ' +
+							'your changes?';
+					},
+				},
+			}).result.then(function(confirmed) {
+				$scope.collectionForm.$dirty = !confirmed;
+			});
+		}
+		return {
+			defaultPrevented: $scope.collectionForm.$dirty
+		};
+	});
 
 }]);
