@@ -54,7 +54,7 @@ app.controller('CoreSystemController',
 				controller : firstLetterToUpper(type) + 'ModalController',
 				resolve : {
 					entity : function () {
-					  return angular.copy(entity);
+					  return entity;
 					}
 				}
 			});

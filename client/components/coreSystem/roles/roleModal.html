@@ -1,9 +1,9 @@
 <div>
 	<div class="modal-content">
-		<form class="form-horizontal">
+		<form name="entityForm" novalidate class="form-horizontal">
 			<div class="modal-header clearfix">
 				<div class="btn-group pull-right">
-					<button type="button" class="btn btn-link" ng-click="saveAndClose()">
+					<button type="button" class="btn btn-link" ng-disabled="!entityForm.$valid" ng-click="saveAndClose()">
 						<i class="fa fa-lg fa-check"></i>
 					</button>
 				</div>
@@ -11,18 +11,21 @@
 			</div>
 			<div class="modal-body">
 				<div class="panel panel-default">
-					<div class="panel-heading" href="#roles-1" data-toggle="collapse">
+					<div class="panel-heading">
 						<div class="form-group">
 							<label class="control-label col-sm-3">Role Name</label>
 							<div class="col-sm-9">
-								<input class="form-control" type="text" ng-model="entity.name">
+								<input class="form-control" name="roleName" type="text" ng-model="entity.name" required>
+								<div ng-show="entityForm.roleName.$touched && entityForm.roleName.$error.required">
+									<div>Please enter a role name.</div>
+								</div>
 							</div>
 						</div>
-						<div class="collapse" id="roles-1">
+						<div>
 							<div class="form-group">
 								<label class="control-label col-sm-3">Notes</label>
 								<div class="col-sm-9">
-									<textarea class="form-control" placeholder="optional" ng-model="entity.notes"></textarea>
+									<textarea class="form-control" placeholder="Optional" ng-model="entity.notes"></textarea>
 								</div>
 							</div>
 						</div>

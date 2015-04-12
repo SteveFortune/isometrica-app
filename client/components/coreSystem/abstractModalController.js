@@ -30,9 +30,9 @@ app.controller('AbstractModelController', [
 	/**
 	 * The entity that we're manipulating in our modal form.
 	 *
-	 * @var object | null
+	 * @var object
 	 */
-	$scope.entity = entity || {};
+	$scope.entity = entity ? angular.copy(entity) : {};
 
 	/**
 	 * Is the entity being manipulated new?
@@ -47,6 +47,9 @@ app.controller('AbstractModelController', [
 	 * @protected
 	 */
 	$scope.saveAndClose = function() {
+		if ($scope.entityForm && !$scope.entityForm.$valid) {
+			return;
+		}
 		$modalInstance.close({
 			entity: $scope.entity,
 			isNew: $scope.isNew
