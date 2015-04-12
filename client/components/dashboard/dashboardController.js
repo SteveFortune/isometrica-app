@@ -37,7 +37,7 @@ app.controller( 'DashboardController',
 	var stateForPlan = function(plan) {
 		var state;
 		switch (plan.type) {
-			case 'V5 Core System' :
+			case 'Core System (V6 Design)' :
 				state = 'core-system';
 				break;
 			default :
