@@ -2,577 +2,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-  
-  <title>Business Overview</title>
-  <!-- 1.0.0 -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 
-	<!-- Bootstrap and Bootcards JS -->
-	<script src="./assets/libs/jquery/dist/jquery.min.js"></script>
-	<script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="./assets/libs/bootcards/dist/js/bootcards.min.js"></script>
-	
-	<!-- Bootcards CSS for desktop: -->
-	<link rel="stylesheet" href="./assets/libs/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="./assets/libs/bootstrap/dist/css/bootstrap.min.css">
-	
-	<script>
-	// Platform Detection (testing only)
-	$( document ).ready(function() {
-		if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
-			var cssLink = $("<link rel='stylesheet' type='text/css' href='./assets/libs/bootcards/dist/css/bootcards-ios.min.css'>");
-			$("head").append(cssLink);	
-			$('body').addClass('ios');	
-     	}
-		else if( navigator.userAgent.match(/Android/i) ) {
-			var cssLink = $("<link rel='stylesheet' type='text/css' href='./assets/libs/bootcards/dist/css/bootcards-android.min.css'>");
-			$("head").append(cssLink);
-			$('body').addClass('android');
-		}
-		else
-		{
-			var cssLink = $("<link rel='stylesheet' type='text/css' href='./assets/libs/bootcards/dist/css/bootcards-desktop.min.css'>");
-			$("head").append(cssLink);
-			$('body').addClass('desktop');
-		}
-	});
-	</script> 
+    <title>Business Overview</title>
+    <!-- 1.0.0 -->
 
-	<link rel="stylesheet" href="css/resilify.css">
-	
+    <!-- Bootstrap and Bootcards JS -->
+    <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./assets/libs/bootcards/dist/js/bootcards.min.js"></script>
+
+    <!-- Bootcards CSS for desktop: -->
+    <link rel="stylesheet" href="./assets/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/libs/bootstrap/dist/css/bootstrap.min.css">
+
+    <script>
+    // Platform Detection (testing only)
+    $( document ).ready(function() {
+        if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+            var cssLink = $("<link rel='stylesheet' type='text/css' href='./assets/libs/bootcards/dist/css/bootcards-ios.min.css'>");
+            $("head").append(cssLink);
+            $('body').addClass('ios');
+        }
+        else if( navigator.userAgent.match(/Android/i) ) {
+            var cssLink = $("<link rel='stylesheet' type='text/css' href='./assets/libs/bootcards/dist/css/bootcards-android.min.css'>");
+            $("head").append(cssLink);
+            $('body').addClass('android');
+        }
+        else
+        {
+            var cssLink = $("<link rel='stylesheet' type='text/css' href='./assets/libs/bootcards/dist/css/bootcards-desktop.min.css'>");
+            $("head").append(cssLink);
+            $('body').addClass('desktop');
+        }
+    });
+    </script>
+
+    <link rel="stylesheet" href="css/resilify.css">
+
 </head>
 <body class="bootcards-fullheight resilify-core-page">
-  
-  <!-- fixed top navbar -->
-  <div class="navbar navbar-inverse navbar-fixed-top resilify-navbar-centered" role="navigation">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav navbar-left">
-        <li>
-          <a class="btn btn-link icon-only" href="#">
-          	<i class="fa fa-lg fa-arrow-left"></i>
-          </a>
-        </li>
-      </ul>  
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a class="btn btn-link icon-only" href="#">
-          	<i class="fa fa-lg fa-file-text"></i>
-          </a>
-        </li>
-      </ul>  
-        
-      <div class="navbar-header">
-        <span class="navbar-brand">
-        	Business Overview
-        </span>  
-      </div>        
+
+    <!-- fixed top navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top resilify-navbar-centered" role="navigation">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <a class="btn btn-link icon-only" href="#">
+                        <i class="fa fa-lg fa-arrow-left"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="btn btn-link icon-only" href="#">
+                        <i class="fa fa-lg fa-file-text"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="navbar-header">
+                <span class="navbar-brand">
+                    Business Overview
+                </span>
+            </div>
+        </div>
     </div>
-  </div>   
-
-  <div class="container core-container">
-
-    <div class="panel panel-default core-panel" id="corePanel">
-      <div class="panel-body">
-        <h2>IBM Corporation</h2>
-        <div class="panel panel-default">
-          <div class="offset right" id="interested-parties">
-            <i class="fa fa-long-arrow-left left-arrow"></i>
-            <i class="fa fa-long-arrow-right right-arrow"></i>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">Interested parties <span class="badge">12</span></h4>
-              </div>
-            </div>
-          </div>
-          <div class="panel-heading">
-            <h3 class="panel-title">Purpose</h3>
-          </div>
-          <div class="row core-split-sections">
-            <div class="col-sm-6">
-              <div class="panel-heading" data-toggle="modal" data-target="#editDepartments">
-                <h3 class="panel-title">Departments <span class="badge">5</span></h3>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="panel-heading" data-toggle="modal" data-target="#editRoles">
-                <h3 class="panel-title">Roles <span class="badge">3</span></h3>
-              </div>
-            </div>
-          </div>
-          <div class="panel-heading last" data-toggle="modal" data-target="#editProducts">
-            <h3 class="panel-title">Products &amp; services <span class="badge">8</span></h3>
-          </div>
-        </div>
-      </div>
-      <div class="activities-and-dependencies">
-        <div class="offset left" id="suppliers">
-          <i class="fa fa-long-arrow-left left-arrow"></i>
-          <i class="fa fa-long-arrow-right right-arrow"></i>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">Suppliers &amp; outsource partners <span class="badge">10</span></h4>
-            </div>
-          </div>
-        </div>
-        <div class="panel-heading panel-heading-activities" data-toggle="modal" data-target="#editActivities">
-          <ul class="core-items">
-            <li>
-              <div class="core-item">
-                <h4 class="core-item-title">Extrusion</h4>
-              </div>
-            </li>
-            <li>
-              <div class="core-item">
-                <h4 class="core-item-title">Thermoforming</h4>
-              </div>
-            </li>
-            <li>
-              <div class="core-item core-item-empty">
-                <i class="fa fa-gears"></i>
-                <h4 class="core-item-title">Activity</h4>
-              </div>
-            </li>
-            <li>
-              <div class="core-item core-item-empty">
-                <i class="fa fa-gears"></i>
-                <h4 class="core-item-title">Activity</h4>
-              </div>
-            </li>
-            <li>
-              <div class="core-item core-item-empty">
-                <i class="fa fa-gears"></i>
-                <h4 class="core-item-title">Activity</h4>
-              </div>
-            </li>
-          </ul>
-          <h3 class="panel-title">Activities &amp; processes <span class="badge">6</span></h3>          
-        </div>      
-        <div class="panel-heading">
-          <h3 class="panel-title">Dependencies <span class="badge">3</span></h3>
-        </div>
-      </div>
-      <div class="panel-heading last">
-        <h3 class="panel-title">Assets &amp; resources</h3>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- fixed bottom footer -->
-  <div class="navbar navbar-inverse navbar-fixed-bottom canvas-footer">
-    <div class="row">
-      <div class="col-sm-2">
-        <h4><span class="badge">1</span> Define departments &amp; roles</h4>
-      </div>
-      <div class="col-sm-2">
-        <h4><span class="badge">2</span> Define products &amp; services</h4>
-      </div>
-      <div class="col-sm-2">
-        <h4><span class="badge">3</span> Define key activities &amp; processes</h4>
-      </div>
-      <div class="col-sm-2">
-        <h4><span class="badge">4</span> Define dependencies</h4>
-      </div>
-      <div class="col-sm-2">
-        <h4><span class="badge">5</span> Define key suppliers</h4>
-      </div>
-      <div class="col-sm-2">
-        <h4><span class="badge">6</span> List interested parties</h4>
-      </div>
-    </div> 
-  </div>
-
-
-  <!-- Edit Departments -->
-  <div class="modal fade edit-item-details" id="editDepartments">
-    <div class="modal-dialog">
-      <div class="modal-content">	
-        <form class="form-horizontal">
-          <div class="modal-header clearfix">
-            <div class="btn-group pull-right">
-        	    <button type="button" class="btn btn-link" data-dismiss="modal">
-              	<i class="fa fa-lg fa-check"></i>
-              </button>
-            </div>    
-            <h4 class="modal-title">Departments</h4>
-          </div>
-          <div class="modal-body">
-            <div class="panel panel-default">
-              <div class="panel-heading" href="#departments-1" data-toggle="collapse">
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-3">Name</label>
-      		        <div class="col-sm-9">
-      			        <input class="form-control" type="text" value="Lorem">
-      		        </div>
-      	        </div>
-      	        <div class="collapse" id="departments-1">
-        	        <div class="form-group">
-        		        <label class="control-label col-sm-3">Manager</label>
-        		        <div class="col-sm-9">
-        			        <input class="form-control" type="text" placeholder="optional">
-        		        </div>
-        	        </div> 
-        	        <div class="form-group">
-        		        <label class="control-label col-sm-3">Related to</label>
-        		        <div class="col-sm-9">
-                      <input class="form-control" type="text" placeholder="optional">
-        		        </div>
-        	        </div>
-      	        </div>              
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" href="#departments-2" data-toggle="collapse">
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-3">Name</label>
-      		        <div class="col-sm-9">
-      			        <input class="form-control" type="text" value="Ipsum">
-      		        </div>
-      	        </div>
-      	        <div class="collapse" id="departments-2">
-        	        <div class="form-group">
-        		        <label class="control-label col-sm-3">Manager</label>
-        		        <div class="col-sm-9">
-        			        <input class="form-control" type="text" placeholder="optional">
-        		        </div>
-        	        </div> 
-        	        <div class="form-group">
-        		        <label class="control-label col-sm-3">Related to</label>
-        		        <div class="col-sm-9">
-                      <input class="form-control" type="text" placeholder="optional">
-        		        </div>
-        	        </div>
-      	        </div>              
-              </div>
-            </div>
-            <button class="btn btn-link btn-block">
-              Add another department
-            </button>
-          </div>
-        </form>          
-      </div>
-    </div>  
-  </div>
-
-
-
-  <!-- Edit Roles -->
-  <div class="modal fade edit-item-details" id="editRoles">
-    <div class="modal-dialog">
-      <div class="modal-content">	
-        <form class="form-horizontal">
-          <div class="modal-header clearfix">
-            <div class="btn-group pull-right">
-        	    <button type="button" class="btn btn-link" data-dismiss="modal">
-              	<i class="fa fa-lg fa-check"></i>
-              </button>
-            </div>    
-            <h4 class="modal-title">Roles</h4>
-          </div>
-          <div class="modal-body">
-            <div class="panel panel-default">
-              <div class="panel-heading" href="#roles-1" data-toggle="collapse">
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-3">Role Name</label>
-      		        <div class="col-sm-9">
-      			        <input class="form-control" type="text" value="Customer service">
-      		        </div>
-      	        </div>
-      	        <div class="collapse" id="roles-1">
-        	        <div class="form-group">
-        		        <label class="control-label col-sm-3">Notes</label>
-        		        <div class="col-sm-9">
-        			        <textarea class="form-control" placeholder="optional"></textarea>
-        		        </div>
-        	        </div> 
-      	        </div>              
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" href="#roles-2" data-toggle="collapse">
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-3">Role Name</label>
-      		        <div class="col-sm-9">
-      			        <input class="form-control" type="text" value="Another role">
-      		        </div>
-      	        </div>
-      	        <div class="collapse" id="roles-2">
-        	        <div class="form-group">
-        		        <label class="control-label col-sm-3">Notes</label>
-        		        <div class="col-sm-9">
-        			        <textarea class="form-control" placeholder="optional"></textarea>
-        		        </div>
-        	        </div> 
-      	        </div>              
-              </div>
-            </div>
-            <button class="btn btn-link btn-block">
-              Add another role
-            </button>
-          </div>
-        </form>          
-      </div>
-    </div>  
-  </div>
-  
-  
-  
-  <!-- Edit Products -->
-  <div class="modal fade edit-item-details" id="editProducts">
-    <div class="modal-dialog">
-      <div class="modal-content">	
-        <form class="form-horizontal">
-          <div class="modal-header clearfix">
-            <div class="btn-group pull-right">
-        	    <button type="button" class="btn btn-link" data-dismiss="modal">
-              	<i class="fa fa-lg fa-check"></i>
-              </button>
-            </div>    
-            <h4 class="modal-title">Products &amp; services</h4>
-          </div>
-          <div class="modal-body">
-            <div class="panel panel-default">
-              <div class="panel-heading" href="#products-1" data-toggle="collapse">
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-3">Name</label>
-      		        <div class="col-sm-9">
-      			        <input class="form-control" type="text" value="Lorem">
-      		        </div>
-      	        </div>
-      	        <div class="collapse" id="products-1">
-        	        <div class="form-group">
-        		        <label class="control-label col-sm-3">Notes</label>
-        		        <div class="col-sm-9">
-        			        <textarea class="form-control" placeholder="optional"></textarea>
-        		        </div>
-        	        </div> 
-      	        </div>              
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" href="#products-2" data-toggle="collapse">
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-3">Name</label>
-      		        <div class="col-sm-9">
-      			        <input class="form-control" type="text" value="Ipsum">
-      		        </div>
-      	        </div>
-      	        <div class="collapse" id="products-2">
-        	        <div class="form-group">
-        		        <label class="control-label col-sm-3">Notes</label>
-        		        <div class="col-sm-9">
-        			        <textarea class="form-control" placeholder="optional"></textarea>
-        		        </div>
-        	        </div> 
-      	        </div>              
-              </div>
-            </div>
-            <button class="btn btn-link btn-block">
-              Add another product or service
-            </button>
-          </div>
-        </form>          
-      </div>
-    </div>  
-  </div>
-
-
-
-  <!-- Edit Activities -->
-  <div class="modal fade edit-item-details" id="editActivities">
-    <div class="modal-dialog">
-      <div class="modal-content">	
-        <form class="form-horizontal">
-          <div class="modal-header clearfix">
-            <div class="btn-group pull-right">
-        	    <button type="button" class="btn btn-link" data-dismiss="modal">
-              	<i class="fa fa-lg fa-check"></i>
-              </button>
-            </div>    
-            <h4 class="modal-title">Activities &amp; processes</h4>
-          </div>
-          <div class="modal-body">
-            <div class="panel panel-default">
-              <div class="panel-heading" href="#activities-1" data-toggle="collapse">
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-3">Name</label>
-      		        <div class="col-sm-9">
-      			        <input class="form-control" type="text" value="Lorem">
-      		        </div>
-      	        </div>
-      	        <div class="collapse" id="activities-1">
-        	        <div class="form-group">
-        		        <label class="control-label col-sm-3">Notes</label>
-        		        <div class="col-sm-9">
-        			        <textarea class="form-control" placeholder="optional"></textarea>
-        		        </div>
-        	        </div> 
-        	        <div class="form-group">
-        		        <label class="control-label col-sm-3">Related to</label>
-        		        <div class="col-sm-9">
-          			     <input class="form-control" type="text" placeholder="optional">
-        		        </div>
-        	        </div>
-      	        </div>              
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" href="#activities-2" data-toggle="collapse">
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-3">Name</label>
-      		        <div class="col-sm-9">
-      			        <input class="form-control" type="text" value="Ipsum">
-      		        </div>
-      	        </div>
-      	        <div class="collapse" id="activities-2">
-        	        <div class="form-group">
-        		        <label class="control-label col-sm-3">Notes</label>
-        		        <div class="col-sm-9">
-        			        <textarea class="form-control" placeholder="optional"></textarea>
-        		        </div>
-        	        </div> 
-        	        <div class="form-group">
-        		        <label class="control-label col-sm-3">Related to</label>
-        		        <div class="col-sm-9">
-                      <input class="form-control" type="text" placeholder="optional">
-        		        </div>
-        	        </div>
-      	        </div>              
-              </div>
-            </div>
-            <button class="btn btn-link btn-block">
-              Add another key activity or process
-            </button>
-          </div>
-        </form>          
-      </div>
-    </div>  
-  </div>
-
-
-  <!-- Edit Core Item -->
-  <div class="modal fade edit-item-details" id="editCoreItem">
-    <div class="modal-dialog">
-      <div class="modal-content">	
-        <form class="form-horizontal">
-          <div class="modal-header clearfix">
-            <div class="btn-group pull-left">
-        	    <button type="button" class="btn btn-link" data-dismiss="modal">
-              	<i class="fa fa-lg fa-trash"></i>
-              </button>
-            </div>
-            <div class="btn-group pull-right">
-        	    <button type="button" class="btn btn-link" data-dismiss="modal">
-              	<i class="fa fa-lg fa-check"></i>
-              </button>
-            </div>    
-            <h4 class="modal-title">Department</h4>
-          </div>
-          <div class="modal-body item-title">
-            <input class="form-control" type="text" placeholder="Title..." value="Department name">
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label class="control-label col-sm-4">Manager</label>
-              <div class="col-sm-8">
-      	        <input class="form-control" type="text" placeholder="">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-sm-4">General notes</label>
-              <div class="col-sm-8">
-      	        <textarea class="form-control" rows="3"></textarea>
-              </div>
-            </div>
-          </div>
-      
-          <legend>
-            Key activities within department (optional)
-            <button type="button" class="btn btn-link pull-right icon-only">
-              <i class="fa fa-plus-circle"></i>
-            </button> 
-          </legend>   
-          
-          <div class="list-group" id="strategiesAndResources-">
-            <a class="list-group-item" href="#strategiesAndResources-strategyOptions-1">
-              <h4 class="list-group-item-heading">
-                Customer service
-              </h4>
-              <p class="list-group-item-text">
-                Lorem ipsum dolor est
-              </p>
-              <button type="button" class="btn btn-link pull-right icon-only">
-                <i class="fa fa-minus-circle"></i>
-              </button>        
-            </a>
-            <div class="collapse" id="strategiesAndResources-strategyOptions-1">
-              <div class="list-group-item">
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-4">Activity</label>
-      		        <div class="col-sm-8">
-      			        <input class="form-control" type="text" value="Customer service">
-      		        </div>
-      	        </div>
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-4">Details</label>
-      		        <div class="col-sm-8">
-      			        <textarea class="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
-      		        </div>
-      	        </div>
-              </div>
-            </div>
-            <a class="list-group-item" href="#strategiesAndResources-strategyOptions-2">
-              <h4 class="list-group-item-heading">
-                Handling warranty returns
-              </h4>
-              <p class="list-group-item-text">
-                Lorem ipsum dolor est
-              </p>
-              <button type="button" class="btn btn-link pull-right icon-only">
-                <i class="fa fa-minus-circle"></i>
-              </button>        
-            </a>
-            <div class="collapse" id="strategiesAndResources-strategyOptions-2">
-              <div class="list-group-item">
-                <div class="form-group">
-      		        <label class="control-label col-sm-4">Activity</label>
-      		        <div class="col-sm-8">
-      			        <input class="form-control" type="text" value="Customer service">
-      		        </div>
-      	        </div>
-      	        <div class="form-group">
-      		        <label class="control-label col-sm-4">Details</label>
-      		        <div class="col-sm-8">
-      			        <textarea class="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
-      		        </div>
-      	        </div>
-              </div>
-            </div>
-          </div>
-        </form>
-        <div class="modal-footer">
-        </div>            
-      </div>
-    </div>  
-  </div>
-
-
-  <script>
     
-  	$( ".core-item" ).click(function() {
-  		event.stopPropagation();
-  		$('#editCoreItem').modal('show');
-  	});
-  	
-  	$( ".edit-item-details .form-control").click(function() {
-  		event.stopPropagation();
-  	});
-  	
-  
-  </script>
+    <div class="container core-container">
+
+        <div class="panel panel-default core-panel" id="corePanel">
+            <div class="panel-body">
+                <h2>IBM Corporation</h2>
+                <div class="panel panel-default">
+                    <div class="offset right" id="interested-parties">
+                        <i class="fa fa-long-arrow-left left-arrow"></i>
+                        <i class="fa fa-long-arrow-right right-arrow"></i>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Interested parties <span class="badge">12</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Purpose</h3>
+                    </div>
+                    <div class="row core-split-sections">
+                        <div class="col-sm-6">
+                            <div class="panel-heading" data-toggle="modal" data-target="#editDepartments">
+                                <h3 class="panel-title">Departments <span class="badge">5</span></h3>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="panel-heading" data-toggle="modal" data-target="#editRoles">
+                                <h3 class="panel-title">Roles <span class="badge">3</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-heading last" data-toggle="modal" data-target="#editProducts">
+                        <h3 class="panel-title">Products &amp; services <span class="badge">8</span></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="activities-and-dependencies">
+                <div class="offset left" id="suppliers">
+                    <i class="fa fa-long-arrow-left left-arrow"></i>
+                    <i class="fa fa-long-arrow-right right-arrow"></i>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Suppliers &amp; outsource partners <span class="badge">10</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading panel-heading-activities" data-toggle="modal" data-target="#editActivities">
+                    <ul class="core-items">
+                        <li>
+                            <div class="core-item">
+                                <h4 class="core-item-title">Extrusion</h4>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="core-item">
+                                <h4 class="core-item-title">Thermoforming</h4>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="core-item core-item-empty">
+                                <i class="fa fa-gears"></i>
+                                <h4 class="core-item-title">Activity</h4>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="core-item core-item-empty">
+                                <i class="fa fa-gears"></i>
+                                <h4 class="core-item-title">Activity</h4>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="core-item core-item-empty">
+                                <i class="fa fa-gears"></i>
+                                <h4 class="core-item-title">Activity</h4>
+                            </div>
+                        </li>
+                    </ul>
+                    <h3 class="panel-title">Activities &amp; processes <span class="badge">6</span></h3>
+                </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dependencies <span class="badge">3</span></h3>
+                </div>
+            </div>
+            <div class="panel-heading last">
+                <h3 class="panel-title">Assets &amp; resources</h3>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- fixed bottom footer -->
+    <div class="navbar navbar-inverse navbar-fixed-bottom canvas-footer">
+        <div class="row">
+            <div class="col-sm-2">
+                <h4><span class="badge">1</span> Define departments &amp; roles</h4>
+            </div>
+            <div class="col-sm-2">
+                <h4><span class="badge">2</span> Define products &amp; services</h4>
+            </div>
+            <div class="col-sm-2">
+                <h4><span class="badge">3</span> Define key activities &amp; processes</h4>
+            </div>
+            <div class="col-sm-2">
+                <h4><span class="badge">4</span> Define dependencies</h4>
+            </div>
+            <div class="col-sm-2">
+                <h4><span class="badge">5</span> Define key suppliers</h4>
+            </div>
+            <div class="col-sm-2">
+                <h4><span class="badge">6</span> List interested parties</h4>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Edit Departments -->
+    <div class="modal fade edit-item-details" id="editDepartments">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header clearfix">
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-link" data-dismiss="modal">
+                                <i class="fa fa-lg fa-check"></i>
+                            </button>
+                        </div>
+                        <h4 class="modal-title">Departments</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" href="#departments-1" data-toggle="collapse">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Name</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="Lorem">
+                                    </div>
+                                </div>
+                                <div class="collapse" id="departments-1">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Manager</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="optional">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Related to</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="optional">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" href="#departments-2" data-toggle="collapse">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Name</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="Ipsum">
+                                    </div>
+                                </div>
+                                <div class="collapse" id="departments-2">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Manager</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="optional">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Related to</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="optional">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-link btn-block">
+                            Add another department
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Edit Roles -->
+    <div class="modal fade edit-item-details" id="editRoles">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header clearfix">
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-link" data-dismiss="modal">
+                                <i class="fa fa-lg fa-check"></i>
+                            </button>
+                        </div>
+                        <h4 class="modal-title">Roles</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" href="#roles-1" data-toggle="collapse">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Role Name</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="Customer service">
+                                    </div>
+                                </div>
+                                <div class="collapse" id="roles-1">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Notes</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" placeholder="optional"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" href="#roles-2" data-toggle="collapse">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Role Name</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="Another role">
+                                    </div>
+                                </div>
+                                <div class="collapse" id="roles-2">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Notes</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" placeholder="optional"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-link btn-block">
+                            Add another role
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Edit Products -->
+    <div class="modal fade edit-item-details" id="editProducts">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header clearfix">
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-link" data-dismiss="modal">
+                                <i class="fa fa-lg fa-check"></i>
+                            </button>
+                        </div>
+                        <h4 class="modal-title">Products &amp; services</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" href="#products-1" data-toggle="collapse">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Name</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="Lorem">
+                                    </div>
+                                </div>
+                                <div class="collapse" id="products-1">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Notes</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" placeholder="optional"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" href="#products-2" data-toggle="collapse">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Name</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="Ipsum">
+                                    </div>
+                                </div>
+                                <div class="collapse" id="products-2">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Notes</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" placeholder="optional"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-link btn-block">
+                            Add another product or service
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Edit Activities -->
+    <div class="modal fade edit-item-details" id="editActivities">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header clearfix">
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-link" data-dismiss="modal">
+                                <i class="fa fa-lg fa-check"></i>
+                            </button>
+                        </div>
+                        <h4 class="modal-title">Activities &amp; processes</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" href="#activities-1" data-toggle="collapse">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Name</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="Lorem">
+                                    </div>
+                                </div>
+                                <div class="collapse" id="activities-1">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Notes</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" placeholder="optional"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Related to</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="optional">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" href="#activities-2" data-toggle="collapse">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Name</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="Ipsum">
+                                    </div>
+                                </div>
+                                <div class="collapse" id="activities-2">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Notes</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" placeholder="optional"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Related to</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" placeholder="optional">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-link btn-block">
+                            Add another key activity or process
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Edit Core Item -->
+    <div class="modal fade edit-item-details" id="editCoreItem">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header clearfix">
+                        <div class="btn-group pull-left">
+                            <button type="button" class="btn btn-link" data-dismiss="modal">
+                                <i class="fa fa-lg fa-trash"></i>
+                            </button>
+                        </div>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-link" data-dismiss="modal">
+                                <i class="fa fa-lg fa-check"></i>
+                            </button>
+                        </div>
+                        <h4 class="modal-title">Department</h4>
+                    </div>
+                    <div class="modal-body item-title">
+                        <input class="form-control" type="text" placeholder="Title..." value="Department name">
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">Manager</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">General notes</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <legend>
+                        Key activities within department (optional)
+                        <button type="button" class="btn btn-link pull-right icon-only">
+                            <i class="fa fa-plus-circle"></i>
+                        </button>
+                    </legend>
+
+                    <div class="list-group" id="strategiesAndResources-">
+                        <a class="list-group-item" href="#strategiesAndResources-strategyOptions-1">
+                            <h4 class="list-group-item-heading">
+                                Customer service
+                            </h4>
+                            <p class="list-group-item-text">
+                                Lorem ipsum dolor est
+                            </p>
+                            <button type="button" class="btn btn-link pull-right icon-only">
+                                <i class="fa fa-minus-circle"></i>
+                            </button>
+                        </a>
+                        <div class="collapse" id="strategiesAndResources-strategyOptions-1">
+                            <div class="list-group-item">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Activity</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" value="Customer service">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Details</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="list-group-item" href="#strategiesAndResources-strategyOptions-2">
+                            <h4 class="list-group-item-heading">
+                                Handling warranty returns
+                            </h4>
+                            <p class="list-group-item-text">
+                                Lorem ipsum dolor est
+                            </p>
+                            <button type="button" class="btn btn-link pull-right icon-only">
+                                <i class="fa fa-minus-circle"></i>
+                            </button>
+                        </a>
+                        <div class="collapse" id="strategiesAndResources-strategyOptions-2">
+                            <div class="list-group-item">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Activity</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" value="Customer service">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Details</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+    $( ".core-item" ).click(function() {
+        event.stopPropagation();
+        $('#editCoreItem').modal('show');
+    });
+
+    $( ".edit-item-details .form-control").click(function() {
+        event.stopPropagation();
+    });
+
+
+    </script>
 
 
 </body>
