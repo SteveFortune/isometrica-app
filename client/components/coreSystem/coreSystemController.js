@@ -52,23 +52,8 @@ app.controller('CoreSystemController',
 			}).result.then(function(args) {
 				$scope.plan[collectionKey] = args.collection;
 			});
-			
-		};
 
-		/**
-		 * @private
-		 */
-		$scope.onEditActivity = function(collection, entity, index) {
-			/// @todo Handle this somehow... ?
 		};
-
-		/**
-		 * @private
-		 */
-		$scope.onNewActivity = function(collection) {
-			/// @todo Handle this somehow... ?
-		};
-
 	}
 ]);
 
@@ -114,6 +99,7 @@ app.directive('resilifyCoreSystemSection', function(){
 			'collection': '=',
 			'sectionId': '@',
 			'tileIcon': '@',
+			'new': '=',
 			'onEditItem': '&',
 			'onNewItem': '&'
 		}

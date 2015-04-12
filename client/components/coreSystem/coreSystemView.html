@@ -49,51 +49,36 @@
             </div>
         </div>
         <div class="activities-and-dependencies">
+
+            <!-- Activities -->
+
             <div class="offset left" id="suppliers">
                 <i class="fa fa-long-arrow-left left-arrow"></i>
                 <i class="fa fa-long-arrow-right right-arrow"></i>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Suppliers &amp; outsource partners <span class="badge">10</span></h4>
+                        <h4 class="panel-title">Suppliers &amp; outsource partners <span class="badge">{{ plan.activitiesProcesses.length }}</span></h4>
                     </div>
                 </div>
             </div>
-            <div class="panel-heading panel-heading-activities" data-toggle="modal" data-target="#editActivities">
-                <ul class="core-items">
-                    <li>
-                        <div class="core-item">
-                            <h4 class="core-item-title">Extrusion</h4>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="core-item">
-                            <h4 class="core-item-title">Thermoforming</h4>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="core-item core-item-empty">
-                            <i class="fa fa-gears"></i>
-                            <h4 class="core-item-title">Activity</h4>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="core-item core-item-empty">
-                            <i class="fa fa-gears"></i>
-                            <h4 class="core-item-title">Activity</h4>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="core-item core-item-empty">
-                            <i class="fa fa-gears"></i>
-                            <h4 class="core-item-title">Activity</h4>
-                        </div>
-                    </li>
-                </ul>
-                <h3 class="panel-title">Activities &amp; processes <span class="badge">6</span></h3>
+
+            <div ng-click="showModalDialog('activitiesProcesses')">
+                <div class="panel-heading panel-heading-activities">
+                    <h3 class="panel-title">Activities &amp; processes <span class="badge">6</span></h3>
+                    <resilify-core-system-section
+                        new="false"
+                        collection="plan.activitiesProcesses"
+                        tile-icon="fa-gears">
+                    </resilify-core-system-section>
+                </div>
             </div>
+
+            <!-- Dependencies -->
+
             <div class="panel-heading">
                 <h3 class="panel-title">Dependencies <span class="badge">3</span></h3>
             </div>
+
         </div>
         <div class="panel-heading last">
             <h3 class="panel-title">Assets &amp; resources</h3>
