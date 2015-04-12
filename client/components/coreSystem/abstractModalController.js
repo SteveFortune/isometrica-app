@@ -75,6 +75,11 @@ app.controller('AbstractModelController', [
 		$modal.open({
 			templateUrl: '/components/coreSystem/confirm/confirmModal.html',
 			controller : 'ConfirmModalController',
+			resolve: {
+				title: function() {
+					return 'Are you sure you want to clear this list?';
+				},
+			},
 		}).result.then(function(confirmed) {
 			if (confirmed) {
 				$scope.collection = [];
