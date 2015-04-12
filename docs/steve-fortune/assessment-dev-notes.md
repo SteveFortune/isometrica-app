@@ -31,3 +31,12 @@ _Implemented v6 design. Found Jack Herbert's HTML_
 - This has broken the Business Overview page.
 - At one point, I tried 'merging' the two auto-generated css files using `git add --patch` and manually editing hunks to be committed.
 - Did not work. For the purposes of this assessment I've had to hack in the CSS.
+
+### Assumption: DRY vs DAMP for Modal Dialogs
+
+- There is a fair bit of code duplication in the modal dialog HTML.
+- For example, the `roles` modal dialog is pretty much identical to the `productsAndServices` dialog.
+- I _haven't_ just created 1 generic modal dialog to manipulate both collections because:
+
+	- The rendering of the role entities might change completely independently of the products and services.
+	- Implementing a 'generic' modal dialog might tie us into a limiting design that we may have to revert later down the line anyway, if the 2 entity attributes diverge significantly.
