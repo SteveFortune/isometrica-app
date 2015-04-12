@@ -9,8 +9,8 @@
 		</resilify-modal-header>
 		<div class="modal-body">
 			<div class="panel panel-default" ng-repeat="item in collection">
-				<div class="panel-heading" href="#role-{{ $index }}" data-toggle="collapse">
-					<div class="form-group">
+				<div class="panel-heading">
+					<div class="form-group" href="#role-{{ $index }}" data-toggle="collapse">
 						<label class="control-label col-sm-3">Role Name</label>
 						<div class="col-sm-9">
 							<input name="roleName{{ $index }}" class="form-control" type="text" ng-model="item.name" required="">
