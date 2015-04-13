@@ -29,10 +29,8 @@ app.controller('CoreSystemController',
 		};
 
 		/**
-		 * @param 	ev				object
-		 * @param 	type			string	The type specifier (used to contruct urls/routes)
-		 * @param 	entity			object	The entity being edited || falsy
-		 * @return	object	The new modal dialog
+		 * @param 	collectionKey	string	Key of the collection in the plan. Also used
+		 *									to construct a template url and controller.
 		 * @private
 		 */
 		$scope.showModalDialog = function(collectionKey) {
@@ -40,7 +38,6 @@ app.controller('CoreSystemController',
 			if (!$scope.plan[collectionKey]) {
 				throw collectionKey + " is an invalid colleciton key";
 			}
-
 			$modal.open({
 				templateUrl: '/components/coreSystem/' + collectionKey + '/' + collectionKey + 'Modal.html',
 				controller : firstLetterToUpper(collectionKey) + 'ModalController',
