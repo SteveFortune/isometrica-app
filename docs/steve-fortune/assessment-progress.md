@@ -9,7 +9,7 @@
 
 ### Tasks Complete
 
-- Integrated <strike>http://clients.jackherbert.com/resilify/v5/core-system.html</strike> http://clients.jackherbert.com/resilify/v6/core-system.html with existing system
+- Integrated <strike>[V5](http://clients.jackherbert.com/resilify/v5/core-system.html)</strike> [V6](http://clients.jackherbert.com/resilify/v6/core-system.html) with existing system
 
 	- _Note_ this has been updated since I worked on it
 	- Text fields don’t have the ‘x’ buttons and expand buttons
