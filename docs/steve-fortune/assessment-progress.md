@@ -36,7 +36,7 @@
 - Not all forms are included, only the ones specified in initial sketches
 - Associated data is _mocked_
 
-	- On creation of a plan, the dummy dependencies, roles, etc are all transitively associated with the plan
+	- On creation of a plan, the dummy dependencies, roles, etc are all transiently associated with the plan
 
 - No persistence: new changes are not persisted between page navigations
 - If forms are dirty on dismiss, confirmation dialog is not shown
