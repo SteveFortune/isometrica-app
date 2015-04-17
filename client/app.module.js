@@ -1,7 +1,7 @@
 
 var app = angular.module('resilify', [
 
-  'isa.doclib',
+  'isa.docwiki',
 
 	'ui.router',
 	'ui.bootstrap',

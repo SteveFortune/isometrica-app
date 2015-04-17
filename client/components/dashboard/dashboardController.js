@@ -37,11 +37,11 @@ app.controller( 'DashboardController',
 	var stateForPlan = function(plan) {
 		var state;
 		switch (plan.type) {
-			case 'Core System (V6 Design)' :
+			case 'dashboard' :
 				state = 'core-system';
 				break;
-			case 'doclib':
-				state = 'doclib';
+			case 'docwiki':
+				state = 'docwiki';
 				break;
 			default :
 				state = 'canvas';

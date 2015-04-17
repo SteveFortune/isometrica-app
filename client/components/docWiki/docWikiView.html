@@ -1,6 +1,6 @@
 <div>
 
-  <isa-doclib-header title="docLib.title"></isa-doclib-header>
+  <isa-doc-wiki-header title="docWiki.title"></isa-doc-wiki-header>
 
   <div class="container-fluid">
     <div class="row">
@@ -24,7 +24,7 @@
 
             <a ng-repeat="section in sections" 
               class="list-group-item"
-              ui-sref="doclib.section({ sectionId : section.id})">
+              ui-sref="docwiki.section({ sectionId : section.id})">
               {{section.section + " " + section.title}}
             </a>
 

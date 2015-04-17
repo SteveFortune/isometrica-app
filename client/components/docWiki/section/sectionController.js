@@ -1,4 +1,4 @@
-var app = angular.module('isa.doclib');
+var app = angular.module('isa.docwiki');
 
 app.controller('SectionController', [ '$scope', '$stateParams', 'SectionsFactory',
 	function($scope, $stateParams, SectionsFactory) {
@@ -12,6 +12,6 @@ app.controller('SectionController', [ '$scope', '$stateParams', 'SectionsFactory
 
 		$scope.save = function(section) {
 			$scope.edit = false;
-		}
+		};
 
 }]);

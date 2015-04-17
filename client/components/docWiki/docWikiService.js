@@ -1,6 +1,6 @@
-var app = angular.module('isa.doclib.factories', []);
+var app = angular.module('isa.docwiki.factories', []);
 
-app.factory('DocLibFactory', [function() {
+app.factory('DocWikiFactory', [function() {
 
     return {
 
@@ -31,14 +31,14 @@ app.factory('DocLibFactory', [function() {
 
 }]);
 
-app.factory('SectionsFactory', ['DocLibFactory',
-    function(DocLibFactory) {
+app.factory('SectionsFactory', ['DocWikiFactory',
+    function(DocWikiFactory) {
 
         return {
 
             get: function(id) {
 
-            	var all = DocLibFactory.all();
+            	var all = DocWikiFactory.all();
 
             	for (var i=0; i<all.length; i++) {
             		section = all[i];
