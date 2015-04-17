@@ -1,7 +1,7 @@
 xcomponents.appVersion = '0.1';
 xcomponents.menuOptions = [
     
-    { label : 'Resilify app', url : '/', icon : 'fa-dashboard' }
+    { label : 'Data objects', url : '/', icon : 'fa-dashboard' }
     
   ];
 
