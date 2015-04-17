@@ -1,7 +1,7 @@
 
 var app = angular.module('isa');
 
-app.controller( 'DashboardController',
+app.controller( 'OverviewController',
 	['$scope', '$modal', '$state', '$timeout', 'Plan', 'growl',
 	function($scope, $modal, $state, $timeout, Plan, growl) {
 

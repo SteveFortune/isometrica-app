@@ -17,8 +17,8 @@ var app = angular.module('isa', [
 
 app.run( function($state) {
 
-	//show default state: dashboard
-	$state.go('dashboard');
+	//show default state
+	$state.go('overview');
 
 });
 

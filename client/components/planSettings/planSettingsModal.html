@@ -2,8 +2,8 @@
 
       <div class="modal-header">
         <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" ng-if="isNew">Create a plan</h4>
-        <h4 class="modal-title" ng-if="!isNew">Edit plan</h4>
+        <h4 class="modal-title" ng-if="isNew">Add a module</h4>
+        <h4 class="modal-title" ng-if="!isNew">Edit module settings</h4>
       </div>
       <div class="modal-body">
 
@@ -48,15 +48,15 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-danger pull-left" ng-click="deletePlan(plan)" ng-if="!isNew">
-          <i class="fa fa-times"></i>Delete plan
+          <i class="fa fa-times"></i>Delete module
         </button>
         <button type="button" class="btn btn-link" ng-click="cancel()">
           Cancel
         </button>
         <button type="button" ng-click="savePlan(planForm)" class="btn btn-primary">
           <i class="fa fa-check"></i>
-          <span ng-if="isNew">Create plan</span>
-          <span ng-if="!isNew">Update plan</span>
+          <span ng-if="isNew">Add module</span>
+          <span ng-if="!isNew">Update settings</span>
         </button>
       </div>
 

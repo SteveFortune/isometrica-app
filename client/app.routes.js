@@ -6,10 +6,10 @@ app.config( function($stateProvider) {
 	//setup the routes
 	$stateProvider
 
-	  	.state('dashboard', {
-		    url: '/dashboard',
-		    templateUrl: '/components/dashboard/dashboardView.html',
-		    controller : 'DashboardController'
+	  	.state('overview', {
+		    url: '/overview',
+		    templateUrl: '/components/overview/overviewView.html',
+		    controller : 'OverviewController'
 		})
 
 		.state('planUsers', {
