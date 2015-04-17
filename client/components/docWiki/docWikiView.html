@@ -1,6 +1,6 @@
-<div>
+<div class="docwiki">
 
-  <isa-doc-wiki-header title="docWiki.title"></isa-doc-wiki-header>
+  <isa-doc-wiki-header title="{{docWiki.title}}"></isa-doc-wiki-header>
 
   <div class="container-fluid">
     <div class="row">
@@ -10,32 +10,54 @@
 
           <div class="panel-body">
 
-
-            <a class="btn btn-primary btn-block" href="#" ng-click="addNewItem()">
+            <a class="btn btn-primary btn-block" ui-sref="docwiki.newsection">
               <i class="fa fa-plus"></i> 
               <span>Add</span>
             </a>
 
           </div>
 
-          <div class="list-group">
+          <div class="nav">
 
-          <a class="list-group-item bootcards-list-subheading">Sections</a>
+            <accordion close-others="true">
+              <accordion-group is-open="section.open">
+                <accordion-heading>
+                  <i class="fa" ng-class="{'fa-chevron-circle-down': section.open, 'fa-chevron-circle-right': !section.open}"></i>Sections
+                </accordion-heading>
 
-            <a ng-repeat="section in sections" 
-              class="list-group-item"
-              ui-sref="docwiki.section({ sectionId : section.id})">
-              {{section.section + " " + section.title}}
-            </a>
+                <a ng-repeat="section in sections" 
+                  class="list-group-item"
+                  ui-sref="docwiki.section({ sectionId : section.id})"
+                  ui-sref-active="active">
+                  {{section.section + " " + section.title}}
+                </a>
+              </accordion-group>
 
-            <a class="list-group-item bootcards-list-subheading collapsed">Recently modified</a>
+              <accordion-group is-open="recent.open">
+                <accordion-heading>
+                  <i class="fa" ng-class="{'fa-chevron-circle-down': recent.open, 'fa-chevron-circle-right': !recent.open}"></i>Recently modified
+                </accordion-heading>
+              </accordion-group>
 
-            <a class="list-group-item bootcards-list-subheading collapsed">Document history</a>
+              <accordion-group is-open="history.open">
+                <accordion-heading>
+                  <i class="fa" ng-class="{'fa-chevron-circle-down': history.open, 'fa-chevron-circle-right': !history.open}"></i>Document history
+                </accordion-heading>
+              </accordion-group>
 
-            <a class="list-group-item bootcards-list-subheading collapsed">Drafts</a>
+              <accordion-group is-open="drafts.open">
+                <accordion-heading>
+                  <i class="fa" ng-class="{'fa-chevron-circle-down': drafts.open, 'fa-chevron-circle-right': !drafts.open}"></i>Drafts
+                </accordion-heading>
+              </accordion-group>
 
-            <a class="list-group-item bootcards-list-subheading collapsed">Signed by</a>
+              <accordion-group is-open="signed.open">
+                <accordion-heading>
+                  <i class="fa" ng-class="{'fa-chevron-circle-down': signed.open, 'fa-chevron-circle-right': !signed.open}"></i>Signed by
+                </accordion-heading>
+              </accordion-group>
 
+            </accordion>
           </div>
 
         </div>
@@ -43,9 +65,11 @@
       </div>
 
       <div class="col-sm-8">
-        <div id="detail" ui-view>
-          
+
+        <div id="detail" ui-view>  
+               
       </div>
+
     </div>
   </div>
 

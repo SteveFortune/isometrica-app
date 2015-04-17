@@ -3,6 +3,10 @@
   "base": "PersistedModel",
   "idInjection": true,
   "properties": {
+    "documentId" : {
+      "type": "string",
+      "required": true
+    },
     "title": {
       "type": "string",
       "required": true

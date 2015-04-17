@@ -807,4 +807,45 @@ body {
   .resilify-user-activity .resilify-user-activity-time {
     text-align: left; } }
 
+/*docwiki styles*/
+.docwiki .nav .panel {
+  box-shadow: none; }
+.docwiki .nav .panel-heading {
+  padding: 0;
+  background: none; }
+.docwiki .nav .panel-title {
+  margin: 0; }
+.docwiki .nav .panel-heading a {
+  display: block;
+  padding: 15px 15px; }
+.docwiki .nav .panel-heading a:hover {
+  background-color: #F5F5F5;
+  text-decoration: none; }
+.docwiki .nav .panel-group .panel {
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid #dddddd; }
+.docwiki .nav .panel-group .panel:first-child {
+  border-top: 1px solid #dddddd; }
+.docwiki .nav .panel-group .panel + .panel {
+  margin-top: 0; }
+.docwiki .nav .panel-title .fa {
+  margin-right: 7px;
+  opacity: 0.3; }
+.docwiki .nav .panel-body {
+  padding: 0; }
+.docwiki .nav .panel-body a {
+  display: block;
+  padding: 10px 15px; }
+.docwiki .nav .list-group-item {
+  margin-left: 0;
+  border-left: 0;
+  border-right: 0;
+  border: 0;
+  border-top: 1px solid #dddddd; }
+.docwiki .nav .list-group-item:first-child {
+  border-top: 0; }
+.docwiki .nav .list-group-item {
+  border-radius: 0; }
+
 /*# sourceMappingURL=resilify.css.map */

@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/* <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd h:MM") %> */\n',
+    banner: '/* <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
     
     //clean the output folder and unused css files
     // clean: {
@@ -33,32 +33,47 @@ module.exports = function(grunt) {
 
     sass: {
       dist: {
+        files: {
+          'client/assets/css/resilify.css' : 'client/assets/css/build.scss'
+        }
+      }
+    },
+
+    concat : {
+      dist: {
+        src: ['client/assets/css/resilify.scss', 'client/components/docWiki/styles.scss'],
+        dest: 'client/assets/css/build.scss'
+      }
+    },
+
+    cssmin: {
+      minify : {
+        options: { banner: '<%= banner %>' },
         files: [{
-          expand: true,
-          src: ['client/assets/css/resilify.scss'],
-          dest: 'client/assets/css',
-          ext: '.css',
-          flatten: true
+           expand: true,
+           cwd: 'client/assets/css',
+           src: ['*.css', '!*.min.css'],
+           dest: 'client/assets/css/',
+           ext: '.min.css'
         }]
       }
     },
 
-    // cssmin: {
-    //   minify : {
-    //     options: { banner: '<%= banner %>' },
-    //     files: [{
-    //       expand: true,
-    //       cwd: 'dist/css/',
-    //       src: ['*.css', '!*.min.css'],
-    //       dest: 'dist/css/',
-    //       ext: '.min.css'
-    //     }]
-    //   }
-    // },
+    /*task to generate the Loopback Angular services*/
+    loopback_sdk_angular: {
+      options: {
+        input: '../server/server.js',
+        output: 'js/lb-services.js'
+      }
+    },
 
-     watch : {
+    clean: {
+      build: ["client/assets/css/build.scss"]
+    },
+
+    watch : {
       scripts: {
-        files: ['**/*.js', '**/*.scss'],
+        files: ['**/*.scss'],
         tasks: ['default'],
         options: {
           spawn: false,
@@ -70,15 +85,22 @@ module.exports = function(grunt) {
 
   //load grunt plugins
   // grunt.loadNpmTasks('grunt-contrib-uglify');
-  // grunt.loadNpmTasks('grunt-contrib-cssmin');
-  // grunt.loadNpmTasks('grunt-contrib-copy');
-  // grunt.loadNpmTasks('grunt-contrib-clean');
-  // grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-loopback-sdk-angular');
 
-  // Default task(s).
   grunt.registerTask('default', [
-    'sass'
-    ]);
+    'concat',
+    'sass',
+    'cssmin',
+    'clean:build'
+  ]);
+
+  grunt.registerTask('lbAngular', [
+    'loopback_sdk_angular'
+  ])
 
 };
