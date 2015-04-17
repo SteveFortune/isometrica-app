@@ -13,6 +13,9 @@
     "orgName": {
       "type": "string"
     },
+    "type": {
+      "type": "string"
+    },
     "created": {
       "type": "date"
     },

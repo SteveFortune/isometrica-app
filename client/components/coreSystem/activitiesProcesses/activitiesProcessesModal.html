@@ -1,0 +1,46 @@
+
+<div class="modal-content">
+	<form class="form-horizontal" name="collectionForm" novalidate>
+		<resilify-modal-header
+			title="Activities &amp; Processes"
+			can-save="canSave()"
+			can-delete="canDelete()"
+			on-delete="delete()"
+			on-save="save()">
+		</resilify-modal-header>
+		<div class="modal-body">
+			<div class="panel panel-default" ng-repeat="item in collection">
+				<div class="panel-heading">
+					<div class="form-group" href="#activities-{{ $index }}" data-toggle="collapse">
+						<label class="control-label col-sm-3">Name</label>
+						<div class="col-sm-9">
+							<input name="name{{ $index }}" class="form-control" type="text" ng-model="item.name" required="">
+							<div ng-show="collectionForm['name' + $index].$touched && collectionForm['name' + $index].$error.required">
+								Please enter a name.
+							</div>
+						</div>
+					</div>
+					<div class="collapse" data-toggle="collapse" id="activities-{{ $index }}">
+						<div class="form-group">
+							<label class="control-label col-sm-3">Notes</label>
+							<div class="col-sm-9">
+								<textarea class="form-control" placeholder="optional"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3">Related to</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" placeholder="optional">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<resilify-modal-footer
+				title="Add another key activity or process"
+				can-add="canAdd()"
+				on-add="addToCollection()">
+			</resilify-modal-footer>
+		</div>
+	</form>
+</div>
