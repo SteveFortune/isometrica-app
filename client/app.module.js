@@ -1,6 +1,8 @@
 
 var app = angular.module('resilify', [
 
+  'isometrica.doclib',
+
 	'ui.router',
 	'ui.bootstrap',
 	'ngResource',

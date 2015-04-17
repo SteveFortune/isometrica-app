@@ -45,5 +45,11 @@
   "DataObject" : {
     "dataSource": "mongodb",
     "public": true
+  },
+
+  "Page" : {
+    "dataSource" : "mongodb",
+    "public": true
   }
+
 }

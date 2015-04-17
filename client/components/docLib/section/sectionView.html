@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+
+	<div class="panel-heading">
+
+		<a class="pull-right btn btn-link" ng-click="setEditmode()" ng-show="!edit">Edit</a>
+		<a class="pull-right btn btn-link" ng-click="save()" ng-show="edit">Save</a>
+
+		{{section.title}}
+		
+	</div>
+
+	<span ng-if="edit" ng-include="'/components/docLib/section/sectionEdit.html'"></span>
+	<span ng-if="!edit" ng-include="'/components/docLib/section/sectionRead.html'"></span>
+
+</div>

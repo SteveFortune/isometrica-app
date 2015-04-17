@@ -20,12 +20,14 @@
 
           <div class="form-group">
             <label class="control-label" for="inputType">Type</label>
-            <select class="form-control" id="inputType">
+            <select class="form-control" id="inputType" ng-model="plan.type">
                 <option></option>
                 <option>Business Continuity Plan (ISO)</option>
                 <option>Business Continuity Plan (simple)</option>
                 <option>IT Disaster Recovery Plan</option>
                 <option>Crisis Communications Plan</option>
+
+                <option value="doclib">Document Library</option>
             </select>
           </div>
 
