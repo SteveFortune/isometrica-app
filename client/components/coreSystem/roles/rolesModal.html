@@ -1,12 +1,12 @@
 <div class="modal-content">
 	<form name="collectionForm" class="form-horizontal" novalidate>
-		<resilify-modal-header
+		<isa-modal-header
 			can-save="canSave()"
 			can-delete="canDelete()"
 			on-delete="delete()"
 			title="Roles"
 			on-save="save()">
-		</resilify-modal-header>
+		</isa-modal-header>
 		<div class="modal-body">
 			<div class="panel panel-default" ng-repeat="item in collection">
 				<div class="panel-heading">
@@ -29,11 +29,11 @@
 					</div>
 				</div>
 			</div>
-			<resilify-modal-footer
+			<isa-modal-footer
 				title="Add another role"
 				can-add="canAdd()"
 				on-add="addToCollection()">
-			</resilify-modal-footer>
+			</isa-modal-footer>
 		</div>
 	</form>
 </div>

@@ -1,5 +1,5 @@
 
-var app = angular.module('resilify', [
+var app = angular.module('isa', [
 
   'isa.docwiki',
 
@@ -91,7 +91,7 @@ app.controller('AppController',
 
   }
 
-  //load resilify css
+  //load isometrica css
   head.scope().injectedStylesheets.push({href: "/assets/css/resilify.css"});
 
   $scope.setCurrentUser = function (user) {

@@ -1,5 +1,5 @@
 
-var app = angular.module('resilify');
+var app = angular.module('isa');
 
 app.controller( 'StrategyWorksheetController', [
 	'$scope', '$controller', '$modalInstance', 'planId', 'loadData', 'CanvasItem',

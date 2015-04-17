@@ -1,4 +1,4 @@
-var app = angular.module('resilify');
+var app = angular.module('isa');
 
 app.controller( 'UserActivityController', ['$scope', function($scope) {
 

@@ -1,5 +1,5 @@
 
-var app = angular.module('resilify');
+var app = angular.module('isa');
 
 /**
  * @note This collection is rendered almost identically to the roles collection.

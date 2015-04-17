@@ -1,10 +1,10 @@
 
-var app = angular.module('resilify');
+var app = angular.module('isa');
 
 /**
  * @author Steve Fortune
  */
-app.directive('resilifyModalHeader', function(){
+app.directive('isaModalHeader', function(){
 	return {
 		templateUrl: '/components/coreSystem/modal/modalHeader.html',
 		restrict: 'AE',
@@ -21,7 +21,7 @@ app.directive('resilifyModalHeader', function(){
 /**
  * @author Steve Fortune
  */
-app.directive('resilifyModalFooter', function(){
+app.directive('isaModalFooter', function(){
 	return {
 		templateUrl: '/components/coreSystem/modal/modalFooter.html',
 		restrict: 'AE',

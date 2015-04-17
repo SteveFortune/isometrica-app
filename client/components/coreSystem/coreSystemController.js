@@ -1,5 +1,5 @@
 
-var app = angular.module('resilify');
+var app = angular.module('isa');
 
 /**
  * @route `/core-system/:planId`
@@ -57,7 +57,7 @@ app.controller('CoreSystemController',
 /**
  * @author Steve Fortune
  */
-app.directive('resilifyCoreSystemHeader', function() {
+app.directive('isaCoreSystemHeader', function() {
 	return {
 		templateUrl: '/components/coreSystem/coreSystemHeader.html',
 		restrict: 'AE',
@@ -68,7 +68,7 @@ app.directive('resilifyCoreSystemHeader', function() {
 /**
  * @author Steve Fortune
  */
-app.directive('resilifyCoreSystemFooter', function() {
+app.directive('isaCoreSystemFooter', function() {
 	return {
 		templateUrl: '/components/coreSystem/coreSystemFooter.html',
 		restrict: 'AE',
@@ -87,7 +87,7 @@ app.directive('resilifyCoreSystemFooter', function() {
  *
  * @author Steve Fortune
  */
-app.directive('resilifyCoreSystemSection', function(){
+app.directive('isaCoreSystemSection', function(){
 	return {
 		templateUrl: '/components/coreSystem/coreSystemSection.html',
 		restrict: 'AE',

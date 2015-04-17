@@ -1,5 +1,5 @@
 
-var app = angular.module('resilify');
+var app = angular.module('isa');
 
 app.controller( 'LoginController', [ 
 	'$scope', '$rootScope', '$location', 'AUTH_EVENTS', 'ResilifyUser',

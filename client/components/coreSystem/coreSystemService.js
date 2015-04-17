@@ -1,5 +1,5 @@
 
-var app = angular.module('resilify');
+var app = angular.module('isa');
 
 /**
  * Service for the encapsulating my CRUD operations and hide away all the

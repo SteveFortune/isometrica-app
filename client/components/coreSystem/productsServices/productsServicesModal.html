@@ -1,13 +1,13 @@
 
 <div class="modal-content">
 	<form class="form-horizontal" name="collectionForm" novalidate>
-		<resilify-modal-header
+		<isa-modal-header
 			title="Products &amp; Services"
 			can-save="canSave()"
 			can-delete="canDelete()"
 			on-delete="delete()"
 			on-save="save()">
-		</resilify-modal-header>
+		</isa-modal-header>
 		<div class="modal-body">
 			<div class="panel panel-default" ng-repeat="item in collection">
 				<div class="panel-heading">
@@ -30,11 +30,11 @@
 					</div>
 				</div>
 			</div>
-			<resilify-modal-footer
+			<isa-modal-footer
 				title="Add another product or service"
 				can-add="canAdd()"
 				on-add="addToCollection()">
-			</resilify-modal-footer>
+			</isa-modal-footer>
 		</div>
 	</form>
 </div>

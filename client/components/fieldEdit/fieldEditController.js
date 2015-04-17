@@ -1,5 +1,5 @@
 
-var app = angular.module('resilify');
+var app = angular.module('isa');
 
 app.directive("clickToEdit", function($modal, $timeout, CanvasItem) {
   

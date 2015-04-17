@@ -1,7 +1,7 @@
 
-var app = angular.module('resilify');
+var app = angular.module('isa');
 
-app.directive('resilifyHeader', function($state, ResilifyUser) {
+app.directive('isaHeader', function($state, ResilifyUser) {
 
 	return {
 
