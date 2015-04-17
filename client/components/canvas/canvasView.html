@@ -14,7 +14,7 @@
           	<i class="fa fa-lg fa-share-square-o"></i>
           </a>
         </li>
-      </ul>  
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <!--<li>
           <p class="navbar-text hidden-xs">Offline</p>
@@ -39,18 +39,18 @@
           	<i class="fa fa-lg fa-refresh"></i>
           </a>
         </li>
-      </ul>  
-        
+      </ul>
+
       <div class="navbar-header">
         <span class="navbar-brand" title="{{plan.title}}">
         	{{plan.title}}
-        </span>  
-      </div>        
+        </span>
+      </div>
     </div>
-  </div>  
-    
-    
-  
+  </div>
+
+
+
   <!--mobile canvas (list)-->
     <div class="container visible-xs">
       <div class="row">
@@ -86,18 +86,18 @@
   			        <i class="fa fa-fw fa-table fa-2x pull-left"></i>
   			        <h4 class="list-group-item-heading">Strategies &amp; resources</h4>
   			        <span class="badge">{{strategyItems.length}}</span>
-  			      </a>			      
+  			      </a>
   			      <a class="list-group-item clearfix" href="#">
   			        <i class="fa fa-fw fa-file-o fa-2x pull-left"></i>
   			        <h4 class="list-group-item-heading">Background &amp; context</h4>
   			        <span class="badge">{{backgroundItems.length}}</span>
-  			      </a>			      
+  			      </a>
   			    </div>
-  			  </div>		    
+  			  </div>
   	    </div>
       </div>
     </div>
-  
+
   <!--canvas help overlays-->
   <div class="overlays hidden-xs">
     <div class="overlay overlay-1">
@@ -113,28 +113,28 @@
       <i class="fa fa-2x fa-times"></i>
     </button>
   </div>
-  
+
   <div class="resilify-canvas hidden-xs">
-  
+
   	<div class="canvas-row items">
-  
+
   		<div res-canvas-section item-type="asset" section-title="Entities at risk" plan-id="{{planId}}"></div>
   		<div res-canvas-section item-type="impact" section-title="Impact analysis" plan-id="{{planId}}"></div>
   		<div res-canvas-section item-type="risk" section-title="Risk analysis" plan-id="{{planId}}"></div>
-  		<div res-canvas-section item-type="strategy" section-title="Strategies &amp; resources" plan-id="{{planId}}"></div> 
+  		<div res-canvas-section item-type="strategy" section-title="Strategies &amp; resources" plan-id="{{planId}}"></div>
   		<div res-canvas-section item-type="procedure" section-title="Response tasks" plan-id="{{planId}}"></div>
-  
+
   	</div>
-  
+
   	<div class="canvas-row notes">
-  
+
   		<div res-canvas-section item-type="background" section-title="Background &amp; context" plan-id="{{planId}}"></div>
-  		
+
   	</div>
-  		
+
   </div>
-  
-  
+
+
   <!-- Mobile List -->
   <div class="modal fade table-view-modal" id="mobileListModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -170,7 +170,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Mobile Details -->
   <div class="modal fade table-view-modal" id="mobileDetailsModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -235,35 +235,35 @@
       </div>
     </div>
   </div>
-  
-  
-  
+
+
+
   <script>
-  	
-  	
+
+
   	/* Details */
-  	
+
   	// $( ".show-details-form" ).click(function() {
   	// 	$('#editCanvasItemDetails').modal('show');
   	// });
-  	
+
   	/* Edit Table Row */
-  	
+
   	// $( ".resilify-table tr" ).click(function() {
   	// 	$('#editCanvasItemDetails').modal('show');
   	// });
-  	
+
   	/* Mobile */
-  	
+
   	// $( "#mobileCategories .list-group-item" ).click(function() {
   	// 	$('#mobileListModal').modal('show');
-  	// });	
-  	
+  	// });
+
   	// $( "#mobileList .list-group-item" ).click(function() {
   	// 	$('#mobileDetailsModal').modal('show');
-  	// });	
-  
-  
+  	// });
+
+
   </script>
 
 </div>

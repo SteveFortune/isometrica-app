@@ -1,0 +1,39 @@
+<div class="modal-content">
+	<form name="collectionForm" class="form-horizontal" novalidate>
+		<resilify-modal-header
+			can-save="canSave()"
+			can-delete="canDelete()"
+			on-delete="delete()"
+			title="Roles"
+			on-save="save()">
+		</resilify-modal-header>
+		<div class="modal-body">
+			<div class="panel panel-default" ng-repeat="item in collection">
+				<div class="panel-heading">
+					<div class="form-group" href="#role-{{ $index }}" data-toggle="collapse">
+						<label class="control-label col-sm-3">Role Name</label>
+						<div class="col-sm-9">
+							<input name="roleName{{ $index }}" class="form-control" type="text" ng-model="item.name" required="">
+							<div ng-show="collectionForm['roleName' + $index].$touched && collectionForm['roleName' + $index].$error.required">
+								Please enter a name.
+							</div>
+						</div>
+					</div>
+					<div class="collapse" id="role-{{ $index }}">
+						<div class="form-group">
+							<label class="control-label col-sm-3">Notes</label>
+							<div class="col-sm-9">
+								<textarea class="form-control" placeholder="Optional" ng-model="item.notes"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<resilify-modal-footer
+				title="Add another role"
+				can-add="canAdd()"
+				on-add="addToCollection()">
+			</resilify-modal-footer>
+		</div>
+	</form>
+</div>

@@ -1,7 +1,7 @@
 
 var app = angular.module('resilify');
 
-app.controller( 'PlanSettingsController', 
+app.controller( 'PlanSettingsController',
 	['$scope', '$modalInstance', 'Plan', 'plan', 'isNew',
 	function($scope, $modalInstance, Plan, plan, isNew) {
 
@@ -10,7 +10,7 @@ app.controller( 'PlanSettingsController',
 
 	$scope.savePlan = function(form) {
 
-		if (!form.$valid) { 
+		if (!form.$valid) {
 			form.title.$dirty = true;
 			return;
 		}

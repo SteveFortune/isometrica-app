@@ -1,0 +1,89 @@
+
+<resilify-core-system-header></resilify-core-system-header>
+
+<div class="container core-container">
+    <div class="panel panel-default core-panel" id="corePanel">
+        <div class="panel-body">
+            <h2>{{ plan.orgName || 'IBM' }}</h2>
+            <div class="panel panel-default">
+
+				<!-- Interested parties -->
+
+                <div class="offset right" id="interested-parties">
+                    <i class="fa fa-long-arrow-left left-arrow"></i>
+                    <i class="fa fa-long-arrow-right right-arrow"></i>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Interested parties <span class="badge">12</span></h4>
+                        </div>
+                    </div>
+                </div>
+
+				<!-- Purpose -->
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Purpose</h3>
+                </div>
+
+				<!-- Departments and Roles -->
+
+                <div class="row core-split-sections">
+                    <div class="col-sm-6">
+                        <div class="panel-heading" ng-click="showModalDialog('departments')">
+                            <h3 class="panel-title">Departments <span class="badge">{{ plan.departments.length }}</span></h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panel-heading" ng-click="showModalDialog('roles')">
+                            <h3 class="panel-title">Roles <span class="badge">{{ plan.roles.length }}</span></h3>
+                        </div>
+                    </div>
+                </div>
+
+				<!-- Products and services -->
+
+                <div class="panel-heading last" ng-click="showModalDialog('productsServices')">
+                    <h3 class="panel-title">Products &amp; services <span class="badge">{{ plan.productsServices.length }}</span></h3>
+                </div>
+
+            </div>
+        </div>
+        <div class="activities-and-dependencies">
+
+            <!-- Activities -->
+
+            <div class="offset left" id="suppliers">
+                <i class="fa fa-long-arrow-left left-arrow"></i>
+                <i class="fa fa-long-arrow-right right-arrow"></i>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Suppliers &amp; outsource partners <span class="badge">4</span></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-click="showModalDialog('activitiesProcesses')">
+                <div class="panel-heading panel-heading-activities">
+                    <h3 class="panel-title">Activities &amp; processes <span class="badge">{{ plan.activitiesProcesses.length }}</span></h3>
+                    <resilify-core-system-section
+                        new="false"
+                        collection="plan.activitiesProcesses"
+                        tile-icon="fa-gears">
+                    </resilify-core-system-section>
+                </div>
+            </div>
+
+            <!-- Dependencies -->
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Dependencies <span class="badge">3</span></h3>
+            </div>
+
+        </div>
+        <div class="panel-heading last">
+            <h3 class="panel-title">Assets &amp; resources</h3>
+        </div>
+	</div>
+</div>
+
+<resilify-core-system-footer></resilify-core-system-footer>
