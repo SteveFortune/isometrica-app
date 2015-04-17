@@ -1,10 +1,10 @@
-var app = angular.module('isometrica.doclib', [
+var app = angular.module('isa.doclib', [
 
 	'ui.router',
 	'ngSanitize',
 
 	'textAngular',
-	'isometrica.doclib.factories'
+	'isa.doclib.factories'
 
 ]);
 
@@ -18,7 +18,7 @@ app.config(['$stateProvider', function($stateProvider){
 	$stateProvider
 
     	.state('doclib', { 	
-		    url: '/doclib/:docLibId',
+		    url: '/doclib/:planId',
 		    templateUrl: '/components/docLib/docLibView.html',
 		    controller : 'DocLibController'
 		})
@@ -36,9 +36,25 @@ app.controller( 'DocLibController',
 	['$scope', '$stateParams', 'Plan', 'DocLibFactory',
 	function($scope, $stateParams, Plan, DocLibFactory) {
 
-	$scope.docLibId = $stateParams.docLibId;
-	$scope.docLib = Plan.findById( { 'id' : $stateParams.docLibId } );	
+	$scope.docLibId = $stateParams.planId;
+	$scope.docLib = Plan.findById( { 'id' : $stateParams.planId } );	
 
 	$scope.sections = DocLibFactory.all();
 
 }]);
+
+/**
+ * @author Mark Leusink
+ */
+app.directive('isaDoclibHeader', function() {
+
+	return {
+		scope : {
+			'title' : '@'
+		},
+		templateUrl: '/components/docLib/header.html',
+		restrict: 'AE',
+		transclude: true,
+	};
+
+});

@@ -1,72 +1,52 @@
 <div>
 
-  <div class="navbar navbar-inverse navbar-fixed-top resilify-navbar-centered" role="navigation">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav navbar-left">
-        <li>
-          <a class="btn btn-link icon-only" href="#">
-           <i class="fa fa-lg fa-chevron-left"></i>
-         </a>
-       </li>
-       <li>
-        <a class="btn btn-link" href="#">
-         Actions
-       </a>
-     </li>
-   </ul>  
-   <div class="navbar-header">
-    <span class="navbar-brand">
-     {{docLib.title}}
-   </span>  
- </div>        
-</div>
-</div>
+  <isa-doclib-header title="docLib.title"></isa-doclib-header>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-4">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4">
 
-      <div class="panel panel-default">
+        <div class="panel panel-default">
 
-        <div class="panel-body">
+          <div class="panel-body">
 
 
-          <a class="btn btn-primary btn-block" href="#" ng-click="addNewItem()">
-            <i class="fa fa-plus"></i> 
-            <span>Add</span>
-          </a>
+            <a class="btn btn-primary btn-block" href="#" ng-click="addNewItem()">
+              <i class="fa fa-plus"></i> 
+              <span>Add</span>
+            </a>
 
-        </div>
+          </div>
 
-        <div class="list-group">
+          <div class="list-group">
 
-        <a class="list-group-item bootcards-list-subheading">Sections</a>
+          <a class="list-group-item bootcards-list-subheading">Sections</a>
 
-          <a ng-repeat="section in sections" 
-            class="list-group-item"
-            ui-sref="doclib.section({ sectionId : section.id})">
-            {{section.section + " " + section.title}}
-          </a>
+            <a ng-repeat="section in sections" 
+              class="list-group-item"
+              ui-sref="doclib.section({ sectionId : section.id})">
+              {{section.section + " " + section.title}}
+            </a>
 
-          <a class="list-group-item bootcards-list-subheading collapsed">Recently modified</a>
+            <a class="list-group-item bootcards-list-subheading collapsed">Recently modified</a>
 
-          <a class="list-group-item bootcards-list-subheading collapsed">Document history</a>
+            <a class="list-group-item bootcards-list-subheading collapsed">Document history</a>
 
-          <a class="list-group-item bootcards-list-subheading collapsed">Drafts</a>
+            <a class="list-group-item bootcards-list-subheading collapsed">Drafts</a>
 
-          <a class="list-group-item bootcards-list-subheading collapsed">Signed by</a>
+            <a class="list-group-item bootcards-list-subheading collapsed">Signed by</a>
+
+          </div>
 
         </div>
 
       </div>
 
-    </div>
-
-    <div class="col-sm-8">
-      <div id="detail" ui-view>
-        
+      <div class="col-sm-8">
+        <div id="detail" ui-view>
+          
+      </div>
     </div>
   </div>
-</div>
 
 </div>

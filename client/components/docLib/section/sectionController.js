@@ -1,4 +1,4 @@
-var app = angular.module('isometrica.doclib');
+var app = angular.module('isa.doclib');
 
 app.controller('SectionController', [ '$scope', '$stateParams', 'SectionsFactory',
 	function($scope, $stateParams, SectionsFactory) {

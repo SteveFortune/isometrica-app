@@ -1,4 +1,4 @@
-var app = angular.module('isometrica.doclib.factories', []);
+var app = angular.module('isa.doclib.factories', []);
 
 app.factory('DocLibFactory', [function() {
 

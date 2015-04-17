@@ -40,6 +40,9 @@ app.controller( 'DashboardController',
 			case 'Core System (V6 Design)' :
 				state = 'core-system';
 				break;
+			case 'doclib':
+				state = 'doclib';
+				break;
 			default :
 				state = 'canvas';
 				break;
