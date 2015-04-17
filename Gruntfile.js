@@ -92,10 +92,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-loopback-sdk-angular');
 
+  //note: cssmin disabled for now
   grunt.registerTask('default', [
     'concat',
     'sass',
-    'cssmin',
     'clean:build'
   ]);
 
