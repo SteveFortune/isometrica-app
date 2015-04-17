@@ -61,9 +61,11 @@ module.exports = function(grunt) {
 
     /*task to generate the Loopback Angular services*/
     loopback_sdk_angular: {
-      options: {
-        input: '../server/server.js',
-        output: 'js/lb-services.js'
+      services : {
+        options: {
+          input: 'server/server.js',
+          output: 'client/assets/js/lb-services.js'
+        }
       }
     },
 

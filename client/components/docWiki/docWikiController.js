@@ -29,28 +29,35 @@ app.config(['$stateProvider', function($stateProvider){
 
 		.state('docwiki.section', { 	
 		    url: '/section/:sectionId',
-		    templateUrl: '/components/docWiki/section/sectionView.html',
+		    templateUrl: '/components/docWiki/section/sectionRead.html',
+		    controller : 'SectionController'
+		})
+
+		.state('docwiki.sectionedit', { 	
+		    url: '/section/:sectionId/edit',
+		    templateUrl: '/components/docWiki/section/sectionEdit.html',
 		    controller : 'SectionController'
 		});
 
 }]);
 
-
 app.controller( 'DocWikiController', 
-	['$scope', '$stateParams', 'Plan', 'DocWikiFactory',
-	function($scope, $stateParams, Plan, DocWikiFactory) {
+	['$scope', '$stateParams', 'Plan', 'Page',
+	function($scope, $stateParams, Plan, Page) {
 
-	$scope.docWikiId = $stateParams.planId;
 	$scope.docWiki = Plan.findById( { 'id' : $stateParams.planId } );	
 
+	//default open the first menu item ('Sections')
 	$scope.section = { open : true };
 
-	$scope.sections = DocWikiFactory.all();
-
-	$scope.addSection = function() {
-
-
-	};
+	//load sections/pages for this document, order by section ascending
+	$scope.sections = Page.find(
+	  { filter: { where: { documentId : $stateParams.planId }, order : 'section ASC' } },
+	  function(list) { },
+	  function(errorResponse) {
+	  	console.error(errorResponse);
+	  }
+	);
 
 }]);
 

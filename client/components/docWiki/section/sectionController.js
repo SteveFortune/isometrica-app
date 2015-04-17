@@ -1,23 +1,30 @@
 var app = angular.module('isa.docwiki');
 
-app.controller('SectionController', [ '$scope', '$stateParams', 'SectionsFactory',
-	function($scope, $stateParams, SectionsFactory) {
+/*
+ * Controller to edit an existing section/page in a document
+ */
+app.controller('SectionController', [ '$scope', '$state', '$stateParams', 'Page',
+	function($scope, $state, $stateParams, Page) {
 
-		$scope.section = SectionsFactory.get($stateParams.sectionId);
-		$scope.edit = false;
+		$scope.section = Page.findById( { id: $stateParams.sectionId });
 
-		$scope.setEditmode = function() {
-			$scope.edit = true;
-		};
-
+		//save an existing plan
 		$scope.save = function(sectionForm) {
-			$scope.edit = false;
+
+			var page = new Page($scope.section);
+
+			page.$save( function(section) {
+				$state.go('docwiki.section', {sectionId: $scope.section.id});
+			});
 		};
 
 }]);
 
-app.controller('SectionCreateController', [ '$scope', '$stateParams', 'SectionsFactory',
-	function($scope, $stateParams, SectionsFactory) {
+/*
+ * Controller to create a new section/page in a document
+ */
+app.controller('SectionCreateController', [ '$scope', '$stateParams', 'Page',
+	function($scope, $stateParams, Page) {
 
 		$scope.section = {};
 		$scope.edit = true;
@@ -26,6 +33,20 @@ app.controller('SectionCreateController', [ '$scope', '$stateParams', 'SectionsF
 			$scope.submitted = true;
 
 			console.log('save a new section :)', sectionForm);
+
+			if (!sectionForm.$valid) {
+				console.error('invalid form');
+				return;
+			}
+
+			//set current documentId
+			$scope.section.documentId = $stateParams.planId;
+
+
+			Page.create($scope.section).$promise
+			.then( function(p) {
+				console.log('klaar?');	
+			});
 
 			//$scope.edit = false;
 		};

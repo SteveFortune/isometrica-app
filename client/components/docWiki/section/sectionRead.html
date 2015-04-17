@@ -2,8 +2,8 @@
 
 	<div class="panel-heading">
 
-		<a class="pull-right btn btn-link" ng-click="setEditmode()" ng-show="!edit">Edit</a>
-		<a class="pull-right btn btn-link" ng-click="save(sectionForm)" ng-show="edit">Save</a>
+		<a class="pull-right btn btn-link" ui-sref="docwiki.sectionedit({ sectionId : section.id})">Edit</a>
+		
 		{{section.title || 'Add a section'}}
 		
 	</div>
@@ -31,6 +31,6 @@
 		</div>
 
 	</div>
-	
+
 </div>
 

@@ -31,27 +31,3 @@ app.factory('DocWikiFactory', [function() {
 
 }]);
 
-app.factory('SectionsFactory', ['DocWikiFactory',
-    function(DocWikiFactory) {
-
-        return {
-
-            get: function(id) {
-
-            	var all = DocWikiFactory.all();
-
-            	for (var i=0; i<all.length; i++) {
-            		section = all[i];
-    
-            		if (section.id === id) {
-            			return section;
-            		}
-            	}
-
-            }
-
-        };
-
-
-    }
-]);
