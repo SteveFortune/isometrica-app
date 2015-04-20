@@ -55,11 +55,24 @@ app.constant('AUTH_EVENTS', {
   notAuthorized: 'auth-not-authorized'
 });
 
-app.controller('AppController', 
-	function ($rootScope, $scope, $compile) {
+app.controller('AppController', [
+  '$rootScope', '$scope', '$compile', '$document',
+	function ($rootScope, $scope, $compile, $document) {
+
   $scope.currentUser = null;
   //$scope.userRoles = USER_ROLES;
   //$scope.isAuthorized = AuthService.isAuthorized;
+
+  
+  //the overview page uses a double navbar, the rest of the pages don't
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+
+    if (toState.name == 'overview') {
+      angular.element( $document[0].body ).addClass('has-bootcards-navbar-double');
+    } else {
+      angular.element( $document[0].body ).removeClass('has-bootcards-navbar-double');
+    }
+  });
 
   $scope.showOverlays = true;
   $rootScope.showOverlays = $scope.showOverlays;
@@ -70,6 +83,7 @@ app.controller('AppController',
   var head = angular.element(document.querySelector('head'));
   var body = angular.element(document.querySelector('body'));
 
+  //load one of the bootcards styles
   if(head.scope().injectedStylesheets === undefined)
   {
       head.scope().injectedStylesheets = [];
@@ -105,7 +119,7 @@ app.controller('AppController',
     $scope.showOverlays = !$scope.showOverlays;
     $rootScope.showOverlays = $scope.showOverlays;
   };
-});
+} ]);
 
 //global directive to be able to set the focus on elements created inline
 app.directive('autofocus', function ($timeout) {

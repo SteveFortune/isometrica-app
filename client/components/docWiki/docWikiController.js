@@ -1,10 +1,11 @@
 var app = angular.module('isa.docwiki', [
 
 	'ui.router',
-	'ngSanitize',
-
 	'textAngular',
-	'isa.docwiki.factories'
+	'ngAnimate',
+	'ngTouch',
+
+	'ui.select'
 
 ]);
 
@@ -23,23 +24,48 @@ app.config(['$stateProvider', function($stateProvider){
 		    controller : 'DocWikiController'
 		})
 
+		.state('docwiki.newsection', { 	
+		    url: '/section/new',
+		    templateUrl: '/components/docWiki/section/sectionEdit.html',
+		    controller : 'SectionCreateController'
+		})
+
 		.state('docwiki.section', { 	
 		    url: '/section/:sectionId',
-		    templateUrl: '/components/docWiki/section/sectionView.html',
+		    templateUrl: '/components/docWiki/section/sectionRead.html',
+		    controller : 'SectionController'
+		})
+
+		.state('docwiki.sectionedit', { 	
+		    url: '/section/:sectionId/edit',
+		    templateUrl: '/components/docWiki/section/sectionEdit.html',
 		    controller : 'SectionController'
 		});
 
 }]);
 
-
+/*
+ * Isometrica Document Wiki module
+ *
+ * @author Mark Leusink
+ */
 app.controller( 'DocWikiController', 
-	['$scope', '$stateParams', 'Plan', 'DocWikiFactory',
-	function($scope, $stateParams, Plan, DocWikiFactory) {
+	['$scope', '$stateParams', '$state', 'Plan', 'Page',
+	function($scope, $stateParams, $state, Plan, Page) {
 
-	$scope.docWikiId = $stateParams.planId;
 	$scope.docWiki = Plan.findById( { 'id' : $stateParams.planId } );	
 
-	$scope.sections = DocWikiFactory.all();
+	//default open the first menu item ('Sections')
+	$scope.section = { open : true };
+
+	//load sections/pages for this document, order by section ascending
+	$scope.sections = Page.find(
+	  { filter: { where: { documentId : $stateParams.planId }, order : 'section ASC' } },
+	  function(list) { },
+	  function(errorResponse) {
+	  	console.error(errorResponse);
+	  }
+	);
 
 }]);
 
@@ -57,4 +83,21 @@ app.directive('isaDocWikiHeader', function() {
 		transclude: true,
 	};
 
+});
+
+/**
+ * Show a date/time in a 'time ago' like syntax (e.g. 5 seconds ago, an hour ago)
+ *
+ * @author Mark Leusink
+ */
+app.filter('timeAgo', function() {
+    return function(dateString) {
+        return moment(dateString).fromNow();
+    };
+});
+
+app.filter('list', function() {
+    return function(list) {
+    	return (list ? list.join("") : "");
+    };
 });

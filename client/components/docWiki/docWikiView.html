@@ -1,41 +1,97 @@
-<div>
+<div class="docwiki">
 
-  <isa-doc-wiki-header title="docWiki.title"></isa-doc-wiki-header>
+  <isa-doc-wiki-header title="{{docWiki.title}}"></isa-doc-wiki-header>
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-4 bootcards-list">
 
         <div class="panel panel-default">
 
           <div class="panel-body">
 
+            <div class="search-form">
+              <div class="row">
+                  <div class="col-xs-9">
+                    <div class="form-group">
+                      <input type="text" class="form-control" ng-model="query" placeholder="Search section...">
+                      <i class="fa fa-search"></i>
+                    </div>
+                  </div>
+                  <div class="col-xs-3">
+                    <a class="btn btn-primary btn-block" ui-sref="docwiki.newsection" title="Return to overview">
+                      <i class="fa fa-plus"></i> 
+                      <span>Add</span>
+                    </a>
+                  </div>
+              </div>                
+            </div>
 
-            <a class="btn btn-primary btn-block" href="#" ng-click="addNewItem()">
-              <i class="fa fa-plus"></i> 
-              <span>Add</span>
-            </a>
+            
 
           </div>
 
-          <div class="list-group">
+          <div class="nav">
 
-          <a class="list-group-item bootcards-list-subheading">Sections</a>
+            <accordion close-others="true">
+              <accordion-group is-open="section.open">
+                <accordion-heading>
+                  <i class="fa" ng-class="{'fa-chevron-circle-down': section.open, 'fa-chevron-circle-right': !section.open}"></i>Sections
+                </accordion-heading>
 
-            <a ng-repeat="section in sections" 
-              class="list-group-item"
-              ui-sref="docwiki.section({ sectionId : section.id})">
-              {{section.section + " " + section.title}}
-            </a>
+                <a ng-repeat="section in sections | filter : query" 
+                  class="list-group-item"
+                  ui-sref="docwiki.section({ sectionId : section.id})"
+                  ui-sref-active="active">
+                  {{section.section + " " + section.title}}
+                </a>
 
-            <a class="list-group-item bootcards-list-subheading collapsed">Recently modified</a>
+                <div class="list-group-item" style="margin-left: 20px; border-top:0;" ng-if="sections.length==0">
+                  No sections created yet (<a ui-sref="docwiki.newsection" style="display:inline; padding:0">create first</a>)
+                </div>
 
-            <a class="list-group-item bootcards-list-subheading collapsed">Document history</a>
+              </accordion-group>
 
-            <a class="list-group-item bootcards-list-subheading collapsed">Drafts</a>
+              <accordion-group is-open="recent.open">
+                <accordion-heading>
+                  <i class="fa" ng-class="{'fa-chevron-circle-down': recent.open, 'fa-chevron-circle-right': !recent.open}"></i>Recently modified
+                </accordion-heading>
 
-            <a class="list-group-item bootcards-list-subheading collapsed">Signed by</a>
+                <a ng-repeat="section in sections | orderBy : 'updated' : true | filter : query" 
+                  class="list-group-item"
+                  ui-sref="docwiki.section({ sectionId : section.id})"
+                  ui-sref-active="active">
+                  {{section.section + " " + section.title}}<br />
+                  <span class="small">{{section.updated | timeAgo}}</span>
+                </a>
 
+              </accordion-group>
+
+              <accordion-group is-open="history.open">
+                <accordion-heading>
+                  <i class="fa" ng-class="{'fa-chevron-circle-down': history.open, 'fa-chevron-circle-right': !history.open}"></i>Document history
+                </accordion-heading>
+              </accordion-group>
+
+              <accordion-group is-open="drafts.open">
+                <accordion-heading>
+                  <i class="fa" ng-class="{'fa-chevron-circle-down': drafts.open, 'fa-chevron-circle-right': !drafts.open}"></i>Drafts
+                </accordion-heading>
+              </accordion-group>
+
+              <accordion-group is-open="tags.open">
+                <accordion-heading>
+                  <i class="fa" ng-class="{'fa-chevron-circle-down': tags.open, 'fa-chevron-circle-right': !tags.open}"></i>Tags
+                </accordion-heading>
+              </accordion-group>
+
+              <accordion-group is-open="signed.open">
+                <accordion-heading>
+                  <i class="fa" ng-class="{'fa-chevron-circle-down': signed.open, 'fa-chevron-circle-right': !signed.open}"></i>Signed by
+                </accordion-heading>
+              </accordion-group>
+
+            </accordion>
           </div>
 
         </div>
@@ -43,9 +99,11 @@
       </div>
 
       <div class="col-sm-8">
-        <div id="detail" ui-view>
-          
+
+        <div id="detail" ui-view />  
+               
       </div>
+
     </div>
   </div>
 
