@@ -1,0 +1,64 @@
+/*docwiki styles*/
+
+$docwiki-border-color: #dddddd;
+$docwiki-hover-color: #F5F5F5;
+
+.docwiki .nav {
+
+	.panel {
+		box-shadow: none;
+	}
+
+	.panel-heading {
+		padding: 0;
+		background: none;
+	}
+
+	.panel-title {
+		margin: 0;
+	}
+	.panel-heading a {
+		display: block;
+		padding: 15px 15px;
+	}
+	.panel-heading a:hover {
+		background-color: $docwiki-hover-color;
+		text-decoration: none;
+	}
+	.panel-group .panel {
+		border-radius: 0;
+		border: 0;
+		border-bottom: 1px solid $docwiki-border-color;
+	}
+	.panel-group .panel:first-child {
+		border-top: 1px solid $docwiki-border-color;
+	}
+	.panel-group .panel+.panel {
+		margin-top: 0;
+	}
+	.panel-title .fa {
+		margin-right: 7px;
+		opacity: 0.3;
+	}
+	.panel-body {
+		padding: 0;
+	}
+	.panel-body a {
+		display: block;
+		padding: 10px 15px;
+	}
+
+	.list-group-item {
+		margin-left: 0;
+		border-left: 0;
+		border-right: 0;
+		border:0;
+		border-top: 1px solid $docwiki-border-color;
+	}
+	.list-group-item:first-child {
+		border-top: 0;
+	}
+	.list-group-item {
+		border-radius: 0;
+	}
+}

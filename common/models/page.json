@@ -3,6 +3,10 @@
   "base": "PersistedModel",
   "idInjection": true,
   "properties": {
+    "documentId" : {
+      "type": "string",
+      "required": true
+    },
     "title": {
       "type": "string",
       "required": true
@@ -16,11 +20,20 @@
     "contents" : {
       "type": "string"
     },
+    "tags" :{
+      "type": ["string"]
+    },
     "created": {
       "type": "date"
     },
+    "createdBy" : {
+      "type": "string"
+    },
     "updated": {
       "type": "date"
+    },
+    "updatedBy":{
+      "type": "string"
     }
   },
   "validations": [],

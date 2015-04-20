@@ -19,6 +19,14 @@ body {
   position: fixed;
 }
 
+/*fix pointer cursor, see https://angular-ui.github.io/bootstrap/ */
+.nav, .pagination, .carousel, .panel-title a, a { cursor: pointer; }
+
+/*icons*/
+a > i.fa {
+	margin-right: 3px;
+}
+
 /* NAV */
 
 /* Desktop Navbar Inverse Styles */
