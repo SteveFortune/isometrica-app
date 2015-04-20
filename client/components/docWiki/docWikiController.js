@@ -2,7 +2,10 @@ var app = angular.module('isa.docwiki', [
 
 	'ui.router',
 	'textAngular',
-	'isa.docwiki.factories'
+	'ngAnimate',
+	'ngTouch',
+
+	'ui.select'
 
 ]);
 
@@ -23,7 +26,7 @@ app.config(['$stateProvider', function($stateProvider){
 
 		.state('docwiki.newsection', { 	
 		    url: '/section/new',
-		    templateUrl: '/components/docWiki/section/sectionView.html',
+		    templateUrl: '/components/docWiki/section/sectionEdit.html',
 		    controller : 'SectionCreateController'
 		})
 
@@ -41,9 +44,14 @@ app.config(['$stateProvider', function($stateProvider){
 
 }]);
 
+/*
+ * Isometrica Document Wiki module
+ *
+ * @author Mark Leusink
+ */
 app.controller( 'DocWikiController', 
-	['$scope', '$stateParams', 'Plan', 'Page',
-	function($scope, $stateParams, Plan, Page) {
+	['$scope', '$stateParams', '$state', 'Plan', 'Page',
+	function($scope, $stateParams, $state, Plan, Page) {
 
 	$scope.docWiki = Plan.findById( { 'id' : $stateParams.planId } );	
 
@@ -75,4 +83,21 @@ app.directive('isaDocWikiHeader', function() {
 		transclude: true,
 	};
 
+});
+
+/**
+ * Show a date/time in a 'time ago' like syntax (e.g. 5 seconds ago, an hour ago)
+ *
+ * @author Mark Leusink
+ */
+app.filter('timeAgo', function() {
+    return function(dateString) {
+        return moment(dateString).fromNow();
+    };
+});
+
+app.filter('list', function() {
+    return function(list) {
+    	return (list ? list.join("") : "");
+    };
 });

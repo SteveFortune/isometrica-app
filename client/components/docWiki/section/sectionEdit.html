@@ -4,9 +4,13 @@
 
 	<div class="panel-heading">
 
-		<a class="pull-right btn btn-link" ng-click="save(sectionForm)">Save</a>
+		<div class="pull-right">
+			<button class="btn btn-primary" ng-click="save(sectionForm)">
+				<i class="fa fa-check"></i>Save
+			</a>
+		</div>
 
-		{{section.title || 'Add a section'}}
+		<h3 class="panel-title">{{section.title || 'Add a section'}}</h3>
 		
 	</div>
 
@@ -14,25 +18,35 @@
 
 		<div class="form-group" ng-class="{ 'has-error' : submitted && sectionForm.section.$invalid }">
 
-			<label class="col-sm-2">Section</label>
+			<label class="col-sm-2 control-label">Section</label>
 		
 			<div class="col-sm-10">
-				<input name="section" class="form-control" ng-model="section.section" required />
+				<input name="section" class="form-control" ng-model="section.section" autofocus />
 			</div>
 
 		</div>
 
-		<div class="form-group">
+		<div class="form-group" ng-class="{ 'has-error' : submitted && sectionForm.title.$invalid }">
 
-			<label class="col-sm-2">Title</label>
+			<label class="col-sm-2 control-label">Title</label>
 		
 			<div class="col-sm-10">
-				<input name="title" class="form-control" ng-model="section.title" />
+				<input name="title" class="form-control" ng-model="section.title" required />
 			</div>
 
 		</div>
 
-		<div text-angular ng-model="section.contents" ta-toolbar="[['h1','h2','h3'],['bold','italics']]"></div>	
+		<div class="form-group" ng-class="{ 'has-error' : submitted && sectionForm.tags.$invalid }">
+
+			<label class="col-sm-2 control-label">Tags</label>
+		
+			<div class="col-sm-10">
+				<input name="tags" class="form-control" ng-model="section.tags" />
+			</div>
+
+		</div>
+
+		<div text-angular ng-model="section.contents" ta-toolbar="[['h1','h2','h3'],['bold','italics'],['insertImage']]"></div>	
 
 	</div>
 

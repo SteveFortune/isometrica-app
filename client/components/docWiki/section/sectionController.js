@@ -3,13 +3,23 @@ var app = angular.module('isa.docwiki');
 /*
  * Controller to edit an existing section/page in a document
  */
-app.controller('SectionController', [ '$scope', '$state', '$stateParams', 'Page',
-	function($scope, $state, $stateParams, Page) {
+app.controller('SectionController', [ '$scope', '$state', '$stateParams', '$modal', 'Page',
+	function($scope, $state, $stateParams, $modal, Page) {
+
+		$scope.section = { tags : []};
 
 		$scope.section = Page.findById( { id: $stateParams.sectionId });
 
-		//save an existing plan
 		$scope.save = function(sectionForm) {
+			$scope.submitted = true;
+
+			if (!sectionForm.$valid) {
+				return;
+			}
+
+			if (typeof $scope.section.tags === 'string') {
+				$scope.section.tags = [$scope.section.tags];
+			}
 
 			var page = new Page($scope.section);
 
@@ -18,15 +28,39 @@ app.controller('SectionController', [ '$scope', '$state', '$stateParams', 'Page'
 			});
 		};
 
+		$scope.delete = function(section) {
+
+			$modal.open({
+				templateUrl: '/components/coreSystem/confirm/confirmModal.html',
+				controller : 'ConfirmModalController',
+				resolve: {
+					title: function() {
+						return 'Are you sure you want to remove this section?';
+					},
+				},
+			}).result.then(function(confirmed) {
+				if (confirmed) {
+					Page.delete( { id : section.id } ).$promise
+					.then( function(deletedPlan) {
+						$state.go('docwiki', {}, {reload: true});
+					});
+				}
+			});
+
+
+		};
+
 }]);
 
 /*
  * Controller to create a new section/page in a document
  */
-app.controller('SectionCreateController', [ '$scope', '$stateParams', 'Page',
-	function($scope, $stateParams, Page) {
+app.controller('SectionCreateController', [ '$scope', '$state', '$stateParams', 'Page',
+	function($scope, $state, $stateParams, Page) {
 
-		$scope.section = {};
+		$scope.section = {
+			tags : []
+		};
 		$scope.edit = true;
 	
 		$scope.save = function(sectionForm) {
@@ -35,20 +69,22 @@ app.controller('SectionCreateController', [ '$scope', '$stateParams', 'Page',
 			console.log('save a new section :)', sectionForm);
 
 			if (!sectionForm.$valid) {
-				console.error('invalid form');
 				return;
 			}
 
-			//set current documentId
+			//set current documentId on section
 			$scope.section.documentId = $stateParams.planId;
 
+			if (typeof $scope.section.tags === 'string') {
+				$scope.section.tags = [$scope.section.tags];
+			}
 
 			Page.create($scope.section).$promise
 			.then( function(p) {
-				console.log('klaar?');	
+				//section saved	
+				$state.go('docwiki.section', {sectionId: p.id}, {reload: true});
 			});
 
-			//$scope.edit = false;
 		};
 
 }]);

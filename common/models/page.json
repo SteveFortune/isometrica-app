@@ -20,11 +20,20 @@
     "contents" : {
       "type": "string"
     },
+    "tags" :{
+      "type": ["string"]
+    },
     "created": {
       "type": "date"
     },
+    "createdBy" : {
+      "type": "string"
+    },
     "updated": {
       "type": "date"
+    },
+    "updatedBy":{
+      "type": "string"
     }
   },
   "validations": [],

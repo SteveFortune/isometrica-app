@@ -9,6 +9,14 @@ body {
   bottom: 0;
   position: fixed; }
 
+/*fix pointer cursor, see https://angular-ui.github.io/bootstrap/ */
+.nav, .pagination, .carousel, .panel-title a, a {
+  cursor: pointer; }
+
+/*icons*/
+a > i.fa {
+  margin-right: 3px; }
+
 /* NAV */
 /* Desktop Navbar Inverse Styles */
 .desktop .navbar-inverse {
@@ -847,5 +855,15 @@ body {
   border-top: 0; }
 .docwiki .nav .list-group-item {
   border-radius: 0; }
+
+/*
+
+ .select2 > .select2-choice.ui-select-match {
+   
+      height: 29px;
+    }
+    .selectize-control > .selectize-dropdown {
+      top: 36px;
+    }*/
 
 /*# sourceMappingURL=resilify.css.map */
