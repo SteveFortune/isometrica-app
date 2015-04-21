@@ -76,6 +76,7 @@ app.controller('SectionCreateController', [ '$scope', '$state', '$stateParams', 
 			//set current documentId on section
 			$scope.section.documentId = $stateParams.planId;
 
+			//make an array of the tags
 			if (typeof $scope.section.tags === 'string') {
 				$scope.section.tags = [$scope.section.tags];
 			}

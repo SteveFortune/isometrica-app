@@ -39,6 +39,7 @@
 
                 <a ng-repeat="section in sections | filter : query" 
                   class="list-group-item"
+                  ng-style="getIndentation(section)"
                   ui-sref="docwiki.section({ sectionId : section.id})"
                   ui-sref-active="active">
                   {{section.section + " " + section.title}}

@@ -68,6 +68,28 @@ app.controller( 'DocWikiController',
 	  }
 	);
 
+	/*
+	 * Get the amount of pixels that a section needs to indent,
+	 * based on the number of dots in the section number
+	 *
+	 * @author Mark Leusink
+	 */
+	$scope.getIndentation = function(section) {
+
+		var s = section.section;
+
+		if (s.length === 0 || s.indexOf('.')===-1) { return null;}
+
+		if ( s.substring(s.length-1) === '.' ) {		//remove trailing dot
+			s = s.substring(0, s.length -1);
+		}
+
+		var indent = (s.split('.').length - 1 );
+		if (indent === 0 ) { return null; }
+
+		return {'padding-left': (15 + indent * 10) + 'px'};
+	};
+
 }]);
 
 /**
