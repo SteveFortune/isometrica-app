@@ -4,7 +4,7 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4 bootcards-list">
+      <div class="col-sm-5 bootcards-list">
 
         <div class="panel panel-default">
 
@@ -27,15 +27,13 @@
               </div>                
             </div>
 
-            
-
           </div>
 
           <div class="nav">
 
             <accordion close-others="true">
               <accordion-group is-open="section.open">
-                <accordion-heading>
+                <accordion-heading class="hiero">
                   <i class="fa" ng-class="{'fa-chevron-circle-down': section.open, 'fa-chevron-circle-right': !section.open}"></i>Sections
                 </accordion-heading>
 
@@ -67,11 +65,11 @@
 
               </accordion-group>
 
-              <accordion-group is-open="history.open">
+         <!--      <accordion-group is-open="history.open">
                 <accordion-heading>
                   <i class="fa" ng-class="{'fa-chevron-circle-down': history.open, 'fa-chevron-circle-right': !history.open}"></i>Document history
                 </accordion-heading>
-              </accordion-group>
+              </accordion-group> -->
 
               <accordion-group is-open="drafts.open">
                 <accordion-heading>
@@ -92,13 +90,14 @@
               </accordion-group>
 
             </accordion>
+            
           </div>
 
         </div>
 
       </div>
 
-      <div class="col-sm-8">
+      <div class="col-sm-7">
 
         <div id="detail" ui-view />  
                

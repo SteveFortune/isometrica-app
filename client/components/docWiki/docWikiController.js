@@ -3,9 +3,7 @@ var app = angular.module('isa.docwiki', [
 	'ui.router',
 	'textAngular',
 	'ngAnimate',
-	'ngTouch',
-
-	'ui.select'
+	'ngTouch'
 
 ]);
 
