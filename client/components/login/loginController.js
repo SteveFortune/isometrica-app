@@ -6,8 +6,8 @@ app.controller( 'LoginController', [
 	function($scope, $rootScope, $location, AUTH_EVENTS, ResilifyUser) {
 
 	$scope.credentials = {
-		email : 'mark@resilify.com',
-		password : 'resilify'
+		email : 'mark@isometrica.com',
+		password : 'isometrica'
 	};
 
 	$scope.hasError = false;

@@ -18,25 +18,26 @@ app.controller('AppController', [
 
   //check whether we need to login the user, redirect him to the login page if we do
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
-   
-    var allowAnonymous = toState.data.anonymous;
-   
-    if (!allowAnonymous && $scope.currentUser == null) {
 
-      if ($scope.isAuthenticated) {
-        //user is authenticated already: restore
-    
-        ResilifyUser.getCurrent( function(res) {
-          $scope.setCurrentUser(res);
-        });
+    if ( $scope.isAuthenticated ) {
 
-      } else {
+      //user is authenticated already: restore
+      ResilifyUser.getCurrent( function(res) {
+        $scope.setCurrentUser(res);
+      });
+
+    } else {
+
+      var allowAnonymous = toState.data.anonymous;
+     
+      if (!allowAnonymous && $scope.currentUser == null) {
 
         event.preventDefault();
         $location.nextAfterLogin = $location.path();
         $state.go('login');
 
       }
+
     }
 
   });

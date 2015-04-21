@@ -5,8 +5,14 @@
  	<div class="container bootcards-container">
   		
   		<div class="row">
-	
-			Welcome to Isometrica!
+
+  			<div ng-if="!isAuthenticated">
+				Welcome to Isometrica!
+			</div>
+
+			<div ng-if="isAuthenticated">
+				Welcome back {{currentUser.name}}
+			</div>
 			
 		</div>
 
