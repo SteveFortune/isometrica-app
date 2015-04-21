@@ -25,10 +25,14 @@ app.config(['growlProvider', function (growlProvider) {
 app.config(['$httpProvider', function($httpProvider) {  
   
   //intercept authentication errors and redirect to login form
-  $httpProvider.interceptors.push(function($q, $location) {
+  $httpProvider.interceptors.push(function($q, $location, LoopBackAuth) {
     return {
       responseError: function(rejection) {
         if (rejection.status == 401) {
+
+          LoopBackAuth.clearUser();
+          LoopBackAuth.clearStorage();
+          
           $location.nextAfterLogin = $location.path();
           $location.path('/login');
         }
