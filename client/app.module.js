@@ -63,17 +63,6 @@ app.controller('AppController', [
   //$scope.userRoles = USER_ROLES;
   //$scope.isAuthorized = AuthService.isAuthorized;
 
-  
-  //the overview page uses a double navbar, the rest of the pages don't
-  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
-
-    if (toState.name == 'overview') {
-      angular.element( $document[0].body ).addClass('has-bootcards-navbar-double');
-    } else {
-      angular.element( $document[0].body ).removeClass('has-bootcards-navbar-double');
-    }
-  });
-
   $scope.showOverlays = true;
   $rootScope.showOverlays = $scope.showOverlays;
 
@@ -82,6 +71,15 @@ app.controller('AppController', [
 
   var head = angular.element(document.querySelector('head'));
   var body = angular.element(document.querySelector('body'));
+
+  //the overview page uses a double navbar, the rest of the pages don't
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+    if (toState.name == 'overview') {
+      body.addClass('has-bootcards-navbar-double');
+    } else {
+      body.removeClass('has-bootcards-navbar-double');
+    }
+  });
 
   //load one of the bootcards styles
   if(head.scope().injectedStylesheets === undefined)

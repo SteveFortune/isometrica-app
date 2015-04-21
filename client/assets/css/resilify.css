@@ -825,7 +825,10 @@ a > i.fa {
   margin: 0; }
 .docwiki .nav .panel-heading a {
   display: block;
-  padding: 15px 15px; }
+  padding: 15px 15px;
+  font-size: 14px;
+  background-color: #F5F5F5;
+  color: #555; }
 .docwiki .nav .panel-heading a:hover {
   background-color: #F5F5F5;
   text-decoration: none; }
@@ -833,18 +836,25 @@ a > i.fa {
   border-radius: 0;
   border: 0;
   border-bottom: 1px solid #dddddd; }
+.docwiki .nav .panel-group {
+  margin-bottom: 0; }
 .docwiki .nav .panel-group .panel:first-child {
   border-top: 1px solid #dddddd; }
+.docwiki .nav .panel-collapse > .panel-body:first-child {
+  border: none; }
 .docwiki .nav .panel-group .panel + .panel {
   margin-top: 0; }
 .docwiki .nav .panel-title .fa {
   margin-right: 7px;
-  opacity: 0.3; }
+  color: #ccc; }
 .docwiki .nav .panel-body {
   padding: 0; }
 .docwiki .nav .panel-body a {
   display: block;
-  padding: 10px 15px; }
+  padding: 10px 15px;
+  font-weight: bold; }
+.docwiki .nav .small {
+  font-weight: normal; }
 .docwiki .nav .list-group-item {
   margin-left: 0;
   border-left: 0;
@@ -855,15 +865,8 @@ a > i.fa {
   border-top: 0; }
 .docwiki .nav .list-group-item {
   border-radius: 0; }
-
-/*
-
- .select2 > .select2-choice.ui-select-match {
-   
-      height: 29px;
-    }
-    .selectize-control > .selectize-dropdown {
-      top: 36px;
-    }*/
+.docwiki .bootcards-wiki-panel-metadata {
+  background-color: #F5F5F5;
+  border-bottom: 1px solid #dddddd; }
 
 /*# sourceMappingURL=resilify.css.map */

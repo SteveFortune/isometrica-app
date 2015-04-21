@@ -61,7 +61,8 @@ app.controller('SectionCreateController', [ '$scope', '$state', '$stateParams', 
 		$scope.section = {
 			tags : []
 		};
-		$scope.edit = true;
+		
+		$scope.isNew = true;
 	
 		$scope.save = function(sectionForm) {
 			$scope.submitted = true;
