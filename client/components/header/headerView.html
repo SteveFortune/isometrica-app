@@ -27,32 +27,35 @@
 
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right bootcards-nav-secondary">
-				<li>
+				<!-- <li>
 					<a href="#">
 						<i class="fa fa-fw fa-user"></i>
 						Account
 					</a>
-				</li>	 
+				</li> -->	 
 				<li>
 					<a href="#">
 						<i class="fa fa-fw fa-question-circle"></i>
 						Help
 					</a>
 				</li>
-				<li>
+
+				<li ng-if="!isAuthenticated">
 					<a ui-sref="login">
 						<i class="fa fa-fw fa-lock"></i>
-
-						{{currentUser}}
 						Login
 					</a>
 				</li>
-				<li>
-					<a ng-click="logout()">
-						<i class="fa fa-fw fa-lock"></i>
-						Logout
-					</a>
-				</li>		   
+
+				<li ng-if="isAuthenticated">
+					<p style="padding: 5px 15px; margin: 0;line-height: 20px; color: #777;">
+					Signed in as {{currentUser.name}}
+					<span class="padding-left:5px">(<a ng-click="logout()">logout</a>)
+					</span>
+					</p>
+		
+				</li>
+				   
 			</ul>
 			<ul class="nav navbar-nav navbar-right bootcards-nav-primary">
 				<li>

@@ -14,12 +14,10 @@ app.directive('isaHeader', function($state, ResilifyUser) {
 
 			 $scope.logout = function() {
 			 		ResilifyUser.logout( function() {
-			 			$state.go('login');
+			 			$scope.setCurrentUser(null);
+			 			$state.go('welcome');
 				 	});
 				 };
-
-
-				 
 
 /*
 			$scope.showBackButton = false;
@@ -44,22 +42,7 @@ app.directive('isaHeader', function($state, ResilifyUser) {
 				angular.element($document[0].body).addClass('has-bootcards-navbar-double');
 			}
 
-			$scope.appVersion = xcUtils.getConfig('appVersion');
-
-			var loc = window.location.href;
-
-			$scope.hasMenu = function() {
-				console.log($scope.menuOptions.length );
-				return $scope.menuOptions.length > 0 || $scope.hasSecondaryOptions;
-			}
-
-			$scope.isActive = function(menuOption) {
-				return (loc.indexOf(menuOption.url)> -1);
-			};
-
-			$scope.hasSubmenu = function(menuOption) {
-				return (menuOption.hasOwnProperty('menuOptions') && menuOption.menuOptions.length>0);
-			};
+		
 
 			//add handlers to show the collapsed/ expanded icon on lists with sub-options
 			$timeout(function(){

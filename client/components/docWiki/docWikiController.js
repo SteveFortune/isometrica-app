@@ -19,7 +19,10 @@ app.config(['$stateProvider', function($stateProvider){
     	.state('docwiki', { 	
 		    url: '/docwiki/:planId',
 		    templateUrl: '/components/docWiki/docWikiView.html',
-		    controller : 'DocWikiController'
+		    controller : 'DocWikiController',
+		    data : {
+		    	anonymous: false
+		    }
 		})
 
 		.state('docwiki.newsection', { 	

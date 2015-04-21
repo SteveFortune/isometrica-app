@@ -15,17 +15,12 @@ var app = angular.module('isa', [
 
 ] );
 
-app.run( function($state) {
-
-	//show default state
-	$state.go('overview');
-
-});
 
 app.config(['growlProvider', function (growlProvider) {
   growlProvider.globalTimeToLive(3000);
   growlProvider.globalDisableCountDown(true);
 }]);
+
 
 app.config(['$httpProvider', function($httpProvider) {  
   
@@ -44,8 +39,6 @@ app.config(['$httpProvider', function($httpProvider) {
   
 }]);
 
-
-
 app.constant('AUTH_EVENTS', {
   loginSuccess: 'auth-login-success',
   loginFailed: 'auth-login-failed',
@@ -54,70 +47,6 @@ app.constant('AUTH_EVENTS', {
   notAuthenticated: 'auth-not-authenticated',
   notAuthorized: 'auth-not-authorized'
 });
-
-app.controller('AppController', [
-  '$rootScope', '$scope', '$compile', '$document',
-	function ($rootScope, $scope, $compile, $document) {
-
-  $scope.currentUser = null;
-  //$scope.userRoles = USER_ROLES;
-  //$scope.isAuthorized = AuthService.isAuthorized;
-
-  $scope.showOverlays = true;
-  $rootScope.showOverlays = $scope.showOverlays;
-
-  var isIOS = navigator.userAgent.match(/iPhone|iPad|iPod/i);
-  var isAndroid = navigator.userAgent.match(/Android/i);
-
-  var head = angular.element(document.querySelector('head'));
-  var body = angular.element(document.querySelector('body'));
-
-  //the overview page uses a double navbar, the rest of the pages don't
-  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
-    if (toState.name == 'overview') {
-      body.addClass('has-bootcards-navbar-double');
-    } else {
-      body.removeClass('has-bootcards-navbar-double');
-    }
-  });
-
-  //load one of the bootcards styles
-  if(head.scope().injectedStylesheets === undefined)
-  {
-      head.scope().injectedStylesheets = [];
-      head.append(
-        $compile(
-          "<link data-ng-repeat='stylesheet in injectedStylesheets' data-ng-href='{{stylesheet.href}}' rel='stylesheet' />")
-        ($scope)); 
-  }
-
-  if (isIOS) {
-    head.scope().injectedStylesheets.push({href: '/assets/libs/bootcards/dist/css/bootcards-ios.css'});
-    body.addClass('ios');
-  } else if (isAndroid) {
-    head.scope().injectedStylesheets.push({href: '/assets/libs/bootcards/dist/css/bootcards-android.css'});
-    body.addClass('android');
-  } else {
-    head.scope().injectedStylesheets.push({href: '/assets/libs/bootcards/dist/css/bootcards-desktop.css'});
-    body.addClass('desktop');
-
-  }
-
-  //load isometrica css
-  head.scope().injectedStylesheets.push({href: "/assets/css/resilify.css"});
-
-  $scope.setCurrentUser = function (user) {
-  	console.log('token is', user.token);
-  	//$sessionStorage.token = user.token;
-  	//$sessionStorage.userId = user.id;
-    $scope.currentUser = user;
-  };
-
-  $scope.toggleOverlays = function() {
-    $scope.showOverlays = !$scope.showOverlays;
-    $rootScope.showOverlays = $scope.showOverlays;
-  };
-} ]);
 
 //global directive to be able to set the focus on elements created inline
 app.directive('autofocus', function ($timeout) {
