@@ -2,7 +2,7 @@ module.exports = function(app) {
 
   console.log('set up default users');
 
-  var User = app.models.ResilifyUser;
+  var User = app.models.IsometricaUser;
   var Role = app.models.Role;
   var RoleMapping = app.models.RoleMapping;
 
@@ -26,9 +26,9 @@ module.exports = function(app) {
 
   };
 
-  createIfNotExists(User, {name : 'Steve Ives', username: 'steve@isometrica.com', email: 'steve@isometrica.com', password: 'isometrica'});
-  createIfNotExists(User, {name : 'Jack Herbert', username: 'jack@isometrica.com', email: 'jack@isometrica.com', password: 'isometrica'});
-  createIfNotExists(User, {name : 'Mark Leusink', username: 'mark@isometrica.com', email: 'mark@isometrica.com', password: 'isometrica'});
+  createIfNotExists(User, {firstName : 'Steve', lastName : 'Ives', name : 'Steve Ives', username: 'steve@isometrica.com', email: 'steve@isometrica.com', password: 'isometrica'});
+  createIfNotExists(User, {firstName : 'Jack', lastName : 'Herbert', name : 'Jack Herbert', username: 'jack@isometrica.com', email: 'jack@isometrica.com', password: 'isometrica'});
+  createIfNotExists(User, {firstName : 'Mark', lastName : 'Leusink', name : 'Mark Leusink', username: 'mark@isometrica.com', email: 'mark@isometrica.com', password: 'isometrica'});
   
 /*
     // create project 1 and make john the owner

@@ -1,11 +1,11 @@
 var app = angular.module('isa');
 
 app.controller('AppController', [
-  '$rootScope', '$scope', '$compile', '$document', '$state', '$location', 'ResilifyUser',
-	function ($rootScope, $scope, $compile, $document, $state, $location, ResilifyUser) {
+  '$rootScope', '$scope', '$compile', '$document', '$state', '$location', '$log', 'IsometricaUser',
+	function ($rootScope, $scope, $compile, $document, $state, $location, $log, IsometricaUser) {
 
   $scope.currentUser = null;
-  $scope.isAuthenticated = ResilifyUser.isAuthenticated();
+  $scope.isAuthenticated = IsometricaUser.isAuthenticated();
 
   $scope.showOverlays = true;
   $rootScope.showOverlays = $scope.showOverlays;
@@ -21,8 +21,10 @@ app.controller('AppController', [
 
     if ( $scope.isAuthenticated ) {
 
+      $log.debug('authenticated user - retrieve info');
+
       //user is authenticated already: restore
-      ResilifyUser.getCurrent( function(res) {
+      IsometricaUser.getCurrent( function(res) {
         $scope.setCurrentUser(res);
       });
 
@@ -31,6 +33,8 @@ app.controller('AppController', [
       var allowAnonymous = toState.data.anonymous;
      
       if (!allowAnonymous && $scope.currentUser == null) {
+
+        $log.debug('need authentication - redirect to login');
 
         event.preventDefault();
         $location.nextAfterLogin = $location.path();

@@ -1,8 +1,14 @@
 {
-  "name": "ResilifyUser",
+  "name": "IsometricaUser",
   "base": "User",
   "idInjection": true,
   "properties": {
+    "firstName" : {
+      "type" : "string"
+    },
+    "lastName" : {
+      "type" : "string"
+    },
     "name": {
       "type": "string"
     }

@@ -35,7 +35,7 @@
     "dataSource": "mongodb",
     "public": true
   },
-  "ResilifyUser": {
+  "IsometricaUser": {
     "dataSource": "mongodb"
   },
   "Email": {

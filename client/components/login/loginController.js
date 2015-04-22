@@ -2,8 +2,8 @@
 var app = angular.module('isa');
 
 app.controller( 'LoginController', [ 
-	'$scope', '$rootScope', '$location', 'AUTH_EVENTS', 'ResilifyUser',
-	function($scope, $rootScope, $location, AUTH_EVENTS, ResilifyUser) {
+	'$scope', '$rootScope', '$location', 'AUTH_EVENTS', 'IsometricaUser',
+	function($scope, $rootScope, $location, AUTH_EVENTS, IsometricaUser) {
 
 	$scope.credentials = {
 		email : 'mark@isometrica.com',
@@ -17,7 +17,7 @@ app.controller( 'LoginController', [
 
 		$scope.hasError = false;
 	
-	    $scope.loginResult = ResilifyUser.login({ rememberMe: $scope.rememberMe }, $scope.credentials,
+	    $scope.loginResult = IsometricaUser.login({ rememberMe: $scope.rememberMe }, $scope.credentials,
 	      function(res) {
 	        // success
 	        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);

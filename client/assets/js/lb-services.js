@@ -1428,13 +1428,13 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.ResilifyUser
- * @header lbServices.ResilifyUser
+ * @name lbServices.IsometricaUser
+ * @header lbServices.IsometricaUser
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `ResilifyUser` model.
+ * A $resource object for interacting with the `IsometricaUser` model.
  *
  * ## Example
  *
@@ -1444,17 +1444,17 @@ module.factory(
  *
  */
 module.factory(
-  "ResilifyUser",
+  "IsometricaUser",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/ResilifyUsers/:id",
+      urlBase + "/IsometricaUsers/:id",
       { 'id': '@id' },
       {
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#prototype$__findById__accessTokens
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#prototype$__findById__accessTokens
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1478,18 +1478,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `ResilifyUser` object.)
+         * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
         "prototype$__findById__accessTokens": {
-          url: urlBase + "/ResilifyUsers/:id/accessTokens/:fk",
+          url: urlBase + "/IsometricaUsers/:id/accessTokens/:fk",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#prototype$__destroyById__accessTokens
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#prototype$__destroyById__accessTokens
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1514,14 +1514,14 @@ module.factory(
          * This method returns no data.
          */
         "prototype$__destroyById__accessTokens": {
-          url: urlBase + "/ResilifyUsers/:id/accessTokens/:fk",
+          url: urlBase + "/IsometricaUsers/:id/accessTokens/:fk",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#prototype$__updateById__accessTokens
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#prototype$__updateById__accessTokens
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1549,22 +1549,22 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `ResilifyUser` object.)
+         * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
         "prototype$__updateById__accessTokens": {
-          url: urlBase + "/ResilifyUsers/:id/accessTokens/:fk",
+          url: urlBase + "/IsometricaUsers/:id/accessTokens/:fk",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#prototype$__get__accessTokens
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#prototype$__get__accessTokens
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
-         * Queries accessTokens of ResilifyUser.
+         * Queries accessTokens of IsometricaUser.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1584,19 +1584,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `ResilifyUser` object.)
+         * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
         "prototype$__get__accessTokens": {
           isArray: true,
-          url: urlBase + "/ResilifyUsers/:id/accessTokens",
+          url: urlBase + "/IsometricaUsers/:id/accessTokens",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#prototype$__create__accessTokens
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#prototype$__create__accessTokens
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1622,18 +1622,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `ResilifyUser` object.)
+         * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
         "prototype$__create__accessTokens": {
-          url: urlBase + "/ResilifyUsers/:id/accessTokens",
+          url: urlBase + "/IsometricaUsers/:id/accessTokens",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#prototype$__delete__accessTokens
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#prototype$__delete__accessTokens
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1656,18 +1656,18 @@ module.factory(
          * This method returns no data.
          */
         "prototype$__delete__accessTokens": {
-          url: urlBase + "/ResilifyUsers/:id/accessTokens",
+          url: urlBase + "/IsometricaUsers/:id/accessTokens",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#prototype$__count__accessTokens
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#prototype$__count__accessTokens
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
-         * Counts accessTokens of ResilifyUser.
+         * Counts accessTokens of IsometricaUser.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1690,14 +1690,14 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "prototype$__count__accessTokens": {
-          url: urlBase + "/ResilifyUsers/:id/accessTokens/count",
+          url: urlBase + "/IsometricaUsers/:id/accessTokens/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#create
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#create
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1724,18 +1724,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `ResilifyUser` object.)
+         * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
         "create": {
-          url: urlBase + "/ResilifyUsers",
+          url: urlBase + "/IsometricaUsers",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#upsert
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#upsert
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1762,18 +1762,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `ResilifyUser` object.)
+         * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
         "upsert": {
-          url: urlBase + "/ResilifyUsers",
+          url: urlBase + "/IsometricaUsers",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#exists
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#exists
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1798,14 +1798,14 @@ module.factory(
          *  - `exists` – `{boolean=}` - 
          */
         "exists": {
-          url: urlBase + "/ResilifyUsers/:id/exists",
+          url: urlBase + "/IsometricaUsers/:id/exists",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#findById
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#findById
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1829,18 +1829,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `ResilifyUser` object.)
+         * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
         "findById": {
-          url: urlBase + "/ResilifyUsers/:id",
+          url: urlBase + "/IsometricaUsers/:id",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#find
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#find
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1862,19 +1862,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `ResilifyUser` object.)
+         * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
         "find": {
           isArray: true,
-          url: urlBase + "/ResilifyUsers",
+          url: urlBase + "/IsometricaUsers",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#findOne
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#findOne
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1896,18 +1896,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `ResilifyUser` object.)
+         * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
         "findOne": {
-          url: urlBase + "/ResilifyUsers/findOne",
+          url: urlBase + "/IsometricaUsers/findOne",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#updateAll
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#updateAll
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1934,14 +1934,14 @@ module.factory(
          * This method returns no data.
          */
         "updateAll": {
-          url: urlBase + "/ResilifyUsers/update",
+          url: urlBase + "/IsometricaUsers/update",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#deleteById
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#deleteById
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1964,14 +1964,14 @@ module.factory(
          * This method returns no data.
          */
         "deleteById": {
-          url: urlBase + "/ResilifyUsers/:id",
+          url: urlBase + "/IsometricaUsers/:id",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#count
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#count
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -1996,14 +1996,14 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/ResilifyUsers/count",
+          url: urlBase + "/IsometricaUsers/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#prototype$updateAttributes
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#prototype$updateAttributes
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -2029,18 +2029,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `ResilifyUser` object.)
+         * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/ResilifyUsers/:id",
+          url: urlBase + "/IsometricaUsers/:id",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#login
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#login
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -2089,14 +2089,14 @@ module.factory(
               return response.resource;
             }
           },
-          url: urlBase + "/ResilifyUsers/login",
+          url: urlBase + "/IsometricaUsers/login",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#logout
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#logout
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -2131,14 +2131,14 @@ module.factory(
               return response.resource;
             }
           },
-          url: urlBase + "/ResilifyUsers/logout",
+          url: urlBase + "/IsometricaUsers/logout",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#confirm
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#confirm
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -2165,14 +2165,14 @@ module.factory(
          * This method returns no data.
          */
         "confirm": {
-          url: urlBase + "/ResilifyUsers/confirm",
+          url: urlBase + "/IsometricaUsers/confirm",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#resetPassword
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#resetPassword
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -2200,14 +2200,14 @@ module.factory(
          * This method returns no data.
          */
         "resetPassword": {
-          url: urlBase + "/ResilifyUsers/reset",
+          url: urlBase + "/IsometricaUsers/reset",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#getCurrent
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#getCurrent
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -2225,7 +2225,7 @@ module.factory(
          *   from the server.
          */
         "getCurrent": {
-           url: urlBase + "/ResilifyUsers" + "/:id",
+           url: urlBase + "/IsometricaUsers" + "/:id",
            method: "GET",
            params: {
              id: function() {
@@ -2249,8 +2249,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#updateOrCreate
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#updateOrCreate
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -2277,15 +2277,15 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `ResilifyUser` object.)
+         * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
         R["updateOrCreate"] = R["upsert"];
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#update
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#update
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -2315,8 +2315,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#destroyById
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#destroyById
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -2342,8 +2342,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#removeById
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#removeById
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
@@ -2369,18 +2369,18 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#getCachedCurrent
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#getCachedCurrent
+         * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
          * Get data of the currently logged user that was returned by the last
-         * call to {@link lbServices.ResilifyUser#login} or
-         * {@link lbServices.ResilifyUser#getCurrent}. Return null when there
+         * call to {@link lbServices.IsometricaUser#login} or
+         * {@link lbServices.IsometricaUser#getCurrent}. Return null when there
          * is no user logged in or the data of the current user were not fetched
          * yet.
          *
-         * @returns {Object} A ResilifyUser instance.
+         * @returns {Object} A IsometricaUser instance.
          */
         R.getCachedCurrent = function() {
           var data = LoopBackAuth.currentUserData;
@@ -2389,8 +2389,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#isAuthenticated
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#isAuthenticated
+         * @methodOf lbServices.IsometricaUser
          *
          * @returns {boolean} True if the current user is authenticated (logged in).
          */
@@ -2400,8 +2400,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.ResilifyUser#getCurrentId
-         * @methodOf lbServices.ResilifyUser
+         * @name lbServices.IsometricaUser#getCurrentId
+         * @methodOf lbServices.IsometricaUser
          *
          * @returns {Object} Id of the currently logged-in user or null.
          */
@@ -2411,13 +2411,13 @@ module.factory(
 
     /**
     * @ngdoc property
-    * @name lbServices.ResilifyUser#modelName
-    * @propertyOf lbServices.ResilifyUser
+    * @name lbServices.IsometricaUser#modelName
+    * @propertyOf lbServices.IsometricaUser
     * @description
     * The name of the model represented by this $resource,
-    * i.e. `ResilifyUser`.
+    * i.e. `IsometricaUser`.
     */
-    R.modelName = "ResilifyUser";
+    R.modelName = "IsometricaUser";
 
 
     return R;

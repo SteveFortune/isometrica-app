@@ -1,7 +1,7 @@
 
 var app = angular.module('isa');
 
-app.directive('isaHeader', function($state, ResilifyUser) {
+app.directive('isaHeader', function($state, IsometricaUser) {
 
 	return {
 
@@ -10,10 +10,10 @@ app.directive('isaHeader', function($state, ResilifyUser) {
 		templateUrl : '/components/header/headerView.html',
 		transclude : true,
 
-		controller : function($scope, $state, ResilifyUser) {
+		controller : function($scope, $state, IsometricaUser) {
 
 			 $scope.logout = function() {
-			 		ResilifyUser.logout( function() {
+			 		IsometricaUser.logout( function() {
 			 			$scope.setCurrentUser(null);
 			 			$state.go('welcome');
 				 	});
