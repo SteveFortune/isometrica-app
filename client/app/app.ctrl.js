@@ -19,20 +19,21 @@ app.controller('AppController', [
   //check whether we need to login the user, redirect him to the login page if we do
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
 
+    if ( $scope.currentUser != null) {
+      return;
+    }
+
     if ( $scope.isAuthenticated ) {
 
-      $log.debug('authenticated user - retrieve info');
+      $log.debug('authenticated user, but no user object - retrieve info');
 
-      //user is authenticated already: restore
       IsometricaUser.getCurrent( function(res) {
         $scope.setCurrentUser(res);
       });
 
     } else {
 
-      var allowAnonymous = toState.data.anonymous;
-     
-      if (!allowAnonymous && $scope.currentUser == null) {
+      if (!toState.data.anonymous) {
 
         $log.debug('need authentication - redirect to login');
 
