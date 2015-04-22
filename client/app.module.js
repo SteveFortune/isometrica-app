@@ -21,8 +21,7 @@ app.config(['growlProvider', function (growlProvider) {
   growlProvider.globalDisableCountDown(true);
 }]);
 
-
-app.config(['$httpProvider', function($httpProvider) {  
+app.config(['$logProvider', '$httpProvider', function($logProvider, $httpProvider) {  
   
   //intercept authentication errors and redirect to login form
   $httpProvider.interceptors.push(function($q, $location, LoopBackAuth) {
@@ -40,6 +39,8 @@ app.config(['$httpProvider', function($httpProvider) {
       }
     };
   });
+
+  $logProvider.debugEnabled(true);
   
 }]);
 
