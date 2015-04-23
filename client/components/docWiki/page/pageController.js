@@ -3,15 +3,15 @@ var app = angular.module('isa.docwiki');
 /*
  * Controller to add/edit a page in a document
  */
-app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', 'Page', 'FileUploader', 'isNew',
-	function($scope, $state, $stateParams, $modal, Page, FileUploader, isNew) {
+app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', 'Page', 'isNew',
+	function($scope, $state, $stateParams, $modal, Page, isNew) {
 
 	//init
 	$scope.isNew = isNew;
 	$scope.page = { tags : []};
-	$scope.uploader = new FileUploader({
+	/*$scope.uploader = new FileUploader({
 		url : '/uploads'
-	});
+	});*/
 
 	//read existing page
 	if (!isNew) {
