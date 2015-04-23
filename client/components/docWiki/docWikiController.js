@@ -3,7 +3,8 @@ var app = angular.module('isa.docwiki', [
 	'ui.router',
 	'textAngular',
 	'ngAnimate',
-	'ngTouch'
+	'ngTouch',
+	'angularFileUpload'
 
 ]);
 
