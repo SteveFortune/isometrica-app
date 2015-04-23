@@ -820,73 +820,93 @@ a > i.fa {
     text-align: left; } }
 
 /*docwiki styles*/
-.docwiki .nav {
-  /*expand/ collapse in the list*/
-  /*open dropdown menu items in header*/ }
-  .docwiki .nav .panel {
-    box-shadow: none; }
-  .docwiki .nav .panel-heading {
-    padding: 0;
-    background: none; }
-  .docwiki .nav .panel-title {
-    margin: 0; }
-  .docwiki .nav .panel-heading a {
-    display: block;
-    padding: 10px 10px;
-    font-size: 16px;
+.docwiki {
+  /*textangular toolbar*/
+  /* styled 'browse' button*/ }
+  .docwiki .nav {
+    /*expand/ collapse in the list*/
+    /*open dropdown menu items in header*/ }
+    .docwiki .nav .panel {
+      box-shadow: none; }
+    .docwiki .nav .panel-heading {
+      padding: 0;
+      background: none; }
+    .docwiki .nav .panel-title {
+      margin: 0; }
+    .docwiki .nav .panel-heading a {
+      display: block;
+      padding: 10px 10px;
+      font-size: 16px;
+      background-color: #F5F5F5;
+      color: #555;
+      font-weight: 500; }
+    .docwiki .nav .panel-heading a:hover {
+      background-color: #F5F5F5;
+      text-decoration: none; }
+    .docwiki .nav .panel-group .panel {
+      border-radius: 0;
+      border: 0;
+      border-bottom: 1px solid #dddddd; }
+    .docwiki .nav .panel-group {
+      margin-bottom: 0; }
+    .docwiki .nav .panel-group .panel:first-child {
+      border-top: 1px solid #dddddd; }
+    .docwiki .nav .panel-collapse > .panel-body:first-child {
+      border: none; }
+    .docwiki .nav .panel-group .panel + .panel {
+      margin-top: 0; }
+    .docwiki .nav .panel-title .fa {
+      margin-right: 5px; }
+    .docwiki .nav .panel-body {
+      padding: 0; }
+    .docwiki .nav .panel-body a {
+      display: block;
+      padding: 10px 15px;
+      font-weight: bold; }
+    .docwiki .nav .small {
+      font-weight: normal; }
+    .docwiki .nav .list-group-item {
+      margin-left: 0;
+      border-left: 0;
+      border-right: 0;
+      border: 0;
+      border-top: 1px solid #dddddd; }
+    .docwiki .nav .list-group-item:first-child {
+      border-top: 0; }
+    .docwiki .nav .list-group-item {
+      border-radius: 0;
+      font-size: 18px; }
+    .docwiki .nav .fa-chevron-circle-down, .docwiki .nav .fa-chevron-circle-right {
+      font-size: 18px;
+      width: 20px;
+      color: #337AB7; }
+    .docwiki .nav a.btn-link {
+      color: #BBB;
+      font-weight: normal; }
+    .docwiki .nav .open > a, .docwiki .nav .open > a:focus, .docwiki .nav .open > a:hover {
+      background: none;
+      border-color: #444; }
+  .docwiki .bootcards-wiki-panel-metadata {
     background-color: #F5F5F5;
-    color: #555;
-    font-weight: 500; }
-  .docwiki .nav .panel-heading a:hover {
-    background-color: #F5F5F5;
-    text-decoration: none; }
-  .docwiki .nav .panel-group .panel {
-    border-radius: 0;
-    border: 0;
     border-bottom: 1px solid #dddddd; }
-  .docwiki .nav .panel-group {
-    margin-bottom: 0; }
-  .docwiki .nav .panel-group .panel:first-child {
-    border-top: 1px solid #dddddd; }
-  .docwiki .nav .panel-collapse > .panel-body:first-child {
-    border: none; }
-  .docwiki .nav .panel-group .panel + .panel {
-    margin-top: 0; }
-  .docwiki .nav .panel-title .fa {
-    margin-right: 5px; }
-  .docwiki .nav .panel-body {
-    padding: 0; }
-  .docwiki .nav .panel-body a {
-    display: block;
-    padding: 10px 15px;
-    font-weight: bold; }
-  .docwiki .nav .small {
-    font-weight: normal; }
-  .docwiki .nav .list-group-item {
-    margin-left: 0;
-    border-left: 0;
-    border-right: 0;
-    border: 0;
-    border-top: 1px solid #dddddd; }
-  .docwiki .nav .list-group-item:first-child {
-    border-top: 0; }
-  .docwiki .nav .list-group-item {
-    border-radius: 0;
-    font-size: 18px; }
-  .docwiki .nav .fa-chevron-circle-down, .docwiki .nav .fa-chevron-circle-right {
-    font-size: 18px;
-    width: 20px;
-    color: #337AB7; }
-  .docwiki .nav a.btn-link {
-    color: #BBB;
-    font-weight: normal; }
-  .docwiki .nav .open > a, .docwiki .nav .open > a:focus, .docwiki .nav .open > a:hover {
-    background: none;
-    border-color: #444; }
-.docwiki .bootcards-wiki-panel-metadata {
-  background-color: #F5F5F5;
-  border-bottom: 1px solid #dddddd; }
-.docwiki .ta-toolbar {
-  margin-bottom: 10px; }
+  .docwiki .ta-toolbar {
+    margin-bottom: 10px; }
+  .docwiki .btn-file {
+    position: relative;
+    overflow: hidden; }
+  .docwiki .btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block; }
 
 /*# sourceMappingURL=resilify.css.map */
