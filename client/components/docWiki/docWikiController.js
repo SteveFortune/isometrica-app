@@ -1,6 +1,9 @@
 var app = angular.module('isa.docwiki', [
 
+	'isa.docwiki.factories',
+
 	'ui.router',
+
 	'textAngular',
 	'ngAnimate',
 	'ngTouch',
@@ -61,8 +64,8 @@ app.config(['$stateProvider', function($stateProvider){
  * @author Mark Leusink
  */
 app.controller( 'DocWikiController', 
-	['$scope', '$stateParams', '$state', 'Plan', 'Page',
-	function($scope, $stateParams, $state, Plan, Page) {
+	['$rootScope', '$scope', '$stateParams', '$state', 'Plan', 'PageFactory',
+	function($rootScope, $scope, $stateParams, $state, Plan, PageFactory) {
 
 	$scope.docWiki = Plan.findById( { 'id' : $stateParams.planId } );	
 
@@ -70,13 +73,7 @@ app.controller( 'DocWikiController',
 	$scope.page = { open : true };
 
 	//load pages for this document, order by section ascending
-	$scope.pages = Page.find(
-	  { filter: { where: { documentId : $stateParams.planId }, order : 'section ASC' } },
-	  function(list) { },
-	  function(errorResponse) {
-	  	console.error(errorResponse);
-	  }
-	);
+	$scope.pages = PageFactory.all($stateParams.planId);
 
 	/*
 	 * Get the amount of pixels that a section needs to indent,
@@ -97,7 +94,7 @@ app.controller( 'DocWikiController',
 		var indent = (s.split('.').length - 1 );
 		if (indent === 0 ) { return null; }
 
-		return {'padding-left': (15 + indent * 10) + 'px'};
+		return { 'font-size' : '14px', 'padding-left': (15 + indent * 10) + 'px'};
 	};
 
 }]);

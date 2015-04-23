@@ -101,6 +101,7 @@ $docwiki-hover-color: #F5F5F5;
 		}
 		.list-group-item {
 			border-radius: 0;
+			font-size: 18px;
 		}
 
 		/*expand/ collapse in the list*/
@@ -109,6 +110,17 @@ $docwiki-hover-color: #F5F5F5;
 		  width: 20px;
 		  color: #337AB7 ;
 		}
+
+		a.btn-link {
+			color: #BBB;
+			font-weight: normal;
+		}
+
+		/*open dropdown menu items in header*/
+		.open>a, .open>a:focus, .open>a:hover {
+			background: none;
+			border-color: #444;
+		}
 	}
 
 	.bootcards-wiki-panel-metadata {
@@ -116,4 +128,33 @@ $docwiki-hover-color: #F5F5F5;
 		border-bottom: 1px solid $docwiki-border-color;
 
 	}
+
+	/*textangular toolbar*/
+	.ta-toolbar {
+		margin-bottom:10px;
+	}
+
+	/* styled 'browse' button*/
+	.btn-file {
+	    position: relative;
+	    overflow: hidden;
+	}
+
+	.btn-file input[type=file] {
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    min-width: 100%;
+	    min-height: 100%;
+	    font-size: 100px;
+	    text-align: right;
+	    filter: alpha(opacity=0);
+	    opacity: 0;
+	    outline: none;
+	    background: white;
+	    cursor: inherit;
+	    display: block;
+	} 
+
+
 }
