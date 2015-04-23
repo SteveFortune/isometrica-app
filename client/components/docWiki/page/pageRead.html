@@ -2,11 +2,15 @@
 
 	<div class="panel-heading">
 
-		<div class="pull-right">
+		<div class="pull-left">
 
 			<button class="btn btn-danger" ng-click="delete(page)" style="margin-right: 15px;">
 				<i class="fa fa-trash-o"></i>Delete
 			</button>
+
+		</div>
+
+		<div class="pull-right">
 
 			<button class="btn btn-default" ui-sref="docwiki.pageedit({ pageId : page.id})">
 				<i class="fa fa-pencil"></i>Edit
@@ -14,7 +18,7 @@
 			
 		</div>
 		
-		<h3 class="panel-title">{{page.section + ' ' + page.title}}</h3>
+		<h3 class="panel-title text-center">{{page.section + ' ' + page.title}}</h3>
 		
 	</div>
 

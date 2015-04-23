@@ -79,6 +79,7 @@ $docwiki-hover-color: #F5F5F5;
 		}
 		.list-group-item {
 			border-radius: 0;
+			font-size: 18px;
 		}
 
 		/*expand/ collapse in the list*/
@@ -87,11 +88,26 @@ $docwiki-hover-color: #F5F5F5;
 		  width: 20px;
 		  color: #337AB7 ;
 		}
+
+		a.btn-link {
+			color: #BBB;
+			font-weight: normal;
+		}
+
+		/*open dropdown menu items in header*/
+		.open>a, .open>a:focus, .open>a:hover {
+			background: none;
+			border-color: #444;
+		}
 	}
 
 	.bootcards-wiki-panel-metadata {
 		background-color: $docwiki-hover-color;
 		border-bottom: 1px solid $docwiki-border-color;
 
+	}
+
+	.ta-toolbar {
+		margin-bottom:10px;
 	}
 }

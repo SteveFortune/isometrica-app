@@ -4,13 +4,22 @@
 
 	<div class="panel-heading">
 
+		<div class="pull-left">
+			<button ng-if="isNew" class="btn btn-default" ui-sref="docwiki">
+				<i class="fa fa-times"></i>Cancel
+			</button>
+			<button ng-if="!isNew" class="btn btn-default" ui-sref="docwiki.page({ pageId : page.id})">
+				<i class="fa fa-times"></i>Cancel
+			</button>
+		</div>
+
 		<div class="pull-right">
 			<button class="btn btn-primary" ng-click="save(pageForm)">
 				<i class="fa fa-check"></i>Save
-			</a>
+			</button>
 		</div>
 
-		<h3 class="panel-title">{{ ( isNew ? 'Add a page' : page.section + ' ' + page.title )}}</h3>
+		<h3 class="panel-title text-center">{{ ( isNew ? 'New page' : page.section + ' ' + page.title )}}</h3>
 		
 	</div>
 
@@ -66,9 +75,9 @@
 
 	</div>
 
-	<div class="panel-body">
+	<div class="panel-body" style="padding-top:10px">
 
-		<div text-angular ng-model="page.contents" ta-toolbar="[['bold','italics'],['insertImage']]"></div>	
+		<div text-angular ng-model="page.contents" ta-toolbar="[['bold','italics'],['ul','ol'],['insertLink','insertImage']]"></div>	
 
 	</div>
 

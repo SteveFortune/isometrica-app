@@ -96,7 +96,7 @@ app.controller( 'DocWikiController',
 		var indent = (s.split('.').length - 1 );
 		if (indent === 0 ) { return null; }
 
-		return {'padding-left': (15 + indent * 10) + 'px'};
+		return { 'font-size' : '14px', 'padding-left': (15 + indent * 10) + 'px'};
 	};
 
 }]);
