@@ -19,7 +19,7 @@
                     </div>
                   </div>
                   <div class="col-xs-3">
-                    <a class="btn btn-primary btn-block" ui-sref="docwiki.newsection" title="Return to overview">
+                    <a class="btn btn-primary btn-block" ui-sref="docwiki.newpage" title="Return to overview">
                       <i class="fa fa-plus"></i> 
                       <span>Add</span>
                     </a>
@@ -32,21 +32,21 @@
           <div class="nav">
 
             <accordion close-others="true">
-              <accordion-group is-open="section.open">
+              <accordion-group is-open="page.open">
                 <accordion-heading class="hiero">
-                  <i class="fa" ng-class="{'fa-chevron-circle-down': section.open, 'fa-chevron-circle-right': !section.open}"></i>Sections
+                  <i class="fa" ng-class="{'fa-chevron-circle-down': page.open, 'fa-chevron-circle-right': !page.open}"></i>Section
                 </accordion-heading>
 
-                <a ng-repeat="section in sections | filter : query" 
+                <a ng-repeat="page in pages | filter : query" 
                   class="list-group-item"
-                  ng-style="getIndentation(section)"
-                  ui-sref="docwiki.section({ sectionId : section.id})"
+                  ng-style="getIndentation(page)"
+                  ui-sref="docwiki.page({ pageId : page.id})"
                   ui-sref-active="active">
-                  {{section.section + " " + section.title}}
+                  {{page.section + " " + page.title}}
                 </a>
 
-                <div class="list-group-item" style="margin-left: 20px; border-top:0;" ng-if="sections.length==0">
-                  No sections created yet (<a ui-sref="docwiki.newsection" style="display:inline; padding:0">create first</a>)
+                <div class="list-group-item" style="margin-left: 20px; border-top:0;" ng-if="pages.length==0">
+                  No pages created yet (<a ui-sref="docwiki.newpage" style="display:inline; padding:0">create first</a>)
                 </div>
 
               </accordion-group>
@@ -56,12 +56,12 @@
                   <i class="fa" ng-class="{'fa-chevron-circle-down': recent.open, 'fa-chevron-circle-right': !recent.open}"></i>Recently modified
                 </accordion-heading>
 
-                <a ng-repeat="section in sections | orderBy : 'updated' : true | filter : query" 
+                <a ng-repeat="page in pages | orderBy : 'updated' : true | filter : query" 
                   class="list-group-item"
-                  ui-sref="docwiki.section({ sectionId : section.id})"
+                  ui-sref="docwiki.page({ pageId : page.id})"
                   ui-sref-active="active">
-                  {{section.section + " " + section.title}}<br />
-                  <span class="small">{{section.updated | timeAgo}}</span>
+                  {{page.section + " " + page.title}}<br />
+                  <span class="small">{{page.updated | timeAgo}} by {{page.updatedBy}}</span>
                 </a>
 
               </accordion-group>

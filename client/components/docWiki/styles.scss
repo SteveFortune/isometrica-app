@@ -21,10 +21,11 @@ $docwiki-hover-color: #F5F5F5;
 		}
 		.panel-heading a {
 			display: block;
-			padding: 15px 15px;
-			font-size: 14px;
+			padding: 10px 10px;
+			font-size: 16px;
 			background-color: $docwiki-hover-color;
 			color: #555;
+			font-weight: 500;
 		}
 		.panel-heading a:hover {
 			background-color: $docwiki-hover-color;
@@ -50,8 +51,8 @@ $docwiki-hover-color: #F5F5F5;
 			margin-top: 0;
 		}
 		.panel-title .fa {
-			margin-right: 7px;
-			color: #ccc
+			margin-right: 5px;
+			
 		}
 		.panel-body {
 			padding: 0;
@@ -78,6 +79,13 @@ $docwiki-hover-color: #F5F5F5;
 		}
 		.list-group-item {
 			border-radius: 0;
+		}
+
+		/*expand/ collapse in the list*/
+		.fa-chevron-circle-down, .fa-chevron-circle-right {
+		  font-size: 18px;
+		  width: 20px;
+		  color: #337AB7 ;
 		}
 	}
 

@@ -1,0 +1,51 @@
+<div class="panel panel-default bootcards-wiki-panel" ng-cloak>
+
+	<div class="panel-heading">
+
+		<div class="pull-right">
+
+			<button class="btn btn-danger" ng-click="delete(page)" style="margin-right: 15px;">
+				<i class="fa fa-trash-o"></i>Delete
+			</button>
+
+			<button class="btn btn-default" ui-sref="docwiki.pageedit({ pageId : page.id})">
+				<i class="fa fa-pencil"></i>Edit
+			</button>
+			
+		</div>
+		
+		<h3 class="panel-title">{{page.section + ' ' + page.title}}</h3>
+		
+	</div>
+
+	<div class="panel-body form-horizontal bootcards-wiki-panel-metadata">
+
+		<div class="form-group">
+
+			<label class="col-sm-2 control-label">Tags</label>
+			<div class="col-sm-10"> <p class="form-control-static">{{page.tags | list}}</p></div>
+
+		</div>
+
+	</div>
+
+	<div class="panel-body">
+
+		<span style="font-style:italic;" ng-if="page.contents == null || page.contents.length == 0">(no contents)</span>
+
+		<div ng-bind-html="page.contents"></div>
+
+	</div>
+
+	<div class="panel-footer">
+
+		<small class="pull-left">Created by {{page.createdBy}}</small>
+		<small class="pull-right">
+			Last edited {{page.updated | timeAgo}} (by {{page.updatedBy}})
+		</small>
+		
+
+	</div>
+
+</div>
+

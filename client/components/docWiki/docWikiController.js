@@ -25,22 +25,31 @@ app.config(['$stateProvider', function($stateProvider){
 		    }
 		})
 
-		.state('docwiki.newsection', { 	
-		    url: '/section/new',
-		    templateUrl: '/components/docWiki/section/sectionEdit.html',
-		    controller : 'SectionCreateController'
+		.state('docwiki.newpage', { 	
+		    url: '/page/new',
+		    templateUrl: '/components/docWiki/page/pageEdit.html',
+		    controller : 'PageController',
+		    resolve : {
+		    	isNew : function() { return true; }
+		    }
 		})
 
-		.state('docwiki.section', { 	
-		    url: '/section/:sectionId',
-		    templateUrl: '/components/docWiki/section/sectionRead.html',
-		    controller : 'SectionController'
+		.state('docwiki.page', { 	
+		    url: '/page/:pageId',
+		    templateUrl: '/components/docWiki/page/pageRead.html',
+		    controller : 'PageController',
+		    resolve : {
+		    	isNew : function() { return false; }
+		    }
 		})
 
-		.state('docwiki.sectionedit', { 	
-		    url: '/section/:sectionId/edit',
-		    templateUrl: '/components/docWiki/section/sectionEdit.html',
-		    controller : 'SectionController'
+		.state('docwiki.pageedit', { 	
+		    url: '/page/:pageId/edit',
+		    templateUrl: '/components/docWiki/page/pageEdit.html',
+		    controller : 'PageController',
+		    resolve : {
+		    	isNew : function() { return false; }
+		    }
 		});
 
 }]);
@@ -56,11 +65,11 @@ app.controller( 'DocWikiController',
 
 	$scope.docWiki = Plan.findById( { 'id' : $stateParams.planId } );	
 
-	//default open the first menu item ('Sections')
-	$scope.section = { open : true };
+	//default open the first menu item ('Pages')
+	$scope.page = { open : true };
 
-	//load sections/pages for this document, order by section ascending
-	$scope.sections = Page.find(
+	//load pages for this document, order by section ascending
+	$scope.pages = Page.find(
 	  { filter: { where: { documentId : $stateParams.planId }, order : 'section ASC' } },
 	  function(list) { },
 	  function(errorResponse) {
@@ -74,9 +83,9 @@ app.controller( 'DocWikiController',
 	 *
 	 * @author Mark Leusink
 	 */
-	$scope.getIndentation = function(section) {
+	$scope.getIndentation = function(page) {
 
-		var s = section.section;
+		var s = page.section;
 
 		if (s.length === 0 || s.indexOf('.')===-1) { return null;}
 
