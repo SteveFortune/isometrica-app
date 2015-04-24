@@ -31,6 +31,20 @@
 
 		</div>
 
+		<!--files-->
+		<div class="form-group">
+
+			<label class="col-sm-2 control-label">Files</label>
+			<div class="col-sm-10">
+				<ul>
+					<li ng-repeat="file in pageFiles">
+					<a href="/file/{{file._id}}/{{file.filename}}" target="_blank">{{file.filename}}</a>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
 	</div>
 
 	<div class="panel-body">

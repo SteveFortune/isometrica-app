@@ -3,19 +3,24 @@ var app = angular.module('isa.docwiki');
 /*
  * Controller to add/edit a page in a document
  */
-app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', 'Page', 'isNew',
-	function($scope, $state, $stateParams, $modal, Page, isNew) {
+app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', '$http', 'Page', 'isNew', 'FileUploader',
+	function($scope, $state, $stateParams, $modal, $http, Page, isNew, FileUploader) {
 
 	//init
 	$scope.isNew = isNew;
 	$scope.page = { tags : []};
-	/*$scope.uploader = new FileUploader({
+
+	//setup file uploader object
+	var uploader = $scope.uploader = new FileUploader({
 		url : '/uploads'
-	});*/
+	});
 
 	//read existing page
 	if (!isNew) {
 		$scope.page = Page.findById( { id: $stateParams.pageId });
+		$http.get('/files/' + $stateParams.pageId).then( function(res) {
+			$scope.pageFiles = res.data;
+		});
 	}
 
 	$scope.save = function(pageForm) {
@@ -31,9 +36,6 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 
 		$scope.page.updatedBy = $scope.currentUser.name;
 
-		//upload all files
-		//$scope.uploader.uploadAll();
-
 		if (isNew) {
 
 			//set current documentId on page
@@ -42,8 +44,25 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 
 			Page.create($scope.page).$promise
 			.then( function(p) {
-				//page saved	
-				$state.go('docwiki.page', {pageId: p.id}, {reload: true});
+				//page saved: upload all files
+
+				//upload all files
+				if (uploader.queue.length>0 ) {
+					console.log('got files to upload');
+
+					uploader.onBeforeUploadItem = function(item) {
+					    item.url = '/upload/' + p.id;
+					};
+					uploader.onCompleteAll = function() {
+			            console.info('onCompleteAll');
+			            $state.go('docwiki.page', {pageId: p.id}, {reload: true});
+			        };
+					uploader.uploadAll();	
+				} else {
+					$state.go('docwiki.page', {pageId: p.id}, {reload: true});
+				}
+				
+				
 			});
 
 		} else {
@@ -51,7 +70,27 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 			var page = new Page($scope.page);
 
 			page.$save( function(_saved) {
-				$state.go('docwiki.page', {pageId: $scope.page.id});
+
+				//upload all files
+				if (uploader.queue.length>0 ) {
+					console.log('got files to upload');
+
+					uploader.onBeforeUploadItem = function(item) {
+					    item.url = '/upload/' + $scope.page.id;
+					};
+
+			
+
+					uploader.onCompleteAll = function() {
+			            console.info('onCompleteAll');
+			            $state.go('docwiki.page', {pageId: $scope.page.id});
+			        };
+					uploader.uploadAll();	
+				} else {
+					$state.go('docwiki.page', {pageId: $scope.page.id});
+				}
+
+				
 			});
 
 		}

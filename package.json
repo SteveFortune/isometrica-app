@@ -3,19 +3,21 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "start" : "node server/server.js",
+    "start": "node server/server.js",
     "dev": "nodemon server/server.js --watch server --watch common --ext js,json ",
     "pretest": "jshint ."
   },
   "dependencies": {
     "compression": "^1.0.3",
     "errorhandler": "^1.1.1",
+    "gridfs-stream": "^1.1.1",
     "loopback": "^2.8.0",
     "loopback-boot": "^2.4.0",
     "loopback-connector-mongodb": "^1.7.0",
     "loopback-datasource-juggler": "^2.7.0",
     "mongodb": "^2.0.27",
     "multer": "^0.1.8",
+    "multiparty": "^4.1.1",
     "serve-favicon": "^2.0.1"
   },
   "optionalDependencies": {
