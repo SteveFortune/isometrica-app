@@ -6,18 +6,7 @@ var app = angular.module('isa.docwiki');
 app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', '$http', 'Page', 'isNew', 'FileUploader',
 	function($scope, $state, $stateParams, $modal, $http, Page, isNew, FileUploader) {
 
-	//init
-	$scope.isNew = isNew;
-	$scope.page = { tags : []};
-	$scope.utils = isa.utils;
-	$scope.toDelete = [];
-
-	//setup file uploader object
-	var uploader = $scope.uploader = new FileUploader({
-		url : '/uploads'
-	});
-
-	var readRelatedFiles = function(parentId) {
+	var _readRelatedFiles = function(parentId) {
 		$http.get('/files/' + parentId).then( function(res) {
 			var files = res.data;
 			angular.forEach(files, function(file) {
@@ -29,10 +18,50 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 		});
 	}
 
-	//read existing page
+	var _postSave = function(itemId) {
+
+		//delete selected files
+		angular.forEach( $scope.pageFiles, function(file) {
+			if (file.markedForDeletion) {
+				console.info('delete ', file);
+				$http.delete('/file/' + file._id);
+			}
+		});
+
+		//upload all files
+		if (uploader.queue.length>0 ) {
+			
+			uploader.onBeforeUploadItem = function(item) {
+			    item.url = '/upload/' + itemId;
+			};
+			uploader.onCompleteAll = function() {
+	            console.info('onCompleteAll');
+	            $state.go('docwiki.page', {pageId: itemId }, {reload: true});
+	        };
+			uploader.uploadAll();	
+
+		} else {
+			_readRelatedFiles(itemId);
+			$state.go('docwiki.page', {pageId: itemId }, {reload: true});
+		}
+
+	};
+
+	//init
+	$scope.isNew = isNew;
+	$scope.page = { tags : []};
+	$scope.utils = isa.utils;
+	$scope.toDelete = [];
+
+	//setup file uploader object
+	var uploader = $scope.uploader = new FileUploader({
+		url : '/uploads'
+	});
+
+		//read existing page
 	if (!isNew) {
 		$scope.page = Page.findById( { id: $stateParams.pageId });
-		readRelatedFiles($stateParams.pageId);
+		_readRelatedFiles($stateParams.pageId);
 	}
 
 	$scope.save = function(pageForm) {
@@ -43,7 +72,7 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 		}
 
 		if (typeof $scope.page.tags === 'string') {
-			$scope.page.tags = [$scope.page.tags];
+			$scope.page.tags = ($scope.page.tags.length>0 ? [$scope.page.tags] : []);
 		}
 
 		$scope.page.updatedBy = $scope.currentUser.name;
@@ -57,25 +86,8 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 			Page.create($scope.page).$promise
 			.then( function(p) {
 
-				//page saved: upload all files
-
-				//upload all files
-				if (uploader.queue.length>0 ) {
-					
-					uploader.onBeforeUploadItem = function(item) {
-					    item.url = '/upload/' + p.id;
-					};
-					uploader.onCompleteAll = function() {
-			            console.info('onCompleteAll');
-			            $state.go('docwiki.page', {pageId: p.id}, {reload: true});
-			        };
-					uploader.uploadAll();	
-				} else {
-					readRelatedFiles(p.id);
-					$state.go('docwiki.page', {pageId: p.id}, {reload: true});
-				}
-				
-				
+				_postSave(p.id);
+								
 			});
 
 		} else {
@@ -84,40 +96,13 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 
 			page.$save( function(_saved) {
 
-				//upload all files
-				if (uploader.queue.length>0 ) {
-					
-					uploader.onBeforeUploadItem = function(item) {
-					    item.url = '/upload/' + $scope.page.id;
-					};
-
-					uploader.onCompleteAll = function() {
-			            console.info('onCompleteAll');
-			            $state.go('docwiki.page', {pageId: $scope.page.id});
-			        };
-					uploader.uploadAll();	
-				} else {
-
-					//delete selected files
-					angular.forEach( $scope.pageFiles, function(file) {
-						if (file.markedForDeletion) {
-							console.info('delete ', file);
-							$http.delete('/file/' + file._id);
-						}
-					});
-
-					readRelatedFiles($scope.page.id);
-					$state.go('docwiki.page', {pageId: $scope.page.id});
-				}
-
+				_postSave($scope.page.id);
 				
 			});
 
 		}
 
 	};
-
-
 
 	$scope.delete = function(page) {
 

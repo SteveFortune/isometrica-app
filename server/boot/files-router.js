@@ -100,7 +100,7 @@ module.exports = function(app) {
 	    if (files.length > 0) {
 	    	res.send(files);
 	    } else {
-	        res.json('File Not Found');
+	    	res.send([]);
 	    }
 	  });
 	});
@@ -118,7 +118,7 @@ module.exports = function(app) {
 
 		gfs.remove({ _id : mongo.ObjectID( req.params.fileId ) }, function (err) {
 		  if (err) {
-		  	res.send('error');
+		  	res.send('file not found');
 		  }
 		  console.log('file with id ' + req.params.fileId + ' has been removed');
 		});
