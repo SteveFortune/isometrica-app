@@ -821,8 +821,28 @@ a > i.fa {
 
 /*docwiki styles*/
 .docwiki {
+  /* styled 'browse' button*/
   /*textangular toolbar*/
   /* styled 'browse' button*/ }
+  .docwiki .btn-file {
+    position: relative;
+    overflow: hidden; }
+  .docwiki .btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block; }
+  .docwiki .queue-deleted {
+    text-decoration: line-through; }
   .docwiki .nav {
     /*expand/ collapse in the list*/
     /*open dropdown menu items in header*/ }

@@ -14,17 +14,23 @@ module.exports = function(app) {
 	var Grid = require('gridfs-stream');
 	var multiparty = require("multiparty");
 
-  app.post('/upload/:parentId', function(req, res) {
+	/*
+	 * uploads a file to GridFS, relates the file to a specific document
+	 * 
+	 * @param parentId		id of the document to relate this file to
+	 *
+	 * @author Mark Leusink
+	 */
+  	app.post('/upload/:parentId', function(req, res) {
 
   		console.log('upload a file to ' + req.params.parentId);
 
   		var db = app.datasources.mongodb.connector.db;
 		var gfs = Grid(db, mongo);
-
 	  	var form = new multiparty.Form({maxFieldSize:8192, maxFields:10, autoFiles:false});
+
         form.on("part", function(part) {
-            if (!part.filename)
-            {
+            if (!part.filename) {
                 return;
             }
 
@@ -42,6 +48,7 @@ module.exports = function(app) {
             
             part.pipe(writeStream);
         });
+
         form.on("field", function(name, value) {
         	console.log('found ' + name + ' with ' + value);
         });
@@ -50,22 +57,37 @@ module.exports = function(app) {
         });
         form.parse(req);
 
-		 res.send("Success!");	
+		res.send("Success");	
 		
 	});
 
-	app.get('/file/:fileId/:fileName', function(req, res) {
-		console.log('get file from ' + req.params.fileId);
+	/*
+	 * returns a stream to a file with a specific id
 
+	 * @param fileId		id of the file to read
+	 * @param fileName  	name of the file to use for this link (can be any)
+	 *
+	 * @author Mark Leusink
+	 */
+	app.get('/file/:fileId/:fileName', function(req, res) {
+	
 		var db = app.datasources.mongodb.connector.db;
 		var gfs = Grid(db, mongo);
-	    var mime = 'image/jpeg';
-	    res.set('Content-Type', mime);
+
+	   // var mime = 'application/octet-stream';
+	    //res.set('Content-Type', mime);
 	    var read_stream = gfs.createReadStream( { _id : mongo.ObjectID( req.params.fileId ) }  );
 	    read_stream.pipe(res);
 
 	});
 
+	/*
+	 * returns a list of files (in JSON format) for a parent document (id)
+	 *
+	 * @param parentId		id of a document for which the releated files are searched
+	 *
+	 * @author Mark Leusink
+	 */
 	app.get('/files/:parentId', function(req, res) {
 		
 		var db = app.datasources.mongodb.connector.db;
@@ -76,18 +98,31 @@ module.exports = function(app) {
 	    	res.json(err);
 	    }
 	    if (files.length > 0) {
-
 	    	res.send(files);
-
-	    	/*
-
-	        var mime = 'image/jpeg';
-	        res.set('Content-Type', mime);
-	        var read_stream = gfs.createReadStream({filename: pic_id});
-	        read_stream.pipe(res);*/
 	    } else {
 	        res.json('File Not Found');
 	    }
 	  });
 	});
-}
+
+	/*
+	 * deletes a file from GridFS
+	 *
+	 * @param fileId	id (in Mongo) of the file to remove 
+	 *
+	 * @author Mark Leusink
+	 */
+	app.delete('/file/:fileId', function(req, res) {
+		var db = app.datasources.mongodb.connector.db;
+		var gfs = Grid(db, mongo);
+
+		gfs.remove({ _id : mongo.ObjectID( req.params.fileId ) }, function (err) {
+		  if (err) {
+		  	res.send('error');
+		  }
+		  console.log('file with id ' + req.params.fileId + ' has been removed');
+		});
+
+	});
+
+};

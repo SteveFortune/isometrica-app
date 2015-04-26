@@ -1,6 +1,6 @@
 <div class="panel panel-default bootcards-wiki-panel" ng-cloak>
 
-	<div class="panel-heading">
+	<div class="panel-heading clearfix">
 
 		<div class="pull-left">
 
@@ -24,7 +24,7 @@
 
 	<div class="panel-body form-horizontal bootcards-wiki-panel-metadata">
 
-		<div class="form-group">
+		<div class="form-group" ng-if="page.tags.length > 0">
 
 			<label class="col-sm-2 control-label">Tags</label>
 			<div class="col-sm-10"> <p class="form-control-static">{{page.tags | list}}</p></div>
@@ -32,15 +32,24 @@
 		</div>
 
 		<!--files-->
-		<div class="form-group">
+		<div class="form-group" ng-if="pageFiles.length>0">
 
 			<label class="col-sm-2 control-label">Files</label>
-			<div class="col-sm-10">
-				<ul>
-					<li ng-repeat="file in pageFiles">
-					<a href="/file/{{file._id}}/{{file.filename}}" target="_blank">{{file.filename}}</a>
-					</li>
-				</ul>
+			<div class="col-sm-10 form-control-static">
+				<table class="table table-condensed"><tbody>
+					<tr ng-repeat="file in pageFiles">
+						<td>
+							<a href="/file/{{file._id}}/{{file.filename}}" target="_blank" ng-if="!file.isImage">
+							<i ng-class="utils.getIconClassForFile(file.filename)"></i>
+							{{file.filename}}
+							</a>
+							<a ng-click="lightbox(file)" ng-if="file.isImage">
+							<i ng-class="utils.getIconClassForFile(file.filename)"></i>
+							{{file.filename}}
+							</a>
+						</td>
+					</tr>
+				</tbody></table>
 			</div>
 
 		</div>
@@ -61,7 +70,6 @@
 		<small class="pull-right">
 			Last edited {{page.updated | timeAgo}} (by {{page.updatedBy}})
 		</small>
-		
 
 	</div>
 

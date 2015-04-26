@@ -9,18 +9,30 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 	//init
 	$scope.isNew = isNew;
 	$scope.page = { tags : []};
+	$scope.utils = isa.utils;
+	$scope.toDelete = [];
 
 	//setup file uploader object
 	var uploader = $scope.uploader = new FileUploader({
 		url : '/uploads'
 	});
 
+	var readRelatedFiles = function(parentId) {
+		$http.get('/files/' + parentId).then( function(res) {
+			var files = res.data;
+			angular.forEach(files, function(file) {
+				file.markedForDeletion = false;
+				var ext = file.filename.substring( file.filename.lastIndexOf('.') + 1).toLowerCase();
+				file.isImage = (ext == 'jpg' || ext=='jpeg' || ext == 'gif' || ext == 'png');
+			});
+			$scope.pageFiles = files;
+		});
+	}
+
 	//read existing page
 	if (!isNew) {
 		$scope.page = Page.findById( { id: $stateParams.pageId });
-		$http.get('/files/' + $stateParams.pageId).then( function(res) {
-			$scope.pageFiles = res.data;
-		});
+		readRelatedFiles($stateParams.pageId);
 	}
 
 	$scope.save = function(pageForm) {
@@ -44,12 +56,12 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 
 			Page.create($scope.page).$promise
 			.then( function(p) {
+
 				//page saved: upload all files
 
 				//upload all files
 				if (uploader.queue.length>0 ) {
-					console.log('got files to upload');
-
+					
 					uploader.onBeforeUploadItem = function(item) {
 					    item.url = '/upload/' + p.id;
 					};
@@ -59,6 +71,7 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 			        };
 					uploader.uploadAll();	
 				} else {
+					readRelatedFiles(p.id);
 					$state.go('docwiki.page', {pageId: p.id}, {reload: true});
 				}
 				
@@ -73,13 +86,10 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 
 				//upload all files
 				if (uploader.queue.length>0 ) {
-					console.log('got files to upload');
-
+					
 					uploader.onBeforeUploadItem = function(item) {
 					    item.url = '/upload/' + $scope.page.id;
 					};
-
-			
 
 					uploader.onCompleteAll = function() {
 			            console.info('onCompleteAll');
@@ -87,6 +97,16 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 			        };
 					uploader.uploadAll();	
 				} else {
+
+					//delete selected files
+					angular.forEach( $scope.pageFiles, function(file) {
+						if (file.markedForDeletion) {
+							console.info('delete ', file);
+							$http.delete('/file/' + file._id);
+						}
+					});
+
+					readRelatedFiles($scope.page.id);
 					$state.go('docwiki.page', {pageId: $scope.page.id});
 				}
 
@@ -96,6 +116,8 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 		}
 
 	};
+
+
 
 	$scope.delete = function(page) {
 
@@ -115,6 +137,36 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 				});
 			}
 		});
+
+	};
+
+	/*
+	 * permanently deletes a file
+	 */
+	$scope.deleteFile = function(file) {
+
+		file.markedForDeletion = true;
+
+	};
+
+	/*
+	 * shows a modal to display an image
+	 */
+	$scope.lightbox = function(file) {
+
+		$modal.open({
+	      templateUrl: '/components/lightbox/lightboxModal.html',
+			controller : 'LightboxModalController',
+			size : 'lg',
+			resolve: {
+				id: function() {
+					return file._id;
+				},
+				name: function() {
+					return file.filename;
+				}
+			},
+	    });
 
 	};
 

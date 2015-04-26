@@ -27,6 +27,10 @@ $docwiki-hover-color: #F5F5F5;
 	    display: block;
 	} 
 
+	.queue-deleted {
+		text-decoration : line-through;
+	}
+
 	.nav {
 
 		.panel {
