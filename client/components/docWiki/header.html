@@ -20,7 +20,7 @@
 				        <li><a href="#"><i class="fa fa-copy fa-fw"></i>Duplicate</a></li>
 				        <li><a href="#"><i class="fa fa-archive fa-fw"></i>Archive</a></li>
 				        <li class="divider"></li>
-				        <li><a href="#"><i class="fa fa-paste fa-fw"></i>Save as template</a></li>
+				        <li><a ng-click="saveAsTemplate()"><i class="fa fa-paste fa-fw"></i>Save as template</a></li>
 				      </ul>
 				 </div>
 
@@ -37,7 +37,8 @@
 
 		<div class="navbar-header">
 			<span class="navbar-brand">
-				{{title}}
+				{{docWiki.title}}
+				<span ng-show="docWiki.isTemplate">(template)</span>
 			</span>
 		</div>
 	</div>

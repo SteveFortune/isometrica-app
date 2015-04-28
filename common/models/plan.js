@@ -2,7 +2,7 @@ module.exports = function(Plan) {
 
 	Plan.observe('before delete', function (ctx, next) {
 
-		//delete all canvas item in this plan
+		//delete all canvas item in this module
 		var CanvasItem = ctx.Model.app.models.CanvasItem;
 
 		CanvasItem.find({
@@ -16,6 +16,8 @@ module.exports = function(Plan) {
 				});
 			});
 		});
+
+		//TODO: for document wiki, delete all pages in this module (=document)
 
 		next();
 	});

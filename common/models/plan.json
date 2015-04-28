@@ -16,11 +16,8 @@
     "type": {
       "type": "string"
     },
-    "created": {
-      "type": "date"
-    },
-    "updated": {
-      "type": "date"
+    "isTemplate": {
+      "type": "boolean"
     }
   },
   "validations": [],

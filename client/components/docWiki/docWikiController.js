@@ -67,6 +67,7 @@ app.controller( 'DocWikiController',
 	['$rootScope', '$scope', '$stateParams', '$state', 'Plan', 'PageFactory',
 	function($rootScope, $scope, $stateParams, $state, Plan, PageFactory) {
 
+	$scope.moduleId = $stateParams.planId;
 	$scope.docWiki = Plan.findById( { 'id' : $stateParams.planId } );	
 
 	//default open the first menu item ('Pages')
@@ -85,7 +86,7 @@ app.controller( 'DocWikiController',
 
 		var s = page.section;
 
-		if (s.length === 0 || s.indexOf('.')===-1) { return null;}
+		if ( !s || s.length === 0 || s.indexOf('.')===-1) { return null;}
 
 		if ( s.substring(s.length-1) === '.' ) {		//remove trailing dot
 			s = s.substring(0, s.length -1);
@@ -97,23 +98,14 @@ app.controller( 'DocWikiController',
 		return { 'font-size' : '14px', 'padding-left': (15 + indent * 10) + 'px'};
 	};
 
-}]);
-
-/**
- * @author Mark Leusink
- */
-app.directive('isaDocWikiHeader', function() {
-
-	return {
-		scope : {
-			'title' : '@'
-		},
-		templateUrl: '/components/docWiki/header.html',
-		restrict: 'AE',
-		transclude: true,
+	$scope.saveAsTemplate = function() {
+		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {isTemplate : true})
+		.$promise.then(function(res) {
+			$scope.docWiki.isTemplate = true;
+		});
 	};
 
-});
+}]);
 
 /**
  * Show a date/time in a 'time ago' like syntax (e.g. 5 seconds ago, an hour ago)
