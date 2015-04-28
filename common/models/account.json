@@ -1,27 +1,15 @@
 {
-  "name": "Page",
+  "name": "Account",
   "base": "PersistedModelExt",
   "idInjection": true,
   "properties": {
-    "documentId" : {
+    "subscriptionType": {
       "type": "string",
       "required": true
     },
-    "title": {
+    "name": {
       "type": "string",
       "required": true
-    },
-    "section": {
-      "type": "string"
-    },
-    "version": {
-      "type": "number"
-    },
-    "contents" : {
-      "type": "string"
-    },
-    "tags" :{
-      "type": ["string"]
     }
   },
   "validations": [],

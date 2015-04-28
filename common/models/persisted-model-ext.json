@@ -1,0 +1,23 @@
+{
+  "name": "PersistedModelExt",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "created": {
+      "type": "date"
+    },
+    "createdBy" : {
+      "type": "string"
+    },
+    "updated": {
+      "type": "date"
+    },
+    "updatedBy":{
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

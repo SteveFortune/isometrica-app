@@ -1,6 +1,6 @@
 {
   "name": "CanvasItem",
-  "base": "PersistedModel",
+  "base": "PersistedModelExt",
   "idInjection": true,
   "properties": {
     "type": {
@@ -22,12 +22,6 @@
     },
     "showOnCanvas": {
       "type": "boolean"
-    },
-    "created": {
-      "type": "date"
-    },
-    "updated": {
-      "type": "date"
     },
 
     "location": {

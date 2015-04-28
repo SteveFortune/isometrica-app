@@ -11,6 +11,10 @@
     "dataSource": "mongodb",
     "public": false
   },
+  "Account": {
+    "dataSource": "mongodb",
+    "public": true
+  },
   "AccessToken": {
     "dataSource": "mongodb",
     "public": false
@@ -36,7 +40,8 @@
     "public": true
   },
   "IsometricaUser": {
-    "dataSource": "mongodb"
+    "dataSource": "mongodb",
+    "public": true
   },
   "Email": {
     "dataSource": "email",

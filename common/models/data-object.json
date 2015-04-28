@@ -1,6 +1,6 @@
 {
   "name": "DataObject",
-  "base": "PersistedModel",
+  "base": "PersistedModelExt",
   "idInjection": true,
   "properties": {
     "name": {
@@ -15,12 +15,6 @@
     },
     "scope" : {
       "type": "string"
-    },
-    "created": {
-      "type": "date"
-    },
-    "updated": {
-      "type": "date"
     }
   },
   "validations": [],

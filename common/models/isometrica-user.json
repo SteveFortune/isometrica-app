@@ -11,6 +11,15 @@
     },
     "name": {
       "type": "string"
+    },
+    "created": {
+      "type": "date"
+    },
+    "updated" : {
+      "type": "date"
+    },
+    "accounts" : {
+      "type": "object"
     }
   },
   "validations": [],

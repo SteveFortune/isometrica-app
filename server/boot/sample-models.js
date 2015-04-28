@@ -1,20 +1,19 @@
 module.exports = function(app) {
 
-  console.log('set up default users');
+  console.log('Create sample models');
 
   var User = app.models.IsometricaUser;
   var Role = app.models.Role;
   var RoleMapping = app.models.RoleMapping;
+  var Account = app.models.Account;
 
-  //var Team = app.models.Team;
-
-  var createIfNotExists = function(Model, user, callback) {
+  var createUserIfNotExists = function(Model, user, callback) {
 
     Model.find( {where: {username : user.username}}, function(err, res) {
 
       if (res.length===0) {
         Model.create(user, function(err, user) {
-          console.log('created:', user);
+          console.log('created user %s', user.name);
 
           if (callback) { callback.call(user); }
         });
@@ -26,52 +25,39 @@ module.exports = function(app) {
 
   };
 
-  createIfNotExists(User, {firstName : 'Steve', lastName : 'Ives', name : 'Steve Ives', username: 'steve@isometrica.com', email: 'steve@isometrica.com', password: 'isometrica'});
-  createIfNotExists(User, {firstName : 'Jack', lastName : 'Herbert', name : 'Jack Herbert', username: 'jack@isometrica.com', email: 'jack@isometrica.com', password: 'isometrica'});
-  createIfNotExists(User, {firstName : 'Mark', lastName : 'Leusink', name : 'Mark Leusink', username: 'mark@isometrica.com', email: 'mark@isometrica.com', password: 'isometrica'});
-  
-/*
-    // create project 1 and make john the owner
-    users[0].projects.create({
-      name: 'project1',
-      balance: 100
-    }, function(err, project) {
-      if (err) throw err;
+  Account.find( {
+    where : { name : 'LinQed' }
+  }, function (err, res) {
 
-      console.log('Created project:', project);
+    if (res.length === 0 ) {
 
-      // add team members
-      Team.create([
-        {ownerId: project.ownerId, memberId: users[0].id},
-        {ownerId: project.ownerId, memberId: users[1].id}
-      ], function(err, team) {
-        if (err) throw err;
+      //account doesn't exist yet: create account &  users
 
-        console.log('Created team:', team);
-      });
-    });*/
-  /*
+      Account.create( {
+          'subscriptionType' : 'free',
+          'name' : 'LinQed'
+        }, function(err, account) {
+          if (err) throw err;
 
-    //create project 2 and make jane the owner
-    users[1].projects.create({
-      name: 'project2',
-      balance: 100
-    }, function(err, project) {
-      if (err) throw err;
+          console.log('Account created for ' + account.name); 
 
-      console.log('Created project:', project);
+          //setup users
+          createUserIfNotExists(User, {firstName : 'Steve', lastName : 'Ives', name : 'Steve Ives', 
+            username: 'steve@isometrica.com', email: 'steve@isometrica.com', password: 'isometrica',
+            accounts : [ { id : account.id, type : 'owner' }] });
+          createUserIfNotExists(User, {firstName : 'Jack', lastName : 'Herbert', name : 'Jack Herbert',
+            username: 'jack@isometrica.com', email: 'jack@isometrica.com', password: 'isometrica',
+            accounts : [ { id : account.id, type : 'owner' }]});
+          createUserIfNotExists(User, {firstName : 'Mark', lastName : 'Leusink', name : 'Mark Leusink',
+            username: 'mark@isometrica.com', email: 'mark@isometrica.com', password: 'isometrica',
+            accounts : [ { id : account.id, type : 'owner' }]});
 
-      //add team members
-      Team.create({
-        ownerId: project.ownerId,
-        memberId: users[1].id
-      }, function(err, team) {
-        if (err) throw err;
+        } );
 
-        console.log('Created team:', team);
-      });
-    });
-*/
+    } else {
+      console.log('sample models already created');
+    }
 
-  createIfNotExists( Role, {name: 'admin'} );
+  });
+
 };
