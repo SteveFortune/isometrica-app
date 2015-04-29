@@ -5,25 +5,49 @@
   <div class="container bootcards-container" id="main">
   	<div class="row">
   		<div class="col-xs-12 bootcards-cards">
-  			<div class="row">
-  				
-   				<div class="col-sm-6 col-md-4">
-  					<div class="panel panel-default add-new-plan" ng-click="addPlan()">			
-    					<a href="#" class="btn">
-    						<i class="fa fa-plus"></i>
-    						New Module
-    					</a>
-    				</div>
-  				</div>
- 				
 
-  				<div ng-repeat="plan in plans">
+        <tabset justified="true">
+          <tab heading="Active Projects">
 
-  					<div ng-include src="'/components/overview/plan.html'"></div>
+            <div class="row">
+          
+              <div class="col-sm-6 col-md-4">
+                <div class="panel panel-default add-new-plan" ng-click="addPlan()">     
+                  <a href="#" class="btn">
+                    <i class="fa fa-plus"></i>
+                    New Module
+                  </a>
+                </div>
+              </div>
 
-  				</div>
-  				
-  			</div>					
+              <div ng-repeat="plan in plans">
+                <div ng-include src="'/components/overview/plan.html'"></div>
+              </div>
+              
+            </div>          
+
+          </tab>
+          <tab heading="Templates">
+
+            <div class="row">
+              <div ng-repeat="plan in templates">
+                <div ng-include src="'/components/overview/plan.html'"></div>
+              </div>
+            </div> 
+
+          </tab>
+          <tab heading="Archive">
+            
+            <div class="row">
+              <div ng-repeat="plan in archived">
+                <div ng-include src="'/components/overview/plan.html'"></div>
+              </div>
+            </div> 
+
+          </tab>
+        </tabset>
+
+  			
   		</div>
   	</div>
   </div>

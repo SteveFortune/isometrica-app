@@ -17,7 +17,12 @@
       "type": "string"
     },
     "isTemplate": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
+    },
+    "isArchived": {
+      "type": "boolean",
+      "default": false
     }
   },
   "validations": [],

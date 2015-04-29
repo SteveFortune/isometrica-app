@@ -112,6 +112,9 @@ a > i.fa {
   font-weight: 300; }
 
 /* DASHBOARD */
+.tab-content {
+  margin-top: 15px; }
+
 .add-new-plan {
   border: 0;
   box-shadow: none;
@@ -146,18 +149,17 @@ a > i.fa {
 
 @media (min-width: 768px) {
   .desktop .add-new-plan .btn {
-    height: 264px; }
+    height: 206px; }
 
   .ios .add-new-plan .btn {
-    height: 262px; }
+    height: 204px; }
 
   .android .add-new-plan .btn {
-    height: 264px; } }
+    height: 206px; } }
 .resilify-dashboard-item {
   cursor: pointer;
   border-color: #BBB; }
   .resilify-dashboard-item .panel-body {
-    height: 160px;
     overflow: hidden; }
     @media (max-width: 767px) {
       .resilify-dashboard-item .panel-body {

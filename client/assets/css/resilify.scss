@@ -152,6 +152,10 @@ a > i.fa {
 
 /* DASHBOARD */
 
+.tab-content {
+  margin-top:15px;
+}
+
 .add-new-plan {
   border: 0;
   box-shadow: none;
@@ -197,13 +201,13 @@ a > i.fa {
 
 @media (min-width: 768px) {
   .desktop .add-new-plan .btn {
-    height: 264px;
+    height: 206px;
   }
   .ios .add-new-plan .btn {
-    height: 262px;
+    height: 204px;
   }
   .android .add-new-plan .btn {
-    height: 264px;
+    height: 206px;
   }
 }
 
@@ -217,7 +221,6 @@ a > i.fa {
 	}
 		
 	.panel-body {
-		height: 160px;
 		overflow: hidden;
 		
 		@media (max-width:767px) {

@@ -27,15 +27,21 @@
 
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right bootcards-nav-secondary">
-				<!-- <li>
-					<a href="#">
-						<i class="fa fa-fw fa-user"></i>
-						Account
-					</a>
-				</li> -->	 
+
+				<li ng-if="isAuthenticated">
+					<p style="padding: 5px 15px; margin: 0;line-height: 20px; color: #777;">
+					<i class="fa fa-fw fa-user"></i>
+					{{currentUser.name}}
+					</p>
+				</li>
+
 				<li>
 					<a href="#">
-						<i class="fa fa-fw fa-question-circle"></i>
+						Account
+					</a>
+				</li> 
+				<li>
+					<a href="#">
 						Help
 					</a>
 				</li>
@@ -48,12 +54,7 @@
 				</li>
 
 				<li ng-if="isAuthenticated">
-					<p style="padding: 5px 15px; margin: 0;line-height: 20px; color: #777;">
-					Signed in as {{currentUser.name}}
-					<span class="padding-left:5px">(<a ng-click="logout()">logout</a>)
-					</span>
-					</p>
-		
+					<a ng-click="logout()">Logout</a>
 				</li>
 				   
 			</ul>
@@ -66,20 +67,8 @@
 				</li>
 				<li>
 					<a href="#">
-						<i class="fa fa-fw fa-comments"></i>
-						Discussions
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-fw fa-check-square-o"></i>
-						To Dos
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-fw fa-life-ring"></i>
-						Support
+						<i class="fa fa-fw fa-cog"></i>
+						Settings
 					</a>
 				</li>
 				<li>

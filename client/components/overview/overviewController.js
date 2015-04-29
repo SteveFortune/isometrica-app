@@ -5,27 +5,68 @@ app.controller( 'OverviewController',
 	['$scope', '$modal', '$state', '$timeout', 'Plan', 'growl',
 	function($scope, $modal, $state, $timeout, Plan, growl) {
 
+	$scope.plans = [];
+	$scope.templates = [];
+	$scope.archived = [];
+
 	var loadPlans = function() {
 		//retrieve all plans and activate the tooltips
-		Plan.query( { 'filter[order]' : 'title ASC'} )
-		.$promise.then( function(plans) {
 
-			$scope.plans = plans;
+		Plan.find({
+			filter : {
+				where : {
+					isTemplate: false,
+			  		isArchived : false
+				  }
+			}
+		  },
+		  function(plans) { 
+		  	$scope.plans = _attachMockUsers(plans);
+		  },
+		  function(errorResponse) { /* error */ }
+		);
 
-			//Attach some sample users / @TODO: make dynamic
-			var planUsers = [
-				{'name' : 'Mark Leusink', profileUrl : '/assets/img/avatar-mark.gif', id : 'mark', email : 'mark@teamstudio.com'},
-				{'name' : 'Matt White', profileUrl : '/assets/img/avatar-matt.gif', id : 'matt', email : 'matt@teamstudio.com'},
-				{'name' : 'Steve Ives', profileUrl : '/assets/img/avatar-steve.gif', id : 'steve', email : 'steve@teamstudio.com'},
-				{'name' : 'Jack Herbert', profileUrl : '/assets/img/avatar-jack.gif', id : 'jack', email : 'jack@teamstudio.com'}
-			];
+		Plan.find({
+			filter : {
+				where : {
+					isTemplate: true,
+			  		isArchived : false
+				  }
+			} 
+		  },
+		  function(plans) { 
+		  	 console.log('found' + plans.length + 't');
+		  	$scope.templates = _attachMockUsers(plans);
+		  },
+		  function(errorResponse) { /* error */ }
+		);
 
-			angular.forEach( $scope.plans, function(plan) {
-				plan.users = planUsers;
-			});
+		Plan.find(
+		  { filter: { where: { isArchived: true } } },
+		  function(plans) {
+		  console.log('found' + plans.length + 'a'); 
+		  	$scope.archived = _attachMockUsers(plans);
+		  },
+		  function(errorResponse) { /* error */ }
+		);
 
-		});
 	};
+
+	var _attachMockUsers = function(plans) {
+		//Attach some sample users / @TODO: make dynamic
+		var planUsers = [
+			{'name' : 'Mark Leusink', profileUrl : '/assets/img/avatar-mark.gif', id : 'mark', email : 'mark@teamstudio.com'},
+			{'name' : 'Matt White', profileUrl : '/assets/img/avatar-matt.gif', id : 'matt', email : 'matt@teamstudio.com'},
+			{'name' : 'Steve Ives', profileUrl : '/assets/img/avatar-steve.gif', id : 'steve', email : 'steve@teamstudio.com'},
+			{'name' : 'Jack Herbert', profileUrl : '/assets/img/avatar-jack.gif', id : 'jack', email : 'jack@teamstudio.com'}
+		];
+
+		angular.forEach( plans, function(plan) {
+			plan.users = planUsers;
+		});
+
+		return plans;
+	}
 
 	/**
 	 *	Crudely maps a given plan entity to a route state.

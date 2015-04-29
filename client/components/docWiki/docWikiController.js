@@ -105,6 +105,21 @@ app.controller( 'DocWikiController',
 		});
 	};
 
+	$scope.saveInArchive = function() {
+		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {isArchived : true})
+		.$promise.then(function(res) {
+			$scope.docWiki.isArchived = true;
+		});
+	};
+
+	$scope.unArchive = function() {
+		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {isArchived : false})
+		.$promise.then(function(res) {
+			$scope.docWiki.isArchived = false;
+		});
+	};
+	
+
 }]);
 
 /**
