@@ -64,8 +64,8 @@ app.config(['$stateProvider', function($stateProvider){
  * @author Mark Leusink
  */
 app.controller( 'DocWikiController', 
-	['$rootScope', '$scope', '$stateParams', '$state', 'Plan', 'PageFactory',
-	function($rootScope, $scope, $stateParams, $state, Plan, PageFactory) {
+	['$rootScope', '$scope', '$stateParams', '$state', 'Plan', 'PageFactory', 'growl',
+	function($rootScope, $scope, $stateParams, $state, Plan, PageFactory, growl) {
 
 	$scope.moduleId = $stateParams.planId;
 	$scope.docWiki = Plan.findById( { 'id' : $stateParams.planId } );	
@@ -102,6 +102,7 @@ app.controller( 'DocWikiController',
 		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {isTemplate : true})
 		.$promise.then(function(res) {
 			$scope.docWiki.isTemplate = true;
+			growl.success('This document has been marked as a template');
 		});
 	};
 
@@ -109,6 +110,7 @@ app.controller( 'DocWikiController',
 		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {isArchived : true})
 		.$promise.then(function(res) {
 			$scope.docWiki.isArchived = true;
+			growl.success('This document has been archived');
 		});
 	};
 
@@ -116,8 +118,17 @@ app.controller( 'DocWikiController',
 		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {isArchived : false})
 		.$promise.then(function(res) {
 			$scope.docWiki.isArchived = false;
+			growl.success('This document has been unarchived');
 		});
 	};
+	$scope.duplicateDoc = function() {
+
+		Plan.copy( {planId : $scope.moduleId }).$promise
+		.then(function(res) {
+			growl.success('This document has been duplicated');
+		})
+
+	}
 	
 
 }]);
