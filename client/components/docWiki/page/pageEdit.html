@@ -94,7 +94,12 @@
 
 	<div class="panel-body" style="padding-top:10px">
 
-		<div text-angular ng-model="page.contents" ta-toolbar="[['bold','italics'],['ul','ol'],['insertLink','insertImage']]"></div>	
+		<text-angular 
+			ta-paste="utils.htmlCleanup($html)"
+			ta-toolbar="[['bold','italics'],['ul','ol'],['insertLink','insertImage']]"
+			ng-model="page.contents"
+			>
+		</text-angular>
 
 	</div>
 
