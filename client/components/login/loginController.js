@@ -15,6 +15,8 @@ app.controller( 'LoginController', [
 	$scope.errorMsg = "";
 	$scope.rememberMe = false;
 
+	$scope.isLogin = true;
+
 	//login the user
 	$scope.login = function(credentials) {
 
@@ -25,13 +27,13 @@ app.controller( 'LoginController', [
 	        // success
 	        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
       		$scope.setCurrentUser(res.user);
-      		var next = $location.nextAfterLogin || '/';
+      		var next = $location.nextAfterLogin || '/overview';
 			$location.nextAfterLogin = null;
 			$location.path(next);
 	      }, function(res) {
 	        // error
 	        $scope.hasError = true;
-	        $scope.errorMsg = res.statusText;
+	        $scope.errorMsg = res.data.error.message;
 	        $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
 	      });
 	 };

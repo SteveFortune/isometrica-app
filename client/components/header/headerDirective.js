@@ -1,13 +1,41 @@
 
 var app = angular.module('isa');
 
-app.directive('isaHeader', function($state, IsometricaUser) {
+//single line header
+app.directive('isaHeader', ['$state', 'IsometricaUser', 'growl', 
+	function($state, IsometricaUser, growl) {
 
 	return {
 
 		replace : true,
 		restrict : 'E',
 		templateUrl : '/components/header/headerView.html',
+		transclude : true,
+
+		controller : function($scope, $state, IsometricaUser) {
+
+			$scope.logout = function() {
+		 		IsometricaUser.logout( function() {
+		 			$scope.setCurrentUser(null);
+		 			$state.go('welcome');
+			 	});
+			};
+   
+		}
+
+	};
+
+}]);
+
+//double line header
+app.directive('isaHeaderDouble', ['$state', 'IsometricaUser', 'growl', 
+	function($state, IsometricaUser, growl) {
+
+	return {
+
+		replace : true,
+		restrict : 'E',
+		templateUrl : '/components/header/headerViewMulti.html',
 		transclude : true,
 
 		controller : function($scope, $state, IsometricaUser) {
@@ -69,4 +97,4 @@ app.directive('isaHeader', function($state, IsometricaUser) {
 
 	};
 
-});
+}]);

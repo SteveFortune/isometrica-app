@@ -1,12 +1,14 @@
 
 <div>
 
-  <!-- <isa-header></isa-header> -->
+  <isa-header></isa-header>
 
   <div class="container">
     <div class="row">
 
       <div class="col-sm-4 col-sm-offset-4">
+
+        <div class="alert alert-danger" ng-if="hasError">{{errorMsg}}</div>
 
         <form name="loginForm" ng-submit="login(credentials)">
 
@@ -38,8 +40,6 @@
         </div>
 
         </form>
-
-        <div style="margin-top:10px;" class="alert alert-danger" ng-if="hasError">{{errorMsg}}</div>
 
       </div>
 

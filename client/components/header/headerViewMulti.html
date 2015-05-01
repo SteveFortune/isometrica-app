@@ -1,5 +1,5 @@
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top bootcards-navbar-double" role="navigation">
 	<div class="container">
 
 		<ul class="nav navbar-nav navbar-left">
@@ -26,57 +26,57 @@
 		</div>   
 
 		<div class="navbar-collapse collapse">
-			
-			<ul class="nav navbar-nav navbar-right">
-
-				<li>
-					<a href="#">
-						Blog
-					</a>
-				</li> 
-				<li>
-					<a href="#">
-						Prices
-					</a>
-				</li> 
-				<li>
-					<a href="#">
-						Support
-					</a>
-				</li> 
-				<li ng-if="!isAuthenticated">
-					<a href="#">
-						Sign up
-					</a>
-				</li>
+			<ul class="nav navbar-nav navbar-right bootcards-nav-secondary">
 
 				<li ng-if="isAuthenticated">
-					<a ui-sref="overview">
-						<i class="fa fa-fw fa-th"></i>
-						Overview
-					</a>
+					<p style="padding: 5px 15px; margin: 0;line-height: 20px; color: #777;">
+					<i class="fa fa-fw fa-user"></i>
+					{{currentUser.name}}
+					</p>
 				</li>
 
-				<li ng-if="isAuthenticated">
+				<li>
 					<a href="#">
-						<i class="fa fa-fw fa-user"></i>
-						{{currentUser.name}}
+						Account
+					</a>
+				</li> 
+				<li>
+					<a href="#">
+						Help
 					</a>
 				</li>
 
 				<li ng-if="!isAuthenticated">
-					<p class="navbar-btn">
-					<a class="btn btn-success" ui-sref="login" ng-class="{'disabled' : isLogin}">
+					<a ui-sref="login">
 						<i class="fa fa-fw fa-lock"></i>
 						Login
 					</a>
-					</p>
 				</li>
 
 				<li ng-if="isAuthenticated">
 					<a ng-click="logout()">Logout</a>
 				</li>
 				   
+			</ul>
+			<ul class="nav navbar-nav navbar-right bootcards-nav-primary">
+				<li>
+					<a ui-sref="overview">
+						<i class="fa fa-fw fa-th"></i>
+						Overview
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-fw fa-cog"></i>
+						Settings
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-fw fa-refresh"></i>
+						Sync
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>
