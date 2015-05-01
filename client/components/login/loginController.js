@@ -5,6 +5,7 @@ app.controller( 'LoginController', [
 	'$scope', '$rootScope', '$location', 'AUTH_EVENTS', 'IsometricaUser',
 	function($scope, $rootScope, $location, AUTH_EVENTS, IsometricaUser) {
 
+	//for debug purposes: set default credentials
 	$scope.credentials = {
 		email : 'mark@isometrica.com',
 		password : 'isometrica'
@@ -12,7 +13,9 @@ app.controller( 'LoginController', [
 
 	$scope.hasError = false;
 	$scope.errorMsg = "";
+	$scope.rememberMe = false;
 
+	//login the user
 	$scope.login = function(credentials) {
 
 		$scope.hasError = false;
