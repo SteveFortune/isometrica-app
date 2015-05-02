@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Isometrica Data Objects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--set the hidden class here, so everything is immediately hidden-->
+  <style type="text/css">
+    .hidden {
+      display:none;
+    }
+  </style>
+  
+  <!-- polyfill for html imports & xcomponents resources -->
+  <script type="text/javascript" src="/assets/libs/xcomponents/dist/js/xc-base.js"></script>
+  <script type="text/javascript" src="/assets/libs/webcomponentsjs/HTMLImports.min.js"></script>
+  <link rel="import" href="/assets/libs/xcomponents/dist/includes/includes.html">
+ 
+  <!-- xcomponents app config -->
+  <script src="datamodel.js"></script> 
+  
+</head>
+
+<body ng-controller="xcController" class="hidden">
+
+  <xc-header title="Isometrica Data Objects"></xc-header>
+
+  <xc-layout>
+
+    <xc-list 
+      type="flat"
+      list-width="5" 
+      model-name="dataObject"
+      allow-add="true"
+      order-by="name"
+      url="/api/DataObjects/:id"
+      summary-field="name"
+      details-field="details"
+      image-placeholder-icon="database"
+      autoload-first="true"
+      infinite-scroll="true">
+
+      <xc-form 
+        url="/api/DataObjects/:id" 
+        model-name="dataObject"
+        default-text="Select a data object from the list"></xc-form>
+
+    </xc-list>
+
+  </xc-layout>
+
+  <xc-footer></xc-footer>
+
+</body>
+
+</html>
