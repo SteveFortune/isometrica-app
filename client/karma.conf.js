@@ -45,6 +45,10 @@ module.exports = function(config) {
         preprocessors: {
           '**/*.coffee': 'coffee'
         }
-
+    });
+    config.set({
+        client: {
+            args: []
+        }
     });
 };

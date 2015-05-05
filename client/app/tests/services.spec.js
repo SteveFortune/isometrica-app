@@ -1,6 +1,6 @@
 'use strict';
 
-describe('PersistentFactoryNameResolver', function() {
+describe("PersistentFactoryNameResolver", function() {
 
 	var PersistentFactoryNameResolver;
 
@@ -14,14 +14,14 @@ describe('PersistentFactoryNameResolver', function() {
 	it("should return name with local suffix", function() {
 		inject(function($rootScope) {
 			$rootScope.online = false;
-			expect(PersistentFactoryNameResolver.resolve('Test')).toBe('_TestLocal');
+			expect(PersistentFactoryNameResolver.resolveFactory('Test')).toBe('_TestLocal');
 		});
 	});
 
 	it("should return name with remote suffix", function() {
 		inject(function($rootScope) {
 			$rootScope.online = true;
-			expect(PersistentFactoryNameResolver.resolve('Test')).toBe('_TestRemote');
+			expect(PersistentFactoryNameResolver.resolveFactory('Test')).toBe('_TestRemote');
 		});
 	});
 

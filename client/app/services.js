@@ -8,7 +8,7 @@ var app = angular.module('isa');
  */
 app.service('PersistentFactoryNameResolver', ['$rootScope', function($rootScope) {
 	return {
-		resolve: function(name) {
+		resolveFactory : function(name) {
 			var suffix = $rootScope.online ? 'Remote' : 'Local';
 			return '_' + name + suffix;
 		}

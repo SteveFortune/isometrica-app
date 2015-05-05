@@ -5,7 +5,7 @@ var app = angular.module('isa.addressbook.factories', []);
 
 /**
  * Basic service responsible for CRUD operations on users.
- *
+\ *
  * @note Could we use a provider here somehow? It seems a lot cleaner.
  * @note As users might be quite commonly accessed throughout the application, it
  * 		 might be worth having a base user service in the `app/` dir and inheriting
@@ -13,13 +13,14 @@ var app = angular.module('isa.addressbook.factories', []);
  * @author Steve Fortune
  */
 app.factory('UserFactory', ['$rootScope', '$injector', 'PersistentFactoryNameResolver',
-	function($rootScope, $injector, PersistentFactoryNameResolver) {
-		return PersistentFactoryNameResolver.resolve('UserFactory');
+	function($injector, PersistentFactoryNameResolver) {
+		return $injector.get(PersistentFactoryNameResolver.resolveFactory('UserFactory'));
 	}]);
 
 app.factory('_UserFactoryRemote', ['User', function(User) {
 	return {
 		all: function() {
+
 		},
 		findBy: function(predicate) {
 
@@ -39,13 +40,12 @@ app.factory('_UserFactoryRemote', ['User', function(User) {
 app.factory('_UserFactoryLocal', [function() {
 	return {
 		all: function() {
-
+			return [];
 		},
 		findBy: function(predicate) {
-
+			return [];
 		},
 		insert: function(newUser) {
-
 		},
 		delete: function(user) {
 
