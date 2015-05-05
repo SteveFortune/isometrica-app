@@ -1,23 +1,42 @@
 
 var app = angular.module('isa.addressbook.services');
 
+
 /**
  * Basic service responsible for CRUD operations on users.
  *
+ * @note Could we use a provider here somehow? It seems a lot cleaner.
  * @note As users might be quite commonly accessed throughout the application, it
  * 		 might be worth having a base user service in the `app/` dir and inheriting
  * 		 from it here.
- * @note Can we encapsulate the boilerplate of checking whether we're online or not
- * 		 in an abstract factory of sorts?
  * @author Steve Fortune
  */
-app.factory('UserService', ['$rootScope', '$injector', function($rootScope, $injector) {
-	return $rootScope.online ?
-		$injector.get('_UserServiceRemote') :
-		$injector.get('_UserServiceLocal');
+app.factory('UserFactory', ['$rootScope', '$injector', 'PersistentFactoryNameResolver',
+	function($rootScope, $injector, PersistentFactoryNameResolver) {
+		return PersistentFactoryNameResolver.resolve('UserFactory');
+	}]);
+
+app.factory('_UserFactoryRemote', ['User', function(User) {
+	return {
+		all: function() {
+			User.
+		},
+		findBy: function(predicate) {
+
+		},
+		insert: function(newUser) {
+
+		},
+		delete: function(user) {
+
+		},
+		save: function(user) {
+
+		}
+	}
 }]);
 
-app.factory('_UserServiceRemote', ['User', function(User) {
+app.factory('_UserFactoryLocal', [function() {
 	return {
 		all: function() {
 
@@ -35,8 +54,4 @@ app.factory('_UserServiceRemote', ['User', function(User) {
 
 		}
 	}
-}]);
-
-app.factory('_UserServiceLocal', [function() {
-
 }]);
