@@ -1,9 +1,11 @@
 module.exports = function(grunt) {
+        grunt.loadNpmTasks('grunt-karma');
+        grunt.registerTask('default', ['karma']);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     banner: '/* <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-    
+
     //clean the output folder and unused css files
     // clean: {
     //   output : {
@@ -81,8 +83,14 @@ module.exports = function(grunt) {
           spawn: false,
         }
       }
-    }
+    },
 
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
+    }
+    
   });
 
   //load grunt plugins
@@ -93,6 +101,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-loopback-sdk-angular');
+  grunt.loadNpmTasks('grunt-karma');
 
   //note: cssmin disabled for now
   grunt.registerTask('default', [
@@ -104,5 +113,9 @@ module.exports = function(grunt) {
   grunt.registerTask('lbAngular', [
     'loopback_sdk_angular'
   ])
+
+  grunt.registerTask('default', [
+      'karma'
+  ]);
 
 };
