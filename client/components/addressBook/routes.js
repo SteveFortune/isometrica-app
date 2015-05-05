@@ -1,7 +1,10 @@
 
 'use strict';
 
-var app = angular.module('isa.addressbook');
+var app = angular.module('isa.addressbook', [
+	'isa.addressbook.factories',
+	'ui.router'
+]);
 
 
 /**

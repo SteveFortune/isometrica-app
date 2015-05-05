@@ -4,7 +4,7 @@ var app = angular.module('isa');
 
 
 /**
- * Utility service that encapsulates transforming a given factory name
+ * Utility service that encapsulates transforming a factory name
  */
 app.service('PersistentFactoryNameResolver', ['$rootScope', function($rootScope) {
 	return {
@@ -13,4 +13,4 @@ app.service('PersistentFactoryNameResolver', ['$rootScope', function($rootScope)
 			return '_' + name + suffix;
 		}
 	};
-});
+}]);

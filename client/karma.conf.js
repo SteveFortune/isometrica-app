@@ -17,8 +17,26 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-          '*/mocks.js',
-          '**/*.spec.js'
+		  'assets/libs/angular/angular.js',
+		  'assets/libs/angular-ui-router/release/angular-ui-router.js',
+		  'assets/libs/angular-animate/angular-animate.js',
+          'assets/libs/angular-sanitize/angular-sanitize.js',
+          'assets/libs/angular-touch/angular-touch.js',
+          'assets/libs/angular-resource/angular-resource.js',
+          'assets/libs/angular-growl-2/build/angular-growl.js',
+          'assets/libs/angular-file-upload/angular-file-upload.js',
+          'assets/libs/angular-bootstrap/ui-bootstrap.js',
+          'assets/libs/rangy/rangy-core.js',
+          'assets/libs/rangy/rangy-selectionsaverestore.js',
+          'assets/libs/textAngular/src/textAngular.js',
+          'assets/libs/textAngular/src/textAngular-sanitize.js',
+          'assets/libs/textAngular/src/textAngularSetup.js',
+          'assets/js/lb-services.js',
+		  '../node_modules/angular-mocks/angular-mocks.js',
+		  'app/module.js',
+		  'app/**/*.js',
+		  'components/**/*.js',
+		  '**/*.spec.js'
           //'static/testacular.src.js',
           //'test/client/mocks/ObjectModel.js',
           //'adapter/*.src.js',

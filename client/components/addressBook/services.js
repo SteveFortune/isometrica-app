@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('isa.addressbook.services');
+var app = angular.module('isa.addressbook.factories', []);
 
 
 /**
@@ -20,7 +20,6 @@ app.factory('UserFactory', ['$rootScope', '$injector', 'PersistentFactoryNameRes
 app.factory('_UserFactoryRemote', ['User', function(User) {
 	return {
 		all: function() {
-			User.
 		},
 		findBy: function(predicate) {
 
