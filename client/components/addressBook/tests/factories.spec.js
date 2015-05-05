@@ -25,3 +25,17 @@ describe("UserFactory", function() {
 	});
 
 });
+
+describe("_UserFactoryRemote", function() {
+
+	beforeEach(module("is.addressbook.factories"));
+
+	describe("all", function() {
+
+		it("should query the User model for all users associated with an account", function() {
+
+		});
+
+	});
+
+});

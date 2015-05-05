@@ -17,14 +17,74 @@ app.factory('UserFactory', ['$injector', 'PersistentFactoryNameResolver',
 		return $injector.get(PersistentFactoryNameResolver.resolveFactory('UserFactory'));
 	}]);
 
-app.factory('_UserFactoryRemote', ['User', function(User) {
+app.factory('_UserFactoryRemote', ['User', '$q', function(User, $q) {
+
+	/**
+	 * The size of the result pages
+	 *
+	 * @todo Move this to and `app.value();` or application config or a
+	 * 		 base service.
+	 * @const Number
+	 */
+	var PAGE_SIZE = 10;
+
+	/**
+	 * Computes the collection offset for a given page index.
+	 *
+	 * @private
+	 * @return 	Number
+	 */
+	var offsetForPage = function(page) {
+		return page*PAGE_SIZE;
+	};
+
 	return {
-		all: function() {
 
+		/**
+		 * Find all users.
+		 *
+		 * @public
+		 * @param	page		Number	The result page offset of the results to query for
+		 * @return 	Promise
+		 */
+		all: function(page) {
+			return $q(function(resolve, reject) {
+				User.find({
+					filter: {
+						where: {},
+						offset: offsetForPage(page),
+						limit: PAGE_SIZE
+					}
+				}, function(list, responseHeaders) {
+					resolve(list);
+				}, function(response) {
+					reject('Unable to retrieve users');
+				});
+			});
 		},
-		findBy: function(predicate) {
 
+		/**
+		 * Finds an individual user by a given predicate (e.g. a hash of attributes to
+		 * match against).
+		 *
+		 * @public
+		 * @param	predicate	Object	Hash of attribute-value pairs to match against
+		 * @return 	Promise
+		 */
+		findOneBy: function(predicate) {
+			return $q(function(resolve, reject) {
+				User.find({
+					filter: {
+						where: predicate
+					}
+				}, function(list, responseHeaders) {
+					resolve(list);
+				}, function(response) {
+					reject('Unable to find user.');
+				});
+			});
 		},
+
 		insert: function(newUser) {
 
 		},
