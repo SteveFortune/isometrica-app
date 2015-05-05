@@ -85,12 +85,17 @@ module.exports = function(grunt) {
       }
     },
 
+    /*
+     * @note Just for client side tests for now. I'm sure there will be server side
+     * karma in the future.
+     *
+     **/
     karma: {
       unit: {
-        configFile: 'karma.conf.js'
+        configFile: 'client/karma.conf.js'
       }
     }
-    
+
   });
 
   //load grunt plugins
