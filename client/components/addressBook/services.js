@@ -18,7 +18,23 @@ app.factory('UserService', ['$rootScope', '$injector', function($rootScope, $inj
 }]);
 
 app.factory('_UserServiceRemote', ['User', function(User) {
+	return {
+		all: function() {
 
+		},
+		findBy: function(predicate) {
+
+		},
+		insert: function(newUser) {
+
+		},
+		delete: function(user) {
+
+		},
+		save: function(user) {
+
+		}
+	}
 }]);
 
 app.factory('_UserServiceLocal', [function() {
