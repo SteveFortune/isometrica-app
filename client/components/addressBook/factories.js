@@ -12,7 +12,7 @@ var app = angular.module('isa.addressbook.factories', []);
  * 		 from it here.
  * @author Steve Fortune
  */
-app.factory('UserFactory', ['$rootScope', '$injector', 'PersistentFactoryNameResolver',
+app.factory('UserFactory', ['$injector', 'PersistentFactoryNameResolver',
 	function($injector, PersistentFactoryNameResolver) {
 		return $injector.get(PersistentFactoryNameResolver.resolveFactory('UserFactory'));
 	}]);

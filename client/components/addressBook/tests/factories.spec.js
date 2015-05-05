@@ -10,15 +10,15 @@ describe("UserFactory", function() {
 		inject(function($injector, PersistentFactoryNameResolver) {
 
 			var factory = {};
-			var factoryName = "TheFactory";
+			var factoryName = "_UserFactoryLocal";
 
 			spyOn($injector, 'get').and.callThrough();
 			spyOn(PersistentFactoryNameResolver, 'resolveFactory').and.returnValue(factoryName);
 
 			$injector.get('UserFactory');
 
-			expect($injector.get.calls.count()).toEqual(1);
-			expect($injector.get.argsFor(0)).toHaveBeenCalledWith(factoryName);
+			expect($injector.get).toHaveBeenCalled();
+			expect($injector.get).toHaveBeenCalledWith(factoryName);
 
 		});
 
