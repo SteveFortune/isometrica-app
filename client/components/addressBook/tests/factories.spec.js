@@ -199,4 +199,49 @@ describe("_UserFactoryRemote", function() {
 
 	});
 
+	describe("deleteById", function() {
+
+		it("should delete a user by id", function() {
+			inject(function(IsometricaUser) {
+				spyOn(IsometricaUser, 'deleteById');
+				_UserFactoryRemote.deleteById(123);
+				expect(IsometricaUser.deleteById).toHaveBeenCalledWith({
+					id: 123
+				}, jasmine.any(Function), jasmine.any(Function));
+			});
+		});
+
+		it("should return a promise for the operation", function() {
+			inject(function($q) {
+				var pr = _UserFactoryRemote.deleteById(123);
+				expect(pr).toHaveSameCtorAs($q.defer());
+			});
+		});
+
+		it("should resolve promise on success", function() {
+			inject(function(IsometricaUser, $rootScope) {
+				var success = jasmine.createSpy();
+				spyOn(IsometricaUser, 'deleteById').and.callFake(function(params, resolve, reject) {
+					resolve();
+				});
+				_UserFactoryRemote.deleteById(123).then(success);
+				$rootScope.$digest();
+				expect(success).toHaveBeenCalled();
+			});
+		});
+
+		it("should reject promise on failure", function() {
+			inject(function(IsometricaUser, $rootScope) {
+				var failure = jasmine.createSpy();
+				spyOn(IsometricaUser, 'deleteById').and.callFake(function(params, resolve, reject) {
+					reject('Error');
+				});
+				_UserFactoryRemote.deleteById(123).then(function() {}, failure);
+				$rootScope.$digest();
+				expect(failure).toHaveBeenCalledWith('Error');
+			});
+		});
+
+	});
+
 });
