@@ -36,6 +36,11 @@ describe("_UserFactoryRemote", function() {
 		jasmine.addMatchers(toHaveSameCtorAs);
 	});
 
+	// @note Opted to favour DAMP tests instead of DRY here. I tried refactoring the promise
+	// wrapping into a shared example but tests became more obscure and complex. Each method
+	// might also want to futher customise how the promises are handled so it makes more sense
+	// to write the tests out for each separate method.
+
 	describe("all", function() {
 
 		it("should find all users", function() {
@@ -136,6 +141,57 @@ describe("_UserFactoryRemote", function() {
 					reject('Error');
 				});
 				_UserFactoryRemote.findOneBy().then(function() {}, failure);
+				$rootScope.$digest();
+				expect(failure).toHaveBeenCalledWith('Error');
+			});
+		});
+
+	});
+
+	describe("insert", function() {
+
+		it("should insert a user", function() {
+			inject(function(IsometricaUser) {
+				var user = {
+					first_name: "Steve",
+					last_name: "Fortune"
+				};
+				spyOn(IsometricaUser, 'create');
+				_UserFactoryRemote.insert(user);
+				expect(IsometricaUser.create).toHaveBeenCalledWith(null, user, jasmine.any(Function), jasmine.any(Function));
+			});
+		});
+
+		it("should return a promise for the operation", function() {
+			inject(function($q) {
+				var pr = _UserFactoryRemote.insert({});
+				expect(pr).toHaveSameCtorAs($q.defer());
+			});
+		});
+
+		it("should resolve promise on success", function() {
+			inject(function(IsometricaUser, $rootScope) {
+				var success = jasmine.createSpy();
+				var user = {
+					first_name: "Steve",
+					last_name: "Fortune"
+				};
+				spyOn(IsometricaUser, 'create').and.callFake(function(params, obj, resolve, reject) {
+					resolve(obj);
+				});
+				_UserFactoryRemote.insert(user).then(success);
+				$rootScope.$digest();
+				expect(success).toHaveBeenCalledWith(user);
+			});
+		});
+
+		it("should reject promise on failure", function() {
+			inject(function(IsometricaUser, $rootScope) {
+				var failure = jasmine.createSpy();
+				spyOn(IsometricaUser, 'create').and.callFake(function(params, obj, resolve, reject) {
+					reject('Error');
+				});
+				_UserFactoryRemote.insert({}).then(function() {}, failure);
 				$rootScope.$digest();
 				expect(failure).toHaveBeenCalledWith('Error');
 			});
