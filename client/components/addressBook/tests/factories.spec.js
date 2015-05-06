@@ -62,24 +62,32 @@ describe("_UserFactoryRemote", function() {
 		});
 
 		it("should resolve promise on success", function() {
-			inject(function(IsometricaUser, $scope) {
+			inject(function(IsometricaUser, $rootScope) {
 				var foundUsers = [ {}, {}, {} ];
 				var success = jasmine.createSpy();
 				spyOn(IsometricaUser, 'find').and.callFake(function(obj, resolve, reject) {
 					resolve(foundUsers);
-					// See here: http://stackoverflow.com/questions/16323323/promise-callback-not-called-in-angular-js
-					// Angular.js has its own event loop. Promise resolutions are propogated asynchronously
-					// in the event loop. The event loop is processed every digest cycle, so we need to trigger
-					// one with $scope.$apply
-					$scope.$apply();
 				});
 				_UserFactoryRemote.all(0).then(success);
+				// See here: http://stackoverflow.com/questions/16323323/promise-callback-not-called-in-angular-js
+				// Angular.js has its own event loop. Promise resolutions are propogated asynchronously
+				// in the event loop. The event loop is processed every digest cycle, so we need to trigger
+				// one with $scope.$apply
+				$rootScope.$digest();
 				expect(success).toHaveBeenCalledWith(foundUsers);
 			});
 		});
 
 		it("should reject promise on failure", function() {
-
+			inject(function(IsometricaUser, $rootScope) {
+				var failure = jasmine.createSpy();
+				spyOn(IsometricaUser, 'find').and.callFake(function(obj, resolve, reject) {
+					reject('Error');
+				});
+				_UserFactoryRemote.all(0).then(function() {}, failure);
+				$rootScope.$digest();
+				expect(failure).toHaveBeenCalledWith('Error');
+			});
 		});
 
 
