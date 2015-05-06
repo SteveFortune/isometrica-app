@@ -62,11 +62,19 @@ describe("_UserFactoryRemote", function() {
 		});
 
 		it("should resolve promise on success", function() {
-			inject(function() {
-				//var $qSpy = createSpy().and.callFake(function(promiseHandler) {
-
-				//});
-				//$provide.value('$q', $qSpy);
+			inject(function(IsometricaUser, $scope) {
+				var foundUsers = [ {}, {}, {} ];
+				var success = jasmine.createSpy();
+				spyOn(IsometricaUser, 'find').and.callFake(function(obj, resolve, reject) {
+					resolve(foundUsers);
+					// See here: http://stackoverflow.com/questions/16323323/promise-callback-not-called-in-angular-js
+					// Angular.js has its own event loop. Promise resolutions are propogated asynchronously
+					// in the event loop. The event loop is processed every digest cycle, so we need to trigger
+					// one with $scope.$apply
+					$scope.$apply();
+				});
+				_UserFactoryRemote.all(0).then(success);
+				expect(success).toHaveBeenCalledWith(foundUsers);
 			});
 		});
 
