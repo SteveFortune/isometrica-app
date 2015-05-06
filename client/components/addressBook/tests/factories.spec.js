@@ -244,4 +244,56 @@ describe("_UserFactoryRemote", function() {
 
 	});
 
+	describe("updateById", function() {
+
+		it("should update a user by id", function() {
+			inject(function(IsometricaUser) {
+				spyOn(IsometricaUser, 'update');
+				var user = {
+					first_name: "Steve",
+					last_name: "Fortune"
+				};
+				_UserFactoryRemote.updateById(123, user);
+				expect(IsometricaUser.update).toHaveBeenCalledWith({
+					where: {
+						id: 123
+					}
+				}, user, jasmine.any(Function), jasmine.any(Function));
+			});
+		});
+
+		it("should return a promise for the operation", function() {
+			inject(function($q) {
+				var pr = _UserFactoryRemote.updateById();
+				expect(pr).toHaveSameCtorAs($q.defer());
+			});
+		});
+
+		it("should resolve promise on success", function() {
+			inject(function(IsometricaUser, $rootScope) {
+				var success = jasmine.createSpy();
+				var user = {};
+				spyOn(IsometricaUser, 'update').and.callFake(function(params, obj, resolve, reject) {
+					resolve(obj);
+				});
+				_UserFactoryRemote.updateById(123, user).then(success);
+				$rootScope.$digest();
+				expect(success).toHaveBeenCalledWith(user);
+			});
+		});
+
+		it("should reject promise on failure", function() {
+			inject(function(IsometricaUser, $rootScope) {
+				var failure = jasmine.createSpy();
+				spyOn(IsometricaUser, 'update').and.callFake(function(params, obj, resolve, reject) {
+					reject('Error');
+				});
+				_UserFactoryRemote.updateById(123, {}).then(function() {}, failure);
+				$rootScope.$digest();
+				expect(failure).toHaveBeenCalledWith('Error');
+			});
+		});
+
+	});
+
 });

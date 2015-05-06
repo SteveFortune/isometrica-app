@@ -102,6 +102,24 @@ app.factory('_UserFactoryRemote', ['IsometricaUser', '$q', function(IsometricaUs
 					id: userId
 				}, resolve, reject);
 			});
+		},
+
+		/**
+		 * Updates a user by a given id.
+		 *
+		 * @public
+		 * @param	userId		Number | String		The id of the user to update
+		 * @param	user		Object				Attributes / values for the user
+		 * @return 	Promise
+		 */
+		updateById: function(userId, user) {
+			return $q(function(resolve, reject) {
+				IsometricaUser.update({
+					where: {
+						id: userId
+					}
+				}, user, resolve, reject);
+			});
 		}
 
 	}
