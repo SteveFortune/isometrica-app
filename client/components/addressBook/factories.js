@@ -5,7 +5,7 @@ var app = angular.module('isa.addressbook.factories', []);
 
 /**
  * Basic service responsible for CRUD operations on users.
-\ *
+ *
  * @note Could we use a provider here somehow? It seems a lot cleaner.
  * @note As users might be quite commonly accessed throughout the application, it
  * 		 might be worth having a base user service in the `app/` dir and inheriting
@@ -51,15 +51,10 @@ app.factory('_UserFactoryRemote', ['User', '$q', function(User, $q) {
 			return $q(function(resolve, reject) {
 				User.find({
 					filter: {
-						where: {},
 						offset: offsetForPage(page),
 						limit: PAGE_SIZE
 					}
-				}, function(list, responseHeaders) {
-					resolve(list);
-				}, function(response) {
-					reject('Unable to retrieve users');
-				});
+				}, resolve, reject);
 			});
 		},
 
@@ -77,23 +72,38 @@ app.factory('_UserFactoryRemote', ['User', '$q', function(User, $q) {
 					filter: {
 						where: predicate
 					}
-				}, function(list, responseHeaders) {
-					resolve(list);
-				}, function(response) {
-					reject('Unable to find user.');
-				});
+				}, resolve, reject);
 			});
 		},
 
+		/**
+		 * Creates a user. Does _not_ perform any validation.
+		 *
+		 * @public
+		 * @param	newUser		Object	The user's attribute/values
+		 * @return 	Promise
+		 */
 		insert: function(newUser) {
-
+			return $q(function(resolve, reject) {
+				User.create(null, newUser, resolve, reject);
+			});
 		},
-		delete: function(user) {
 
-		},
-		save: function(user) {
-
+		/**
+		 * Deletes a user by a given id.
+		 *
+		 * @public
+		 * @param	userId		Number | String		The id of the user to delete
+		 * @return 	Promise
+		 */
+		deleteById: function(userId) {
+			return $q(function(resolve, reject) {
+				User.deleteById({
+					id: userId
+				}, resolve, reject);
+			});
 		}
+
 	}
 }]);
 
