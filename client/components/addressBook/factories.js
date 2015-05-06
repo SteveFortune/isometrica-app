@@ -68,7 +68,7 @@ app.factory('_UserFactoryRemote', ['IsometricaUser', '$q', function(IsometricaUs
 		 */
 		findOneBy: function(predicate) {
 			return $q(function(resolve, reject) {
-				IsometricaUser.find({
+				IsometricaUser.findOne({
 					filter: {
 						where: predicate
 					}

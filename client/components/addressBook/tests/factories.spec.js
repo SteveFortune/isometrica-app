@@ -1,83 +1,11 @@
 'use strict';
 
-/**
- * A shared example / behaviour which asserts that a method on the user service
- * returns a promise which resolves / rejects based on the success / failure of
- * the operation.
- *
- * @param	context			Object		Context object that holds a reference to our
- *										sut. This is initialised in beforeEach.
- * @param 	isoUserMethod	String		The method of this IsometricaUser service
- *										that we're spying on
- * @param	method			String		The name of the service method under test
- * @param	args			Array		An array of arguments to pass to the method
- *										under test
- * @author 	Steve Fortune
- */
-var itShouldWrapOperationInPromise = function(context, isoUserMethod, method, args) {
-
-	/**
-	 * @var Object
-	 */
-	var service;
-
-	/**
-	 * @return 	muliple		The return value of the method invocation on the service.
-	 * @private
-	 */
-	var executeMethod = function() {
-		return service[method].apply(args);
-	};
-
-	beforeEach(function() {
-		service = context._UserFactoryRemote;
-	});
-
-	it("should return a promise for the operation", function() {
-		inject(function($q) {
-			var pr = executeMethod();
-			expect(pr).toHaveSameCtorAs($q.defer());
-		});
-	});
-
-	it("should resolve promise on success", function() {
-		inject(function(IsometricaUser, $rootScope) {
-			var foundUsers = [ {}, {}, {} ];
-			var success = jasmine.createSpy();
-			spyOn(IsometricaUser, isoUserMethod).and.callFake(function(obj, resolve, reject) {
-				resolve(foundUsers);
-			});
-			executeMethod().then(success);
-			// See here: http://stackoverflow.com/questions/16323323/promise-callback-not-called-in-angular-js
-			// Angular.js has its own event loop. Promise resolutions are propogated asynchronously
-			// in the event loop. The event loop is processed every digest cycle, so we need to trigger
-			// one with $scope.$apply
-			$rootScope.$digest();
-			expect(success).toHaveBeenCalledWith(foundUsers);
-		});
-	});
-
-	it("should reject promise on failure", function() {
-		inject(function(IsometricaUser, $rootScope) {
-			var failure = jasmine.createSpy();
-			spyOn(IsometricaUser, isoUserMethod).and.callFake(function(obj, resolve, reject) {
-				reject('Error');
-			});
-			executeMethod().then(function() {}, failure);
-			$rootScope.$digest();
-			expect(failure).toHaveBeenCalledWith('Error');
-		});
-	});
-
-};
-
 describe("UserFactory", function() {
 
 	beforeEach(module('isa'));
 	beforeEach(module('isa.addressbook.factories'));
 
 	it("should get a factory using the injector", function() {
-
 		inject(function($injector, PersistentFactoryNameResolver) {
 
 			var factory = {};
@@ -92,28 +20,17 @@ describe("UserFactory", function() {
 			expect($injector.get).toHaveBeenCalledWith(factoryName);
 
 		});
-
 	});
-
 });
 
 describe("_UserFactoryRemote", function() {
 
-	/**
-	 * Our context holds a reference to the sut. This is so that our shared examples
-	 * can get at it in the beforeEach block, when `_UserFactoryRemote` has been
-	 * retrieved.
-	 *
-	 * @var Object
-	 */
-	var context = {
-		_UserFactoryRemote: null
-	};
+	var _UserFactoryRemote;
 
 	beforeEach(module('isa'));
 	beforeEach(module("isa.addressbook.factories"));
 	beforeEach(inject(function(__UserFactoryRemote_) {
-		context._UserFactoryRemote = __UserFactoryRemote_;
+		_UserFactoryRemote = __UserFactoryRemote_;
 	}));
 	beforeEach(function() {
 		jasmine.addMatchers(toHaveSameCtorAs);
@@ -124,7 +41,7 @@ describe("_UserFactoryRemote", function() {
 		it("should find all users", function() {
 			inject(function(IsometricaUser) {
 				spyOn(IsometricaUser, 'find');
-				context._UserFactoryRemote.all(3);
+				_UserFactoryRemote.all(3);
 				expect(IsometricaUser.find).toHaveBeenCalledWith({
 					filter: {
 						offset: 30,
@@ -134,18 +51,95 @@ describe("_UserFactoryRemote", function() {
 			});
 		});
 
-		itShouldWrapOperationInPromise(context, 'find', 'all', [0]);
+		it("should return a promise for the operation", function() {
+			inject(function($q) {
+				var pr = _UserFactoryRemote.all();
+				expect(pr).toHaveSameCtorAs($q.defer());
+			});
+		});
+
+		it("should resolve promise on success", function() {
+			inject(function(IsometricaUser, $rootScope) {
+				var foundUsers = [ {}, {}, {} ];
+				var success = jasmine.createSpy();
+				spyOn(IsometricaUser, 'find').and.callFake(function(obj, resolve, reject) {
+					resolve(foundUsers);
+				});
+				_UserFactoryRemote.all().then(success);
+				// See here: http://stackoverflow.com/questions/16323323/promise-callback-not-called-in-angular-js
+				// Angular.js has its own event loop. Promise resolutions are propogated asynchronously
+				// in the event loop. The event loop is processed every digest cycle, so we need to trigger
+				// one with $scope.$apply
+				$rootScope.$digest();
+				expect(success).toHaveBeenCalledWith(foundUsers);
+			});
+		});
+
+		it("should reject promise on failure", function() {
+			inject(function(IsometricaUser, $rootScope) {
+				var failure = jasmine.createSpy();
+				spyOn(IsometricaUser, 'find').and.callFake(function(obj, resolve, reject) {
+					reject('Error');
+				});
+				_UserFactoryRemote.all().then(function() {}, failure);
+				$rootScope.$digest();
+				expect(failure).toHaveBeenCalledWith('Error');
+			});
+		});
 
 	});
 
-	describe("find", function() {
+	describe("findOneBy", function() {
 
 		it("should find a single user by the given predicate", function() {
-
-
+			inject(function(IsometricaUser) {
+				spyOn(IsometricaUser, 'findOne');
+				_UserFactoryRemote.findOneBy({
+					first_name: "Steve",
+					last_name: "Fortune"
+				});
+				expect(IsometricaUser.findOne).toHaveBeenCalledWith({
+					filter: {
+						where: {
+							first_name: "Steve",
+							last_name: "Fortune"
+						}
+					}
+				}, jasmine.any(Function), jasmine.any(Function));
+			});
 		});
 
-		itShouldWrapOperationInPromise(context, 'find', 'findOneBy', ['id']);
+		it("should return a promise for the operation", function() {
+			inject(function($q) {
+				var pr = _UserFactoryRemote.findOneBy({});
+				expect(pr).toHaveSameCtorAs($q.defer());
+			});
+		});
+
+		it("should resolve promise on success", function() {
+			inject(function(IsometricaUser, $rootScope) {
+				var foundUser = {};
+				var success = jasmine.createSpy();
+				spyOn(IsometricaUser, 'findOne').and.callFake(function(obj, resolve, reject) {
+					resolve(foundUser);
+				});
+				_UserFactoryRemote.findOneBy().then(success);
+				$rootScope.$digest();
+				expect(success).toHaveBeenCalledWith(foundUser);
+			});
+		});
+
+		it("should reject promise on failure", function() {
+			inject(function(IsometricaUser, $rootScope) {
+				var failure = jasmine.createSpy();
+				spyOn(IsometricaUser, 'findOne').and.callFake(function(obj, resolve, reject) {
+					reject('Error');
+				});
+				_UserFactoryRemote.findOneBy().then(function() {}, failure);
+				$rootScope.$digest();
+				expect(failure).toHaveBeenCalledWith('Error');
+			});
+		});
 
 	});
 
