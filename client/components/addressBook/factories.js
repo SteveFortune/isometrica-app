@@ -17,7 +17,7 @@ app.factory('UserFactory', ['$injector', 'PersistentFactoryNameResolver',
 		return $injector.get(PersistentFactoryNameResolver.resolveFactory('UserFactory'));
 	}]);
 
-app.factory('_UserFactoryRemote', ['User', '$q', function(User, $q) {
+app.factory('_UserFactoryRemote', ['IsometricaUser', '$q', function(IsometricaUser, $q) {
 
 	/**
 	 * The size of the result pages
@@ -49,7 +49,7 @@ app.factory('_UserFactoryRemote', ['User', '$q', function(User, $q) {
 		 */
 		all: function(page) {
 			return $q(function(resolve, reject) {
-				User.find({
+				IsometricaUser.find({
 					filter: {
 						offset: offsetForPage(page),
 						limit: PAGE_SIZE
@@ -68,7 +68,7 @@ app.factory('_UserFactoryRemote', ['User', '$q', function(User, $q) {
 		 */
 		findOneBy: function(predicate) {
 			return $q(function(resolve, reject) {
-				User.find({
+				IsometricaUser.find({
 					filter: {
 						where: predicate
 					}
@@ -85,7 +85,7 @@ app.factory('_UserFactoryRemote', ['User', '$q', function(User, $q) {
 		 */
 		insert: function(newUser) {
 			return $q(function(resolve, reject) {
-				User.create(null, newUser, resolve, reject);
+				IsometricaUser.create(null, newUser, resolve, reject);
 			});
 		},
 
@@ -98,7 +98,7 @@ app.factory('_UserFactoryRemote', ['User', '$q', function(User, $q) {
 		 */
 		deleteById: function(userId) {
 			return $q(function(resolve, reject) {
-				User.deleteById({
+				IsometricaUser.deleteById({
 					id: userId
 				}, resolve, reject);
 			});

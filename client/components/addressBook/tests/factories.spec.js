@@ -30,37 +30,43 @@ describe("_UserFactoryRemote", function() {
 
 	var _UserFactoryRemote;
 
-	beforeEach(module("is.addressbook.factories"));
+	beforeEach(module('isa'));
+	beforeEach(module("isa.addressbook.factories"));
 	beforeEach(inject(function(__UserFactoryRemote_) {
 		_UserFactoryRemote = __UserFactoryRemote_;
 	}));
+	beforeEach(function() {
+		jasmine.addMatchers(toHaveSameCtorAs);
+	});
 
 	describe("all", function() {
 
 		it("should find all users", function() {
-			inject(function(User) {
-				spyOn(User, 'find').and.callThrough();
+			inject(function(IsometricaUser) {
+				spyOn(IsometricaUser, 'find');
 				_UserFactoryRemote.all(3);
-				expect(User.find).toHaveBeenCalledWith({
+				expect(IsometricaUser.find).toHaveBeenCalledWith({
 					filter: {
 						offset: 30,
 						limit: 10
 					}
-				}, jasmine.any(), jasmine.any());
+				}, jasmine.any(Function), jasmine.any(Function));
 			});
 		});
 
 		it("should return a promise for the operation", function() {
-			var pr = _UserFactoryRemote.all();
-			expect(pr).toEqual(jasmine.any($q));
+			inject(function($q) {
+				var pr = _UserFactoryRemote.all();
+				expect(pr).toHaveSameCtorAs($q.defer());
+			});
 		});
 
 		it("should resolve promise on success", function() {
-			inject(function($provide) {
-				var $qSpy = createSpy().and.callFake(function(promiseHandler) {
+			inject(function() {
+				//var $qSpy = createSpy().and.callFake(function(promiseHandler) {
 
-				});
-				$provide.value('$q', $qSpy);
+				//});
+				//$provide.value('$q', $qSpy);
 			});
 		});
 
@@ -79,9 +85,8 @@ describe("_UserFactoryRemote", function() {
 
 		});
 
-		itShouldWrapOperationInPromise();
+		//itShouldWrapOperationInPromise();
 
 	});
 
-	describe("");
 });
