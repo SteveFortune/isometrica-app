@@ -17,6 +17,17 @@ app.controller('AddressBookController',
 	function(UserFactory, $scope){
 
 	/**
+	 * Array of potential loading states
+	 *
+	 * @var Array
+	 */
+	var loadingStates = [
+		'loading',
+		'loaded',
+		'failed'
+	];
+
+	/**
 	 * The state of the asynchronous UI:
 	 * - 'loading'
 	 * - 'loaded'
@@ -24,7 +35,28 @@ app.controller('AddressBookController',
 	 *
 	 * @var String
 	 */
-	$scope.loadingState = 'loading';
+	var loadingState = 'loading';
+
+	/**
+	 * @return 	String
+	 */
+	$scope.getLoadingState = function() {
+		return loadingState;
+	};
+
+	/**
+	 * Sets the loading state property
+	 *
+	 * @param	loadingState	String	Must be one of the predefined strs
+	 * @throws	Error			If loadingState is not one of the predefined
+	 * 							strs
+	 */
+	$scope.setLoadingState = function(newLoadingState) {
+		if (loadingStates.indexOf(newLoadingState) === -1) {
+			throw new Error("Loading state must be: " + loadingStates.toString());
+		}
+		loadingState = newLoadingState;
+	};
 
 	/**
 	 * The collection of users, contacts and organisations to render.
