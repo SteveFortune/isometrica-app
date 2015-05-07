@@ -37,7 +37,6 @@ app.controller('AddressBookController',
 	/**
 	 * The select filter state.
 	 *
-	 * @note Don't set directly. Use designated setter.
 	 * @var String
 	 */
 	$scope.selectState = 'Users';
@@ -45,7 +44,6 @@ app.controller('AddressBookController',
 	/**
 	 * The state of the asynchronous UI.
   	 *
-	 * @note Don't set directly. Use designated setter.
 	 * @var String
 	 */
 	$scope.loadingState = 'loading';
