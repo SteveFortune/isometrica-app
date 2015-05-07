@@ -17,45 +17,59 @@ app.controller('AddressBookController',
 	function(UserFactory, $scope){
 
 	/**
-	 * Array of potential loading states
-	 *
-	 * @var Array
+	 * @const Array
 	 */
-	var loadingStates = [
+	$scope.loadingStates = [
 		'loading',
 		'loaded',
 		'failed'
 	];
 
 	/**
-	 * The state of the asynchronous UI:
-	 * - 'loading'
-	 * - 'loaded'
-	 * - 'failed'
-	 *
-	 * @var String
+	 * @const Array
 	 */
-	var loadingState = 'loading';
+	$scope.selectStates = [
+		'Users',
+		'Contacts',
+		'Organisations'
+	];
 
 	/**
-	 * @return 	String
+	 * The select filter state.
+	 *
+	 * @note Don't set directly. Use designated setter.
+	 * @var String
 	 */
-	$scope.getLoadingState = function() {
-		return loadingState;
+	$scope.selectState = 'Users';
+
+	/**
+	 * The state of the asynchronous UI.
+  	 *
+	 * @note Don't set directly. Use designated setter.
+	 * @var String
+	 */
+	$scope.loadingState = 'loading';
+
+	/**
+	 * @param	loadingState	String	Must be one of the predefined strs
+	 * @throws	Error			If loadingState is invalid
+	 */
+	$scope.setLoadingState = function(newLoadingState) {
+		if ($scope.loadingStates.indexOf(newLoadingState) === -1) {
+			throw new Error("Loading state must be: " + $scope.loadingStates.toString());
+		}
+		$scope.loadingState = newLoadingState;
 	};
 
 	/**
-	 * Sets the loading state property
-	 *
-	 * @param	loadingState	String	Must be one of the predefined strs
-	 * @throws	Error			If loadingState is not one of the predefined
-	 * 							strs
+	 * @param	newSelectState	String	Must be one of the predefined strs
+	 * @throws	Error			If selectState is invalid
 	 */
-	$scope.setLoadingState = function(newLoadingState) {
-		if (loadingStates.indexOf(newLoadingState) === -1) {
-			throw new Error("Loading state must be: " + loadingStates.toString());
+	$scope.setSelectState = function(newSelectState) {
+		if ($scope.selectStates.indexOf(newSelectState)) {
+			throw new Error("Select state must be: " + $scope.selectStates.toString());
 		}
-		loadingState = newLoadingState;
+		$scope.selectState = newSelectState;
 	};
 
 	/**
@@ -75,6 +89,14 @@ app.directive('isaAddressBookHeader', function() {
 		templateUrl: '/components/addressBook/header.html',
 		restrict: 'AE',
 		transclude: true,
+		scope: {
+			collection: '=',
+			'sectionId': '@',
+			'tileIcon': '@',
+			'new': '=',
+			'onEditItem': '&',
+			'onNewItem': '&'
+		}
 	};
 });
 

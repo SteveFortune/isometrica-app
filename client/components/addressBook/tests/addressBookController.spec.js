@@ -19,7 +19,7 @@ describe("AddressBookController", function() {
 
 	describe("ctor", function() {
 		it("should initialise the loadingState to 'loading'", function() {
-			expect($scope.getLoadingState()).toEqual('loading');
+			expect($scope.loadingState).toEqual('loading');
 		});
 		it("should intiailise the address book collection to an empty array", function() {
 			expect($scope.addressBookCollection).toBeInstanceOf(Array);
@@ -28,9 +28,9 @@ describe("AddressBookController", function() {
 	});
 
 	describe("loadingState", function() {
-		it("should get/set the loading state", function() {
+		it("should set the loading state", function() {
 			$scope.setLoadingState('loaded');
-			expect($scope.getLoadingState()).toEqual('loaded');
+			expect($scope.loadingState).toEqual('loaded');
 		});
 		it("should throw an Error if set to an invalid state string", function() {
 			expect(function() {
