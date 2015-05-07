@@ -51,28 +51,6 @@ app.controller('AddressBookController',
 	$scope.loadingState = 'loading';
 
 	/**
-	 * @param	loadingState	String	Must be one of the predefined strs
-	 * @throws	Error			If loadingState is invalid
-	 */
-	$scope.setLoadingState = function(newLoadingState) {
-		if ($scope.loadingStates.indexOf(newLoadingState) === -1) {
-			throw new Error("Loading state must be: " + $scope.loadingStates.toString());
-		}
-		$scope.loadingState = newLoadingState;
-	};
-
-	/**
-	 * @param	newSelectState	String	Must be one of the predefined strs
-	 * @throws	Error			If selectState is invalid
-	 */
-	$scope.setSelectState = function(newSelectState) {
-		if ($scope.selectStates.indexOf(newSelectState)) {
-			throw new Error("Select state must be: " + $scope.selectStates.toString());
-		}
-		$scope.selectState = newSelectState;
-	};
-
-	/**
 	 * The collection of users, contacts and organisations to render.
 	 *
 	 * @var Array
