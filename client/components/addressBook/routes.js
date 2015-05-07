@@ -1,17 +1,13 @@
-
 'use strict';
 
-var app = angular.module('isa.addressbook', [
-	'isa.addressbook.factories',
-	'ui.router'
-]);
+var app = angular.module('isa.addressbook');
 
 
 /**
  * @author Steve Fortune
  */
 app.config(['$stateProvider', function($stateProvider) {
-	stateProvider
+	$stateProvider
 		.state('addressbook', {
 			url: '/addressbook',
 			controllerId: 'AddressBookController',
