@@ -39,4 +39,16 @@ describe("AddressBookController", function() {
 		});
 	});
 
+	describe("selectState", function() {
+		it("should set the select state", function() {
+			$scope.setSelectState('Users');
+			expect($scope.selectState).toEqual('Users');
+		});
+		it("should throw an Error if set to an invalid state string", function() {
+			expect(function() {
+				$scope.setSelectState('invalid');
+			}).toThrow(new Error('Select state must be: Users,Contacts,Organisations'));
+		});
+	});
+
 });

@@ -90,12 +90,8 @@ app.directive('isaAddressBookHeader', function() {
 		restrict: 'AE',
 		transclude: true,
 		scope: {
-			collection: '=',
-			'sectionId': '@',
-			'tileIcon': '@',
-			'new': '=',
-			'onEditItem': '&',
-			'onNewItem': '&'
+			selectState: '&',
+			organisation: '='
 		}
 	};
 });
