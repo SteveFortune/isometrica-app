@@ -70,13 +70,3 @@ app.directive('isaAddressBookHeader', function() {
 		}
 	};
 });
-
-/**
- * @author Steve Fortune
- */
-app.directive('isaAddressBookFooter', function() {
-	return {
-		templateUrl: '/components/addressBook/footer.html',
-		restrict: 'AE',
-	};
-});
