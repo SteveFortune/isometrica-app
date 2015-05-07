@@ -3,11 +3,15 @@
 describe("AddressBookController", function() {
 
 	var AddressBookController;
+	var $scope;
 
 	beforeEach(module('isa'));
 	beforeEach(module('isa.addressbook'));
-	beforeEach(inject(function(_AddressBookController_) {
-		AddressBookController = _AddressBookController_;
+	beforeEach(inject(function($controller) {
+		$scope = {};
+		AddressBookController = $controller('AddressBookController', {
+			$scope: $scope
+		});
 	}));
 	beforeEach(function() {
 		jasmine.addMatchers(toBeInstanceOf);
@@ -15,11 +19,11 @@ describe("AddressBookController", function() {
 
 	describe("ctor", function() {
 		it("should initialise the loadingState to 'loading'", function() {
-			expect(AddressBookController.loadingState).toEqual('loading');
+			expect($scope.loadingState).toEqual('loading');
 		});
 		it("should intiailise the address book collection to an empty array", function() {
-			expect(AddressBookController.addressBookCollection).toBeInstanceOf(Array);
-			expect(AddressBookController.addressBookCollection.length).toEqual(0);
+			expect($scope.addressBookCollection).toBeInstanceOf(Array);
+			expect($scope.addressBookCollection.length).toEqual(0);
 		});
 	});
 

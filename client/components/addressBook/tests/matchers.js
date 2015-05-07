@@ -18,7 +18,7 @@ var toHaveSameCtorAs = {
 };
 
 var toBeInstanceOf = {
-	toHaveSameCtorAs: function(util, customEqualityTesters) {
+	toBeInstanceOf: function(util, customEqualityTesters) {
 		return {
 			compare: function(actual, expected) {
 
