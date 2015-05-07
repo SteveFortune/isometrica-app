@@ -34,3 +34,25 @@ app.controller('AddressBookController',
 	$scope.addressBookCollection = [];
 
 }]);
+
+/**
+ * @author Steve Fortune
+ */
+app.directive('isaAddressBookHeader', function() {
+	return {
+		templateUrl: '/components/addressBook/header.html',
+		restrict: 'AE',
+		transclude: true,
+	};
+});
+
+/**
+ * @author Steve Fortune
+ */
+app.directive('isaAddressBookFooter', function() {
+	return {
+		templateUrl: '/components/addressBook/footer.html',
+		restrict: 'AE',
+		transclude: true,
+	};
+});
