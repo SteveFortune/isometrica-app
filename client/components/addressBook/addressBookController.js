@@ -66,7 +66,6 @@ app.directive('isaAddressBookHeader', function() {
 	return {
 		templateUrl: '/components/addressBook/header.html',
 		restrict: 'AE',
-		transclude: true,
 		scope: {
 			selectState: '&',
 			organisation: '='
@@ -81,6 +80,5 @@ app.directive('isaAddressBookFooter', function() {
 	return {
 		templateUrl: '/components/addressBook/footer.html',
 		restrict: 'AE',
-		transclude: true,
 	};
 });
