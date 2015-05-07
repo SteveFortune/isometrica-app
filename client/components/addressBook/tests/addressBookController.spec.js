@@ -6,7 +6,6 @@ describe("AddressBookController", function() {
 	var $scope;
 
 	beforeEach(module('isa'));
-	beforeEach(module('isa.addressbook'));
 	beforeEach(inject(function($controller) {
 		$scope = {};
 		AddressBookController = $controller('AddressBookController', {

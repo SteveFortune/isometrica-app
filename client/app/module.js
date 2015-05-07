@@ -1,7 +1,8 @@
 
 var app = angular.module('isa', [
 
-  'isa.docwiki',
+    'isa.docwiki',
+    'isa.addressbook',
 
 	'ui.router',
 	'ui.bootstrap',
@@ -9,8 +10,8 @@ var app = angular.module('isa', [
 	'ngAnimate',
 	'ngTouch',
 
-	'lbServices', 
-	
+	'lbServices',
+
 	'angular-growl'
 
 ] );
@@ -21,8 +22,8 @@ app.config(['growlProvider', function (growlProvider) {
   growlProvider.globalDisableCountDown(true);
 }]);
 
-app.config(['$logProvider', '$httpProvider', function($logProvider, $httpProvider) {  
-  
+app.config(['$logProvider', '$httpProvider', function($logProvider, $httpProvider) {
+
   //intercept authentication errors and redirect to login form
   $httpProvider.interceptors.push(function($q, $location, LoopBackAuth) {
     return {
@@ -31,7 +32,7 @@ app.config(['$logProvider', '$httpProvider', function($logProvider, $httpProvide
 
           LoopBackAuth.clearUser();
           LoopBackAuth.clearStorage();
-          
+
           $location.nextAfterLogin = $location.path();
           $location.path('/login');
         }
@@ -41,7 +42,7 @@ app.config(['$logProvider', '$httpProvider', function($logProvider, $httpProvide
   });
 
   $logProvider.debugEnabled(true);
-  
+
 }]);
 
 app.constant('AUTH_EVENTS', {
@@ -58,13 +59,13 @@ app.run(function($window, $rootScope) {
   //detect if the user if online or offline
 
   $rootScope.online = navigator.onLine;
-  
+
   $window.addEventListener("offline", function () {
     $rootScope.$apply(function() {
       $rootScope.online = false;
     });
   }, false);
-  
+
   $window.addEventListener("online", function () {
     $rootScope.$apply(function() {
       $rootScope.online = true;
@@ -92,4 +93,3 @@ app.filter('blankString', function() {
         return empty ? '(empty)' : input;
     };
 });
-

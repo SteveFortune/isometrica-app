@@ -3,7 +3,6 @@
 describe("UserFactory", function() {
 
 	beforeEach(module('isa'));
-	beforeEach(module('isa.addressbook.factories'));
 
 	it("should get a factory using the injector", function() {
 		inject(function($injector, PersistentFactoryNameResolver) {
@@ -28,7 +27,6 @@ describe("_UserFactoryRemote", function() {
 	var _UserFactoryRemote;
 
 	beforeEach(module('isa'));
-	beforeEach(module("isa.addressbook.factories"));
 	beforeEach(inject(function(__UserFactoryRemote_) {
 		_UserFactoryRemote = __UserFactoryRemote_;
 	}));

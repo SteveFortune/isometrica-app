@@ -2,7 +2,6 @@
 
 var app = angular.module('isa.addressbook');
 
-
 /**
  * @author Steve Fortune
  */
