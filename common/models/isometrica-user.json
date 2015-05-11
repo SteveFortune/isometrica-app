@@ -23,12 +23,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+      "account": {
+         "type": "belongsTo",
+         "model": "Account",
+         "foreignKey": "accountId"
+      }
+  },
   "acls": [
     {
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
       "permission": "DENY"
     },
     {
