@@ -7,7 +7,3 @@ var app = angular.module('isa.addressbook.user', [
 app.controller('AddressBookUserController', function() {
 
 });
-
-app.directive('isaAddressBookUserSection', function() {
-	
-});

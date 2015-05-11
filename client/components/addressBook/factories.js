@@ -38,10 +38,6 @@ app.factory('_UserFactoryRemote', ['IsometricaUser', '$q', function(IsometricaUs
 		return page*PAGE_SIZE;
 	};
 
-	var constrainToAccount = function(predicate) {
-
-	};
-
 	return {
 
 		/**

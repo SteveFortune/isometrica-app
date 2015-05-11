@@ -4,12 +4,45 @@
 
 <div class="container">
 	<div class="row">
-		<li class="col-sm-5 bootcards-list" infinite-scroll="loadMore()">
-			<ul ng-repeat="user in addressBookCollection">
-				<p>
-					{{ user.first_name }}
-				</p>
-			</ul>
-		</li>
+		<div class="bootcards-list col-sm-5">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="search-form">
+						<div class="row">
+							<div class="col-xs-9">
+								<div class="form-group">
+									<input type="text" class="form-control" ng-model="query" placeholder="Search section...">
+									<i class="fa fa-search"></i>
+								</div>
+							</div>
+							<div class="col-xs-3">
+								<a class="btn btn-primary btn-block" ui-sref="docwiki.newpage" title="Return to overview">
+									<i class="fa fa-plus"></i>
+									<span>Add</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="list-group" infinite-scroll="loadMore()">
+					<a ng-repeat="user in addressBookCollection" class="list-group-item" href="#">
+						<isa-profile-img user="user"></isa-profile-img>
+						<h4 class="list-group-item-heading">
+							{{ user.name }}
+						</h4>
+						<p class="list-group-item-text">
+							{{ user.role || 'Unknown' }}
+						</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-7">
+			<div class="panel panel-default">
+				<div id="detail" ui-view/>
+			</div>
+		</div>
 	</div>
 </div>

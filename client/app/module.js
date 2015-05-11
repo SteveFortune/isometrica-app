@@ -1,6 +1,7 @@
 
 var app = angular.module('isa', [
 
+    'isa.profileimg',
     'isa.docwiki',
     'isa.addressbook',
 
