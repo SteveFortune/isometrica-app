@@ -1,7 +1,9 @@
 
 var app = angular.module('isa');
 
-app.directive('isaHeader', function($state, IsometricaUser) {
+app.directive('isaHeader',
+	['$state', 'IsometricaUser', 'CurrentUser',
+	function($state, IsometricaUser, CurrentUser) {
 
 	return {
 
@@ -12,12 +14,13 @@ app.directive('isaHeader', function($state, IsometricaUser) {
 
 		controller : function($scope, $state, IsometricaUser) {
 
-			 $scope.logout = function() {
-			 		IsometricaUser.logout( function() {
-			 			$scope.setCurrentUser(null);
-			 			$state.go('welcome');
-				 	});
-				 };
+			$scope.currentUser = CurrentUser;
+			$scope.logout = function() {
+				IsometricaUser.logout( function() {
+					CurrentUser.clearCurrentUser();
+			 		$state.go('welcome');
+				 });
+			};
 
 /*
 			$scope.showBackButton = false;
@@ -42,7 +45,7 @@ app.directive('isaHeader', function($state, IsometricaUser) {
 				angular.element($document[0].body).addClass('has-bootcards-navbar-double');
 			}
 
-		
+
 
 			//add handlers to show the collapsed/ expanded icon on lists with sub-options
 			$timeout(function(){
@@ -58,15 +61,15 @@ app.directive('isaHeader', function($state, IsometricaUser) {
 					var i = a.children("i");
 					i.addClass("fa-chevron-circle-right").removeClass("fa-chevron-circle-down");
 				});
-		    }); 
+		    });
 
 			$scope.goBack = function() {
 				$scope.$emit('selectItemEvent', null);
 				$rootScope.hideList = false;
 			};*/
-   
+
 		}
 
 	};
 
-});
+}]);

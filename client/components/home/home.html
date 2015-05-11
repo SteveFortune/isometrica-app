@@ -3,17 +3,17 @@
 	<isa-header></isa-header>
 
  	<div class="container bootcards-container">
-  		
+
   		<div class="row">
 
-  			<div ng-if="!isAuthenticated">
+  			<div ng-if="!currentUser.isAuthenticated()">
 				Welcome to Isometrica!
 			</div>
 
-			<div ng-if="isAuthenticated">
-				Welcome back {{currentUser.name}}
+			<div ng-if="currentUser.isAuthenticated()">
+				Welcome back {{ currentUser.getCurrentUser().name}}
 			</div>
-			
+
 		</div>
 
 	</div>

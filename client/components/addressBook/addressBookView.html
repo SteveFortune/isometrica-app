@@ -1,6 +1,15 @@
 
-<isa-address-book-header>
+<isa-address-book-header select-state="selectState">
 </isa-address-book-header>
 
-<isa-address-book-footer>
-</iso-address-book-footer>
+<div class="container">
+	<div class="row">
+		<li class="col-sm-5 bootcards-list" infinite-scroll="loadMore()">
+			<ul ng-repeat="user in addressBookCollection">
+				<p>
+					{{ user.first_name }}
+				</p>
+			</ul>
+		</li>
+	</div>
+</div>

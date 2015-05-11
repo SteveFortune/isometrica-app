@@ -2,7 +2,8 @@
 
 var app = angular.module('isa.addressbook', [
 	'isa.addressbook.factories',
-	'ui.router'
+	'ui.router',
+	'infinite-scroll'
 ]);
 
 
@@ -55,6 +56,20 @@ app.controller('AddressBookController',
 	 */
 	$scope.addressBookCollection = [];
 
+	/**
+	 * Constructs a guery and loads more from our service
+	 *
+	 * @private
+	 */
+	$scope.loadMore = function() {
+		UserFactory.all().then(function(items) {
+			$scope.addressBookCollection = $scope.addressBookCollection.concat(items);
+			$scope.loadingState = 'loaded';
+		}, function() {
+			$scope.loadingState = 'failed';
+		});
+	};
+
 }]);
 
 /**
@@ -65,7 +80,7 @@ app.directive('isaAddressBookHeader', function() {
 		templateUrl: '/components/addressBook/header.html',
 		restrict: 'AE',
 		scope: {
-			selectState: '&',
+			selectState: '=',
 			organisation: '='
 		}
 	};

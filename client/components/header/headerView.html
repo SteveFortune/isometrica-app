@@ -5,33 +5,33 @@
 		<ul class="nav navbar-nav navbar-left">
 			<li>
 				<a href="#" class="btn btn-link btn-menu icon-only">
-					<i class="fa fa-lg fa-bars"></i> 
+					<i class="fa fa-lg fa-bars"></i>
 				</a>
 			</li>
-		</ul>   
+		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
 			<li>
 				<a href="#" class="btn btn-link btn-menu icon-only">
-					<i class="fa fa-lg fa-refresh"></i> 
+					<i class="fa fa-lg fa-refresh"></i>
 				</a>
 			</li>
-		</ul>        
+		</ul>
 
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 				<i class="fa fa-bars"></i>
-			</button>      
+			</button>
 			<span class="navbar-brand">Isometrica</span>
-		</div>   
+		</div>
 
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right bootcards-nav-secondary">
 
-				<li ng-if="isAuthenticated">
+				<li ng-if="currentUser.isAuthenticated()">
 					<p style="padding: 5px 15px; margin: 0;line-height: 20px; color: #777;">
 					<i class="fa fa-fw fa-user"></i>
-					{{currentUser.name}}
+					{{ currentUser.getCurrentUser().name }}
 					</p>
 				</li>
 
@@ -39,7 +39,7 @@
 					<a href="#">
 						Account
 					</a>
-				</li> 
+				</li>
 				<li>
 					<a href="#">
 						Help
@@ -56,7 +56,7 @@
 				<li ng-if="isAuthenticated">
 					<a ng-click="logout()">Logout</a>
 				</li>
-				   
+
 			</ul>
 			<ul class="nav navbar-nav navbar-right bootcards-nav-primary">
 				<li>
@@ -80,4 +80,4 @@
 			</ul>
 		</div>
 	</div>
-</div>   
+</div>

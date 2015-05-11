@@ -38,6 +38,10 @@ app.factory('_UserFactoryRemote', ['IsometricaUser', '$q', function(IsometricaUs
 		return page*PAGE_SIZE;
 	};
 
+	var constrainToAccount = function(predicate) {
+
+	};
+
 	return {
 
 		/**
@@ -48,6 +52,7 @@ app.factory('_UserFactoryRemote', ['IsometricaUser', '$q', function(IsometricaUs
 		 * @return 	Promise
 		 */
 		all: function(page) {
+			page = page || 0;
 			return $q(function(resolve, reject) {
 				IsometricaUser.find({
 					filter: {
@@ -125,13 +130,17 @@ app.factory('_UserFactoryRemote', ['IsometricaUser', '$q', function(IsometricaUs
 	}
 }]);
 
-app.factory('_UserFactoryLocal', [function() {
+app.factory('_UserFactoryLocal', ['$q', function($q) {
 	return {
 		all: function() {
-			return [];
+			return $q(function(resolve, reject) {
+				resolve([]);
+			});
 		},
 		findBy: function(predicate) {
-			return [];
+			return $q(function(resolve, reject) {
+				resolve(predicate);
+			});
 		},
 		insert: function(newUser) {
 		},

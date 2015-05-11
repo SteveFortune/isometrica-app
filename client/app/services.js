@@ -23,7 +23,9 @@ app.service('PersistentFactoryNameResolver', ['$rootScope', function($rootScope)
  *
  * @author Steve Fortune
  */
-app.service('CurrentUser', ['IsometricaUser', function(IsometricaUser) {
+app.service('CurrentUser',
+	['IsometricaUser', 'AUTH_EVENTS', '$rootScope',
+	function(IsometricaUser, AUTH_EVENTS, $rootScope) {
 
 	/**
 	 * Current logged in user or null if not logged in
@@ -46,6 +48,26 @@ app.service('CurrentUser', ['IsometricaUser', function(IsometricaUser) {
 	var setCurrentUser = function(user) {
 		currentUser = user;
 		isAuthenticated = !!currentUser;
+	};
+
+	/**
+	 * Handles successful login events by resetting the current user.
+	 *
+	 * @private
+	 */
+	$rootScope.$on(AUTH_EVENTS.loginSuccess, function(e, user) {
+		setCurrentUser(user);
+	});
+
+	/**
+	 * Bind the service to the root scope so that it can be accessed easily in
+	 * templates via `$root.getCurrentUser()`.
+	 *
+	 * @return 	Object	The current user
+	 * @public
+	 */
+	$rootScope.getCurrentUser = function() {
+		return currentUser;
 	};
 
 	return {
@@ -73,7 +95,7 @@ app.service('CurrentUser', ['IsometricaUser', function(IsometricaUser) {
 		 */
 		getCurrentUser: function() {
 			return currentUser;
-		}
+		},
 
 		/**
 		 * Is there a current user object? Alias for !!CurrentUser.getCurrentUser()
@@ -82,7 +104,15 @@ app.service('CurrentUser', ['IsometricaUser', function(IsometricaUser) {
 		 */
 		hasCurrentUser: function() {
 			return !!currentUser;
+		},
+
+		/**
+		 * Sets the current user to null
+		 */
+		clearCurrentUser: function() {
+			currentUser = null;
 		}
+
 	};
 
 }]);
@@ -94,10 +124,10 @@ app.service('CurrentUser', ['IsometricaUser', function(IsometricaUser) {
  *
  * @author Steve Fortune
  */
-app.run(['$rootScope', 'CurrentUser', '$state', '$location', $function() {
+app.run(['$rootScope', 'CurrentUser', '$state', '$location', function($rootScope, CurrentUser, $state, $location) {
 
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
-		if (CurrentUser.hasUser()) {
+		if (CurrentUser.hasCurrentUser()) {
 			return;
 		} else if (CurrentUser.isAuthenticated()) {
 			CurrentUser.retrieveCurrentUser();
