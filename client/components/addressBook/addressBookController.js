@@ -2,6 +2,7 @@
 
 var app = angular.module('isa.addressbook', [
 	'isa.addressbook.factories',
+	'isa.addressbook.user',
 	'ui.router',
 	'infinite-scroll'
 ]);

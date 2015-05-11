@@ -11,5 +11,17 @@ app.config(['$stateProvider', function($stateProvider) {
 			url: '/addressbook',
 			templateUrl: '/components/addressBook/addressBookView.html',
 			controller: 'AddressBookController'
+		})
+	$stateProvider
+		.state('addressbook.user', {
+			url: '/user/:userId',
+			templateUrl: '/components/addressBook/user/viewUser.html',
+			controller: 'AddressBookUserController'
+		});
+	$stateProvider
+		.state('addressbook.newuser', {
+			url: '/user/new',
+			templateUrl: '/components/addressBook/user/newUser.html',
+			controller: 'AddressBookUserController'
 		});
 }]);
