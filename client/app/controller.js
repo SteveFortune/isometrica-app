@@ -1,11 +1,8 @@
 var app = angular.module('isa');
 
-app.controller('AppController', [
-  '$rootScope', '$scope', '$compile', '$document', '$state', '$location', '$log', 'IsometricaUser',
-	function ($rootScope, $scope, $compile, $document, $state, $location, $log, IsometricaUser) {
-
-  $scope.currentUser = null;
-  $scope.isAuthenticated = IsometricaUser.isAuthenticated();
+app.controller('AppController',
+    ['$rootScope', '$scope', '$compile', '$document',
+	function($rootScope, $scope, $compile, $document) {
 
   $scope.showOverlays = true;
   $rootScope.showOverlays = $scope.showOverlays;
@@ -16,39 +13,8 @@ app.controller('AppController', [
   var head = angular.element(document.querySelector('head'));
   var body = angular.element(document.querySelector('body'));
 
-  //check whether we need to login the user, redirect him to the login page if we do
-  $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
-
-    if ( $scope.currentUser != null) {
-      return;
-    }
-
-    if ( $scope.isAuthenticated ) {
-
-      $log.debug('authenticated user, but no user object - retrieve info');
-
-      IsometricaUser.getCurrent( function(res) {
-        $scope.setCurrentUser(res);
-      });
-
-    } else {
-
-      if (!toState.data.anonymous) {
-
-        $log.debug('need authentication - redirect to login');
-
-        event.preventDefault();
-        $location.nextAfterLogin = $location.path();
-        $state.go('login');
-
-      }
-
-    }
-
-  });
-
   //the overview page uses a double navbar, the rest of the pages don't
-  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     if (toState.name == 'overview' || toState.name == 'welcome') {
       body.addClass('has-bootcards-navbar-double');
     } else {
@@ -63,7 +29,7 @@ app.controller('AppController', [
       head.append(
         $compile(
           "<link data-ng-repeat='stylesheet in injectedStylesheets' data-ng-href='{{stylesheet.href}}' rel='stylesheet' />")
-        ($scope)); 
+        ($scope));
   }
 
   if (isIOS) {
@@ -80,11 +46,6 @@ app.controller('AppController', [
 
   //load isometrica css
   head.scope().injectedStylesheets.push({href: "/assets/css/resilify.css"});
-
-  $scope.setCurrentUser = function (user) {
-    $scope.currentUser = user;
-    $scope.isAuthenticated = (user != null ? true : false);
-  };
 
   $scope.toggleOverlays = function() {
     $scope.showOverlays = !$scope.showOverlays;

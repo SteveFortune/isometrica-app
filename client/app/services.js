@@ -19,7 +19,7 @@ app.service('PersistentFactoryNameResolver', ['$rootScope', function($rootScope)
 
 
 /**
- * Service that holds the current 'context' of the application. I.e. the
+ * Service that holds the current 'context' of the application.
  *
  * @author Steve Fortune
  */
