@@ -15,8 +15,8 @@ var app = angular.module('isa.addressbook', [
  * @author Steve Fortune
  */
 app.controller('AddressBookController',
-	['UserFactory', '$scope',
-	function(UserFactory, $scope){
+	['UserFactory', '$scope', '$state',
+	function(UserFactory, $scope, $state){
 
 	/**
 	 * @const Array
@@ -65,6 +65,11 @@ app.controller('AddressBookController',
 	$scope.loadMore = function() {
 		UserFactory.all().then(function(items) {
 			$scope.addressBookCollection = $scope.addressBookCollection.concat(items);
+			if ($scope.addressBookCollection.length > 0) {
+				$state.transitionTo('addressbook.user', {
+					userId: $scope.addressBookCollection[0].id
+				});
+			}
 			$scope.loadingState = 'loaded';
 		}, function() {
 			$scope.loadingState = 'failed';

@@ -17,7 +17,7 @@ app.controller('AddressBookUserController',
   	 *
 	 * @var Boolean
 	 */
-	$scope.isNew = !!$stateParams.userId;
+	$scope.isNew = !$stateParams.userId;
 
 	/**
 	 * Our user object
@@ -27,12 +27,29 @@ app.controller('AddressBookUserController',
 	$scope.user = {};
 
 	/**
-	 * Persists the user.
+	 * Persists new user.
 	 *
+	 * @throws 		Error	If !isNew
 	 * @protected
 	 */
 	$scope.createUser = function() {
+		if (!$scope.isNew) {
+			throw new Error("Not creating user.");
+		}
 		UserFactory.insert($scope.user);
+	};
+
+	/**
+	 * Persists updated user attributes.
+	 *
+	 * @throws 		Error	If isNew
+	 * @protected
+	 */
+	$scope.updateUser = function() {
+		if ($scope.isNew) {
+			throw new Error("Can only update existing users");
+		}
+		UserFactory.updateById($stateParams.userId, $scope.user);
 	};
 
 	if (!$scope.isNew) {

@@ -1,0 +1,78 @@
+<div class="panel panel-default bootcards-wiki-panel">
+
+	<div class="panel-heading clearfix">
+		<div class="btn-group pull-right">
+			<a class="btn btn-danger" ui-sref="addressbook">
+				<i class="fa fa-times"></i>
+				Cancel
+			</a>
+			<a class="btn btn-success">
+				<i class="fa fa-check"></i>
+				Create
+			</a>
+		</div>
+		<h3 class="panel-title">New User</h3>
+	</div>
+
+	<div class="modal-body">
+		<form class="form-horizontal" name="userForm" novalidate>
+
+			<div class="form-group">
+				<label class="col-xs-3 control-label">Full Name*</label>
+				<div class="col-xs-9">
+					<input
+						type="text"
+						class="form-control"
+						ng-model="user.name"
+						placeholder="Joe Blogs"
+						required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-xs-3 control-label">Organisation*</label>
+				<div class="col-xs-9">
+					<input
+						type="text"
+						class="form-control"
+						ng-model="user.organisation"
+						placeholder="IBM"
+						required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-xs-3 control-label">Email*</label>
+				<div class="col-xs-9">
+					<input
+						type="email"
+						class="form-control"
+						ng-model="user.email"
+						placeholder="joe.bloggs@ibm.com"
+						required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-xs-3 control-label">Password*</label>
+				<div class="col-xs-9">
+					<input
+						type="password"
+						class="form-control"
+						ng-model="user.password"
+						placeholder="Password"
+						minlength="6"
+						pattern="^(?=.*[a-zA-Z])(?=.*[0-9])"
+						required>
+				</div>
+			</div>
+
+			<div class="panel" ng-show="!$scope.collectionForm.$valid">
+				<p>
+				</p>
+			</div>
+
+		</form>
+	</div>
+
+</div>
