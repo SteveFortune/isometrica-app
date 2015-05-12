@@ -1,34 +1,14 @@
 'use strict';
 
-describe("UserFactory", function() {
+describe("UserService (remote)", function() {
 
-	beforeEach(module('isa'));
+	var UserService;
 
-	it("should get a factory using the injector", function() {
-		inject(function($injector, PersistentFactoryNameResolver) {
-
-			var factory = {};
-			var factoryName = "_UserFactoryLocal";
-
-			spyOn($injector, 'get').and.callThrough();
-			spyOn(PersistentFactoryNameResolver, 'resolveFactory').and.returnValue(factoryName);
-
-			$injector.get('UserFactory');
-
-			expect($injector.get).toHaveBeenCalled();
-			expect($injector.get).toHaveBeenCalledWith(factoryName);
-
-		});
-	});
-});
-
-describe("_UserFactoryRemote", function() {
-
-	var _UserFactoryRemote;
-
-	beforeEach(module('isa'));
-	beforeEach(inject(function(__UserFactoryRemote_) {
-		_UserFactoryRemote = __UserFactoryRemote_;
+	beforeEach(module('isa', function($provide) {
+		$provide.constant('CLIENT_ONLINE', true);
+	}));
+	beforeEach(inject(function(_UserService_) {
+		UserService = _UserService_;
 	}));
 	beforeEach(function() {
 		jasmine.addMatchers(toHaveSameCtorAs);
@@ -44,7 +24,7 @@ describe("_UserFactoryRemote", function() {
 		it("should find all users", function() {
 			inject(function(IsometricaUser) {
 				spyOn(IsometricaUser, 'find');
-				_UserFactoryRemote.all(3);
+				UserService.all(3);
 				expect(IsometricaUser.find).toHaveBeenCalledWith({
 					filter: {
 						offset: 30,
@@ -56,7 +36,7 @@ describe("_UserFactoryRemote", function() {
 
 		it("should return a promise for the operation", function() {
 			inject(function($q) {
-				var pr = _UserFactoryRemote.all();
+				var pr = UserService.all();
 				expect(pr).toHaveSameCtorAs($q.defer());
 			});
 		});
@@ -68,7 +48,7 @@ describe("_UserFactoryRemote", function() {
 				spyOn(IsometricaUser, 'find').and.callFake(function(obj, resolve, reject) {
 					resolve(foundUsers);
 				});
-				_UserFactoryRemote.all().then(success);
+				UserService.all().then(success);
 				// See here: http://stackoverflow.com/questions/16323323/promise-callback-not-called-in-angular-js
 				// Angular.js has its own event loop. Promise resolutions are propogated asynchronously
 				// in the event loop. The event loop is processed every digest cycle, so we need to trigger
@@ -84,7 +64,7 @@ describe("_UserFactoryRemote", function() {
 				spyOn(IsometricaUser, 'find').and.callFake(function(obj, resolve, reject) {
 					reject('Error');
 				});
-				_UserFactoryRemote.all().then(function() {}, failure);
+				UserService.all().then(function() {}, failure);
 				$rootScope.$digest();
 				expect(failure).toHaveBeenCalledWith('Error');
 			});
@@ -97,7 +77,7 @@ describe("_UserFactoryRemote", function() {
 		it("should find a single user by the given predicate", function() {
 			inject(function(IsometricaUser) {
 				spyOn(IsometricaUser, 'findOne');
-				_UserFactoryRemote.findOneBy({
+				UserService.findOneBy({
 					first_name: "Steve",
 					last_name: "Fortune"
 				});
@@ -114,7 +94,7 @@ describe("_UserFactoryRemote", function() {
 
 		it("should return a promise for the operation", function() {
 			inject(function($q) {
-				var pr = _UserFactoryRemote.findOneBy({});
+				var pr = UserService.findOneBy({});
 				expect(pr).toHaveSameCtorAs($q.defer());
 			});
 		});
@@ -126,7 +106,7 @@ describe("_UserFactoryRemote", function() {
 				spyOn(IsometricaUser, 'findOne').and.callFake(function(obj, resolve, reject) {
 					resolve(foundUser);
 				});
-				_UserFactoryRemote.findOneBy().then(success);
+				UserService.findOneBy().then(success);
 				$rootScope.$digest();
 				expect(success).toHaveBeenCalledWith(foundUser);
 			});
@@ -138,7 +118,7 @@ describe("_UserFactoryRemote", function() {
 				spyOn(IsometricaUser, 'findOne').and.callFake(function(obj, resolve, reject) {
 					reject('Error');
 				});
-				_UserFactoryRemote.findOneBy().then(function() {}, failure);
+				UserService.findOneBy().then(function() {}, failure);
 				$rootScope.$digest();
 				expect(failure).toHaveBeenCalledWith('Error');
 			});
@@ -155,14 +135,14 @@ describe("_UserFactoryRemote", function() {
 					last_name: "Fortune"
 				};
 				spyOn(IsometricaUser, 'create');
-				_UserFactoryRemote.insert(user);
+				UserService.insert(user);
 				expect(IsometricaUser.create).toHaveBeenCalledWith(null, user, jasmine.any(Function), jasmine.any(Function));
 			});
 		});
 
 		it("should return a promise for the operation", function() {
 			inject(function($q) {
-				var pr = _UserFactoryRemote.insert({});
+				var pr = UserService.insert({});
 				expect(pr).toHaveSameCtorAs($q.defer());
 			});
 		});
@@ -177,7 +157,7 @@ describe("_UserFactoryRemote", function() {
 				spyOn(IsometricaUser, 'create').and.callFake(function(params, obj, resolve, reject) {
 					resolve(obj);
 				});
-				_UserFactoryRemote.insert(user).then(success);
+				UserService.insert(user).then(success);
 				$rootScope.$digest();
 				expect(success).toHaveBeenCalledWith(user);
 			});
@@ -189,7 +169,7 @@ describe("_UserFactoryRemote", function() {
 				spyOn(IsometricaUser, 'create').and.callFake(function(params, obj, resolve, reject) {
 					reject('Error');
 				});
-				_UserFactoryRemote.insert({}).then(function() {}, failure);
+				UserService.insert({}).then(function() {}, failure);
 				$rootScope.$digest();
 				expect(failure).toHaveBeenCalledWith('Error');
 			});
@@ -202,7 +182,7 @@ describe("_UserFactoryRemote", function() {
 		it("should delete a user by id", function() {
 			inject(function(IsometricaUser) {
 				spyOn(IsometricaUser, 'deleteById');
-				_UserFactoryRemote.deleteById(123);
+				UserService.deleteById(123);
 				expect(IsometricaUser.deleteById).toHaveBeenCalledWith({
 					id: 123
 				}, jasmine.any(Function), jasmine.any(Function));
@@ -211,7 +191,7 @@ describe("_UserFactoryRemote", function() {
 
 		it("should return a promise for the operation", function() {
 			inject(function($q) {
-				var pr = _UserFactoryRemote.deleteById(123);
+				var pr = UserService.deleteById(123);
 				expect(pr).toHaveSameCtorAs($q.defer());
 			});
 		});
@@ -222,7 +202,7 @@ describe("_UserFactoryRemote", function() {
 				spyOn(IsometricaUser, 'deleteById').and.callFake(function(params, resolve, reject) {
 					resolve();
 				});
-				_UserFactoryRemote.deleteById(123).then(success);
+				UserService.deleteById(123).then(success);
 				$rootScope.$digest();
 				expect(success).toHaveBeenCalled();
 			});
@@ -234,7 +214,7 @@ describe("_UserFactoryRemote", function() {
 				spyOn(IsometricaUser, 'deleteById').and.callFake(function(params, resolve, reject) {
 					reject('Error');
 				});
-				_UserFactoryRemote.deleteById(123).then(function() {}, failure);
+				UserService.deleteById(123).then(function() {}, failure);
 				$rootScope.$digest();
 				expect(failure).toHaveBeenCalledWith('Error');
 			});
@@ -251,7 +231,7 @@ describe("_UserFactoryRemote", function() {
 					first_name: "Steve",
 					last_name: "Fortune"
 				};
-				_UserFactoryRemote.updateById(123, user);
+				UserService.updateById(123, user);
 				expect(IsometricaUser.update).toHaveBeenCalledWith({
 					where: {
 						id: 123
@@ -262,7 +242,7 @@ describe("_UserFactoryRemote", function() {
 
 		it("should return a promise for the operation", function() {
 			inject(function($q) {
-				var pr = _UserFactoryRemote.updateById();
+				var pr = UserService.updateById();
 				expect(pr).toHaveSameCtorAs($q.defer());
 			});
 		});
@@ -274,7 +254,7 @@ describe("_UserFactoryRemote", function() {
 				spyOn(IsometricaUser, 'update').and.callFake(function(params, obj, resolve, reject) {
 					resolve(obj);
 				});
-				_UserFactoryRemote.updateById(123, user).then(success);
+				UserService.updateById(123, user).then(success);
 				$rootScope.$digest();
 				expect(success).toHaveBeenCalledWith(user);
 			});
@@ -286,7 +266,7 @@ describe("_UserFactoryRemote", function() {
 				spyOn(IsometricaUser, 'update').and.callFake(function(params, obj, resolve, reject) {
 					reject('Error');
 				});
-				_UserFactoryRemote.updateById(123, {}).then(function() {}, failure);
+				UserService.updateById(123, {}).then(function() {}, failure);
 				$rootScope.$digest();
 				expect(failure).toHaveBeenCalledWith('Error');
 			});

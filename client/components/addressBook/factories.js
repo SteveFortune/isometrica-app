@@ -8,7 +8,7 @@ var app = angular.module('isa.addressbook.factories', []);
  *
  * @author Steve Fortune
  */
-isa.registerPersistentService(app, 'UserFactory',
+isa.utils.registerPersistentService(app, 'UserService',
 	['IsometricaUser', '$q',
 	function(IsometricaUser, $q) {
 

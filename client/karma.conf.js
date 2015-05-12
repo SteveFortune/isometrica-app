@@ -21,6 +21,7 @@ module.exports = function(config) {
           'assets/libs/textAngular/src/textAngular.js',
           'assets/libs/textAngular/src/textAngular-sanitize.js',
           'assets/libs/textAngular/src/textAngularSetup.js',
+          'assets/libs/ngInfiniteScroll/build/ng-infinite-scroll.js',
           'assets/js/lb-services.js',
 		  '../node_modules/angular-mocks/angular-mocks.js',
 		  'app/module.js',

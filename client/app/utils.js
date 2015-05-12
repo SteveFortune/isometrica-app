@@ -38,12 +38,12 @@ isa.utils = {
 			 *
 			 * @var Array
 			 */
-			this.$get = isOnline ? remoteService : localService;
+			this.$get = isOnline ? remoteFactory : localFactory;
 
 		});
 
-		module.config([serviceName + 'Provider', '$rootScope', function(serviceProvider, $rootScope) {
-			serviceProvider.setIsOnline($rootScope.isOnline);
+		module.config([serviceName + 'Provider', 'CLIENT_ONLINE', function(serviceProvider, clientOnline) {
+			serviceProvider.setIsOnline(clientOnline);
 		}]);
 
 	},

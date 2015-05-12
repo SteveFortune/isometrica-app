@@ -55,26 +55,6 @@ app.constant('AUTH_EVENTS', {
   notAuthorized: 'auth-not-authorized'
 });
 
-app.run(function($window, $rootScope) {
-
-  //detect if the user if online or offline
-
-  $rootScope.online = navigator.onLine;
-
-  $window.addEventListener("offline", function () {
-    $rootScope.$apply(function() {
-      $rootScope.online = false;
-    });
-  }, false);
-
-  $window.addEventListener("online", function () {
-    $rootScope.$apply(function() {
-      $rootScope.online = true;
-    });
-  }, false);
-
-});
-
 //global directive to be able to set the focus on elements created inline
 app.directive('autofocus', function ($timeout) {
   return {
