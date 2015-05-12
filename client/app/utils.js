@@ -2,6 +2,52 @@ var isa = isa || {};
 
 isa.utils = {
 
+	/**
+	 * Dynamically register a provider with your module, specifically for persistent
+	 * services. This takes care of setting up the boilerplate angular provider / config
+	 * for you.
+	 *
+	 * @param	module			Object		The module to register the provider with
+	 * @param	serviceName		String		The name of the service for which to register
+	 * 										a provider
+	 * @param	remoteFactory	Array		The remote service factory recipe
+	 * @param	localFactory	Array		The local service factory recipe
+	 */
+	registerPersistentService: function(module, serviceName, remoteFactory, localFactory) {
+
+		module.provider(serviceName, function() {
+
+			/**
+			 * Configuration value for whether or not the client is online.
+			 *
+			 * @var Boolean
+			 */
+			var isOnline = false;
+
+			/**
+			 * Used to configure the provider.
+			 *
+			 * @param	newIsOnline		Boolean
+			 */
+			this.setIsOnline = function(newIsOnline) {
+				isOnline = !!newIsOnline;
+			}
+
+			/**
+			 * Factory registered based on configurtation
+			 *
+			 * @var Array
+			 */
+			this.$get = isOnline ? remoteService : localService;
+
+		});
+
+		module.config([serviceName + 'Provider', '$rootScope', function(serviceProvider, $rootScope) {
+			serviceProvider.setIsOnline($rootScope.isOnline);
+		}]);
+
+	},
+
 	getIconClassForFile : function(fileName) {
 		//returns the classes for an icon to show next to a filename
 
