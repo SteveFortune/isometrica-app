@@ -1,21 +1,26 @@
 
 var app = angular.module('isa');
 
-//single line header
 app.directive('isaHeader',
 	['$state', 'IsometricaUser', 'CurrentUser',
 	function($state, IsometricaUser, CurrentUser) {
 
 	return {
 
+		scope : {
+			multiLine : '@'
+		},
 		replace : true,
 		restrict : 'E',
-		templateUrl : '/components/header/headerView.html',
+		templateUrl: function(elem,attrs) {
+			return '/components/header/' + (attrs.multiLine === 'true' ? 'headerViewMulti.html' : 'headerView.html');
+		},
 		transclude : true,
 
 		controller : function($scope, $state, IsometricaUser) {
 
 			$scope.currentUser = CurrentUser;
+			
 			$scope.logout = function() {
 				IsometricaUser.logout( function() {
 					CurrentUser.clearCurrentUser();
@@ -29,30 +34,3 @@ app.directive('isaHeader',
 
 }]);
 
-//double line header
-app.directive('isaHeaderDouble', 
-	['$state', 'IsometricaUser', 'CurrentUser',
-	function($state, IsometricaUser, CurrentUser) {
-
-	return {
-
-		replace : true,
-		restrict : 'E',
-		templateUrl : '/components/header/headerViewMulti.html',
-		transclude : true,
-
-		controller : function($scope, $state, IsometricaUser) {
-
-			$scope.currentUser = CurrentUser;
-			$scope.logout = function() {
-				IsometricaUser.logout( function() {
-					CurrentUser.clearCurrentUser();
-			 		$state.go('welcome');
-				 });
-			};
-
-		}
-
-	};
-
-}]);
