@@ -28,10 +28,10 @@
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right bootcards-nav-secondary">
 
-				<li ng-if="isAuthenticated">
+				<li ng-if="currentUser.isAuthenticated()">
 					<p style="padding: 5px 15px; margin: 0;line-height: 20px; color: #777;">
 					<i class="fa fa-fw fa-user"></i>
-					{{currentUser.name}}
+					{{currentUser.getCurrentUser().name}}
 					</p>
 				</li>
 
@@ -46,14 +46,14 @@
 					</a>
 				</li>
 
-				<li ng-if="!isAuthenticated">
+				<li ng-if="!currentUser.isAuthenticated()">
 					<a ui-sref="login">
 						<i class="fa fa-fw fa-lock"></i>
 						Login
 					</a>
 				</li>
 
-				<li ng-if="isAuthenticated">
+				<li ng-if="currentUser.isAuthenticated()">
 					<a ng-click="logout()">Logout</a>
 				</li>
 				   
