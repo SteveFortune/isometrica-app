@@ -25,7 +25,11 @@ module.exports = function(config) {
           'assets/js/lb-services.js',
 		  '../node_modules/angular-mocks/angular-mocks.js',
 		  'app/module.js',
-		  'app/**/*.js',
+          'app/controller.js',
+          'app/module.js',
+          'app/routes.js',
+          'app/services.js',
+          'app/utils.js',
 		  'components/**/*.js',
 		  '**/*.spec.js'
         ],
