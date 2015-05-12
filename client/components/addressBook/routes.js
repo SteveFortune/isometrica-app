@@ -18,10 +18,4 @@ app.config(['$stateProvider', function($stateProvider) {
 			templateUrl: '/components/addressBook/user/viewUser.html',
 			controller: 'AddressBookUserController'
 		});
-	$stateProvider
-		.state('addressbook.newuser', {
-			url: '/user/new',
-			templateUrl: '/components/addressBook/user/newUser.html',
-			controller: 'AddressBookUserController'
-		});
 }]);
