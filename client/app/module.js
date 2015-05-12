@@ -1,9 +1,9 @@
 
 var app = angular.module('isa', [
 
-    'isa.profileimg',
     'isa.docwiki',
     'isa.addressbook',
+    'isa.profileimg',
 
 	'ui.router',
 	'ui.bootstrap',
@@ -53,6 +53,26 @@ app.constant('AUTH_EVENTS', {
   sessionTimeout: 'auth-session-timeout',
   notAuthenticated: 'auth-not-authenticated',
   notAuthorized: 'auth-not-authorized'
+});
+
+app.run(function($window, $rootScope) {
+
+  //detect if the user if online or offline
+
+  $rootScope.online = navigator.onLine;
+
+  $window.addEventListener("offline", function () {
+    $rootScope.$apply(function() {
+      $rootScope.online = false;
+    });
+  }, false);
+
+  $window.addEventListener("online", function () {
+    $rootScope.$apply(function() {
+      $rootScope.online = true;
+    });
+  }, false);
+
 });
 
 //global directive to be able to set the focus on elements created inline
