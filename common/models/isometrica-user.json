@@ -17,18 +17,14 @@
     },
     "updated" : {
       "type": "date"
-    },
-    "accounts" : {
-      "type": "object"
     }
   },
   "validations": [],
   "relations": {
-      "account": {
-         "type": "belongsTo",
-         "model": "Account",
-         "foreignKey": "accountId"
-      }
+    "accounts": {
+      "type": "hasAndBelongsToMany",
+      "model": "Account"
+    }
   },
   "acls": [
     {

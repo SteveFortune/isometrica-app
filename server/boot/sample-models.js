@@ -7,55 +7,55 @@ module.exports = function(app) {
   var RoleMapping = app.models.RoleMapping;
   var Account = app.models.Account;
 
-  var createUserIfNotExists = function(Model, user, callback) {
+  var sampleAccounts = [
+    { 'subscriptionType' : 'free', 'name' : 'LinQed' },
+    { 'subscriptionType' : 'paid', 'name' : 'ZetaComm' },
+  ];
 
-    Model.find( {where: {username : user.username}}, function(err, res) {
-
-      if (res.length===0) {
-        Model.create(user, function(err, user) {
-          console.log('created user %s', user.name);
-
-          if (callback) { callback.call(user); }
-        });
-      } else {
-
-          if (callback) { callback.call(user); }
-      }
-    });
-
-  };
+  var sampleUsers = [
+    {firstName : 'Mark', lastName : 'Leusink', name : 'Mark Leusink',
+    username: 'mark@isometrica.com', email: 'mark@isometrica.com', password: 'isometrica'},
+    {firstName : 'Steve', lastName : 'Ives', name : 'Steve Ives', 
+    username: 'steve@isometrica.com', email: 'steve@isometrica.com', password: 'isometrica'},
+    {firstName : 'Jack', lastName : 'Herbert', name : 'Jack Herbert',
+    username: 'jack@isometrica.com', email: 'jack@isometrica.com', password: 'isometrica'}
+  ];
 
   Account.find( {
     where : { name : 'LinQed' }
   }, function (err, res) {
 
-    if (res.length === 0 ) {
+    if (res.length === 1 ) {
 
-      //account doesn't exist yet: create account &  users
+      console.log('Sample accounts already exist');
 
-      Account.create( {
-          'subscriptionType' : 'free',
-          'name' : 'LinQed'
-        }, function(err, account) {
+    } else if (res.length === 0 ) {
+
+      //sample accounts do not exist yet: create sample accounts & users
+
+      Account.create( sampleAccounts , function(err, accounts) {
           if (err) throw err;
 
-          console.log('Account created for ' + account.name); 
+          console.log(accounts.length + ' sample accounts created'); 
 
-          //setup users
-          createUserIfNotExists(User, {firstName : 'Steve', lastName : 'Ives', name : 'Steve Ives', 
-            username: 'steve@isometrica.com', email: 'steve@isometrica.com', password: 'isometrica',
-            accounts : [ { id : account.id, type : 'owner' }] });
-          createUserIfNotExists(User, {firstName : 'Jack', lastName : 'Herbert', name : 'Jack Herbert',
-            username: 'jack@isometrica.com', email: 'jack@isometrica.com', password: 'isometrica',
-            accounts : [ { id : account.id, type : 'owner' }]});
-          createUserIfNotExists(User, {firstName : 'Mark', lastName : 'Leusink', name : 'Mark Leusink',
-            username: 'mark@isometrica.com', email: 'mark@isometrica.com', password: 'isometrica',
-            accounts : [ { id : account.id, type : 'owner' }]});
+          //create 3 sample users, link them to first account
+          accounts[0].users.create( sampleUsers,
+              function(err, users) {
+                console.log('sample users created in ' + accounts[0].name);
+
+                //add first sample user to second account
+                accounts[1].users.add( users[0], function(err) {
+                  if (err) throw err;
+                  console.log('added ' + users[0].email + ' to ' + accounts[1].name );
+
+                });
+
+              });
 
         } );
 
     } else {
-      console.log('sample models already created');
+      console.log('sample users already created');
     }
 
   });

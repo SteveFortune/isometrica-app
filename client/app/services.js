@@ -28,11 +28,12 @@ app.service('CurrentUser',
 	function(IsometricaUser, AUTH_EVENTS, $rootScope) {
 
 	/**
-	 * Current logged in user or null if not logged in
+	 * Current logged in user/ account or null if not logged in
 	 *
 	 * @var Object | null
 	 */
 	var currentUser = null;
+	var currentAccount = null;
 
 	/**
 	 * Is the current user authenticated?
@@ -46,8 +47,17 @@ app.service('CurrentUser',
 	 * @private
 	 */
 	var setCurrentUser = function(user) {
+
+		//set default active account (=first in list)
+		if (user && user.accounts) {
+			currentAccount = user.accounts[0];
+		} else {
+			currentAccount = null;
+		}
+
 		currentUser = user;
 		isAuthenticated = !!currentUser;
+
 	};
 
 	/**
@@ -81,13 +91,23 @@ app.service('CurrentUser',
 
 		/**
 		 * Attempts to retrieve the current user using the IsometricaUser service.
+		 * Includes the acounts that the user is a member of.
 		 *
 		 * @note How will this work on local devices?
 		 */
 		retrieveCurrentUser: function() {
-			IsometricaUser.getCurrent(function(user) {
-				setCurrentUser(user);
-			});
+			IsometricaUser.find( {
+					filter : {
+						where : { id : IsometricaUser.getCurrentId() } , 
+						include : 'accounts'
+					}
+				},
+				function(res) {
+					setCurrentUser( res[0] );
+				},
+				function(err) {
+					console.error(err);
+				});
 		},
 
 		/**
@@ -111,6 +131,22 @@ app.service('CurrentUser',
 		 */
 		clearCurrentUser: function() {
 			setCurrentUser(null);
+		},
+
+		/**
+		 * Gets the current/ active account
+		 *
+		 * @return  Object | null
+		 */
+		getCurrentAccount : function() {
+			return currentAccount;
+		},
+
+		/**
+		 * Sets the current/ active account
+		 */
+		setCurrentAccount: function(account) {
+			currentAccount = account;
 		}
 
 	};

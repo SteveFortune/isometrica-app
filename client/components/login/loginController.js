@@ -25,17 +25,33 @@ app.controller( 'LoginController', [
 	    $scope.loginResult = IsometricaUser.login({ rememberMe: $scope.rememberMe }, 
 	    	$scope.credentials,
 	      function(res) {
-	        // success
-	        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, res.user);
-      		var next = $location.nextAfterLogin || '/overview';
-			$location.nextAfterLogin = null;
-			$location.path(next);
+
+	        // success: retrieve accounts data for this user
+	        IsometricaUser.find( {
+					filter : {
+						where : { id : IsometricaUser.getCurrentId() } , 
+						include : 'accounts'
+					}
+				},
+				function(res) {
+					//success
+					$rootScope.$broadcast(AUTH_EVENTS.loginSuccess, res[0] );
+		      		var next = $location.nextAfterLogin || '/overview';
+					$location.nextAfterLogin = null;
+					$location.path(next);
+				},
+				function(err) {
+					$scope.hasError = true;
+					$scope.errorMsg = "User could not be found";
+					$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+				});
 	      }, function(res) {
 	        // error
 	        $scope.hasError = true;
 	        $scope.errorMsg = res.data.error.message;
 	        $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
 	      });
-	 };
+
+	};
 
 } ] );

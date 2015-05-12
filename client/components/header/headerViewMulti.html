@@ -35,11 +35,29 @@
 					</p>
 				</li>
 
-				<li>
-					<a href="#">
-						Account
+				<!--account(s)-->
+				<li 
+					ng-if="currentUser.getCurrentUser().accounts.length==1">
+					<a href>
+						Account: {{currentUser.getCurrentAccount().name}}
 					</a>
-				</li> 
+				</li>
+				<li 
+					ng-if="currentUser.getCurrentUser().accounts.length>1"
+					class="dropdown" dropdown on-toggle="toggled(open)">
+					<a href class="dropdown-toggle" dropdown-toggle>
+						Account: {{currentUser.getCurrentAccount().name}}
+						<span class="caret"></span>
+					</a>
+					
+					<ul class="dropdown-menu">
+						<li ng-repeat="account in currentUser.getCurrentUser().accounts"
+							ng-if="account.id != currentUser.getCurrentAccount().id">
+						  <a ng-click="currentUser.setCurrentAccount(account)">{{account.name}}</a>
+						</li>
+					</ul>
+				</li>
+
 				<li>
 					<a href="#">
 						Help
