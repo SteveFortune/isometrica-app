@@ -1,7 +1,7 @@
 
 var app = angular.module('isa');
 
-app.config( function($stateProvider, $urlRouterProvider) {
+app.config( function($provide, $stateProvider, $urlRouterProvider) {
 
 	//setup the routes
 	$stateProvider
@@ -12,6 +12,26 @@ app.config( function($stateProvider, $urlRouterProvider) {
 			controller : 'HomeController',
 			data : {
 				anonymous : true
+			}
+		})
+
+		.state('account', {
+			abstract : true,
+			url : '/account/:accountId/',
+			templateUrl: '/components/overview/overviewView.html',
+		    controller : 'OverviewController',
+			data : {
+				anonymous : false
+			}
+
+		})
+
+		.state('account.overview', {
+			url : 'overview',
+			templateUrl: '/components/overview/overviewView.html',
+		    controller : 'OverviewController',
+			data : {
+				anonymous : false
 			}
 		})
 
@@ -70,5 +90,31 @@ app.config( function($stateProvider, $urlRouterProvider) {
 		});
 
 	$urlRouterProvider.otherwise('/welcome');
+
+	//use a decorator here to always insert the accountId for certain routes
+    $provide.decorator('$state', function($delegate, CurrentUser) {
+
+        //use local state and store original 'go' function
+        var state = $delegate;
+        state._go = state.go;
+
+        //add account id to all requests
+        var go = function(to, params, options) {
+        	params = params || {};
+
+        	var account = CurrentUser.getCurrentAccount();
+        	if (account != null) {
+				params.accountId = account.id;
+			}
+
+            //call original function
+            this._go(to, params, options);
+        };
+
+        //assign new 'go' function
+        state.go = go;
+
+        return $delegate;
+    });
 
 } );

@@ -15,7 +15,7 @@ app.controller('AppController',
 
   //the overview page uses a double navbar, the rest of the pages don't
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-    if (toState.name == 'overview' || toState.name == 'welcome') {
+    if (toState.name == 'account.overview' || toState.name == 'overview' || toState.name == 'welcome') {
       body.addClass('has-bootcards-navbar-double');
     } else {
       body.removeClass('has-bootcards-navbar-double');

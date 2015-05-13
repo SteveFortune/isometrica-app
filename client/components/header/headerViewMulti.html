@@ -35,13 +35,15 @@
 					</p>
 				</li>
 
-				<!--account(s)-->
+				<!-- account name (when user is active in 1 account) -->
 				<li 
 					ng-if="currentUser.getCurrentUser().accounts.length==1">
 					<a href>
 						Account: {{currentUser.getCurrentAccount().name}}
 					</a>
 				</li>
+
+				<!-- account switcher (user active in >1 account) -->
 				<li 
 					ng-if="currentUser.getCurrentUser().accounts.length>1"
 					class="dropdown" dropdown on-toggle="toggled(open)">
@@ -53,7 +55,7 @@
 					<ul class="dropdown-menu">
 						<li ng-repeat="account in currentUser.getCurrentUser().accounts"
 							ng-if="account.id != currentUser.getCurrentAccount().id">
-						  <a ng-click="currentUser.setCurrentAccount(account)">{{account.name}}</a>
+						  <a ng-click="setCurrentAccount(account)">{{account.name}}</a>
 						</li>
 					</ul>
 				</li>

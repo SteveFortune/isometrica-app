@@ -27,6 +27,12 @@ app.directive('isaHeader',
 			 		$state.go('welcome');
 				 });
 			};
+
+			//switch to a different account
+			$scope.setCurrentAccount = function(account) {
+				CurrentUser.setCurrentAccount(account);
+				$state.go('account.overview');
+			};
    
 		}
 

@@ -2,8 +2,8 @@
 var app = angular.module('isa');
 
 app.controller( 'LoginController', [
-	'$scope', '$rootScope', '$location', 'AUTH_EVENTS', 'IsometricaUser',
-	function($scope, $rootScope, $location, AUTH_EVENTS, IsometricaUser) {
+	'$scope', '$rootScope', '$location', '$state', 'AUTH_EVENTS', 'IsometricaUser', 'CurrentUser',
+	function($scope, $rootScope, $location, $state, AUTH_EVENTS, IsometricaUser, CurrentUser) {
 
 	//for debug purposes: set default credentials
 	$scope.credentials = {
@@ -36,9 +36,7 @@ app.controller( 'LoginController', [
 				function(res) {
 					//success
 					$rootScope.$broadcast(AUTH_EVENTS.loginSuccess, res[0] );
-		      		var next = $location.nextAfterLogin || '/overview';
-					$location.nextAfterLogin = null;
-					$location.path(next);
+					$state.go('account.overview');
 				},
 				function(err) {
 					$scope.hasError = true;
