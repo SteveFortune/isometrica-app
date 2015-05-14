@@ -12,6 +12,9 @@
     "name": {
       "type": "string"
     },
+    "phoneNumbers": {
+      "type": "array"
+    },
     "created": {
       "type": "date"
     },
