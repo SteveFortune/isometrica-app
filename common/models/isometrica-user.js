@@ -49,13 +49,22 @@ module.exports = function(IsometricaUser) {
 		with: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 		message: 'Email address should be in the format local-part@host' 
 	})
+
+	// @todo Get this working. At present, Loopback validates the password _after_ it has
+	// 		 been hashed. Which is sort of useless. See this (still open) issue:
+	//		 https://github.com/strongloop/loopback/issues/251
+	//		 I've just left this off for the purposes of the demonstration (Monday) but
+	//		 this needs proper attention.
+	//
 	IsometricaUser.validatesLengthOf('password', {
 		min: 6,
-		message: 'Password must be > 6 characters long'
+		message: {
+			min: 'Password must be > 6 characters long'
+		}
 	});
 	IsometricaUser.validatesFormatOf('password', {
 		with: /^(?=.*[a-zA-Z])(?=.*[0-9])/,
-		message: 'Password must be > 6 characters long'
+		message: 'Password must contain numbers and letters'
 	});
 
 };
