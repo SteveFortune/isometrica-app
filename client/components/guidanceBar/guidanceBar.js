@@ -5,6 +5,7 @@ app.directive('isaGuidanceBar', [ function() {
 	return {
 
 		replace : true,
+		transclude: true,
 		restrict : 'E',
 		templateUrl : '/components/guidanceBar/guidanceBar.html',
 

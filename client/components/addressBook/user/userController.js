@@ -15,6 +15,7 @@ var app = angular.module('isa.addressbook.user', [
 app.directive('existsEmail', ['$q', 'UserFactory', function($q, UserFactory) {
 	return {
 		require: 'ngModel',
+		restrict: 'A',
 		link: function(scope, elm, attrs, ctrl) {
 			ctrl.$asyncValidators.existsEmail = function(modelValue, viewValue) {
 				return ctrl.$isEmpty(modelValue) ? $q.when() : UserFactory.findOneBy({
@@ -33,6 +34,23 @@ app.directive('existsEmail', ['$q', 'UserFactory', function($q, UserFactory) {
 
 
 /**
+ * @author Steve Fortune
+ */
+app.directive('isaAddressBookModalHeader', function() {
+	return {
+		templateUrl: '/components/addressBook/user/modalHeader.html',
+		restrict: 'AE',
+		scope: {
+			onSave: '&',
+			onCancel: '&',
+			canSave: '=',
+			title: '@'
+		}
+	};
+});
+
+
+/**
  * Validates that password contains at least 1 number
  *
  * @author Steve Fortune
@@ -40,6 +58,7 @@ app.directive('existsEmail', ['$q', 'UserFactory', function($q, UserFactory) {
 app.directive('containsNumber', function() {
 	return {
 		require: 'ngModel',
+		restrict: 'A',
 		link: function(scope, elm, attrs, ctrl) {
 			ctrl.$validators.containsNumber = function(modelValue, viewValue) {
 				return ctrl.$isEmpty(modelValue) || /\d/.test(viewValue);
