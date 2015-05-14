@@ -5,22 +5,29 @@
 
 module.exports = function(IsometricaUser) {
 
-	IsometricaUser.observe('before save', function updateTimestamp(ctx, next) {
-
-		//set the created/ updated timestamps
-
-		if (ctx.instance) {
-		  	//create
-		  	ctx.instance.created = new Date();
-		  	ctx.instance.updated = new Date();
+	IsometricaUser.observe('before save', function(context, next) {
+		if (context.instance) {
+			var user = context.instance;
+			user.name = computeFullName(user);
+			user.created = new Date();
+			user.updated = new Date();
 		} else {
-		  	//update
-		  	ctx.data.updated = new Date();
+			context.data.name = computeFullName(context.data);
 		}
-
 	  	next();
-
 	});
+
+	/**
+	 * @param 	model	Object
+	 * @return 	String
+	 * @author 	Steve Fortune
+	 * @todo Find a better way of doing this. Can't we register some sort of dynamic
+	 * 		 model property with loopback, so that we don't have to store redundant
+	 *		 data ?
+	 */
+	var computeFullName = function(model) {
+		return model.firstName + ' ' + model.lastName;
+	};
 
 	/**
 	 * Model validations
