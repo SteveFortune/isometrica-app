@@ -68,6 +68,33 @@ app.directive('containsNumber', function() {
 });
 
 
+app.directive('isaFormInput', ['$compile', function($compile) {
+	return {
+		restrict: 'AE',
+		terminal: true,
+	    priority: 1000,
+		templateUrl: '/components/addressBook/user/formInput.html',
+		controller: ['$scope', function($scope) {}],
+		link: function(scope, elm, attrs, ctrl) {
+			var inputElm = elm.find('input');
+			angular.forEach(scope.validationModel, function(attr, name) {
+				inputElm.attr(name, true);
+			});
+			$compile(inputElm)(scope);
+		},
+		scope: {
+			title: '@',
+			inputPlaceholder: '@',
+			inputType: '@',
+			inputName: '@',
+			model: '=',
+			form: '=',
+			validationModel: '='
+		}
+	};
+}]);
+
+
 /**
  * Non-modal controller for rendering a readonly-view on a user.
  *

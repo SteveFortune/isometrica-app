@@ -10,28 +10,17 @@
 	<div class="modal-body">
 		<form class="form-horizontal" name="userForm" novalidate>
 
-			<div class="form-group">
-				<label class="col-xs-3 control-label">First Name*</label>
-				<div class="col-xs-9">
-					<input
-						type="text"
-						class="form-control"
-						ng-model="user.firstName"
-						ng-model-options="{ debounce: { default: 500, blur: 0} }"
-						placeholder="Joe"
-						name="firstName"
-						required>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-xs-3"></div>
-				<div class="col-xs-9" ng-show="userForm.firstName.$touched">
-					<p ng-show="userForm.firstName.$error.required">
-						A first name is required.
-					</p>
-				</div>
-			</div>
+			<isa-form-input
+				title="First Name*"
+				input-type="text"
+				input-placeholder='Joe'
+				input-name='firstName'
+				model='user.firstName'
+				form='userForm'
+				validation-model='{
+					"required": "A first name is required."
+				}'>
+			</isa-form-input>
 
 			<div class="form-group">
 				<label class="col-xs-3 control-label">Last Name*</label>
@@ -119,7 +108,6 @@
 					</p>
 				</div>
 			</div>
-
 		</form>
 	</div>
 
