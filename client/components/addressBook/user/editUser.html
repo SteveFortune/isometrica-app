@@ -1,5 +1,6 @@
 <div class="panel panel-default bootcards-wiki-panel">
 
+	<!-- && other forms are valid ! -->
 	<isa-address-book-modal-header
 		can-save="userForm.$valid"
 		on-save="updateUser()"
@@ -9,7 +10,52 @@
 
 	<div class="modal-body">
 		<form class="form-horizontal" name="userForm" novalidate>
-
+			<isa-form-input
+				title="First Name*"
+				input-type="text"
+				input-placeholder='Joe'
+				input-name='firstName'
+				model='user.firstName'
+				form='userForm'
+				validation-model='{
+					"required": "A first name is required."
+				}'>
+			</isa-form-input>
+			<isa-form-input
+				title="Last Name*"
+				input-type="text"
+				input-placeholder='Bloggs'
+				input-name='lastName'
+				model='user.lastName'
+				form='userForm'
+				validation-model='{
+					"required": "A last name is required."
+				}'>
+			</isa-form-input>
+			<isa-form-input
+				title="Title or Role"
+				input-type="text"
+				input-placeholder='VP of Sales'
+				input-name='role'
+				model='user.role'
+				form='userForm'>
+			</isa-form-input>
+			<isa-form-input
+				title="Email*"
+				input-type="email"
+				input-placeholder='joe.bloggs@ibm.com'
+				input-name='email'
+				model='user.email'
+				form='userForm'
+				validation-model='{
+					"required": "An email address is required.",
+					"email": "Must be a valid email address.",
+					"existsEmail": "A user already exists with this email address."
+				}'
+				pending-model='{
+					"existsEmail": "..."
+				}'>
+			</isa-form-input>
 		</form>
 	</div>
 

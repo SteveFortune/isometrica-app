@@ -80,7 +80,6 @@ app.directive('isaFormInput', ['$compile', function($compile) {
 		terminal: true,
 	    priority: 1000,
 		templateUrl: '/components/addressBook/user/formInput.html',
-		controller: ['$scope', function($scope) {}],
 		link: function(scope, elm, attrs, ctrl) {
 			var inputElm = elm.find('input');
 			angular.forEach(scope.validationModel, function(attr, name) {
