@@ -68,6 +68,12 @@ app.directive('containsNumber', function() {
 });
 
 
+/**
+ * This directive has the potential to be create. It will build you a custom
+ * input field complete with validation messages.
+ *
+ * @author Steve Fortune
+ */
 app.directive('isaFormInput', ['$compile', function($compile) {
 	return {
 		restrict: 'AE',
@@ -78,7 +84,8 @@ app.directive('isaFormInput', ['$compile', function($compile) {
 		link: function(scope, elm, attrs, ctrl) {
 			var inputElm = elm.find('input');
 			angular.forEach(scope.validationModel, function(attr, name) {
-				inputElm.attr(name, true);
+				var denormalizedName = name.replace(/([A-Z])/g, '-$1').toLowerCase();
+				inputElm.attr(denormalizedName, true);
 			});
 			$compile(inputElm)(scope);
 		},
@@ -89,7 +96,8 @@ app.directive('isaFormInput', ['$compile', function($compile) {
 			inputName: '@',
 			model: '=',
 			form: '=',
-			validationModel: '='
+			validationModel: '=',
+			pendingModel: '='
 		}
 	};
 }]);

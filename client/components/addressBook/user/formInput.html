@@ -20,5 +20,8 @@
 		<p ng-repeat="(name, message) in validationModel" ng-show="form[inputName].$error[name]">
 			{{ message }}
 		</p>
+		<p ng-repeat="(name, message) in pendingModel" ng-show="form[inputName].$pending[name]">
+			{{ message }}
+		</p>
 	</div>
 </div>
