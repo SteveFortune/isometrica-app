@@ -113,6 +113,31 @@
 						New Number
 					</a>
 				</accordion-group>
+				<accordion-group heading="User Admin">
+					<isa-form-input
+						title="Type of Person"
+						input-type="text"
+						input-placeholder='Admin'
+						input-name='userType'
+						model='user.type'
+						form='userForm'>
+					</isa-form-input>
+					<!-- Does not link to a model at the moment. Not sure how to handle
+						 user reset password -->
+					<isa-form-input
+						title="Password*"
+						input-type="password"
+						input-placeholder='Password'
+						input-name='password'
+						form='userForm'
+						validation-model='{
+							"minlength": "Must be > 6 characters long.",
+							"containsNumber": "Must contain both letters and numbers."
+						}'>
+					</isa-form-input>
+				</accordion-group>
+				<accordion-group heading="Call Tree">
+				</accordion-group>
 			</accordion>
 		</form>
 	</div>

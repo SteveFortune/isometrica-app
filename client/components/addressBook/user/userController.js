@@ -212,6 +212,16 @@ app.controller('ModalAddressBookUserController',
 	$scope.user = $scope.isNew ? {} : angular.copy(user);
 
 	/**
+	 * Strips sensative fields from the user entity before sending to the rest of the
+	 * application. Namely the `password` value.
+	 *
+	 * @private
+	 */
+	var sanitizeUserEntity = function(user) {
+		delete user.password;
+	};
+
+	/**
 	 * Dismisses the modal instance.
 	 */
 	$scope.cancel = function() {
@@ -229,6 +239,7 @@ app.controller('ModalAddressBookUserController',
 			throw new Error("Not creating user.");
 		}
 		UserFactory.insert($scope.user).then(function(user) {
+			sanitizeUserEntity(user);
 			$modalInstance.close(user);
 			$rootScope.$emit('user.new', user);
 		}, function(error) {
@@ -247,6 +258,7 @@ app.controller('ModalAddressBookUserController',
 			throw new Error("Can only update existing users");
 		}
 		UserFactory.updateById(user.id, $scope.user).then(function(user) {
+			sanitizeUserEntity(user);
 			$modalInstance.close(user);
 			$rootScope.$emit('user.update', user);
 			$rootScope.$emit('user.' + user.id + '.update', user);
