@@ -142,6 +142,9 @@ app.controller( 'OverviewController',
 				},
 				isNew : function() {
 					return false;
+				},
+				docTemplates : function() {
+					return [];
 				}
 			}
 		});

@@ -18,7 +18,7 @@
               ng-model="plan.title" placeholder="Enter a title" />
           </div>
 
-          <div class="form-group">
+          <div class="form-group" ng-show="isNew">
             <label class="control-label" for="inputType">Type</label>
             <select class="form-control" id="inputType" ng-model="plan.type">
                 <option value=""></option>
@@ -28,11 +28,11 @@
           </div>
 
           <!-- template (for DocumentWiki only) -->
-          <div class="form-group" ng-show="plan.type == 'docwiki'">
+          <div class="form-group" ng-show="isNew && plan.type == 'docwiki'">
             <label class="control-label" for="inputType">Template</label>
             <select class="form-control" id="inputType" 
               ng-model="plan.templateId"
-              ng-options="template.title for template in docTemplates">
+              ng-options="docTemplate.id as docTemplate.title for docTemplate in docTemplates">
                 <option value="">- No template- </option>
             </select>
           </div>

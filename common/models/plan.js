@@ -22,6 +22,35 @@ module.exports = function(Plan) {
 		next();
 	});
 
+	//when creating a new docWiki module, and a template is specified: copy
+	//the pages from the template
+	Plan.observe('after save', function(ctx, next) {
+
+		var loopback = require('loopback');
+		var Page = loopback.findModel('Page');
+		var db = Plan.dataSource.connector.db;
+
+		try {
+
+			if (ctx.isNewInstance) {
+
+				if (ctx.instance.type == 'docwiki' && ctx.instance.templateId && ctx.instance.templateId.length>0) {
+					console.log('copy from template ' + ctx.instance.templateId);
+					
+					copyPages(Page, ctx.instance.templateId, ctx.instance.id, 
+						ctx.instance.title, db, null);
+
+				}
+
+			}
+		} catch (err) {
+			console.log(err);
+		}
+		  
+		next();
+
+	});
+
 	/*
 	 * Remote method to copy a plan: copyies the plan document, as well as any
 	 * related pages.
@@ -32,6 +61,7 @@ module.exports = function(Plan) {
 
 		var loopback = require('loopback');
 		var Page = loopback.findModel('Page');
+		var db = Plan.dataSource.connector.db;
 
 		//console.log('copying the plan with id ' + planId + '...');
 
@@ -41,7 +71,7 @@ module.exports = function(Plan) {
 				console.error(err);
 			}
 
-			copyDocument(Plan, plan, Page, cb);
+			copyDocument(Plan, plan, Page, db, cb);
 
 		});
 
@@ -61,11 +91,11 @@ module.exports = function(Plan) {
 
 };
 
-function copyDocument(model, plan, Page, cb) {
+function copyDocument(model, plan, Page, db, cb) {
 
 	plan = plan.toObject();
 
-	var documentId = plan.id.toString();		//id is an object, need to have a string to use it in a 'where' clause
+	var sourceDocId = plan.id.toString();		//id is an object, need to have a string to use it in a 'where' clause
 
 	//update properties for a new plan
 	delete plan['id'];
@@ -86,44 +116,102 @@ function copyDocument(model, plan, Page, cb) {
 			console.err(err);
 		}
 
-		var planCopyId = planCopy.id.toString();
+		var targetDocId = planCopy.id.toString();
+		var newTitle = planCopy.title;
 
-		// find all pages in this document, copy them and relate to correct (new) document
-		Page.find({
-				where: {
-					documentId : documentId
-				}
-			}, function (err, items) {
-
-				if (err) {
-					console.error(err);
-				}
-
-				//loop through all pages found
-				items.forEach(function (item) {
-
-					//we need to have it as an object
-					item = item.toObject();
-
-					//remove the id: we let the system create a new one
-					delete item['id'];
-					item.created = new Date();
-					item.updated = new Date();
-
-					//set the parent (document) id to the newly created document
-					item.documentId = planCopyId;
-
-					Page.create(item, function(err, pageCopy) {
-						//console.log('copied page', pageCopy);
-					});
-
-				});
-
-				cb(null, planCopy.title);
-
-			});
+		copyPages(Page, sourceDocId, targetDocId, newTitle, db, cb);
 
 	});
 
+
+}
+
+/*
+ * find all pages belonging to the document with the specified sourceDocId,
+ * copy them and attach to the specified document.
+ *
+ * @param cb optional callback function that will be executed after copying
+ *
+ * @author Mark Leusink
+ */
+function copyPages(Page, sourceDocId, targetDocId, newTitle, db, cb) {
+
+	var loopback = require('loopback');
+	var mongo = require('mongodb');
+	var Grid = require('gridfs-stream');
+
+	var gfs = Grid(db, mongo);
+
+	Page.find({
+		where: {
+			documentId : sourceDocId
+		}
+	}, function (err, items) {
+
+		if (err) {
+			console.error(err);
+		}
+
+		//loop through all pages found
+		items.forEach(function (item) {
+
+			//we need to have it as an object
+			item = item.toObject();
+
+			var sourcePageId = item.id;
+
+			//remove the id: we let the system create a new one
+			delete item['id'];
+			item.created = new Date();
+			item.updated = new Date();
+
+			//set the parent (document) id to the newly created document
+			item.documentId = targetDocId;
+
+			Page.create(item, function(err, pageCopy) {
+
+				updateAttachedFiles(gfs, mongo, sourcePageId, pageCopy.id );
+
+			});
+
+		});
+
+		if (cb != null) {
+			cb(null, newTitle);
+		}
+
+	});
+
+
+}
+
+/*
+ * Search for attached files to a specific document,
+ * for every file found, add the targetPageId to the list
+ * of parent documents
+ * 
+ * @author Mark Leusink
+ */
+function updateAttachedFiles(gfs, mongo, sourcePageId, targetPageId) {
+	
+	gfs.files.find({ 'metadata.parentIds' : mongo.ObjectID(sourcePageId) }).toArray(function (err, files) {
+
+	    if (err) {
+	    	throw(err);
+	    }
+
+	    if (files.length > 0) {
+
+	    	for (var i=0; i<files.length; i++) {
+	    		
+	    		//add a parent id to the files' metadata (as Mongo Object ID)
+	    		gfs.files.update(
+	    			{ _id : files[i]._id },
+	    			{ $push : { 'metadata.parentIds' : targetPageId } }
+	    		);
+	    	}
+	    }
+
+	});
 
 }
