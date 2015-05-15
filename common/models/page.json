@@ -34,6 +34,15 @@
         "validate": true,
         "forceId": false
       }
+    },
+    "signatures": {
+      "type": "embedsMany",
+      "model": "Signature",
+      "property": "signatures",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
     }
   },
   "acls": [
