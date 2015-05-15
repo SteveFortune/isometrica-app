@@ -23,7 +23,11 @@
     "isArchived": {
       "type": "boolean",
       "default": false
-    }
+    },
+    "inTrash": {
+      "type" : "boolean",
+      "default" : false
+    } 
   },
   "validations": [],
   "relations": {

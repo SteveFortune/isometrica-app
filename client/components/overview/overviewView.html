@@ -46,6 +46,9 @@
               <div ng-repeat="plan in templates">
                 <div ng-include src="'/components/overview/plan.html'"></div>
               </div>
+              <div ng-show="templates.length ==0">
+                There aren't any templates yet
+              </div>
             </div> 
 
           </div>
@@ -64,6 +67,9 @@
               <div ng-repeat="plan in archived">
                 <div ng-include src="'/components/overview/plan.html'"></div>
               </div>
+              <div ng-show="archived.length ==0">
+                No documents have been archived
+              </div>
             </div> 
 
           </div>
@@ -80,8 +86,11 @@
                 </a>
             
             <div class="row">
-              <div ng-repeat="plan in trash">
+              <div ng-repeat="plan in modulesTrash">
                 <div ng-include src="'/components/overview/plan.html'"></div>
+              </div>
+              <div ng-show="modulesTrash.length ==0">
+                There aren't any documents in the trash currently
               </div>
             </div> 
 

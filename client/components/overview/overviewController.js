@@ -17,7 +17,8 @@ app.controller( 'OverviewController',
 			filter : {
 				where : {
 					isTemplate: false,
-			  		isArchived : false
+			  		isArchived : false,
+			  		inTrash : false
 				  }
 			}
 		  },
@@ -31,7 +32,8 @@ app.controller( 'OverviewController',
 			filter : {
 				where : {
 					isTemplate: true,
-			  		isArchived : false
+			  		isArchived : false,
+			  		inTrash : false
 				  }
 			} 
 		  },
@@ -43,10 +45,16 @@ app.controller( 'OverviewController',
 		);
 
 		Plan.find(
-		  { filter: { where: { isArchived: true } } },
+		  {
+		  filter : {
+				where : {
+			  		inTrash : true
+				  }
+			} 
+		  },
 		  function(plans) {
-		  console.log('found' + plans.length + 'a'); 
-		  	$scope.archived = _attachMockUsers(plans);
+		  console.log('found' + plans.length + ' in trash'); 
+		  	$scope.modulesTrash = _attachMockUsers(plans);
 		  },
 		  function(errorResponse) { /* error */ }
 		);

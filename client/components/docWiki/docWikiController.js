@@ -59,6 +59,7 @@ app.controller( 'DocWikiController',
 		});
 	};
 
+	//marks a document as 'archived': it will shown only in the 'archived' documents section
 	$scope.saveInArchive = function() {
 		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {isArchived : true})
 		.$promise.then(function(res) {
@@ -67,6 +68,7 @@ app.controller( 'DocWikiController',
 		});
 	};
 
+	//un-marks a document as being archived
 	$scope.unArchive = function() {
 		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {isArchived : false})
 		.$promise.then(function(res) {
@@ -74,6 +76,8 @@ app.controller( 'DocWikiController',
 			growl.success('This document has been unarchived');
 		});
 	};
+
+	//duplicates a document
 	$scope.duplicateDoc = function() {
 
 		Plan.copy( {planId : $scope.moduleId }).$promise
@@ -83,10 +87,26 @@ app.controller( 'DocWikiController',
 
 	};
 
+	$scope.removeDoc = function() {
+		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {inTrash : true})
+		.$promise.then(function(res) {
+			$scope.docWiki.inTrash = true;
+			growl.success('This document has been deleted');
+		});
+	};
+	$scope.restoreDoc = function() {
+		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {inTrash : false})
+		.$promise.then(function(res) {
+			$scope.docWiki.inTrash = false;
+			growl.success('This document has been restored');
+		});
+	};
+
 }]);
 
 /**
- * Show a date/time in a 'time ago' like syntax (e.g. 5 seconds ago, an hour ago)
+ * Angular filter to show a date/time in a 'time ago' like syntax (e.g. 5 seconds ago, an hour ago)
+ * Uses Moment.js for formatting
  *
  * @author Mark Leusink
  */
