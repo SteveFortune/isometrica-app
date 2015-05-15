@@ -26,19 +26,25 @@ app.directive('existsEmail', ['$q', 'UserFactory', function($q, UserFactory) {
 			ctrl.isOriginalValueSet = false;
 
 			/**
-			 * Watch the model to cache the original model value.
+			 * Makes sure that the original value is set.
 			 *
 			 * @private
 			 */
-			scope.$watch(function() {
+			var setOriginalValue = function() {
 				if (!ctrl.isOriginalValueSet) {
 					ctrl.originalValue = ctrl.$modelValue;
 					ctrl.isOriginalValueSet = true;
 				}
-			});
+			};
+
+			scope.$watch(setOriginalValue);
 
 			ctrl.$asyncValidators.existsEmail = function(modelValue, viewValue) {
-				if (ctrl.$isEmpty(modelValue) || modelValue === ctrl.originalValue) {
+				if (
+					ctrl.$isEmpty(modelValue) ||
+					!ctrl.isOriginalValueSet ||
+					modelValue === ctrl.originalValue
+				) {
 					return $q.when();
 				}
 				return UserFactory.findOneBy({
