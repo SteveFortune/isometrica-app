@@ -6,6 +6,7 @@
 module.exports = function(IsometricaUser) {
 
 	IsometricaUser.observe('before save', function(context, next) {
+		console.log(context.instance);
 		if (context.instance) {
 			var user = context.instance;
 			user.name = computeFullName(user);

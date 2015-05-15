@@ -1,6 +1,5 @@
 <div class="panel panel-default bootcards-wiki-panel">
 
-	<!-- && other forms are valid ! -->
 	<isa-address-book-modal-header
 		can-save="userForm.$valid"
 		on-save="updateUser()"
@@ -59,14 +58,25 @@
 					"existsEmail": "..."
 				}'>
 			</isa-form-input>
-
+			<isa-form-input
+				title="Address"
+				input-type="address"
+				input-placeholder='joe.bloggs@ibm.com'
+				input-name='email'
+				model='user.email'
+				form='userForm'
+				validation-model='{
+					"required": "An email address is required.",
+					"email": "Must be a valid email address.",
+					"existsEmail": "A user already exists with this email address."
+				}'
+				pending-model='{
+					"existsEmail": "..."
+				}'>
+			</isa-form-input>
 			<accordion>
-				<accordion-group is-open="true">
-					<accordion-heading class="hiero">
-						Phone Numbers
-					</accordion-heading>
-
-					<div class="list-group" ng-repeat="phoneNumber in user.phoneNumbers">
+				<accordion-group heading="Phone Numbers">
+					<div class="list-group clearfix" ng-repeat="phoneNumber in user._phoneNumbers">
 						<isa-form-input
 							class="col-sm-6"
 							title="Number"
@@ -93,7 +103,7 @@
 							}'>
 						</isa-form-input>
 					</div>
-					<div ng-if="!user.phoneNumbers.length" class="list-group-item">
+					<div ng-if="!user._phoneNumbers.length">
 						<p>
 							No phone numbers.
 						</p>
@@ -104,22 +114,6 @@
 					</a>
 				</accordion-group>
 			</accordion>
-
-			<!-- Sub forms -->
-
-			<accordion>
-				<accordion-group is-open="page.open">
-					<accordion-heading class="hiero">
-						User Admin
-					</accordion-heading>
-				</accordion-group>
-				<accordion-group is-open="page.open">
-					<accordion-heading class="hiero">
-						Call Tree
-					</accordion-heading>
-				</accordion-group>
-			</accordion>
 		</form>
 	</div>
-
 </div>

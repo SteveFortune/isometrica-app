@@ -32,8 +32,8 @@
 			<h4 class="list-group-item-heading">Phone Numbers</h4>
 			<div
 				class="row"
-				ng-if="user.phoneNumbers && user.phoneNumbers.length > 0"
-				ng-repeat="number in user.phoneNumbers">
+				ng-if="user._phoneNumbers && user._phoneNumbers.length > 0"
+				ng-repeat="number in user._phoneNumbers">
 				<div class="col-sm-6">
 					<h4 class="list-group-item-heading"><a href="tel:">{{ number.number }}</a></h4>
 				</div>
@@ -41,7 +41,7 @@
 					<h4 class="list-group-item-heading">{{ number.type }}</h4>
 				</div>
 			</div>
-			<div ng-if="!user.phoneNumbers || user.phoneNumbers.length === 0" class="row">
+			<div ng-if="!user._phoneNumbers || user._phoneNumbers.length === 0" class="row">
 				<div class="col-sm-11">
 					No numbers.
 				</div>

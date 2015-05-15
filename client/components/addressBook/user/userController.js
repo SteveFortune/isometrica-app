@@ -261,10 +261,10 @@ app.controller('ModalAddressBookUserController',
 	 * @protected
 	 */
 	$scope.addPhoneNumber = function() {
-		if (!$scope.user.phoneNumbers) {
-			$scope.user.phoneNumbers = [];
+		if (!$scope.user._phoneNumbers) {
+			$scope.user._phoneNumbers = [];
 		}
-		$scope.user.phoneNumbers.push({});
+		$scope.user._phoneNumbers.push({});
 	};
 
 }]);

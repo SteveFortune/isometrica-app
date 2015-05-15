@@ -12,8 +12,8 @@
     "name": {
       "type": "string"
     },
-    "phoneNumbers": {
-      "type": "array"
+    "address": {
+        "type": "string"
     },
     "created": {
       "type": "date"
@@ -33,7 +33,9 @@
       "model": "PhoneNumber",
       "property": "phoneNumbers",
       "options": {
-        "validate": true
+        "validate": true,
+        "forceId": true,
+        "persistent": true
       }
     }
   },
