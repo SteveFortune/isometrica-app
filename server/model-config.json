@@ -47,12 +47,12 @@
     "dataSource": "email",
     "public": false
   },
-  "DataObject" : {
+  "DataObject": {
     "dataSource": "mongodb",
     "public": true
   },
-  "Page" : {
-    "dataSource" : "mongodb",
+  "Page": {
+    "dataSource": "mongodb",
     "public": true
   },
   "Comment" : {
@@ -62,6 +62,9 @@
   "Signature" : {
     "dataSource" : "transient",
     "public" : false
+  },
+  "PhoneNumber": {
+    "dataSource": "mongodb",
+    "public": false
   }
-
 }

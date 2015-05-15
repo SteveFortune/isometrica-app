@@ -98,6 +98,25 @@ app.directive('containsNumber', function() {
 
 
 /**
+ * Validates that the value is a phone number. At present this verfifies that
+ * the input consists of only numbers and '+'s.
+ *
+ * @author Steve Fortune
+ */
+app.directive('phoneNumber', function() {
+	return {
+		require: 'ngModel',
+		restrict: 'A',
+		link: function(scope, elm, attrs, ctrl) {
+			ctrl.$validators.phoneNumber = function(modelValue, viewValue) {
+				return ctrl.$isEmpty(modelValue) ||  /^\+?\d+$/.test(viewValue);
+			};
+		}
+	};
+});
+
+
+/**
  * This directive has the potential to be create. It will build you a custom
  * input field complete with validation messages.
  *
@@ -106,7 +125,6 @@ app.directive('containsNumber', function() {
 app.directive('isaFormInput', ['$compile', function($compile) {
 	return {
 		restrict: 'AE',
-		terminal: true,
 	    priority: 1000,
 		templateUrl: '/components/addressBook/user/formInput.html',
 		link: function(scope, elm, attrs, ctrl) {
@@ -235,6 +253,18 @@ app.controller('ModalAddressBookUserController',
 		}, function(error) {
 			$modalInstance.close(error);
 		});
+	};
+
+	/**
+	 * Creates a new empty phone number associated with the user.
+	 *
+	 * @protected
+	 */
+	$scope.addPhoneNumber = function() {
+		if (!$scope.user.phoneNumbers) {
+			$scope.user.phoneNumbers = [];
+		}
+		$scope.user.phoneNumbers.push({});
 	};
 
 }]);

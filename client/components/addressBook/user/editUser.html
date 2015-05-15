@@ -10,6 +10,9 @@
 
 	<div class="modal-body">
 		<form class="form-horizontal" name="userForm" novalidate>
+
+			<!-- Basic user fields -->
+
 			<isa-form-input
 				title="First Name*"
 				input-type="text"
@@ -56,6 +59,68 @@
 					"existsEmail": "..."
 				}'>
 			</isa-form-input>
+
+			<accordion>
+				<accordion-group is-open="true">
+					<accordion-heading class="hiero">
+						Phone Numbers
+					</accordion-heading>
+					<div class="list-group">
+						<div class="list-group-item" ng-repeat="phoneNumber in user.phoneNumbers">
+							<isa-form-input
+								title="Number"
+								input-type="text"
+								input-placeholder='+44 7668 492301'
+								input-name='phoneNumber_{{ $index }}'
+								model='phoneNumber.number'
+								form='userForm'
+								validation-model='{
+									"phoneNumber": "Must be a valid phone number.",
+									"required": "A number is required."
+								}'>
+							</isa-form-input>
+							<isa-form-input
+								title="Type"
+								input-type="text"
+								input-placeholder='Mobile'
+								input-name='type_{{ phoneNumber.id }}'
+								model='phoneNumber.type'
+								form='userForm'
+								validation-model='{
+									"required": "A type is required."
+								}'>
+							</isa-form-input>
+						</div>
+						<div ng-if="!user.phoneNumbers.length" class="list-group-item">
+							<p>
+								No phone numbers.
+							</p>
+						</div>
+						<div class="list-group-item">
+							<a class="btn btn-primary pull-right" ng-click="addPhoneNumber()">
+								<i class="fa fa-plus"></i>
+								New Number
+							</a>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</accordion-group>
+			</accordion>
+
+			<!-- Sub forms -->
+
+			<accordion>
+				<accordion-group is-open="page.open">
+					<accordion-heading class="hiero">
+						User Admin
+					</accordion-heading>
+				</accordion-group>
+				<accordion-group is-open="page.open">
+					<accordion-heading class="hiero">
+						Call Tree
+					</accordion-heading>
+				</accordion-group>
+			</accordion>
 		</form>
 	</div>
 
