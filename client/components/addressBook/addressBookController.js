@@ -92,9 +92,11 @@ app.controller('AddressBookController',
 				}
 			}
 		}).result.then(function(user) {
-			$scope.addressBookCollection.push(user);
+			// TODO Append and prepend to collection
 		}, function(error) {
-			// TODO Error handling
+			if (error) {
+				// TODO Handle
+			}
 		});
 	};
 
@@ -112,6 +114,14 @@ app.controller('AddressBookController',
 				user: function() {
 					return user;
 				}
+			}
+		}).result.then(function(updatedUser) {
+			isa.utils.replace($scope.addressBookCollection, null, updatedUser, function(prop) {
+				return prop.id === user.id;
+			});
+		}, function(error) {
+			if (error) {
+				// TODO Handle
 			}
 		});
 	};

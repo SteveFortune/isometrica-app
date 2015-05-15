@@ -131,15 +131,30 @@ app.directive('isaFormInput', ['$compile', function($compile) {
  * @author Steve Fortune
  */
 app.controller('AddressBookUserController',
-	['UserFactory', '$stateParams', '$scope',
-	function(UserFactory, $stateParams, $scope) {
+	['UserFactory', '$stateParams', '$scope', '$rootScope',
+	function(UserFactory, $stateParams, $scope, $rootScope) {
+
+	/**
+	 * @var String
+	 */
+	var userId = $stateParams.userId;
 
 	UserFactory.findOneBy({
-		id: $stateParams.userId
+		id: userId
 	}).then(function(user) {
 		$scope.user = user;
 	}, function(error) {
 		// TODO: Error handling
+	});
+
+	/**
+	 * Listen to user udpate events and refresh our user edity to avoid rendering
+	 * old data.
+	 *
+	 * @private
+	 */
+	$rootScope.$on('user.' + userId + '.update', function(event, newUser) {
+		$scope.user = newUser;
 	});
 
 }]);
@@ -148,11 +163,15 @@ app.controller('AddressBookUserController',
 /**
  * Modal user controller. Performs create and edit operations on users.
  *
+ * @note Because the users that we're mutating might be in use usewhere
+ * 		 in the application, we emit `user.new`, `user.update` and
+ *		 `user.{id}.update`
+ *		 events.
  * @author Steve Fortune
  */
 app.controller('ModalAddressBookUserController',
-	['UserFactory', '$scope', '$modalInstance', 'user',
-	function(UserFactory, $scope, $modalInstance, user) {
+	['UserFactory', '$scope', '$rootScope', '$modalInstance', 'user',
+	function(UserFactory, $scope, $rootScope, $modalInstance, user) {
 
 	/**
 	 * Are we creating a new user or editing an already-existing one?
@@ -166,7 +185,7 @@ app.controller('ModalAddressBookUserController',
 	 *
 	 * @var Object
 	 */
-	$scope.user = user;
+	$scope.user = $scope.isNew ? {} : angular.copy(user);
 
 	/**
 	 * Dismisses the modal instance.
@@ -187,6 +206,7 @@ app.controller('ModalAddressBookUserController',
 		}
 		UserFactory.insert($scope.user).then(function(user) {
 			$modalInstance.close(user);
+			$rootScope.$emit('user.new', user);
 		}, function(error) {
 			$modalInstance.close(error);
 		});
@@ -204,6 +224,8 @@ app.controller('ModalAddressBookUserController',
 		}
 		UserFactory.updateById(user.id, $scope.user).then(function(user) {
 			$modalInstance.close(user);
+			$rootScope.$emit('user.update', user);
+			$rootScope.$emit('user.' + user.id + '.update', user);
 		}, function(error) {
 			$modalInstance.close(error);
 		});

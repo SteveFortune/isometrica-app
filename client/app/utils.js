@@ -24,6 +24,57 @@ isa.utils = {
 
 	},
 
+	/**
+	 * Computes the index of a needle, or the index of the first element
+	 * that satisfies the matcher.
+	 *
+	 * @param	haystack	Array
+	 * @param	needle		Multiple
+	 * @param	matcher		Function
+	 * @return 	Number		Index if successful, -1 if not found.
+	 */
+	indexOf: function(haystack, needle, matcher) {
+		var result = -1;
+		if (angular.isFunction(matcher)) {
+			angular.forEach(haystack, function(elm, index) {
+				if (matcher(elm)) {
+					result = index;
+					return;
+				}
+			});
+		} else {
+			return haystack.indexOf(needle);
+		}
+		return result;
+	},
+
+	/**
+	 * Does a given array contain an element?
+	 *
+	 * @param	haystack	Array
+	 * @param	needle		Multiple
+	 * @param	matcher		Function
+	 * @return 	Boolean
+	 */
+	contains: function(haystack, needle, matcher) {
+		return !!~this.indexOf(haystack, needle, matcher);
+	},
+
+	/**
+	 * Replaces an element in an array with a given value
+	 *
+	 * @param	haystack		Array
+	 * @param	needle			Multiple
+	 * @param	replacement		Multiple
+	 * @param	matcher			Function
+	 */
+	replace: function(haystack, needle, replacement, matcher) {
+		var index = this.indexOf(haystack, needle, matcher);
+		if (!!~index) {
+			haystack[index] = replacement;
+		}
+	},
+
 	htmlCleanup : function( htmlIn ) {
 		//cleans up (pasted) HTML code from (for instance) MS Word:
 		//removing all font/ changed size information
