@@ -4,11 +4,13 @@
 		{{ title }}
 	</label>
 	<div class="col-xs-9">
+		<!-- @note Here we work around [this issue](https://github.com/angular/angular.js/issues/1412)
+			 by simply keeping track of the unvalidated value and assigning it to the input's value. -->
 		<input
 			type="{{ inputType }}"
 			class="form-control"
 			ng-model="model"
-			ng-model-options="{ debounce: 500 }"
+			ng-model-options="{ debounce: 500, allowInvalid: true }"
 			name="{{ inputName }}"
 			placeholder="{{ inputPlaceholder || 'Enter...' }}">
 	</div>
