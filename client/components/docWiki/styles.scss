@@ -177,6 +177,11 @@ $docwiki-hover-color: #F5F5F5;
 	.comments li.list-group-item:first-child {
 		border-top:0;
 	}
+	.comments li.list-group-item i.fa {
+		width: inherit;
+		margin: 0;
+		opacity: 1;
+	}
 
 
 }

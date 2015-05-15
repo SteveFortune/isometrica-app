@@ -1485,5 +1485,9 @@ body.desktop.has-bootcards-navbar-double {
     padding-left: 15px; }
   .docwiki .comments li.list-group-item:first-child {
     border-top: 0; }
+  .docwiki .comments li.list-group-item i.fa {
+    width: inherit;
+    margin: 0;
+    opacity: 1; }
 
 /*# sourceMappingURL=resilify.css.map */

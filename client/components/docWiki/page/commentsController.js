@@ -10,7 +10,9 @@ app.controller('CommentsController', ['$scope', '$resource', 'CurrentUser',
 	function($scope, $resource, CurrentUser) {
 
 	//we set the pageId as a parameter, since it might not be here yet (for new pages)
-	var Comment = $resource('/api/Pages/:pageId/comments', { pageId : '@pageId' } );
+	var Comment = $resource(
+		'/api/Pages/:pageId/comments/:commentId', 
+		{ pageId : '@pageId', commentsId : '@commentsId' } );
 
 	$scope.add = false;
 	$scope.comment = new Comment();
@@ -35,6 +37,25 @@ app.controller('CommentsController', ['$scope', '$resource', 'CurrentUser',
 			$scope.page._comments.push( res);
 			$scope.add = false;
 			$scope.comment = new Comment();
+		});
+
+	};
+
+	$scope.deleteComment = function(comment) {
+
+		if (!confirm('Are you sure?')) {
+			return;
+		}
+
+		Comment.remove( { pageId : $scope.page.id, commentId : comment.id}, function(res) {
+
+			//comment has been removed remotely, remove it from the UI
+			$scope.page._comments.forEach(function(comm, index, array){
+	          if(comm.id === comment.id){
+	              $scope.page._comments.splice(index, 1);
+	          }
+	        });
+
 		});
 
 	};

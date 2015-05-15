@@ -60,6 +60,11 @@
 				ng-repeat="comment in page._comments | orderBy : 'created' : true">
 		    		<div class="row">
 						<div class="col-sm-12">
+
+							<a class="pull-right"
+							ng-click="deleteComment(comment)">
+								<i class="fa fa-times"></i>
+							</a>
 							{{comment.text}}
 							<br />
 							<span class="small">{{comment.created | timeAgo}} by {{comment.createdBy}}</span>
