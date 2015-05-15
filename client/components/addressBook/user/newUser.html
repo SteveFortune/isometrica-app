@@ -56,7 +56,10 @@
 				form='userForm'
 				validation-model='{
 					"required": "A password is required.",
-					"minlength": "Must be > 6 characters long.",
+					"minlength": {
+						value: 6,
+						message: "Must be > 6 characters long."
+					},
 					"containsNumber": "Must contain both letters and numbers."
 				}'>
 			</isa-form-input>

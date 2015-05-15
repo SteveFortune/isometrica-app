@@ -128,10 +128,21 @@ app.directive('isaFormInput', ['$compile', function($compile) {
 	    priority: 1000,
 		templateUrl: '/components/addressBook/user/formInput.html',
 		link: function(scope, elm, attrs, ctrl) {
+
+			/**
+			 * Is the given attribute paired with the name an object ?
+			 *
+			 * @return Boolean
+			 */
+			scope.isAttributeObject = function(attr) {
+				return typeof attr === 'object';
+			};
+
 			var inputElm = elm.find('input');
 			angular.forEach(scope.validationModel, function(attr, name) {
+				var value = scope.isAttributeObject(attr) ? attr.value : true;
 				var denormalizedName = name.replace(/([A-Z])/g, '-$1').toLowerCase();
-				inputElm.attr(denormalizedName, true);
+				inputElm.attr(denormalizedName, value);
 			});
 			$compile(inputElm)(scope);
 		},
@@ -273,10 +284,16 @@ app.controller('ModalAddressBookUserController',
 	 * @protected
 	 */
 	$scope.addPhoneNumber = function() {
-		if (!$scope.user._phoneNumbers) {
-			$scope.user._phoneNumbers = [];
-		}
 		$scope.user._phoneNumbers.push({});
+	};
+
+	/**
+	 * Creates a new empty contact associated with the user's call tree.
+	 *
+	 * @protected
+	 */
+	$scope.addCallTreeContact = function() {
+		$scope.user._callTreeContacts.push({});
 	};
 
 }]);

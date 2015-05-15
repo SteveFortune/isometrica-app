@@ -13,7 +13,7 @@
       "type": "string"
     },
     "address": {
-        "type": "string"
+      "type": "string"
     },
     "created": {
       "type": "date"
@@ -27,6 +27,16 @@
     "accounts": {
       "type": "hasAndBelongsToMany",
       "model": "Account"
+    },
+    "callTreeContacts": {
+        "type": "embedsMany",
+        "model": "Contact",
+        "property": "callTreeContacts",
+        "options": {
+          "validate": true,
+          "forceId": true,
+          "persistent": true
+        }
     },
     "phoneNumbers": {
       "type": "embedsMany",

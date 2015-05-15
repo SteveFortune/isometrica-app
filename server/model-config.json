@@ -66,5 +66,9 @@
   "PhoneNumber": {
     "dataSource": "mongodb",
     "public": false
+  },
+  "Contact": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

@@ -9,9 +9,7 @@
 
 	<div class="modal-body">
 		<form class="form-horizontal" name="userForm" novalidate>
-
 			<!-- Basic user fields -->
-
 			<isa-form-input
 				title="First Name*"
 				input-type="text"
@@ -61,13 +59,12 @@
 			<isa-form-input
 				title="Address"
 				input-type="address"
-				input-placeholder='joe.bloggs@ibm.com'
-				input-name='email'
-				model='user.email'
+				input-placeholder='10 King Stree, Nailsworth, GL5 0NN'
+				input-name='address'
+				model='user.address'
 				form='userForm'
 				validation-model='{
-					"required": "An email address is required.",
-					"email": "Must be a valid email address.",
+					"minlength": "Must be a valid email address.",
 					"existsEmail": "A user already exists with this email address."
 				}'
 				pending-model='{
@@ -76,6 +73,7 @@
 			</isa-form-input>
 			<accordion>
 				<accordion-group heading="Phone Numbers">
+					<!-- NOTE: Again, not sure how to handle embedded entities -->
 					<div class="list-group clearfix" ng-repeat="phoneNumber in user._phoneNumbers">
 						<isa-form-input
 							class="col-sm-6"
@@ -97,10 +95,7 @@
 							input-placeholder='Mobile'
 							input-name='type_{{ $index }}'
 							model='phoneNumber.type'
-							form='userForm'
-							validation-model='{
-								"required": "A type is required."
-							}'>
+							form='userForm'>
 						</isa-form-input>
 					</div>
 					<div ng-if="!user._phoneNumbers.length">
@@ -131,12 +126,52 @@
 						input-name='password'
 						form='userForm'
 						validation-model='{
-							"minlength": "Must be > 6 characters long.",
-							"containsNumber": "Must contain both letters and numbers."
+							minlength: {
+								value: 6,
+								message: "Must be > 6 characters long."
+							},
+							containsNumber: "Must contain both letters and numbers."
 						}'>
 					</isa-form-input>
 				</accordion-group>
 				<accordion-group heading="Call Tree">
+					<!-- NOTE: Again, not sure how to handle embedded entities -->
+					<div class="list-group clearfix" ng-repeat="contact in user._callTreeContacts">
+						<isa-form-input
+							class="col-sm-6"
+							title="Name"
+							input-type="text"
+							input-placeholder='Joe Bloggs'
+							input-name='contact_{{ $index }}'
+							model='contact.name'
+							form='userForm'
+							validation-model='{
+								"required": "A name is required."
+							}'>
+						</isa-form-input>
+						<isa-form-input
+							class="col-sm-6"
+							title="Type"
+							input-type="text"
+							input-placeholder='+44 7668 492301'
+							input-name='type_{{ $index }}'
+							model='contact._phoneNumber.number'
+							form='userForm'
+							validation-model='{
+								"phoneNumber": "Must be a valid phone number.",
+								"required": "A number is required."
+							}'>
+						</isa-form-input>
+					</div>
+					<div ng-if="!user._callTreeContacts.length">
+						<p>
+							No contacts in call tree.
+						</p>
+					</div>
+					<a class="btn btn-primary pull-right" ng-click="addCallTreeContact()">
+						<i class="fa fa-plus"></i>
+						New Contact
+					</a>
 				</accordion-group>
 			</accordion>
 		</form>

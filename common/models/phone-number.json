@@ -12,7 +12,7 @@
     },
     "type": {
       "type": "string",
-      "required": true
+      "required": false
     }
   },
   "validations": [],

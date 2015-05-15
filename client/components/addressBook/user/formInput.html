@@ -17,8 +17,8 @@
 <div class="form-group">
 	<div class="col-xs-3"></div>
 	<div class="col-xs-9" ng-show="form[inputName].$touched">
-		<p ng-repeat="(name, message) in validationModel" ng-show="form[inputName].$error[name]">
-			{{ message }}
+		<p ng-repeat="(name, attr) in validationModel" ng-show="form[inputName].$error[name]">
+			{{ isAttributeObject(attr) ? attr.message : attr }}
 		</p>
 		<p ng-repeat="(name, message) in pendingModel" ng-show="form[inputName].$pending[name]">
 			{{ message }}
