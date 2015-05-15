@@ -23,21 +23,18 @@
     "showOnCanvas": {
       "type": "boolean"
     },
-
     "location": {
       "type": "string"
     },
-
     "mtpdDays": {
       "type": "number"
     },
     "rtoDays": {
       "type": "number"
     },
-    "rpo" : {
+    "rpo": {
       "type": "string"
     },
-
     "potentialEvent": {
       "type": "string"
     },

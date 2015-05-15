@@ -3,7 +3,7 @@
   "base": "PersistedModelExt",
   "idInjection": true,
   "properties": {
-    "documentId" : {
+    "documentId": {
       "type": "string",
       "required": true
     },
@@ -17,11 +17,13 @@
     "version": {
       "type": "number"
     },
-    "contents" : {
+    "contents": {
       "type": "string"
     },
-    "tags" :{
-      "type": ["string"]
+    "tags": {
+      "type": [
+        "string"
+      ]
     }
   },
   "validations": [],

@@ -6,13 +6,13 @@
     "created": {
       "type": "date"
     },
-    "createdBy" : {
+    "createdBy": {
       "type": "string"
     },
     "updated": {
       "type": "date"
     },
-    "updatedBy":{
+    "updatedBy": {
       "type": "string"
     }
   },

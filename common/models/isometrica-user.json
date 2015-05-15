@@ -3,11 +3,11 @@
   "base": "User",
   "idInjection": true,
   "properties": {
-    "firstName" : {
-      "type" : "string"
+    "firstName": {
+      "type": "string"
     },
-    "lastName" : {
-      "type" : "string"
+    "lastName": {
+      "type": "string"
     },
     "name": {
       "type": "string"
@@ -18,7 +18,7 @@
     "created": {
       "type": "date"
     },
-    "updated" : {
+    "updated": {
       "type": "date"
     }
   },
@@ -27,6 +27,14 @@
     "accounts": {
       "type": "hasAndBelongsToMany",
       "model": "Account"
+    },
+    "phoneNumbers": {
+      "type": "embedsMany",
+      "model": "PhoneNumber",
+      "property": "phoneNumbers",
+      "options": {
+        "validate": true
+      }
     }
   },
   "acls": [
