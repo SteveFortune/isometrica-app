@@ -78,11 +78,10 @@ app.controller( 'DocWikiController',
 
 		Plan.copy( {planId : $scope.moduleId }).$promise
 		.then(function(res) {
-			growl.success('This document has been duplicated');
-		})
+			growl.success('This document has been duplicated as \'' + res.title + '\'');
+		});
 
-	}
-	
+	};
 
 }]);
 
