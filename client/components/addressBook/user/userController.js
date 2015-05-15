@@ -17,8 +17,31 @@ app.directive('existsEmail', ['$q', 'UserFactory', function($q, UserFactory) {
 		require: 'ngModel',
 		restrict: 'A',
 		link: function(scope, elm, attrs, ctrl) {
+
+			/**
+			 * Has the original mobel value been set?
+			 *
+			 * @private
+			 */
+			ctrl.isOriginalValueSet = false;
+
+			/**
+			 * Watch the model to cache the original model value.
+			 *
+			 * @private
+			 */
+			scope.$watch(function() {
+				if (!ctrl.isOriginalValueSet) {
+					ctrl.originalValue = ctrl.$modelValue;
+					ctrl.isOriginalValueSet = true;
+				}
+			});
+
 			ctrl.$asyncValidators.existsEmail = function(modelValue, viewValue) {
-				return ctrl.$isEmpty(modelValue) ? $q.when() : UserFactory.findOneBy({
+				if (ctrl.$isEmpty(modelValue) || modelValue === ctrl.originalValue) {
+					return $q.when();
+				}
+				return UserFactory.findOneBy({
 					email: modelValue
 				}).then(function() {
 					return $q.reject();
