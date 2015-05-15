@@ -64,13 +64,16 @@ app.controller('AddressBookController',
 	 * @protected
 	 */
 	$scope.loadMore = function() {
-		UserFactory.all().then(function(items) {
-			$scope.addressBookCollection = $scope.addressBookCollection.concat(items);
-			if ($scope.addressBookCollection.length > 0) {
+		UserFactory.all($scope.addressBookCollection.length).then(function(items) {
+			if (
+				$scope.addressBookCollection.length === 0 &&
+				items.length > 0
+			) {
 				$state.transitionTo('addressbook.user', {
-					userId: $scope.addressBookCollection[0].id
+					userId: items[0].id
 				});
 			}
+			$scope.addressBookCollection = $scope.addressBookCollection.concat(items);
 			$scope.loadingState = 'loaded';
 		}, function() {
 			$scope.loadingState = 'failed';
@@ -92,7 +95,7 @@ app.controller('AddressBookController',
 				}
 			}
 		}).result.then(function(user) {
-			// TODO Append and prepend to collection
+			$scope.addressBookCollection.unshift(user);
 		}, function(error) {
 			if (error) {
 				// TODO Handle
