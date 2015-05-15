@@ -117,6 +117,9 @@ app.controller( 'OverviewController',
 				},
 				isNew : function() {
 					return true;
+				},
+				docTemplates : function() {
+					return $scope.templates;
 				}
 			}
 		});

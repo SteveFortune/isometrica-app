@@ -2,11 +2,12 @@
 var app = angular.module('isa');
 
 app.controller( 'PlanSettingsController',
-	['$scope', '$modalInstance', 'Plan', 'plan', 'isNew',
-	function($scope, $modalInstance, Plan, plan, isNew) {
+	['$scope', '$modalInstance', 'Plan', 'plan', 'isNew', 'docTemplates',
+	function($scope, $modalInstance, Plan, plan, isNew, docTemplates) {
 
 	$scope.plan = angular.copy(plan);
 	$scope.isNew = isNew;
+	$scope.docTemplates = docTemplates;
 
 	$scope.savePlan = function(form) {
 
