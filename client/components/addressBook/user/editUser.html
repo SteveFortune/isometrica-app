@@ -65,45 +65,43 @@
 					<accordion-heading class="hiero">
 						Phone Numbers
 					</accordion-heading>
-					<div class="list-group">
-						<div class="list-group-item" ng-repeat="phoneNumber in user.phoneNumbers">
-							<isa-form-input
-								title="Number"
-								input-type="text"
-								input-placeholder='+44 7668 492301'
-								input-name='phoneNumber_{{ $index }}'
-								model='phoneNumber.number'
-								form='userForm'
-								validation-model='{
-									"phoneNumber": "Must be a valid phone number.",
-									"required": "A number is required."
-								}'>
-							</isa-form-input>
-							<isa-form-input
-								title="Type"
-								input-type="text"
-								input-placeholder='Mobile'
-								input-name='type_{{ phoneNumber.id }}'
-								model='phoneNumber.type'
-								form='userForm'
-								validation-model='{
-									"required": "A type is required."
-								}'>
-							</isa-form-input>
-						</div>
-						<div ng-if="!user.phoneNumbers.length" class="list-group-item">
-							<p>
-								No phone numbers.
-							</p>
-						</div>
-						<div class="list-group-item">
-							<a class="btn btn-primary pull-right" ng-click="addPhoneNumber()">
-								<i class="fa fa-plus"></i>
-								New Number
-							</a>
-							<div class="clearfix"></div>
-						</div>
+
+					<div class="list-group" ng-repeat="phoneNumber in user.phoneNumbers">
+						<isa-form-input
+							class="col-sm-6"
+							title="Number"
+							input-type="text"
+							input-placeholder='+44 7668 492301'
+							input-name='phoneNumber_{{ $index }}'
+							model='phoneNumber.number'
+							form='userForm'
+							validation-model='{
+								"phoneNumber": "Must be a valid phone number.",
+								"required": "A number is required."
+							}'>
+						</isa-form-input>
+						<isa-form-input
+							class="col-sm-6"
+							title="Type"
+							input-type="text"
+							input-placeholder='Mobile'
+							input-name='type_{{ $index }}'
+							model='phoneNumber.type'
+							form='userForm'
+							validation-model='{
+								"required": "A type is required."
+							}'>
+						</isa-form-input>
 					</div>
+					<div ng-if="!user.phoneNumbers.length" class="list-group-item">
+						<p>
+							No phone numbers.
+						</p>
+					</div>
+					<a class="btn btn-primary pull-right" ng-click="addPhoneNumber()">
+						<i class="fa fa-plus"></i>
+						New Number
+					</a>
 				</accordion-group>
 			</accordion>
 
