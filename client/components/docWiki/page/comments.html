@@ -10,11 +10,6 @@
 				ng-hide="add">
 				<i class="fa fa-plus"></i>Add comment
 			</button>
-			<button class="btn btn-primary" 
-				ng-click="saveComment()"
-				ng-show="add">
-				<i class="fa fa-check"></i>Save
-			</button>
 			
 		</div>
 	
@@ -38,8 +33,16 @@
 						<textarea
 							class="form-control"
 							name="commentText"
+							autofocus
 							ng-model="comment.text">
 						</textarea>
+
+						<button class="btn btn-primary" 
+							style="margin-top:5px;"
+							ng-click="saveComment()"
+							ng-show="add">
+							<i class="fa fa-check"></i>Save
+						</button>
 
 					</form>
 
