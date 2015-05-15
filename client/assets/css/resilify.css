@@ -1369,7 +1369,8 @@ body.desktop.has-bootcards-navbar-double {
   margin-top: 20px;
   /* styled 'browse' button*/
   /*textangular toolbar*/
-  /* styled 'browse' button*/ }
+  /* styled 'browse' button*/
+  /*comments */ }
   .docwiki .btn-file {
     position: relative;
     overflow: hidden; }
@@ -1474,5 +1475,15 @@ body.desktop.has-bootcards-navbar-double {
     background: white;
     cursor: inherit;
     display: block; }
+  .docwiki .comments .panel-body {
+    padding: 0; }
+  .docwiki .comments li.list-group-item {
+    border: 0;
+    border-top: 1px solid #eee;
+    border-radius: 0;
+    margin-left: 0;
+    padding-left: 15px; }
+  .docwiki .comments li.list-group-item:first-child {
+    border-top: 0; }
 
 /*# sourceMappingURL=resilify.css.map */

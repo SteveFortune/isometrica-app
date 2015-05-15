@@ -162,5 +162,21 @@ $docwiki-hover-color: #F5F5F5;
 	    display: block;
 	} 
 
+	/*comments */
+
+	.comments .panel-body {
+		padding: 0;
+	}
+	.comments li.list-group-item {
+		border: 0;
+		border-top: 1px solid #eee;
+		border-radius: 0;
+		margin-left: 0;
+		padding-left: 15px;
+	}
+	.comments li.list-group-item:first-child {
+		border-top:0;
+	}
+
 
 }
