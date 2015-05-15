@@ -54,6 +54,10 @@
   "Page" : {
     "dataSource" : "mongodb",
     "public": true
+  },
+  "Comment" : {
+    "dataSource" : "transient",
+    "public" : false
   }
 
 }

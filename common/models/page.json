@@ -25,7 +25,17 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "comments": {
+      "type": "embedsMany",
+      "model": "Comment",
+      "property": "comments",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",
