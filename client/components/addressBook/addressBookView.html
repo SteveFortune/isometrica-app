@@ -33,7 +33,7 @@
 				<div class="panel-body">
 					<div class="search-form">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search {{ selectState }}...">
+							<input type="text" class="form-control" ng-model="query" placeholder="Search {{ selectState }}...">
 							<i class="fa fa-search"></i>
 						</div>
 					</div>
@@ -41,7 +41,7 @@
 				<div class="list-group" infinite-scroll="loadMore()">
 					<a
 						ng-if="loadingState === 'loaded' && addressBookCollection.length > 0"
-						ng-repeat="user in addressBookCollection"
+						ng-repeat="user in addressBookCollection | filter : query"
 						ui-sref="addressbook.user({ userId: user.id })"
 						class="list-group-item">
 
