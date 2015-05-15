@@ -146,39 +146,39 @@ module.factory(
           method: "PUT"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.findById() instead.
-        "prototype$__findById__Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/:fk",
+        // INTERNAL. Use IsometricaUser.accounts.findById() instead.
+        "prototype$__findById__accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.destroyById() instead.
-        "prototype$__destroyById__Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/:fk",
+        // INTERNAL. Use IsometricaUser.accounts.destroyById() instead.
+        "prototype$__destroyById__accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.updateById() instead.
-        "prototype$__updateById__Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/:fk",
+        // INTERNAL. Use IsometricaUser.accounts.updateById() instead.
+        "prototype$__updateById__accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.link() instead.
-        "prototype$__link__Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/rel/:fk",
+        // INTERNAL. Use IsometricaUser.accounts.link() instead.
+        "prototype$__link__accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/rel/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.unlink() instead.
-        "prototype$__unlink__Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/rel/:fk",
+        // INTERNAL. Use IsometricaUser.accounts.unlink() instead.
+        "prototype$__unlink__accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/rel/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.exists() instead.
-        "prototype$__exists__Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/rel/:fk",
+        // INTERNAL. Use IsometricaUser.accounts.exists() instead.
+        "prototype$__exists__accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/rel/:fk",
           method: "HEAD"
         },
 
@@ -319,28 +319,28 @@ module.factory(
           method: "GET"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts() instead.
-        "prototype$__get__Accounts": {
+        // INTERNAL. Use IsometricaUser.accounts() instead.
+        "prototype$__get__accounts": {
           isArray: true,
-          url: urlBase + "/IsometricaUsers/:id/Accounts",
+          url: urlBase + "/IsometricaUsers/:id/accounts",
           method: "GET"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.create() instead.
-        "prototype$__create__Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts",
+        // INTERNAL. Use IsometricaUser.accounts.create() instead.
+        "prototype$__create__accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts",
           method: "POST"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.destroyAll() instead.
-        "prototype$__delete__Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts",
+        // INTERNAL. Use IsometricaUser.accounts.destroyAll() instead.
+        "prototype$__delete__accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts",
           method: "DELETE"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.count() instead.
-        "prototype$__count__Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/count",
+        // INTERNAL. Use IsometricaUser.accounts.count() instead.
+        "prototype$__count__accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/count",
           method: "GET"
         },
 
@@ -854,64 +854,64 @@ module.factory(
           method: "POST"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.findById() instead.
-        "::findById::Account::IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/:fk",
+        // INTERNAL. Use Account.users.findById() instead.
+        "::findById::Account::users": {
+          url: urlBase + "/Accounts/:id/users/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.destroyById() instead.
-        "::destroyById::Account::IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/:fk",
+        // INTERNAL. Use Account.users.destroyById() instead.
+        "::destroyById::Account::users": {
+          url: urlBase + "/Accounts/:id/users/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.updateById() instead.
-        "::updateById::Account::IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/:fk",
+        // INTERNAL. Use Account.users.updateById() instead.
+        "::updateById::Account::users": {
+          url: urlBase + "/Accounts/:id/users/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.link() instead.
-        "::link::Account::IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/rel/:fk",
+        // INTERNAL. Use Account.users.link() instead.
+        "::link::Account::users": {
+          url: urlBase + "/Accounts/:id/users/rel/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.unlink() instead.
-        "::unlink::Account::IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/rel/:fk",
+        // INTERNAL. Use Account.users.unlink() instead.
+        "::unlink::Account::users": {
+          url: urlBase + "/Accounts/:id/users/rel/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.exists() instead.
-        "::exists::Account::IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/rel/:fk",
+        // INTERNAL. Use Account.users.exists() instead.
+        "::exists::Account::users": {
+          url: urlBase + "/Accounts/:id/users/rel/:fk",
           method: "HEAD"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers() instead.
-        "::get::Account::IsometricaUsers": {
+        // INTERNAL. Use Account.users() instead.
+        "::get::Account::users": {
           isArray: true,
-          url: urlBase + "/Accounts/:id/IsometricaUsers",
+          url: urlBase + "/Accounts/:id/users",
           method: "GET"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.create() instead.
-        "::create::Account::IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers",
+        // INTERNAL. Use Account.users.create() instead.
+        "::create::Account::users": {
+          url: urlBase + "/Accounts/:id/users",
           method: "POST"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.destroyAll() instead.
-        "::delete::Account::IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers",
+        // INTERNAL. Use Account.users.destroyAll() instead.
+        "::delete::Account::users": {
+          url: urlBase + "/Accounts/:id/users",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.count() instead.
-        "::count::Account::IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/count",
+        // INTERNAL. Use Account.users.count() instead.
+        "::count::Account::users": {
+          url: urlBase + "/Accounts/:id/users/count",
           method: "GET"
         },
 
@@ -1132,27 +1132,27 @@ module.factory(
 
     /**
      * @ngdoc object
-     * @name lbServices.IsometricaUser.Accounts
-     * @header lbServices.IsometricaUser.Accounts
+     * @name lbServices.IsometricaUser.accounts
+     * @header lbServices.IsometricaUser.accounts
      * @object
      * @description
      *
-     * The object `IsometricaUser.Accounts` groups methods
+     * The object `IsometricaUser.accounts` groups methods
      * manipulating `Account` instances related to `IsometricaUser`.
      *
-     * Call {@link lbServices.IsometricaUser#Accounts IsometricaUser.Accounts()}
+     * Call {@link lbServices.IsometricaUser#accounts IsometricaUser.accounts()}
      * to query all related instances.
      */
 
 
         /**
          * @ngdoc method
-         * @name lbServices.IsometricaUser#Accounts
+         * @name lbServices.IsometricaUser#accounts
          * @methodOf lbServices.IsometricaUser
          *
          * @description
          *
-         * Queries Accounts of IsometricaUser.
+         * Queries accounts of IsometricaUser.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1175,20 +1175,20 @@ module.factory(
          * This usually means the response is a `Account` object.)
          * </em>
          */
-        R.Accounts = function() {
+        R.accounts = function() {
           var TargetResource = $injector.get("Account");
-          var action = TargetResource["::get::IsometricaUser::Accounts"];
+          var action = TargetResource["::get::IsometricaUser::accounts"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.IsometricaUser.Accounts#count
-         * @methodOf lbServices.IsometricaUser.Accounts
+         * @name lbServices.IsometricaUser.accounts#count
+         * @methodOf lbServices.IsometricaUser.accounts
          *
          * @description
          *
-         * Counts Accounts of IsometricaUser.
+         * Counts accounts of IsometricaUser.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1210,20 +1210,20 @@ module.factory(
          *
          *  - `count` – `{number=}` - 
          */
-        R.Accounts.count = function() {
+        R.accounts.count = function() {
           var TargetResource = $injector.get("Account");
-          var action = TargetResource["::count::IsometricaUser::Accounts"];
+          var action = TargetResource["::count::IsometricaUser::accounts"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.IsometricaUser.Accounts#create
-         * @methodOf lbServices.IsometricaUser.Accounts
+         * @name lbServices.IsometricaUser.accounts#create
+         * @methodOf lbServices.IsometricaUser.accounts
          *
          * @description
          *
-         * Creates a new instance in Accounts of this model.
+         * Creates a new instance in accounts of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1248,20 +1248,20 @@ module.factory(
          * This usually means the response is a `Account` object.)
          * </em>
          */
-        R.Accounts.create = function() {
+        R.accounts.create = function() {
           var TargetResource = $injector.get("Account");
-          var action = TargetResource["::create::IsometricaUser::Accounts"];
+          var action = TargetResource["::create::IsometricaUser::accounts"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.IsometricaUser.Accounts#destroyAll
-         * @methodOf lbServices.IsometricaUser.Accounts
+         * @name lbServices.IsometricaUser.accounts#destroyAll
+         * @methodOf lbServices.IsometricaUser.accounts
          *
          * @description
          *
-         * Deletes all Accounts of this model.
+         * Deletes all accounts of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1279,26 +1279,26 @@ module.factory(
          *
          * This method returns no data.
          */
-        R.Accounts.destroyAll = function() {
+        R.accounts.destroyAll = function() {
           var TargetResource = $injector.get("Account");
-          var action = TargetResource["::delete::IsometricaUser::Accounts"];
+          var action = TargetResource["::delete::IsometricaUser::accounts"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.IsometricaUser.Accounts#destroyById
-         * @methodOf lbServices.IsometricaUser.Accounts
+         * @name lbServices.IsometricaUser.accounts#destroyById
+         * @methodOf lbServices.IsometricaUser.accounts
          *
          * @description
          *
-         * Delete a related item by id for Accounts.
+         * Delete a related item by id for accounts.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - User id
          *
-         *  - `fk` – `{*}` - Foreign key for Accounts
+         *  - `fk` – `{*}` - Foreign key for accounts
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -1312,26 +1312,26 @@ module.factory(
          *
          * This method returns no data.
          */
-        R.Accounts.destroyById = function() {
+        R.accounts.destroyById = function() {
           var TargetResource = $injector.get("Account");
-          var action = TargetResource["::destroyById::IsometricaUser::Accounts"];
+          var action = TargetResource["::destroyById::IsometricaUser::accounts"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.IsometricaUser.Accounts#exists
-         * @methodOf lbServices.IsometricaUser.Accounts
+         * @name lbServices.IsometricaUser.accounts#exists
+         * @methodOf lbServices.IsometricaUser.accounts
          *
          * @description
          *
-         * Check the existence of Accounts relation to an item by id.
+         * Check the existence of accounts relation to an item by id.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - User id
          *
-         *  - `fk` – `{*}` - Foreign key for Accounts
+         *  - `fk` – `{*}` - Foreign key for accounts
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -1348,26 +1348,26 @@ module.factory(
          * This usually means the response is a `Account` object.)
          * </em>
          */
-        R.Accounts.exists = function() {
+        R.accounts.exists = function() {
           var TargetResource = $injector.get("Account");
-          var action = TargetResource["::exists::IsometricaUser::Accounts"];
+          var action = TargetResource["::exists::IsometricaUser::accounts"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.IsometricaUser.Accounts#findById
-         * @methodOf lbServices.IsometricaUser.Accounts
+         * @name lbServices.IsometricaUser.accounts#findById
+         * @methodOf lbServices.IsometricaUser.accounts
          *
          * @description
          *
-         * Find a related item by id for Accounts.
+         * Find a related item by id for accounts.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - User id
          *
-         *  - `fk` – `{*}` - Foreign key for Accounts
+         *  - `fk` – `{*}` - Foreign key for accounts
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -1384,26 +1384,26 @@ module.factory(
          * This usually means the response is a `Account` object.)
          * </em>
          */
-        R.Accounts.findById = function() {
+        R.accounts.findById = function() {
           var TargetResource = $injector.get("Account");
-          var action = TargetResource["::findById::IsometricaUser::Accounts"];
+          var action = TargetResource["::findById::IsometricaUser::accounts"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.IsometricaUser.Accounts#link
-         * @methodOf lbServices.IsometricaUser.Accounts
+         * @name lbServices.IsometricaUser.accounts#link
+         * @methodOf lbServices.IsometricaUser.accounts
          *
          * @description
          *
-         * Add a related item by id for Accounts.
+         * Add a related item by id for accounts.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - User id
          *
-         *  - `fk` – `{*}` - Foreign key for Accounts
+         *  - `fk` – `{*}` - Foreign key for accounts
          *
          * @param {Object} postData Request data.
          *
@@ -1424,26 +1424,26 @@ module.factory(
          * This usually means the response is a `Account` object.)
          * </em>
          */
-        R.Accounts.link = function() {
+        R.accounts.link = function() {
           var TargetResource = $injector.get("Account");
-          var action = TargetResource["::link::IsometricaUser::Accounts"];
+          var action = TargetResource["::link::IsometricaUser::accounts"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.IsometricaUser.Accounts#unlink
-         * @methodOf lbServices.IsometricaUser.Accounts
+         * @name lbServices.IsometricaUser.accounts#unlink
+         * @methodOf lbServices.IsometricaUser.accounts
          *
          * @description
          *
-         * Remove the Accounts relation to an item by id.
+         * Remove the accounts relation to an item by id.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - User id
          *
-         *  - `fk` – `{*}` - Foreign key for Accounts
+         *  - `fk` – `{*}` - Foreign key for accounts
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -1457,26 +1457,26 @@ module.factory(
          *
          * This method returns no data.
          */
-        R.Accounts.unlink = function() {
+        R.accounts.unlink = function() {
           var TargetResource = $injector.get("Account");
-          var action = TargetResource["::unlink::IsometricaUser::Accounts"];
+          var action = TargetResource["::unlink::IsometricaUser::accounts"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.IsometricaUser.Accounts#updateById
-         * @methodOf lbServices.IsometricaUser.Accounts
+         * @name lbServices.IsometricaUser.accounts#updateById
+         * @methodOf lbServices.IsometricaUser.accounts
          *
          * @description
          *
-         * Update a related item by id for Accounts.
+         * Update a related item by id for accounts.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - User id
          *
-         *  - `fk` – `{*}` - Foreign key for Accounts
+         *  - `fk` – `{*}` - Foreign key for accounts
          *
          * @param {Object} postData Request data.
          *
@@ -1497,9 +1497,9 @@ module.factory(
          * This usually means the response is a `Account` object.)
          * </em>
          */
-        R.Accounts.updateById = function() {
+        R.accounts.updateById = function() {
           var TargetResource = $injector.get("Account");
-          var action = TargetResource["::updateById::IsometricaUser::Accounts"];
+          var action = TargetResource["::updateById::IsometricaUser::accounts"];
           return action.apply(R, arguments);
         };
 
@@ -1531,64 +1531,64 @@ module.factory(
       { 'id': '@id' },
       {
 
-        // INTERNAL. Use Account.IsometricaUsers.findById() instead.
-        "prototype$__findById__IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/:fk",
+        // INTERNAL. Use Account.users.findById() instead.
+        "prototype$__findById__users": {
+          url: urlBase + "/Accounts/:id/users/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.destroyById() instead.
-        "prototype$__destroyById__IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/:fk",
+        // INTERNAL. Use Account.users.destroyById() instead.
+        "prototype$__destroyById__users": {
+          url: urlBase + "/Accounts/:id/users/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.updateById() instead.
-        "prototype$__updateById__IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/:fk",
+        // INTERNAL. Use Account.users.updateById() instead.
+        "prototype$__updateById__users": {
+          url: urlBase + "/Accounts/:id/users/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.link() instead.
-        "prototype$__link__IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/rel/:fk",
+        // INTERNAL. Use Account.users.link() instead.
+        "prototype$__link__users": {
+          url: urlBase + "/Accounts/:id/users/rel/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.unlink() instead.
-        "prototype$__unlink__IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/rel/:fk",
+        // INTERNAL. Use Account.users.unlink() instead.
+        "prototype$__unlink__users": {
+          url: urlBase + "/Accounts/:id/users/rel/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.exists() instead.
-        "prototype$__exists__IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/rel/:fk",
+        // INTERNAL. Use Account.users.exists() instead.
+        "prototype$__exists__users": {
+          url: urlBase + "/Accounts/:id/users/rel/:fk",
           method: "HEAD"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers() instead.
-        "prototype$__get__IsometricaUsers": {
+        // INTERNAL. Use Account.users() instead.
+        "prototype$__get__users": {
           isArray: true,
-          url: urlBase + "/Accounts/:id/IsometricaUsers",
+          url: urlBase + "/Accounts/:id/users",
           method: "GET"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.create() instead.
-        "prototype$__create__IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers",
+        // INTERNAL. Use Account.users.create() instead.
+        "prototype$__create__users": {
+          url: urlBase + "/Accounts/:id/users",
           method: "POST"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.destroyAll() instead.
-        "prototype$__delete__IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers",
+        // INTERNAL. Use Account.users.destroyAll() instead.
+        "prototype$__delete__users": {
+          url: urlBase + "/Accounts/:id/users",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Account.IsometricaUsers.count() instead.
-        "prototype$__count__IsometricaUsers": {
-          url: urlBase + "/Accounts/:id/IsometricaUsers/count",
+        // INTERNAL. Use Account.users.count() instead.
+        "prototype$__count__users": {
+          url: urlBase + "/Accounts/:id/users/count",
           method: "GET"
         },
 
@@ -1935,64 +1935,64 @@ module.factory(
           method: "PUT"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.findById() instead.
-        "::findById::IsometricaUser::Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/:fk",
+        // INTERNAL. Use IsometricaUser.accounts.findById() instead.
+        "::findById::IsometricaUser::accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.destroyById() instead.
-        "::destroyById::IsometricaUser::Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/:fk",
+        // INTERNAL. Use IsometricaUser.accounts.destroyById() instead.
+        "::destroyById::IsometricaUser::accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.updateById() instead.
-        "::updateById::IsometricaUser::Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/:fk",
+        // INTERNAL. Use IsometricaUser.accounts.updateById() instead.
+        "::updateById::IsometricaUser::accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.link() instead.
-        "::link::IsometricaUser::Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/rel/:fk",
+        // INTERNAL. Use IsometricaUser.accounts.link() instead.
+        "::link::IsometricaUser::accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/rel/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.unlink() instead.
-        "::unlink::IsometricaUser::Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/rel/:fk",
+        // INTERNAL. Use IsometricaUser.accounts.unlink() instead.
+        "::unlink::IsometricaUser::accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/rel/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.exists() instead.
-        "::exists::IsometricaUser::Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/rel/:fk",
+        // INTERNAL. Use IsometricaUser.accounts.exists() instead.
+        "::exists::IsometricaUser::accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/rel/:fk",
           method: "HEAD"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts() instead.
-        "::get::IsometricaUser::Accounts": {
+        // INTERNAL. Use IsometricaUser.accounts() instead.
+        "::get::IsometricaUser::accounts": {
           isArray: true,
-          url: urlBase + "/IsometricaUsers/:id/Accounts",
+          url: urlBase + "/IsometricaUsers/:id/accounts",
           method: "GET"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.create() instead.
-        "::create::IsometricaUser::Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts",
+        // INTERNAL. Use IsometricaUser.accounts.create() instead.
+        "::create::IsometricaUser::accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts",
           method: "POST"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.destroyAll() instead.
-        "::delete::IsometricaUser::Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts",
+        // INTERNAL. Use IsometricaUser.accounts.destroyAll() instead.
+        "::delete::IsometricaUser::accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts",
           method: "DELETE"
         },
 
-        // INTERNAL. Use IsometricaUser.Accounts.count() instead.
-        "::count::IsometricaUser::Accounts": {
-          url: urlBase + "/IsometricaUsers/:id/Accounts/count",
+        // INTERNAL. Use IsometricaUser.accounts.count() instead.
+        "::count::IsometricaUser::accounts": {
+          url: urlBase + "/IsometricaUsers/:id/accounts/count",
           method: "GET"
         },
       }
@@ -2133,27 +2133,27 @@ module.factory(
 
     /**
      * @ngdoc object
-     * @name lbServices.Account.IsometricaUsers
-     * @header lbServices.Account.IsometricaUsers
+     * @name lbServices.Account.users
+     * @header lbServices.Account.users
      * @object
      * @description
      *
-     * The object `Account.IsometricaUsers` groups methods
+     * The object `Account.users` groups methods
      * manipulating `IsometricaUser` instances related to `Account`.
      *
-     * Call {@link lbServices.Account#IsometricaUsers Account.IsometricaUsers()}
+     * Call {@link lbServices.Account#users Account.users()}
      * to query all related instances.
      */
 
 
         /**
          * @ngdoc method
-         * @name lbServices.Account#IsometricaUsers
+         * @name lbServices.Account#users
          * @methodOf lbServices.Account
          *
          * @description
          *
-         * Queries IsometricaUsers of Account.
+         * Queries users of Account.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2176,20 +2176,20 @@ module.factory(
          * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
-        R.IsometricaUsers = function() {
+        R.users = function() {
           var TargetResource = $injector.get("IsometricaUser");
-          var action = TargetResource["::get::Account::IsometricaUsers"];
+          var action = TargetResource["::get::Account::users"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Account.IsometricaUsers#count
-         * @methodOf lbServices.Account.IsometricaUsers
+         * @name lbServices.Account.users#count
+         * @methodOf lbServices.Account.users
          *
          * @description
          *
-         * Counts IsometricaUsers of Account.
+         * Counts users of Account.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2211,20 +2211,20 @@ module.factory(
          *
          *  - `count` – `{number=}` - 
          */
-        R.IsometricaUsers.count = function() {
+        R.users.count = function() {
           var TargetResource = $injector.get("IsometricaUser");
-          var action = TargetResource["::count::Account::IsometricaUsers"];
+          var action = TargetResource["::count::Account::users"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Account.IsometricaUsers#create
-         * @methodOf lbServices.Account.IsometricaUsers
+         * @name lbServices.Account.users#create
+         * @methodOf lbServices.Account.users
          *
          * @description
          *
-         * Creates a new instance in IsometricaUsers of this model.
+         * Creates a new instance in users of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2249,20 +2249,20 @@ module.factory(
          * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
-        R.IsometricaUsers.create = function() {
+        R.users.create = function() {
           var TargetResource = $injector.get("IsometricaUser");
-          var action = TargetResource["::create::Account::IsometricaUsers"];
+          var action = TargetResource["::create::Account::users"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Account.IsometricaUsers#destroyAll
-         * @methodOf lbServices.Account.IsometricaUsers
+         * @name lbServices.Account.users#destroyAll
+         * @methodOf lbServices.Account.users
          *
          * @description
          *
-         * Deletes all IsometricaUsers of this model.
+         * Deletes all users of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2280,26 +2280,26 @@ module.factory(
          *
          * This method returns no data.
          */
-        R.IsometricaUsers.destroyAll = function() {
+        R.users.destroyAll = function() {
           var TargetResource = $injector.get("IsometricaUser");
-          var action = TargetResource["::delete::Account::IsometricaUsers"];
+          var action = TargetResource["::delete::Account::users"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Account.IsometricaUsers#destroyById
-         * @methodOf lbServices.Account.IsometricaUsers
+         * @name lbServices.Account.users#destroyById
+         * @methodOf lbServices.Account.users
          *
          * @description
          *
-         * Delete a related item by id for IsometricaUsers.
+         * Delete a related item by id for users.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModelExt id
          *
-         *  - `fk` – `{*}` - Foreign key for IsometricaUsers
+         *  - `fk` – `{*}` - Foreign key for users
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2313,26 +2313,26 @@ module.factory(
          *
          * This method returns no data.
          */
-        R.IsometricaUsers.destroyById = function() {
+        R.users.destroyById = function() {
           var TargetResource = $injector.get("IsometricaUser");
-          var action = TargetResource["::destroyById::Account::IsometricaUsers"];
+          var action = TargetResource["::destroyById::Account::users"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Account.IsometricaUsers#exists
-         * @methodOf lbServices.Account.IsometricaUsers
+         * @name lbServices.Account.users#exists
+         * @methodOf lbServices.Account.users
          *
          * @description
          *
-         * Check the existence of IsometricaUsers relation to an item by id.
+         * Check the existence of users relation to an item by id.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModelExt id
          *
-         *  - `fk` – `{*}` - Foreign key for IsometricaUsers
+         *  - `fk` – `{*}` - Foreign key for users
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2349,26 +2349,26 @@ module.factory(
          * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
-        R.IsometricaUsers.exists = function() {
+        R.users.exists = function() {
           var TargetResource = $injector.get("IsometricaUser");
-          var action = TargetResource["::exists::Account::IsometricaUsers"];
+          var action = TargetResource["::exists::Account::users"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Account.IsometricaUsers#findById
-         * @methodOf lbServices.Account.IsometricaUsers
+         * @name lbServices.Account.users#findById
+         * @methodOf lbServices.Account.users
          *
          * @description
          *
-         * Find a related item by id for IsometricaUsers.
+         * Find a related item by id for users.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModelExt id
          *
-         *  - `fk` – `{*}` - Foreign key for IsometricaUsers
+         *  - `fk` – `{*}` - Foreign key for users
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2385,26 +2385,26 @@ module.factory(
          * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
-        R.IsometricaUsers.findById = function() {
+        R.users.findById = function() {
           var TargetResource = $injector.get("IsometricaUser");
-          var action = TargetResource["::findById::Account::IsometricaUsers"];
+          var action = TargetResource["::findById::Account::users"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Account.IsometricaUsers#link
-         * @methodOf lbServices.Account.IsometricaUsers
+         * @name lbServices.Account.users#link
+         * @methodOf lbServices.Account.users
          *
          * @description
          *
-         * Add a related item by id for IsometricaUsers.
+         * Add a related item by id for users.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModelExt id
          *
-         *  - `fk` – `{*}` - Foreign key for IsometricaUsers
+         *  - `fk` – `{*}` - Foreign key for users
          *
          * @param {Object} postData Request data.
          *
@@ -2425,26 +2425,26 @@ module.factory(
          * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
-        R.IsometricaUsers.link = function() {
+        R.users.link = function() {
           var TargetResource = $injector.get("IsometricaUser");
-          var action = TargetResource["::link::Account::IsometricaUsers"];
+          var action = TargetResource["::link::Account::users"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Account.IsometricaUsers#unlink
-         * @methodOf lbServices.Account.IsometricaUsers
+         * @name lbServices.Account.users#unlink
+         * @methodOf lbServices.Account.users
          *
          * @description
          *
-         * Remove the IsometricaUsers relation to an item by id.
+         * Remove the users relation to an item by id.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModelExt id
          *
-         *  - `fk` – `{*}` - Foreign key for IsometricaUsers
+         *  - `fk` – `{*}` - Foreign key for users
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2458,26 +2458,26 @@ module.factory(
          *
          * This method returns no data.
          */
-        R.IsometricaUsers.unlink = function() {
+        R.users.unlink = function() {
           var TargetResource = $injector.get("IsometricaUser");
-          var action = TargetResource["::unlink::Account::IsometricaUsers"];
+          var action = TargetResource["::unlink::Account::users"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Account.IsometricaUsers#updateById
-         * @methodOf lbServices.Account.IsometricaUsers
+         * @name lbServices.Account.users#updateById
+         * @methodOf lbServices.Account.users
          *
          * @description
          *
-         * Update a related item by id for IsometricaUsers.
+         * Update a related item by id for users.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModelExt id
          *
-         *  - `fk` – `{*}` - Foreign key for IsometricaUsers
+         *  - `fk` – `{*}` - Foreign key for users
          *
          * @param {Object} postData Request data.
          *
@@ -2498,9 +2498,9 @@ module.factory(
          * This usually means the response is a `IsometricaUser` object.)
          * </em>
          */
-        R.IsometricaUsers.updateById = function() {
+        R.users.updateById = function() {
           var TargetResource = $injector.get("IsometricaUser");
-          var action = TargetResource["::updateById::Account::IsometricaUsers"];
+          var action = TargetResource["::updateById::Account::users"];
           return action.apply(R, arguments);
         };
 

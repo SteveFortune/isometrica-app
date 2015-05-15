@@ -20,7 +20,7 @@
 	
 		<h3 class="panel-title text-center">
 			Comments 
-			<span ng-show="comments.length > 0">({{comments.length}})</span></h3>
+			<span ng-show="page._comments.length > 0">({{page._comments.length}})</span></h3>
 	</div>
 
 	<div>
@@ -46,7 +46,7 @@
 				</li>
 
             	<li class="list-group-item"
-            	ng-show="!page.comments || page.comments.length==0">
+            	ng-show="!page._comments || page._comments.length==0">
 
             		<div class="row">
 						<div class="col-sm-12">
@@ -55,13 +55,14 @@
 					</div>
 				</li>
 
+				<!-- list of comments, ordered descending by created data -->
 				<li class="list-group-item"
-				ng-repeat="comment in page.comments">
+				ng-repeat="comment in page._comments | orderBy : 'created' : true">
 		    		<div class="row">
 						<div class="col-sm-12">
 							{{comment.text}}
 							<br />
-							<span class="small">{{page.updated | timeAgo}} by {{page.updatedBy}}</span>
+							<span class="small">{{comment.created | timeAgo}} by {{comment.createdBy}}</span>
 						</div>
 					</div>
 				</li>
