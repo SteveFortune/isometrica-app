@@ -42,7 +42,7 @@
                   ng-style="getIndentation(page)"
                   ui-sref="docwiki.page({ pageId : page.id})"
                   ui-sref-active="active">
-                  {{page.section + " " + page.title}}
+                  <h4 class="list-group-item-heading">{{page.section + " " + page.title}}</h4>
                 </a>
 
                 <div class="list-group-item" style="margin-left: 20px; border-top:0;" ng-if="pages.length==0">
@@ -60,8 +60,8 @@
                   class="list-group-item"
                   ui-sref="docwiki.page({ pageId : page.id})"
                   ui-sref-active="active">
-                  {{page.section + " " + page.title}}<br />
-                  <span class="small">{{page.updated | timeAgo}} by {{page.updatedBy}}</span>
+                  <h4 class="list-group-item-heading">{{page.section + " " + page.title}}</h4>
+                  <p class="list-group-item-text">{{page.updated | timeAgo}} by {{page.updatedBy}}</p>
                 </a>
 
               </accordion-group>

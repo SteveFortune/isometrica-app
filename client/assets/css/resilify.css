@@ -1443,9 +1443,11 @@ body.desktop.has-bootcards-navbar-double {
       border-top: 1px solid #dddddd; }
     .docwiki .nav .list-group-item:first-child {
       border-top: 0; }
-    .docwiki .nav .list-group-item {
+    .docwiki .nav .list-group-item h4 {
       border-radius: 0;
       font-size: 18px; }
+    .docwiki .nav .list-group-item-text {
+      font-weight: normal; }
     .docwiki .nav .fa-chevron-circle-down, .docwiki .nav .fa-chevron-circle-right {
       font-size: 18px;
       width: 20px;
