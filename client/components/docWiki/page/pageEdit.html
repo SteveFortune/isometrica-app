@@ -61,7 +61,7 @@
 				<div class="col-sm-9 form-control-static">
 
 					<!--uploaded files-->
-					<table class="table table-condensed" ng-if="pageFiles.length>0"><tbody>
+					<table class="table table-condensed files-list" ng-if="pageFiles.length>0"><tbody>
 						<tr ng-repeat="file in pageFiles">
 							<td>
 								<a class="pull-right btn btn-danger btn-xs" ng-click="deleteFile(file)" >
@@ -78,6 +78,7 @@
 					</tbody></table>
 
 					<span class="btn btn-primary btn-file">
+					    <i class="fa fa-paperclip"></i>
 					    Attach files <input type="file" nv-file-select uploader="uploader" multiple /><br/>
 					</span>
 			

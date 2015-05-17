@@ -144,6 +144,20 @@ $docwiki-hover-color: #F5F5F5;
 		margin-bottom:10px;
 	}
 
+	/* style the list of files on a page*/
+	table.files-list {
+
+		/*remove the default bottom margin on bs tables*/
+		margin-bottom: 0;
+
+		/*remove border on first line in the files list*/
+		tbody> tr:first-child > td {
+			border-top:0;
+			padding-top:0;
+		}
+
+	}
+	
 	/* styled 'browse' button*/
 	.btn-file {
 	    position: relative;

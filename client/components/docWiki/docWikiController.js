@@ -57,6 +57,7 @@ app.controller( 'DocWikiController',
 		return { 'font-size' : '14px', 'padding-left': (15 + indent * 10) + 'px'};
 	};
 
+	//saves a document as a template
 	$scope.saveAsTemplate = function() {
 		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {isTemplate : true})
 		.$promise.then(function(res) {
@@ -93,18 +94,19 @@ app.controller( 'DocWikiController',
 
 	};
 
+	//move/ restore a document to the trash
 	$scope.removeDoc = function() {
 		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {inTrash : true})
 		.$promise.then(function(res) {
 			$scope.docWiki.inTrash = true;
-			growl.success('This document has been deleted');
+			growl.success('This document has been moved to the trash');
 		});
 	};
 	$scope.restoreDoc = function() {
 		Plan.prototype$updateAttributes({ id: $scope.moduleId }, {inTrash : false})
 		.$promise.then(function(res) {
 			$scope.docWiki.inTrash = false;
-			growl.success('This document has been restored');
+			growl.success('This document has been restored from the trash');
 		});
 	};
 

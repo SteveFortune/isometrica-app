@@ -38,7 +38,7 @@
 
 				<label class="col-sm-2 control-label">Files</label>
 				<div class="col-sm-10 form-control-static">
-					<table class="table table-condensed"><tbody>
+					<table class="table table-condensed files-list"><tbody>
 						<tr ng-repeat="file in pageFiles">
 							<td>
 								<a href="/file/{{file._id}}/{{file.filename}}" target="_blank" ng-if="!file.isImage">
@@ -62,7 +62,7 @@
 
 			<span style="font-style:italic;" ng-if="page.contents == null || page.contents.length == 0">(this page doesn't have any contents)</span>
 
-			<div ng-bind-html="page.contents"></div>
+			<div ng-bind-html="page.contents" style="overflow-x:auto"></div>
 
 		</div>
 
