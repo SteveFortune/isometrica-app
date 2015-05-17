@@ -6,22 +6,17 @@ var app = angular.module('isa.docwiki');
  * @author Mark Leusink
  */
 
-app.controller('CommentsController', ['$scope', '$resource', 'CurrentUser', 
-	function($scope, $resource, CurrentUser) {
-
-	//we set the pageId as a parameter, since it might not be here yet (for new pages)
-	var Comment = $resource(
-		'/api/Pages/:pageId/comments/:commentId', 
-		{ pageId : '@pageId', commentsId : '@commentsId' } );
+app.controller('CommentsController', ['$scope', 'CurrentUser', 'Page',
+	function($scope, CurrentUser, Page) {
 
 	$scope.add = false;
-	$scope.comment = new Comment();
+	$scope.comment = {};
 	
 	$scope.addComment = function() {
 		$scope.add = true;
 	};
 	$scope.cancelComment = function() {
-		$scope.comment = new Comment();
+		$scope.comment = {};
 		$scope.add = false;
 	};
 
@@ -30,17 +25,11 @@ app.controller('CommentsController', ['$scope', '$resource', 'CurrentUser',
 		$scope.comment.created = new Date();
 		$scope.comment.createdBy = CurrentUser.getCurrentUser().name;
 
-		/*
-		 * Embedded relations from Loopback don't seem to get added to the Angular services file,
-		 * so we save it using $resource here. Note that embedded relations do not seem to trigger the
-		 * remote operations to set default metadata fields
-		 */
-
-		$scope.comment.$save( { pageId : $scope.page.id})
-		.then( function(res) {
+		Page.prototype$__create__comments({id: $scope.page.id}, $scope.comment).$promise.then( function(res) {
+			//console.log('klaar', res);
 			$scope.page._comments.push( res);
 			$scope.add = false;
-			$scope.comment = new Comment();
+			$scope.comment = {};
 		});
 
 	};
@@ -51,8 +40,7 @@ app.controller('CommentsController', ['$scope', '$resource', 'CurrentUser',
 			return;
 		}
 
-		Comment.remove( { pageId : $scope.page.id, commentId : comment.id}, function(res) {
-
+		Page.prototype$__destroyById__comments({id: $scope.page.id, fk: comment.id}).$promise.then( function(res) {
 			//comment has been removed remotely, remove it from the UI
 			$scope.page._comments.forEach(function(comm, index, array){
 	          if(comm.id === comment.id){
