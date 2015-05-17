@@ -34,15 +34,6 @@ app.config(['$stateProvider', function($stateProvider){
 		    resolve : {
 		    	isNew : function() { return false; }
 		    }
-		})
-
-		.state('docwiki.pageedit', { 	
-		    url: '/page/:pageId/edit',
-		    templateUrl: '/components/docWiki/page/pageEdit.html',
-		    controller : 'PageController',
-		    resolve : {
-		    	isNew : function() { return false; }
-		    }
 		});
 
 }]);

@@ -17,8 +17,14 @@ var app = angular.module('isa.docwiki', [
  * @author Mark Leusink
  */
 app.controller( 'DocWikiController', 
-	['$rootScope', '$scope', '$stateParams', '$state', 'Plan', 'PageFactory', 'growl',
-	function($rootScope, $scope, $stateParams, $state, Plan, PageFactory, growl) {
+	['$rootScope', '$scope', '$stateParams', '$state', '$controller', '$modal', 'Plan', 'PageFactory', 'growl',
+	function($rootScope, $scope, $stateParams, $state, $controller, $modal, Plan, PageFactory, growl) {
+
+	//instantiate base controller (used to edit pages in a modal)
+	$controller('PageEditBaseController', { 
+		$scope : $scope, 
+		$modal : $modal
+	} );
 
 	$scope.moduleId = $stateParams.planId;
 	$scope.docWiki = Plan.findById( { 'id' : $stateParams.planId } );	

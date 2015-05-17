@@ -7,10 +7,7 @@
 		<div class="panel-heading">
 
 			<div class="pull-left">
-				<button ng-if="isNew" class="btn btn-default" ui-sref="docwiki">
-					<i class="fa fa-times"></i>Cancel
-				</button>
-				<button ng-if="!isNew" class="btn btn-default" ui-sref="docwiki.page({ pageId : page.id})">
+				<button class="btn btn-default" ng-click="cancelEdit()">
 					<i class="fa fa-times"></i>Cancel
 				</button>
 			</div>
@@ -21,7 +18,7 @@
 				</button>
 			</div>
 
-			<h3 class="panel-title text-center">{{ ( isNew ? 'New page' : page.section + ' ' + page.title )}}</h3>
+			<h3 class="panel-title text-center">{{ ( isNew ? 'New page' : 'Edit page' )}}</h3>
 			
 		</div>
 
