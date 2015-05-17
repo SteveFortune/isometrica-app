@@ -58,6 +58,10 @@
   "Comment" : {
     "dataSource" : "transient",
     "public" : false
+  },
+  "Signature" : {
+    "dataSource" : "transient",
+    "public" : false
   }
 
 }

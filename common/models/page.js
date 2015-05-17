@@ -6,22 +6,19 @@ module.exports = function(Page) {
 	 *
 	 * @author Mark Leusink
 	 */
-	Page.sign = function(pageId, cb) {
+	Page.sign = function(pageId, userName, cb) {
 
 		var loopback = require('loopback');
 		var Signature = loopback.findModel('Signature');
-		
+
 		Page.findById( pageId, function(err, page) {
 
 			if (err) {
 				console.error(err);
 			}
 
-			//TODO: get current user
-			Signature.create({ created : new Date(), createdBy : 'Mark Leusink'}, function(err, signature) {
-				console.log('add', signature);
-				page.signatures.add(signature);
-				
+			//TODO: get current user here...
+			page.signatures.create({ created : new Date(), createdBy : userName}, function(err, signature) {
 			});
 
 			cb(null);
@@ -35,10 +32,11 @@ module.exports = function(Page) {
 		'sign',
 		{
 			'accepts': [
-   				{arg: 'pageId', type: 'string', required: true}
+   				{arg: 'pageId', type: 'string', required: true},
+   				{arg: 'userName', type: 'string', required: true}
    			],
    			'returns': {arg: 'message', type: 'string'},
-			'description' : 'Sign a page'
+			'description' : 'Add a signature to a page'
 		}
 	);
 

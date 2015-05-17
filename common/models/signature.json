@@ -3,6 +3,9 @@
   "base": "PersistedModelExt",
   "idInjection": true,
   "properties": {
+     "remark": {
+      "type": "string"
+    }
    
   },
   "validations": [],

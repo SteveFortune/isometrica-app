@@ -1,6 +1,7 @@
 var app = angular.module('isa.docwiki', [
 
 	'isa.docwiki.factories',
+	'isa.docwiki.sign',
 
 	'ui.router',
 

@@ -109,9 +109,12 @@ $docwiki-hover-color: #F5F5F5;
 		.list-group-item:first-child {
 			border-top: 0;
 		}
-		.list-group-item {
+		.list-group-item h4 {
 			border-radius: 0;
 			font-size: 18px;
+		}
+		.list-group-item-text {
+			font-weight: normal;
 		}
 
 		/*expand/ collapse in the list*/
