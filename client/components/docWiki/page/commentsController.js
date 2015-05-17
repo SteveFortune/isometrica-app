@@ -20,6 +20,10 @@ app.controller('CommentsController', ['$scope', '$resource', 'CurrentUser',
 	$scope.addComment = function() {
 		$scope.add = true;
 	};
+	$scope.cancelComment = function() {
+		$scope.comment = new Comment();
+		$scope.add = false;
+	};
 
 	$scope.saveComment = function() {
 

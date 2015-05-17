@@ -37,12 +37,19 @@
 							ng-model="comment.text">
 						</textarea>
 
-						<button class="btn btn-primary" 
-							style="margin-top:5px;"
-							ng-click="saveComment()"
-							ng-show="add">
-							<i class="fa fa-check"></i>Save
-						</button>
+						<div style="margin-top: 5px">
+
+							<button class="btn btn-primary" 
+								ng-click="saveComment()">
+								<i class="fa fa-check"></i>Save
+							</button>
+
+							<button class="btn btn-link" 
+								ng-click="cancelComment()">
+								Cancel
+							</button>
+
+						</div>
 
 					</form>
 
