@@ -1,0 +1,15 @@
+<div ng-show="form[inputName].$touched">
+	<div
+		ng-if="showValidationMessages"
+		ng-repeat="(name, attr) in validationModel"
+		ng-show="form[inputName].$error[name]"
+		ng-transclude
+		message="{{ isAttributeObject(attr) ? attr.message : attr }}">
+	</div>
+	<div
+		ng-if="showPendingMessages"
+		ng-repeat="(name, message) in pendingModel"
+		ng-show="form[inputName].$pending[name]"
+		ng-transclude>
+	</div>
+</div>

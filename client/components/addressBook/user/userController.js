@@ -117,50 +117,6 @@ app.directive('phoneNumber', function() {
 
 
 /**
- * This directive has the potential to be create. It will build you a custom
- * input field complete with validation messages.
- *
- * @author Steve Fortune
- */
-app.directive('isaFormInput', ['$compile', function($compile) {
-	return {
-		restrict: 'AE',
-	    priority: 1000,
-		templateUrl: '/components/addressBook/user/formInput.html',
-		link: function(scope, elm, attrs, ctrl) {
-
-			/**
-			 * Is the given attribute paired with the name an object ?
-			 *
-			 * @return Boolean
-			 */
-			scope.isAttributeObject = function(attr) {
-				return typeof attr === 'object';
-			};
-
-			var inputElm = elm.find('input');
-			angular.forEach(scope.validationModel, function(attr, name) {
-				var value = scope.isAttributeObject(attr) ? attr.value : true;
-				var denormalizedName = name.replace(/([A-Z])/g, '-$1').toLowerCase();
-				inputElm.attr(denormalizedName, value);
-			});
-			$compile(inputElm)(scope);
-		},
-		scope: {
-			title: '@',
-			inputPlaceholder: '@',
-			inputType: '@',
-			inputName: '@',
-			model: '=',
-			form: '=',
-			validationModel: '=',
-			pendingModel: '='
-		}
-	};
-}]);
-
-
-/**
  * Non-modal controller for rendering a readonly-view on a user.
  *
  * @author Steve Fortune
