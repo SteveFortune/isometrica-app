@@ -160,6 +160,12 @@ $docwiki-hover-color: #F5F5F5;
 		}
 
 	}
+
+	/*fixing some weird CSS in bootcards-desktop:*/
+	.form-control-static {
+		padding-top: 7px !important;
+  		padding-bottom: 7px !important;
+	}
 	
 	/* styled 'browse' button*/
 	.btn-file {
@@ -202,6 +208,10 @@ $docwiki-hover-color: #F5F5F5;
 		width: inherit;
 		margin: 0;
 		opacity: 1;
+	}
+
+	.signatures ul {
+		margin-bottom:0;
 	}
 
 

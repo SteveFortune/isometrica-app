@@ -1,23 +1,30 @@
-<div>
+<span class="signatures">
 
-	<div ng-show="page._signatures.length==0">This page has not been signed yet</div>
-
-	<div ng-show="page._signatures.length==1">Signed by: {{page._signatures[0].createdBy}} at {{page._signatures[0].created | date : 'medium'}}
-	</div>
-
-	<div ng-show="page._signatures.length>1">Signed by:
-		<ul>
-			<li ng-repeat="signature in page._signatures">
-				{{signature.createdBy}} at {{signature.created | date : 'medium'}}
-			</li>
-		</ul>
-	</div>
-
-	<div style="margin-top:5px">
+	<div class="pull-right">
 		<button class="btn btn-primary" ng-click="signDocument()">
 			<i class="fa fa-check-square-o"></i>
 			Sign page
 		</button>
 	</div>
 
-</div>
+	<div class="form-control-static">
+
+		<div ng-if="page._signatures.length==0">
+			This page has not been signed yet
+		</div>
+
+		<div ng-if="page._signatures.length==1">
+			Signed by: {{page._signatures[0].createdBy}} at {{page._signatures[0].created | date : 'medium'}}
+		</div>
+
+		<div ng-if="page._signatures.length>1">Signed by:
+			<ul>
+				<li ng-repeat="signature in page._signatures">
+					{{signature.createdBy}} at {{signature.created | date : 'medium'}}
+				</li>
+			</ul>
+		</div>
+	
+	</div
+
+</span>
