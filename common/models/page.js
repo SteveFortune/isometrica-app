@@ -9,7 +9,7 @@ module.exports = function(Page) {
 	Page.sign = function(pageId, userName, cb) {
 
 		var loopback = require('loopback');
-		var Signature = loopback.findModel('Signature');
+		//var Signature = loopback.findModel('Signature');
 
 		Page.findById( pageId, function(err, page) {
 
@@ -18,7 +18,7 @@ module.exports = function(Page) {
 			}
 
 			//TODO: get current user here...
-			page.signatures.create({ created : new Date(), createdBy : userName}, function(err, signature) {
+			page.signaturesRel.create({ created : new Date(), createdBy : userName}, function(err, signature) {
 			});
 
 			cb(null);

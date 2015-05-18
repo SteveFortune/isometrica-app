@@ -28,7 +28,7 @@
   },
   "validations": [],
   "relations": {
-    "comments": {
+    "commentsRel": {
       "type": "embedsMany",
       "model": "Comment",
       "property": "comments",
@@ -37,7 +37,7 @@
         "forceId": false
       }
     },
-    "signatures": {
+    "signaturesRel": {
       "type": "embedsMany",
       "model": "Signature",
       "property": "signatures",
