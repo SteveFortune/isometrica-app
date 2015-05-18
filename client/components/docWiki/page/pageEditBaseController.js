@@ -63,7 +63,7 @@ app.controller('PageEditBaseController', [ '$scope', '$modal', '$http', '$state'
 
 		//convert tags to array (if it's a string)
 		if (typeof pageObject.tags === 'string') {
-			pageObject.tags = (pageObject.tags.length>0 ? [pageObject.tags] : []);
+			pageObject.tags = (pageObject.tags.length>0 ? pageObject.tags.split(',') : []);
 		}
 
 		pageObject.updatedBy = CurrentUser.getCurrentUser().name;

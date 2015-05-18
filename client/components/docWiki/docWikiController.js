@@ -33,8 +33,33 @@ app.controller( 'DocWikiController',
 	//default open the first menu item ('Pages')
 	$scope.page = { open : true };
 
-	//load pages for this document, order by section ascending
-	$scope.pages = PageFactory.all($stateParams.planId);
+	var _readPages = function() {
+
+		//load pages for this document, order by section ascending
+		PageFactory.all($scope.moduleId).$promise.then( function(pages) {
+
+			//get all signers and tags
+			var signersList = [];
+			var tagsList = [];
+
+			angular.forEach( pages, function(page) {
+				angular.forEach(page._signatures, function(sig) {
+					signersList.push(sig.createdBy);
+				});
+				angular.forEach(page.tags, function(tag) {
+					tagsList.push( tag );
+				});
+			} );
+
+			$scope.signersList = signersList.makeArrayUnique();
+			$scope.tagsList = tagsList.makeArrayUnique();
+
+			$scope.pages = pages;
+
+		});
+	};
+
+	_readPages();
 
 	/*
 	 * Get the amount of pixels that a section needs to indent,

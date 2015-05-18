@@ -58,3 +58,24 @@ isa.utils = {
 	}
 
 };
+
+/*
+ * removes duplicates from an array
+ *
+ * @author Mark Leusink
+ */
+Array.prototype.makeArrayUnique = function() {
+	'use strict';
+
+	var temp = {};
+    for (var i = 0; i < this.length; i++) {
+        temp[this[i]] = true;
+    }
+
+    var res = [];
+    for (var en in temp) {
+        res.push(en);
+    }
+    return res;
+
+};
