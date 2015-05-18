@@ -12,8 +12,9 @@ var app = angular.module('isa.docwiki.sign', [
  */
 
 app.directive('isaDocwikiPageSigning', ['$state', 'Page', 'CurrentUser', 'growl', function($state, Page, CurrentUser, growl){
+	
 	return {
-		// scope: {}, // {} = isolate, true = child, false/undefined = no change
+		
 		controller: function($scope, $element, $attrs, $transclude) {
 	 
 			 $scope.signDocument = function() {
@@ -31,10 +32,10 @@ app.directive('isaDocwikiPageSigning', ['$state', 'Page', 'CurrentUser', 'growl'
 		restrict: 'AE', 
 		templateUrl: '/components/docWiki/page/sign/sign.html',
 		replace: true,
-		// transclude: true,
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
 			
 		}
 	};
+
 }]);
