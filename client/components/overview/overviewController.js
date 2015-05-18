@@ -22,7 +22,7 @@ app.controller( 'OverviewController',
 				  }
 			}
 		  },
-		  function(plans) { 
+		  function(plans) {
 		  	$scope.plans = _attachMockUsers(plans);
 		  },
 		  function(errorResponse) { /* error */ }
@@ -35,9 +35,9 @@ app.controller( 'OverviewController',
 			  		isArchived : false,
 			  		inTrash : false
 				  }
-			} 
+			}
 		  },
-		  function(plans) { 
+		  function(plans) {
 		  	 console.log('found' + plans.length + 't');
 		  	$scope.templates = _attachMockUsers(plans);
 		  },
@@ -50,10 +50,10 @@ app.controller( 'OverviewController',
 				where : {
 			  		inTrash : true
 				  }
-			} 
+			}
 		  },
 		  function(plans) {
-		  console.log('found' + plans.length + ' in trash'); 
+		  console.log('found' + plans.length + ' in trash');
 		  	$scope.modulesTrash = _attachMockUsers(plans);
 		  },
 		  function(errorResponse) { /* error */ }
@@ -92,6 +92,9 @@ app.controller( 'OverviewController',
 				break;
 			case 'docwiki':
 				state = 'docwiki';
+				break;
+			case 'addressbook':
+				state = 'addressbook';
 				break;
 			default :
 				state = 'canvas';
