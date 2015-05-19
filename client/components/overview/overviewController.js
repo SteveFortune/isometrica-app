@@ -129,7 +129,7 @@ app.controller( 'OverviewController',
 
 		modalInstance.result.then( function(plan) {
 			loadPlans();
-			growl.success('Your plan has been created');
+			growl.success('The module has been added');
 		});
 
 	};
