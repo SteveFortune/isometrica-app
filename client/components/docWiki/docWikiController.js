@@ -99,6 +99,7 @@ app.controller( 'DocWikiController',
 		.$promise.then(function(res) {
 			$scope.docWiki.isArchived = true;
 			growl.success('This document has been archived');
+			$state.go('overview');
 		});
 	};
 
@@ -127,6 +128,7 @@ app.controller( 'DocWikiController',
 		.$promise.then(function(res) {
 			$scope.docWiki.inTrash = true;
 			growl.success('This document has been moved to the trash');
+			$state.go('overview');
 		});
 	};
 	$scope.restoreDoc = function() {
