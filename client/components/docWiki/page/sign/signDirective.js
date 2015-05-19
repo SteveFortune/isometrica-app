@@ -23,6 +23,8 @@ app.directive('isaDocwikiPageSigning', ['$state', 'Page', 'CurrentUser', 'growl'
 				.then(function(res) {
 					growl.success('You have succesfully signed this page');
 					$state.reload();
+				}, function(err) {
+					alert('An error occurred.\n\n' + err.data.error.message);
 				});
 
 			 };
@@ -32,10 +34,6 @@ app.directive('isaDocwikiPageSigning', ['$state', 'Page', 'CurrentUser', 'growl'
 		restrict: 'AE', 
 		templateUrl: '/components/docWiki/page/sign/sign.html',
 		replace: true,
-		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-		link: function($scope, iElm, iAttrs, controller) {
-			
-		}
 	};
 
 }]);
