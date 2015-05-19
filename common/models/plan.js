@@ -127,12 +127,20 @@ function copyDocument(model, plan, Page, db, cb) {
 }
 
 /*
- * find all pages belonging to the document with the specified sourceDocId,
+ * Finds all pages belonging to the document with the specified sourceDocId,
  * copy them and attach to the specified document.
  *
  * @param cb optional callback function that will be executed after copying
  *
  * @author Mark Leusink
+ *
+ * @param Page 	Page model from loopback
+ * @param sourceDocId	ID of the document from which to copy all pages
+ * @param targetDocId	ID of the document to give all copied pages
+ * @param db 			mongo db object
+ * @param cb (optional) callback function to execute
+ * 
+
  */
 function copyPages(Page, sourceDocId, targetDocId, newTitle, db, cb) {
 
@@ -167,6 +175,10 @@ function copyPages(Page, sourceDocId, targetDocId, newTitle, db, cb) {
 
 			//set the parent (document) id to the newly created document
 			item.documentId = targetDocId;
+
+			//clear comments & signatures
+			item.comments = [];
+			item.signatures = [];
 
 			Page.create(item, function(err, pageCopy) {
 

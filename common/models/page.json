@@ -15,7 +15,12 @@
       "type": "string"
     },
     "version": {
-      "type": "number"
+      "type": "number",
+      "default": 1
+    },
+    "currentVersion": {
+      "type": "boolean",
+      "default": true
     },
     "contents": {
       "type": "string"
@@ -61,5 +66,9 @@
       "permission": "ALLOW"
     }
   ],
-  "methods": []
+  "methods": [],
+  "scopes": {
+    "current": {"where": {"currentVersion": true}}
+  }
+
 }

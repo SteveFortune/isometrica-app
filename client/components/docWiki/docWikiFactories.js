@@ -14,10 +14,13 @@ app.factory('_PageRemote', [ 'Page', function(Page) {
 
 	return {
 
-		/* return a list of all pages belonging to a single document */
+		/* return a list of all pages belonging to a single document
+  		 * we're using a scope (see page.js model) here to return only 
+  		 * current version pages (currentVersion=true)
+		  */
 		all : function(documentId) {
 
-			return Page.find(
+			return Page.__get__current(
 			  { filter: { where: { documentId : documentId }, order : 'section ASC' } },
 			  function(list) { },
 			  function(errorResponse) {
