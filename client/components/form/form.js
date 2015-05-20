@@ -25,46 +25,48 @@ app.directive('isaBasicField', function() {
 
 
 /**
+ * Parent of isaInput and isaValidationMessages elements. Holds the validation
+ * and pending models and requries a parent form controller.
+ *
+ * @author Steve Fortune
+ */
+app.directive('isaFormField', function() {
+	return {
+		restrict: 'AE',
+		transclude: true,
+		template: '<ng-transclude></ng-transclude>',
+		require: '^form',
+		controller: function() {},
+		scope: {
+			validationModel: '=',
+			pendingModel: '='
+		}
+	};
+});
+
+
+/**
  * Directive that encapsulates a form input. Allows the user to pass in a map of
  * validation and pending messages that will be dynamically associated with the
  * input field.
  *
- * @author
+ * @author Steve Fortune
  */
 app.directive('isaInput', ['$compile', function($compile) {
 	return {
 		restrict: 'E',
 	    priority: 1000,
-		transclude: true,
+        transclude: true,
 		replace: true,
-		require: [ '^form', '^ngModel' ],
+		require: [ '^isaFormField', '^ngModel' ],
 		templateUrl: '/components/form/input.html',
-
-		/**
-		 * Uses the keys from the validation map to determine what validator
-		 * directives to include on the input.
-		 *
-		 * It dynamically adds these attributes to the element and then recompiles
-		 * it.
-		 *
-		 */
-		link: function(scope, elm, attrs, controllers) {
-
-			var formController = controllers[0];
-			var ngModelController = controllers[1];
-
-			var inputElm = elm.find('input');
+		link: function(scope, inputElm, attrs, controllers) {
 			angular.forEach(scope.validationModel, function(attr, name) {
-				var value = scope.isAttributeObject(attr) ? attr.value : true;
+				var value = typeof attr === 'object' ? attr.value : true;
 				var denormalizedName = name.replace(/([A-Z])/g, '-$1').toLowerCase();
 				inputElm.attr(denormalizedName, value);
 			});
 			$compile(inputElm)(scope);
-
-		},
-		scope: {
-			validationModel: '=',
-			pendingModel: '='
 		}
 	};
 }]);
@@ -79,23 +81,48 @@ app.directive('isaInput', ['$compile', function($compile) {
 app.directive('isaValidationMessages', function() {
 	return {
 		restrict: 'AE',
-		transclude: true,
-		replace: true,
-		require: [ '^form', '^isaInput' ],
+		require: [ '^isaFormField', '^form' ],
 		templateUrl: '/components/form/validationMessages.html',
-		link: function(scope, elm, attrs, controllers) {
+		transclude: true,
+		compile: function() {
+			return function(scope, elm, attrs, ctrl, transcludeFn) {
 
-			/**
-			 * Is the given attribute paired with the name an object ?
-			 *
-			 * @return Boolean
-			 */
-			scope.isAttributeObject = function(attr) {
-				return typeof attr === 'object';
+				/**
+				 * @var ngFormController
+				 */
+				scope.form = ctrl[1];
+
+				/**
+				 * Setup bindings for child elements, transclusion, etc.
+				 */
+				var valQuery = elm[0].querySelector('div.isa-validation-messages');
+				var penQuery = elm[0].querySelector('div.isa-pending-messages');
+				var validationBlock = angular.element(valQuery);
+				var pendingBlock = angular.element(penQuery);
+
+				angular.forEach(scope.$parent.validationModel, function(val, name) {
+
+					var tScope = scope.$new();
+					tScope.name = name;
+					tScope.message = typeof val === 'object' ? val.message : val;
+
+					var watchErr = function(valName, tClone) {
+						scope.$watch('form[inputName].$error["' + valName + '"]', function(newValue, oldValue) {
+							tClone[ !newValue ? 'addClass' : 'removeClass' ]('ng-hide');
+						});
+					};
+
+					transcludeFn(tScope, function(clone) {
+						var tClone = angular.element(clone);
+						validationBlock.append(tClone);
+						watchErr(name, tClone);
+					});
+				});
+
 			};
-
 		},
 		scope: {
+			inputName: '@',
 			showPendingMessages: '@',
 			showValidationMessages: '@'
 		}

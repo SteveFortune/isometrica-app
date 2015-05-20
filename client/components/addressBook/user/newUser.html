@@ -11,12 +11,13 @@
 		<form class="form-horizontal" name="userForm" novalidate>
 			<isa-basic-field
 				title="First Name*"
-				input-type="text"
+				input-type="email"
 				input-placeholder='Joe'
 				input-name='firstName'
 				ng-model='user.firstName'
 				validation-model='{
-					"required": "A first name is required."
+					"required": "A first name is required.",
+					"email": "Must be email."
 				}'>
 			</isa-form-input>
 			<!--<isa-form-input
