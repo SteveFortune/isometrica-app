@@ -4,25 +4,41 @@
 
 <div class="modal-body">
 
-    <table class="table table-striped"><tbody>
+    <table class="table table-striped">
+    	<thead>
+    		<tr>
+    		<th>Version</th>
+    		<th>Created by</th>
+    		<th>Created at</th>
+    		<th>Signed?</th>
+    		<th>&nbsp;</th>
+    		</tr>
+    	</thead>
 
-		<tr ng-repeat="page in versions">
+	    <tbody>
 
-			<td>{{page.version}}</td>
-			<td>{{page.createdBy}}</td>
-			<td>{{page.created | date : 'medium'}}</td>
+			<tr ng-repeat="page in versions">
 
-			<td>
-				
-				<button type="button" class="btn btn-warning btn-sm" 
-					ng-click="rollback(page)"
-					ng-show="!page.currentVersion">rollback</button>
-				<span ng-show="page.currentVersion">(current)</span>
-			</td>
+				<td>{{page.version}}</td>
+				<td>{{page.createdBy}}</td>
+				<td>{{page.created | date : 'medium'}}</td>
+				<td class="text-center">
+					<i ng-show="page.signatures.length>0" class="fa fa-check-square-o"></i>
+				</td>
 
-		</tr>
+				<td>
+					
+					<button type="button" class="btn btn-warning btn-sm" 
+						ng-click="rollback(page)"
+						ng-show="!page.currentVersion">rollback</button>
+					<span ng-show="page.currentVersion">(current)</span>
+				</td>
 
-	</tbody></table>
+			</tr>
+
+		</tbody>
+
+	</table>
 
 </div>
 
