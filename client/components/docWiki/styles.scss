@@ -139,7 +139,6 @@ $docwiki-hover-color: #F5F5F5;
 	.bootcards-wiki-panel-metadata {
 		background-color: $docwiki-hover-color;
 		border-bottom: 1px solid $docwiki-border-color;
-
 	}
 
 	/*textangular toolbar*/
@@ -154,9 +153,14 @@ $docwiki-hover-color: #F5F5F5;
 		margin-bottom: 0;
 
 		/*remove border on first line in the files list*/
-		tbody> tr:first-child > td {
+		tbody > tr:first-child > td {
 			border-top:0;
 			padding-top:0;
+		}
+
+		tbody > tr > td {
+			padding-left: 0;
+			padding-right: 0;
 		}
 
 	}

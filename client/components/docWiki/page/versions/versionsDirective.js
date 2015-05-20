@@ -57,7 +57,6 @@ app.directive('isaDocwikiPageVersions',
 							//$scope.deleteItem(data.item);
 						}*/
 				    }, function () {
-				    	console.log('closed');
 				      
 				    });
 
