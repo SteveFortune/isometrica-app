@@ -12,8 +12,8 @@ var app = angular.module('isa.docwiki.versions', [
  */
 
 app.directive('isaDocwikiPageVersions', 
-	['$state', 'Page', 'CurrentUser', 'growl', 
-	function($state, Page, CurrentUser, growl){
+	['$state', 'Page', 'CurrentUser', '$modal', 'growl', 
+	function($state, Page, CurrentUser, $modal, growl){
 
 		return {
 
@@ -37,7 +37,30 @@ app.directive('isaDocwikiPageVersions',
 				};
 
 				$scope.listPreviousVersions = function() {
-					alert('TODO: show modal with all versions');
+
+					var modalInstance = $modal.open({
+						templateUrl: '/components/docWiki/page/versions/listVersions.html',
+						controller: 'VersionsListController',
+						windowClass : 'docwiki',
+						resolve: {
+							currentPageId : function () {
+								return $scope.page.pageId;
+							},
+						}
+					});
+
+					modalInstance.result.then(function (data) {
+						/*if (data.reason == 'save') {
+							savePage(data.page, data.pageFiles);
+						} else if (data.reason == 'delete') {
+							console.log('delete')
+							//$scope.deleteItem(data.item);
+						}*/
+				    }, function () {
+				    	console.log('closed');
+				      
+				    });
+
 				};
 
 			},

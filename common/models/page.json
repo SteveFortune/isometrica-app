@@ -7,6 +7,10 @@
       "type": "string",
       "required": true
     },
+    "pageId" : {
+      "type": "string",
+      "defaultFn": "guid"
+    },
     "title": {
       "type": "string",
       "required": true

@@ -117,6 +117,65 @@ module.exports = function(Page) {
 		}
 	);
 
+	/* remote method to rollback to a different version: sets currentVersion to true on the
+	 * selected page, and to false on all others (by searching for related pages using the pageId)
+	 *
+	 * @author Mark Leusink
+	 */
+	Page.rollback = function(pageId, cb) {
+
+		var loopback = require('loopback');
+
+		//find the page to rollback to
+		Page.findById( pageId, function(err, page) {
+
+			try {
+
+				if (err) {
+					console.error(err);
+				}
+
+				console.log('found the page to rollback to, id=' + page.id + ', page id=' + page.id);
+
+				//find all related pages
+				Page.find( { pageId : page.pageId }, function(err, pages) {
+					console.log('found related', pages.length);
+
+					pages.forEach( function(page) {
+
+						if (page.id !== pageId) {
+							page.updateAttribute( 'currentVersion', false );
+						} else {
+							page.updateAttribute( 'currentVersion', true );
+						}
+
+					});
+
+					cb(null);
+
+				});
+
+
+			} catch (e) {
+				console.error(e);
+			}
+
+		});
+
+	};
+
+	Page.remoteMethod(
+		'rollback',
+		{
+			'accepts': [
+   				{arg: 'pageId', type: 'string', required: true}
+   			],
+			'description' : 'Rollback to another version of a page'
+		}
+	);
+
+
+
 };
 
 /*
