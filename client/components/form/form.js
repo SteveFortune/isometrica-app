@@ -1,5 +1,7 @@
 'use strict';
 
+var app = angular.module('isa.form', []);
+
 
 /**
  * Basic form field. For convenience to reduce boilerplate.
@@ -9,7 +11,7 @@
 app.directive('isaBasicField', function() {
 	return {
 		restrict: 'E',
-		templateUrl: '/components/formInput/basicField.html',
+		templateUrl: '/components/form/basicField.html',
 		scope: {
 			title: '@',
 			validationModel: '=',
@@ -35,19 +37,23 @@ app.directive('isaInput', ['$compile', function($compile) {
 	    priority: 1000,
 		transclude: true,
 		replace: true,
-		require: [ '^form', 'ngModel' ]
-		templateUrl: '/components/formInput/input.html',
-		link: function(scope, inputElm, attrs, controllers) {
+		require: [ '^form', '^ngModel' ],
+		templateUrl: '/components/form/input.html',
 
-			/**
-			 * Is the given attribute paired with the name an object ?
-			 *
-			 * @return Boolean
-			 */
-			scope.isAttributeObject = function(attr) {
-				return typeof attr === 'object';
-			};
+		/**
+		 * Uses the keys from the validation map to determine what validator
+		 * directives to include on the input.
+		 *
+		 * It dynamically adds these attributes to the element and then recompiles
+		 * it.
+		 *
+		 */
+		link: function(scope, elm, attrs, controllers) {
 
+			var formController = controllers[0];
+			var ngModelController = controllers[1];
+
+			var inputElm = elm.find('input');
 			angular.forEach(scope.validationModel, function(attr, name) {
 				var value = scope.isAttributeObject(attr) ? attr.value : true;
 				var denormalizedName = name.replace(/([A-Z])/g, '-$1').toLowerCase();
@@ -76,7 +82,19 @@ app.directive('isaValidationMessages', function() {
 		transclude: true,
 		replace: true,
 		require: [ '^form', '^isaInput' ],
-		templateUrl: '/components/formInput/validationMessages.html',
+		templateUrl: '/components/form/validationMessages.html',
+		link: function(scope, elm, attrs, controllers) {
+
+			/**
+			 * Is the given attribute paired with the name an object ?
+			 *
+			 * @return Boolean
+			 */
+			scope.isAttributeObject = function(attr) {
+				return typeof attr === 'object';
+			};
+
+		},
 		scope: {
 			showPendingMessages: '@',
 			showValidationMessages: '@'

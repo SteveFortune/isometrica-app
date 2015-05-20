@@ -9,18 +9,17 @@
 
 	<div class="modal-body">
 		<form class="form-horizontal" name="userForm" novalidate>
-			<isa-form-input
+			<isa-basic-field
 				title="First Name*"
 				input-type="text"
 				input-placeholder='Joe'
 				input-name='firstName'
-				model='user.firstName'
-				form='userForm'
+				ng-model='user.firstName'
 				validation-model='{
 					"required": "A first name is required."
 				}'>
 			</isa-form-input>
-			<isa-form-input
+			<!--<isa-form-input
 				title="Last Name*"
 				input-type="text"
 				input-placeholder='Bloggs'
@@ -62,7 +61,7 @@
 					},
 					"containsNumber": "Must contain both letters and numbers."
 				}'>
-			</isa-form-input>
+			</isa-form-input>-->
 		</form>
 	</div>
 </div>

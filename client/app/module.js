@@ -4,6 +4,7 @@ var app = angular.module('isa', [
     'isa.docwiki',
     'isa.addressbook',
     'isa.profileimg',
+    'isa.form',
 
 	'ui.router',
 	'ui.bootstrap',
