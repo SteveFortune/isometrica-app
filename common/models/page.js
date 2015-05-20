@@ -1,5 +1,25 @@
 module.exports = function(Page) {
 
+	Page.observe('before delete', function(ctx, next) {
+	 
+		//function to delete all versions of a page about to be deleted
+		Page.findById( ctx.where.id, function(err, page) {
+
+		  	Page.find( { where : { pageId : page.pageId }}, function(err, pages) {
+
+		  		pages.forEach( function(page) {
+		  			if (page.id !== ctx.where.id) {
+		  				page.delete();
+		  			}
+		  		});
+		  		
+		  	} );
+
+	  }) ;
+
+	  next();
+	});
+
 	/*
 	 * Remote method to sign a page: adds the current user & timestamp to a list of signers on the page
 	 * related pages.
@@ -135,18 +155,20 @@ module.exports = function(Page) {
 					console.error(err);
 				}
 
-				console.log('found the page to rollback to, id=' + page.id + ', page id=' + page.id);
-
 				//find all related pages
-				Page.find( { pageId : page.pageId }, function(err, pages) {
-					console.log('found related', pages.length);
+				Page.find( { where : {pageId : page.pageId } }, function(err, pages) {
 
 					pages.forEach( function(page) {
 
-						if (page.id !== pageId) {
-							page.updateAttribute( 'currentVersion', false );
-						} else {
+						if (page.id === pageId) {
+
+							//this is the page version to rollback to
 							page.updateAttribute( 'currentVersion', true );
+
+						} else if (page.currentVersion !== false) {
+
+							page.updateAttribute( 'currentVersion', false );
+
 						}
 
 					});
@@ -154,7 +176,6 @@ module.exports = function(Page) {
 					cb(null);
 
 				});
-
 
 			} catch (e) {
 				console.error(e);

@@ -45,7 +45,7 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 			controller : 'ConfirmModalController',
 			resolve: {
 				title: function() {
-					return 'Are you sure you want to remove this page?';
+					return 'Are you sure you want to remove this page?<br />This action will remove all versions of this page.';
 				},
 			},
 		}).result.then(function(confirmed) {
