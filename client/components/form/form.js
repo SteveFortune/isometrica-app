@@ -49,6 +49,14 @@ app.directive('isaFormField', function() {
 			};
 
 		}],
+		link: function(scope, elm, attrs, ctrl) {
+
+			/**
+			 * @var ngFormController
+			 */
+			scope.form = ctrl;
+
+		},
 		scope: {
 			validationModel: '=',
 			pendingModel: '=',
