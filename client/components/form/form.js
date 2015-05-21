@@ -25,7 +25,7 @@ app.directive('isaFormField', function() {
 		templateUrl: function(elm, attrs) {
 			var type = attrs.fieldType;
 			if (!isa.utils.contains(registeredFieldTypes, attrs.fieldType)) {
-				type = 'custom';
+				type = 'basic';
 			}
 			return '/components/form/field/' + type + '.html';
 		},
@@ -47,7 +47,7 @@ app.directive('isaFormField', function() {
 			this.pendingModel = function() {
 				return $scope.pendingModel;
 			};
-			
+
 		}],
 		scope: {
 			validationModel: '=',
@@ -101,6 +101,7 @@ app.directive('isaValidationMessages', function() {
 		require: [ '^isaFormField', '^form' ],
 		templateUrl: '/components/form/validationMessages.html',
 		transclude: true,
+		replace: true,
 		compile: function() {
 			return function(scope, elm, attrs, ctrl, transcludeFn) {
 
@@ -128,8 +129,8 @@ app.directive('isaValidationMessages', function() {
 					angular.forEach(valModel, function(val, name) {
 
 						var tScope = scope.$new();
-						tScope.name = name;
-						tScope.message = typeof val === 'object' ? val.message : val;
+						tScope.$validatorName = name;
+						tScope.$message = typeof val === 'object' ? val.message : val;
 
 						var watchErr = function(valName, tClone) {
 							var formModelMessages = (isValidation ? '$error' : '$pending');
@@ -143,7 +144,9 @@ app.directive('isaValidationMessages', function() {
 							block.append(tClone);
 							watchErr(name, tClone);
 						});
+
 					});
+
 				};
 
 				var valQuery = elm[0].querySelector('div.isa-validation-messages');
