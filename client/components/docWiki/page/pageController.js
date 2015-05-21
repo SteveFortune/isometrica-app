@@ -3,8 +3,8 @@ var app = angular.module('isa.docwiki');
 /*
  * Controller to add/edit a page in a document
  */
-app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', '$http', 'PageFactory', 'isNew', 'FileUploader',
-	function($scope, $state, $stateParams, $modal, $http, PageFactory, isNew, FileUploader) {
+app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', '$http', 'PageFactory', 'isNew', 'FileUploader', 'CurrentUser',
+	function($scope, $state, $stateParams, $modal, $http, PageFactory, isNew, FileUploader, CurrentUser) {
 
 	var _readRelatedFiles = function(parentId) {
 		$http.get('/files/' + parentId).then( function(res) {
@@ -75,13 +75,13 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 			$scope.page.tags = ($scope.page.tags.length>0 ? [$scope.page.tags] : []);
 		}
 
-		$scope.page.updatedBy = $scope.currentUser.name;
+		$scope.page.updatedBy = CurrentUser.getCurrentUser().name;
 
 		if (isNew) {
 
 			//set current documentId on page
 			$scope.page.documentId = $stateParams.planId;
-			$scope.page.createdBy = $scope.currentUser.name;
+			$scope.page.createdBy = CurrentUser.getCurrentUser().name;
 
 			PageFactory.create($scope.page)
 			.then( function(p) {

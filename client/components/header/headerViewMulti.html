@@ -1,5 +1,5 @@
 
-<div class="navbar navbar-default navbar-fixed-top bootcards-navbar-double" role="navigation">
+<div class="navbar navbar-inverse navbar-fixed-top bootcards-navbar-double" role="navigation">
 	<div class="container">
 
 		<ul class="nav navbar-nav navbar-left">
@@ -28,32 +28,52 @@
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right bootcards-nav-secondary">
 
-				<li ng-if="isAuthenticated">
-					<p style="padding: 5px 15px; margin: 0;line-height: 20px; color: #777;">
+				<li ng-if="currentUser.isAuthenticated()">
+					<a href>
 					<i class="fa fa-fw fa-user"></i>
-					{{currentUser.name}}
-					</p>
+					{{currentUser.getCurrentUser().name}}
+					</a>
 				</li>
 
-				<li>
-					<a href="#">
-						Account
+				<!-- account name (when user is active in 1 account) -->
+				<li 
+					ng-if="currentUser.getCurrentUser().accounts.length==1">
+					<a href>
+						Account: {{currentUser.getCurrentAccount().name}}
 					</a>
-				</li> 
+				</li>
+
+				<!-- account switcher (user active in >1 account) -->
+				<li 
+					ng-if="currentUser.getCurrentUser().accounts.length>1"
+					class="dropdown" dropdown on-toggle="toggled(open)">
+					<a href class="dropdown-toggle" dropdown-toggle>
+						Account: {{currentUser.getCurrentAccount().name}}
+						<span class="caret"></span>
+					</a>
+					
+					<ul class="dropdown-menu">
+						<li ng-repeat="account in currentUser.getCurrentUser().accounts"
+							ng-if="account.id != currentUser.getCurrentAccount().id">
+						  <a ng-click="setCurrentAccount(account)">{{account.name}}</a>
+						</li>
+					</ul>
+				</li>
+
 				<li>
 					<a href="#">
 						Help
 					</a>
 				</li>
 
-				<li ng-if="!isAuthenticated">
+				<li ng-if="!currentUser.isAuthenticated()">
 					<a ui-sref="login">
 						<i class="fa fa-fw fa-lock"></i>
 						Login
 					</a>
 				</li>
 
-				<li ng-if="isAuthenticated">
+				<li ng-if="currentUser.isAuthenticated()">
 					<a ng-click="logout()">Logout</a>
 				</li>
 				   

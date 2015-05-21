@@ -1,9 +1,9 @@
 
 var app = angular.module('isa');
 
-app.controller( 'LoginController', [ 
-	'$scope', '$rootScope', '$location', 'AUTH_EVENTS', 'IsometricaUser',
-	function($scope, $rootScope, $location, AUTH_EVENTS, IsometricaUser) {
+app.controller( 'LoginController', [
+	'$scope', '$rootScope', '$location', '$state', 'AUTH_EVENTS', 'IsometricaUser', 'CurrentUser',
+	function($scope, $rootScope, $location, $state, AUTH_EVENTS, IsometricaUser, CurrentUser) {
 
 	//for debug purposes: set default credentials
 	$scope.credentials = {
@@ -21,21 +21,35 @@ app.controller( 'LoginController', [
 	$scope.login = function(credentials) {
 
 		$scope.hasError = false;
-	
-	    $scope.loginResult = IsometricaUser.login({ rememberMe: $scope.rememberMe }, $scope.credentials,
+
+	    $scope.loginResult = IsometricaUser.login({ rememberMe: $scope.rememberMe }, 
+	    	$scope.credentials,
 	      function(res) {
-	        // success
-	        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-      		$scope.setCurrentUser(res.user);
-      		var next = $location.nextAfterLogin || '/overview';
-			$location.nextAfterLogin = null;
-			$location.path(next);
+
+	        // success: retrieve accounts data for this user
+	        IsometricaUser.find( {
+					filter : {
+						where : { id : IsometricaUser.getCurrentId() } , 
+						include : 'accounts'
+					}
+				},
+				function(res) {
+					//success
+					$rootScope.$broadcast(AUTH_EVENTS.loginSuccess, res[0] );
+					$state.go('account.overview');
+				},
+				function(err) {
+					$scope.hasError = true;
+					$scope.errorMsg = "User could not be found";
+					$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+				});
 	      }, function(res) {
 	        // error
 	        $scope.hasError = true;
 	        $scope.errorMsg = res.data.error.message;
 	        $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
 	      });
-	 };
+
+	};
 
 } ] );

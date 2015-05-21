@@ -8,6 +8,7 @@ app.controller( 'OverviewController',
 	$scope.plans = [];
 	$scope.templates = [];
 	$scope.archived = [];
+	$scope.modulesTrash = [];
 
 	var loadPlans = function() {
 		//retrieve all plans and activate the tooltips

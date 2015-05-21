@@ -1,7 +1,9 @@
 
 var app = angular.module('isa', [
 
-  'isa.docwiki',
+    'isa.docwiki',
+    'isa.addressbook',
+    'isa.profileimg',
 
 	'ui.router',
 	'ui.bootstrap',
@@ -94,4 +96,3 @@ app.filter('blankString', function() {
         return empty ? '(empty)' : input;
     };
 });
-
