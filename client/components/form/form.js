@@ -28,6 +28,15 @@ var FormFieldScope = {
 app.directive('isaBasicField', function() {
 	return {
 		restrict: 'E',
+		require: '^form',
+		link: function(scope, elm, attr, formController) {
+
+			/**
+			* @var ngFormController
+			*/
+			scope.form = formController;
+
+		},
 		templateUrl: '/components/form/basicField.html',
 		scope: FormFieldScope
 	};

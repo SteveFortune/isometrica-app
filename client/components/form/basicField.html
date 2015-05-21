@@ -1,5 +1,10 @@
 
-<isa-form-field validation-model="validationModel" pending-model="pendingModel">
+<isa-form-field
+	validation-model="validationModel"
+	pending-model="pendingModel"
+	ng-class="{
+		'has-error': form[inputName].$touched && form[inputName].$invalid
+	}">
 	<div class="form-group">
 		<label class="col-xs-3 control-label">
 			{{ title }}
@@ -21,7 +26,7 @@
 			show-validation-messages="true"
 			input-name="{{ inputName }}"
 			class="col-xs-9">
-			<p>{{ message }}</p>
+			<p class="text-danger">{{ message }}</p>
 		</isa-validation-messages>
 	</div>
 </isa-form-field>
