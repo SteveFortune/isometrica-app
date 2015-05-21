@@ -1,4 +1,6 @@
 module.exports = function(PersistedModelExt) {
+  var lowla = require('../../server/lowla.js');
+  lowla.hookModel(PersistedModelExt);
 
 	PersistedModelExt.observe('before save', function updateTimestamp(ctx, next) {
 

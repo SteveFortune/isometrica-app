@@ -10,6 +10,10 @@ app.factory('PageFactory', [ '$rootScope', '$injector', function($rootScope, $in
 
 }]);
 
+app.factory('PlanFactory', [ '$rootScope', '$injector', function($rootScope, $injector) {
+  return $injector.get($rootScope.online ? '_PlanRemote' : '_PlanLocal');
+}]);
+
 app.factory('_PageRemote', [ 'Page', function(Page) {
 
 	return {
@@ -25,25 +29,80 @@ app.factory('_PageRemote', [ 'Page', function(Page) {
 			  }
 			);
 
-		}
+		},
 
+    findById: function(id) {
+      return Page.findById( { id: id });
+    },
+
+    create: function(page) {
+      return Page.create(page).$promise;
+    },
+
+    delete: function(id) {
+      return Page.delete( { id : id } ).$promise;
+    },
+
+    save: function(page) {
+      var page = new Page(page);
+      return page.$save();
+    }
 	};
 
 
 }]);
 
-app.factory('_PageLocal', [ function() {
+app.factory('_PageLocal', [ '$lowla', '$lowlaArray', '$lowlaDocument', '$lowlaDefer', function($lowla, $lowlaArray, $lowlaDocument, $lowlaDefer) {
+  var pages = $lowla.collection('db', 'Page');
 
 	return {
 
-		all : function(documentId) {
+		all : function(documentId, scope) {
+      return $lowlaArray(pages.find({documentId: documentId}), scope);
+		},
 
-			//talk to local datastore here
+    findById: function(id, scope) {
+      return $lowlaDocument(pages.find({id: id}), scope);
+    },
 
-			return [
-				{ title : 'from local', section : ''}
-			];
-		}
+    create: function(page) {
+      return $lowlaDefer(pages.insert(page));
+    },
+
+    delete: function(id) {
+      return $lowlaDefer(pages.remove({id: id}));
+    },
+
+    save: function(page) {
+      return $lowlaDefer(pages.findAndModify({ id: page.id }, page));
+    }
 	};
 
+}]);
+
+app.factory('_PlanRemote', ['Plan', function(Plan) {
+  return {
+    findById: function(id) {
+      return Plan.findById( { 'id' : id } );
+    }
+  }
+}]);
+
+app.factory('_PlanLocal', ['$lowla', '$lowlaDocument', function($lowla, $lowlaDocument) {
+  var plans = $lowla.collection('db', 'Plan');
+
+  return {
+    findById: function(id, scope) {
+      plans.find({id: id}, function(err, arr) {
+        if (err) {
+          console.log("Error: " + err);
+        }
+        else {
+          console.log("Plan: " + JSON.stringify(arr[0]));
+        }
+
+      });
+      return $lowlaDocument(plans.find({id: id}), scope);
+    }
+  }
 }]);

@@ -3,8 +3,8 @@ var app = angular.module('isa.docwiki');
 /*
  * Controller to add/edit a page in a document
  */
-app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', '$http', 'Page', 'isNew', 'FileUploader',
-	function($scope, $state, $stateParams, $modal, $http, Page, isNew, FileUploader) {
+app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', '$http', 'PageFactory', 'isNew', 'FileUploader',
+	function($scope, $state, $stateParams, $modal, $http, PageFactory, isNew, FileUploader) {
 
 	var _readRelatedFiles = function(parentId) {
 		$http.get('/files/' + parentId).then( function(res) {
@@ -30,7 +30,7 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 
 		//upload all files
 		if (uploader.queue.length>0 ) {
-			
+
 			uploader.onBeforeUploadItem = function(item) {
 			    item.url = '/upload/' + itemId;
 			};
@@ -38,7 +38,7 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 	            console.info('onCompleteAll');
 	            $state.go('docwiki.page', {pageId: itemId }, {reload: true});
 	        };
-			uploader.uploadAll();	
+			uploader.uploadAll();
 
 		} else {
 			_readRelatedFiles(itemId);
@@ -60,7 +60,7 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 
 		//read existing page
 	if (!isNew) {
-		$scope.page = Page.findById( { id: $stateParams.pageId });
+		$scope.page = PageFactory.findById( $stateParams.pageId, $scope );
 		_readRelatedFiles($stateParams.pageId);
 	}
 
@@ -83,23 +83,20 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 			$scope.page.documentId = $stateParams.planId;
 			$scope.page.createdBy = $scope.currentUser.name;
 
-			Page.create($scope.page).$promise
+			PageFactory.create($scope.page)
 			.then( function(p) {
 
 				_postSave(p.id);
-								
+
 			});
 
 		} else {
 
-			var page = new Page($scope.page);
-
-			page.$save( function(_saved) {
-
-				_postSave($scope.page.id);
-				
-			});
-
+      PageFactory
+        .save($scope.page)
+        .then(function(_saved) {
+          _postSave($scope.page.id);
+        });
 		}
 
 	};
@@ -107,7 +104,7 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 	$scope.delete = function(page) {
 
 		$modal.open({
-			templateUrl: '/components/coreSystem/confirm/confirmModal.html',
+			templateUrl: 'components/coreSystem/confirm/confirmModal.html',
 			controller : 'ConfirmModalController',
 			resolve: {
 				title: function() {
@@ -116,7 +113,7 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 			},
 		}).result.then(function(confirmed) {
 			if (confirmed) {
-				Page.delete( { id : page.id } ).$promise
+				PageFactory.delete( page.id )
 				.then( function(deletedPlan) {
 					$state.go('docwiki', {}, {reload: true});
 				});
@@ -140,7 +137,7 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 	$scope.lightbox = function(file) {
 
 		$modal.open({
-	      templateUrl: '/components/lightbox/lightboxModal.html',
+	      templateUrl: 'components/lightbox/lightboxModal.html',
 			controller : 'LightboxModalController',
 			size : 'lg',
 			resolve: {

@@ -9,7 +9,7 @@ app.directive('isaHeader', ['$state', 'IsometricaUser', 'growl',
 
 		replace : true,
 		restrict : 'E',
-		templateUrl : '/components/header/headerView.html',
+		templateUrl : 'components/header/headerView.html',
 		transclude : true,
 
 		controller : function($scope, $state, IsometricaUser) {
@@ -35,7 +35,7 @@ app.directive('isaHeaderDouble', ['$state', 'IsometricaUser', 'growl',
 
 		replace : true,
 		restrict : 'E',
-		templateUrl : '/components/header/headerViewMulti.html',
+		templateUrl : 'components/header/headerViewMulti.html',
 		transclude : true,
 
 		controller : function($scope, $state, IsometricaUser) {

@@ -16,18 +16,18 @@ var app = angular.module('isa.docwiki', [
  *
  * @author Mark Leusink
  */
-app.controller( 'DocWikiController', 
-	['$rootScope', '$scope', '$stateParams', '$state', 'Plan', 'PageFactory', 'growl',
-	function($rootScope, $scope, $stateParams, $state, Plan, PageFactory, growl) {
+app.controller( 'DocWikiController',
+	['$rootScope', '$scope', '$stateParams', '$state', 'PlanFactory', 'PageFactory', 'growl',
+	function($rootScope, $scope, $stateParams, $state, PlanFactory, PageFactory, growl) {
 
 	$scope.moduleId = $stateParams.planId;
-	$scope.docWiki = Plan.findById( { 'id' : $stateParams.planId } );	
+	$scope.docWiki = PlanFactory.findById( $stateParams.planId, $scope );
 
 	//default open the first menu item ('Pages')
 	$scope.page = { open : true };
 
 	//load pages for this document, order by section ascending
-	$scope.pages = PageFactory.all($stateParams.planId);
+	$scope.pages = PageFactory.all($stateParams.planId, $scope);
 
 	/*
 	 * Get the amount of pixels that a section needs to indent,
@@ -82,7 +82,7 @@ app.controller( 'DocWikiController',
 		})
 
 	}
-	
+
 
 }]);
 

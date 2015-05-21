@@ -11,7 +11,7 @@ app.config(['$stateProvider', function($stateProvider){
 
     	.state('docwiki', { 	
 		    url: '/docwiki/:planId',
-		    templateUrl: '/components/docWiki/docWikiView.html',
+		    templateUrl: 'components/docWiki/docWikiView.html',
 		    controller : 'DocWikiController',
 		    data : {
 		    	anonymous: false
@@ -20,7 +20,7 @@ app.config(['$stateProvider', function($stateProvider){
 
 		.state('docwiki.newpage', { 	
 		    url: '/page/new',
-		    templateUrl: '/components/docWiki/page/pageEdit.html',
+		    templateUrl: 'components/docWiki/page/pageEdit.html',
 		    controller : 'PageController',
 		    resolve : {
 		    	isNew : function() { return true; }
@@ -29,7 +29,7 @@ app.config(['$stateProvider', function($stateProvider){
 
 		.state('docwiki.page', { 	
 		    url: '/page/:pageId',
-		    templateUrl: '/components/docWiki/page/pageRead.html',
+		    templateUrl: 'components/docWiki/page/pageRead.html',
 		    controller : 'PageController',
 		    resolve : {
 		    	isNew : function() { return false; }
@@ -38,7 +38,7 @@ app.config(['$stateProvider', function($stateProvider){
 
 		.state('docwiki.pageedit', { 	
 		    url: '/page/:pageId/edit',
-		    templateUrl: '/components/docWiki/page/pageEdit.html',
+		    templateUrl: 'components/docWiki/page/pageEdit.html',
 		    controller : 'PageController',
 		    resolve : {
 		    	isNew : function() { return false; }
