@@ -4,6 +4,23 @@ var app = angular.module('isa.form', []);
 
 
 /**
+ * A dictionary defining the isolated scope for form field directives.
+ * This is so that registering new reuseable form fields can be done without
+ * having to duplicate the same config.
+ *
+ * @var Object
+ */
+var FormFieldScope = {
+	title: '@',
+	validationModel: '=',
+	pendingModel: '=',
+	inputType: '@',
+	inputName: '@',
+	inputPlaceholder: '@'
+};
+
+
+/**
  * Basic form field. For convenience to reduce boilerplate.
  *
  * @author Steve Fortune
@@ -12,14 +29,7 @@ app.directive('isaBasicField', function() {
 	return {
 		restrict: 'E',
 		templateUrl: '/components/form/basicField.html',
-		scope: {
-			title: '@',
-			validationModel: '=',
-			pendingModel: '=',
-			inputType: '@',
-			inputName: '@',
-			inputPlaceholder: '@'
-		}
+		scope: FormFieldScope
 	};
 });
 
