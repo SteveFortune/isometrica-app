@@ -16,7 +16,7 @@
 				field-type="basic"
 				input-type="email"
 				input-placeholder='joe.bloggs@ibm.com'
-				input-name='email'
+				input-name='_email'
 				validation-model='{
 					"required": "An email address is required.",
 					"email": "Must be a valid email address.",
@@ -25,6 +25,42 @@
 				pending-model='{
 					"existsEmail": "Checking email..."
 				}'>
+			</isa-form-field>
+
+			<isa-form-field
+				validation-model='{
+					"required": "An email address is required.",
+					"email": "Must be a valid email address.",
+					"existsEmail": "A user already exists with this email address."
+				}'
+				pending-model='{
+					"existsEmail": "Checking email..."
+				}'>
+				<div class="form-group">
+					<label class="col-xs-3 control-label">
+						A custom email field
+					</label>
+					<div class="col-xs-9">
+						<isa-input
+							type="email"
+							name="email"
+							class="form-control"
+							placeholder="Give me email."
+							ng-model="user.email">
+						</isa-input>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-xs-9"></div>
+					<isa-validation-messages
+						show-pending-messages="true"
+						show-validation-messages="true"
+						input-name="email"
+						class="col-xs-3">
+						<p class="text-success">{{ message }}</p>
+					</isa-validation-messages>
+				</div>
 			</isa-form-field>
 
 			<!--<isa-form-input

@@ -22,7 +22,6 @@ app.directive('isaFormField', function() {
 	return {
 		restrict: 'AE',
 		transclude: true,
-		replace: true,
 		templateUrl: function(elm, attrs) {
 			var type = attrs.fieldType;
 			if (!isa.utils.contains(registeredFieldTypes, attrs.fieldType)) {
@@ -31,7 +30,25 @@ app.directive('isaFormField', function() {
 			return '/components/form/field/' + type + '.html';
 		},
 		require: '^form',
-		controller: function() {},
+		controller: ['$scope', function($scope) {
+
+			/**
+			 * @public
+			 * @return Object
+			 */
+			this.validationModel = function() {
+				return $scope.validationModel;
+			};
+
+			/**
+			 * @public
+			 * @return Object
+			 */
+			this.pendingModel = function() {
+				return $scope.pendingModel;
+			};
+			
+		}],
 		scope: {
 			validationModel: '=',
 			pendingModel: '=',
@@ -61,7 +78,7 @@ app.directive('isaInput', ['$compile', function($compile) {
 		require: '^isaFormField',
 		templateUrl: '/components/form/input.html',
 		link: function(scope, inputElm, attrs, isaFormField) {
-			angular.forEach(scope.validationModel, function(attr, name) {
+			angular.forEach(isaFormField.validationModel(), function(attr, name) {
 				var value = typeof attr === 'object' ? attr.value : true;
 				var denormalizedName = name.replace(/([A-Z])/g, '-$1').toLowerCase();
 				inputElm.attr(denormalizedName, value);
@@ -134,8 +151,8 @@ app.directive('isaValidationMessages', function() {
 				var validationBlock = angular.element(valQuery);
 				var pendingBlock = angular.element(penQuery);
 
-				setupBlock(validationBlock, scope.$parent.validationModel, true);
-				setupBlock(pendingBlock, scope.$parent.pendingModel, false);
+				setupBlock(validationBlock, isaFormField.validationModel(), true);
+				setupBlock(pendingBlock, isaFormField.pendingModel(), false);
 
 			};
 		},
