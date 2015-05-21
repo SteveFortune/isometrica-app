@@ -1,10 +1,6 @@
-
-<isa-form-field
-	validation-model="validationModel"
-	pending-model="pendingModel"
-	ng-class="{
-		'has-error': form[inputName].$touched && form[inputName].$invalid
-	}">
+<div ng-class="{
+	'has-error': form[inputName].$touched && form[inputName].$invalid
+}">
 	<div class="form-group">
 		<label class="col-xs-3 control-label">
 			{{ title }}
@@ -14,7 +10,9 @@
 				type="{{ inputType }}"
 				name="{{ inputName }}"
 				class="form-control"
-				placeholder="{{ inputPlaceholder || 'Enter...' }}">
+				placeholder="{{ inputPlaceholder || 'Enter...' }}"
+				ng-model="ngModel"
+				ng-model-options="{ debounce: 500, allowInvalid: true }">
 			</isa-input>
 		</div>
 	</div>
@@ -29,4 +27,4 @@
 			<p class="text-danger">{{ message }}</p>
 		</isa-validation-messages>
 	</div>
-</isa-form-field>
+</div>

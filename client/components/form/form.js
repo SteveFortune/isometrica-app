@@ -4,43 +4,12 @@ var app = angular.module('isa.form', []);
 
 
 /**
- * A dictionary defining the isolated scope for form field directives.
- * This is so that registering new reuseable form fields can be done without
- * having to duplicate the same config.
- *
- * @var Object
+ * @var Array
  */
-var FormFieldScope = {
-	title: '@',
-	validationModel: '=',
-	pendingModel: '=',
-	inputType: '@',
-	inputName: '@',
-	inputPlaceholder: '@'
-};
-
-
-/**
- * Basic form field. For convenience to reduce boilerplate.
- *
- * @author Steve Fortune
- */
-app.directive('isaBasicField', function() {
-	return {
-		restrict: 'E',
-		require: '^form',
-		link: function(scope, elm, attr, formController) {
-
-			/**
-			* @var ngFormController
-			*/
-			scope.form = formController;
-
-		},
-		templateUrl: '/components/form/basicField.html',
-		scope: FormFieldScope
-	};
-});
+var registeredFieldTypes = [
+	'basic',
+	'custom'
+];
 
 
 /**
@@ -53,12 +22,24 @@ app.directive('isaFormField', function() {
 	return {
 		restrict: 'AE',
 		transclude: true,
-		template: '<ng-transclude></ng-transclude>',
+		replace: true,
+		templateUrl: function(elm, attrs) {
+			var type = attrs.fieldType;
+			if (!isa.utils.contains(registeredFieldTypes, attrs.fieldType)) {
+				type = 'custom';
+			}
+			return '/components/form/field/' + type + '.html';
+		},
 		require: '^form',
 		controller: function() {},
 		scope: {
 			validationModel: '=',
-			pendingModel: '='
+			pendingModel: '=',
+			ngModel: '=',
+			title: '@',
+			inputType: '@',
+			inputName: '@',
+			inputPlaceholder: '@'
 		}
 	};
 });
@@ -77,9 +58,9 @@ app.directive('isaInput', ['$compile', function($compile) {
 	    priority: 1000,
         transclude: true,
 		replace: true,
-		require: [ '^isaFormField', '^ngModel' ],
+		require: '^isaFormField',
 		templateUrl: '/components/form/input.html',
-		link: function(scope, inputElm, attrs, controllers) {
+		link: function(scope, inputElm, attrs, isaFormField) {
 			angular.forEach(scope.validationModel, function(attr, name) {
 				var value = typeof attr === 'object' ? attr.value : true;
 				var denormalizedName = name.replace(/([A-Z])/g, '-$1').toLowerCase();
@@ -105,6 +86,11 @@ app.directive('isaValidationMessages', function() {
 		transclude: true,
 		compile: function() {
 			return function(scope, elm, attrs, ctrl, transcludeFn) {
+
+				/**
+				 * @var isaFormFieldCtrl
+				 */
+				var isaFormField = ctrl[0];
 
 				/**
 				 * @var ngFormController

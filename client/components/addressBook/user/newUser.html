@@ -9,12 +9,14 @@
 
 	<div class="modal-body">
 		<form class="form-horizontal" name="userForm" novalidate>
-			<isa-basic-field
+
+			<isa-form-field
+				ng-model='user.firstName'
 				title="Email*"
+				field-type="basic"
 				input-type="email"
 				input-placeholder='joe.bloggs@ibm.com'
 				input-name='email'
-				ng-model='user.email'
 				validation-model='{
 					"required": "An email address is required.",
 					"email": "Must be a valid email address.",
@@ -23,19 +25,8 @@
 				pending-model='{
 					"existsEmail": "Checking email..."
 				}'>
-			</isa-basic-field>
+			</isa-form-field>
 
-			<isa-basic-field
-				title="First Name*"
-				input-type="email"
-				input-placeholder='Joe'
-				input-name='firstName'
-				ng-model='user.firstName'
-				validation-model='{
-					"required": "A first name is required.",
-					"email": "Must be email."
-				}'>
-			</isa-basic-field>
 			<!--<isa-form-input
 				title="Last Name*"
 				input-type="text"

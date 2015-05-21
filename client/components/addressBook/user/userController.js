@@ -178,6 +178,10 @@ app.controller('ModalAddressBookUserController',
 	 */
 	$scope.user = $scope.isNew ? {} : angular.copy(user);
 
+	$scope.$watch('user.firstName', function(newVal, oldVal) {
+		console.log(newVal + ', ' + oldVal);
+	});
+
 	/**
 	 * Strips sensative fields from the user entity before sending to the rest of the
 	 * application. Namely the `password` value.
