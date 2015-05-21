@@ -16,3 +16,7 @@
 ###### `isaValidationMessages`
 
 ### Motivations and Advantages of Using
+
+### Limitations
+
+- The directive hierarchy is currently quite limited; you can't position `isaValidationMessages` outside of an `isaFormField`. It would be nice to be able to define validation messages at an arbitrary position within a form and link them discretely to a `isaInput`.

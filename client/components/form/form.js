@@ -51,6 +51,10 @@ app.directive('isaFormField', function() {
 		}],
 		link: function(scope, elm, attrs, ctrl) {
 
+			if (!scope.inputType) {
+				scope.inputType = 'text';
+			}
+
 			/**
 			 * @var ngFormController
 			 */
@@ -60,9 +64,9 @@ app.directive('isaFormField', function() {
 		scope: {
 			validationModel: '=',
 			pendingModel: '=',
-			ngModel: '=',
+			ngModel: '=?',
 			title: '@',
-			inputType: '@',
+			inputType: '@',	// Input type defaults to text
 			inputName: '@',
 			inputPlaceholder: '@'
 		}

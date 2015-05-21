@@ -9,94 +9,72 @@
 
 	<div class="modal-body">
 		<form class="form-horizontal" name="userForm" novalidate>
-			<!-- Basic user fields -->
-			<isa-form-input
+			<isa-form-field
+				ng-model='user.firstName'
 				title="First Name*"
-				input-type="text"
 				input-placeholder='Joe'
 				input-name='firstName'
-				model='user.firstName'
-				form='userForm'
 				validation-model='{
-					"required": "A first name is required."
+					"required": "A first name is required.",
 				}'>
-			</isa-form-input>
-			<isa-form-input
+			</isa-form-field>
+			<isa-form-field
+				ng-model='user.lastName'
 				title="Last Name*"
-				input-type="text"
 				input-placeholder='Bloggs'
 				input-name='lastName'
-				model='user.lastName'
-				form='userForm'
 				validation-model='{
-					"required": "A last name is required."
+					"required": "A last name is required.",
 				}'>
-			</isa-form-input>
-			<isa-form-input
+			</isa-form-field>
+			<isa-form-field
+				ng-model='user.role'
 				title="Title or Role"
-				input-type="text"
 				input-placeholder='VP of Sales'
-				input-name='role'
-				model='user.role'
-				form='userForm'>
-			</isa-form-input>
-			<isa-form-input
+				input-name='role'>
+			</isa-form-field>
+			<isa-form-field
+				ng-model='user.email'
 				title="Email*"
 				input-type="email"
 				input-placeholder='joe.bloggs@ibm.com'
 				input-name='email'
-				model='user.email'
-				form='userForm'
 				validation-model='{
 					"required": "An email address is required.",
 					"email": "Must be a valid email address.",
 					"existsEmail": "A user already exists with this email address."
 				}'
 				pending-model='{
-					"existsEmail": "..."
+					"existsEmail": "Checking email..."
 				}'>
-			</isa-form-input>
-			<isa-form-input
+			</isa-form-field>
+			<isa-form-field
+				ng-model='user.address'
 				title="Address"
-				input-type="address"
-				input-placeholder='10 King Stree, Nailsworth, GL5 0NN'
-				input-name='address'
-				model='user.address'
-				form='userForm'
-				validation-model='{
-					"minlength": "Must be a valid email address.",
-					"existsEmail": "A user already exists with this email address."
-				}'
-				pending-model='{
-					"existsEmail": "..."
-				}'>
-			</isa-form-input>
+				input-placeholder='10 King St, Nailsworth, GL5 0NN'
+				input-name='address'>
+			</isa-form-field>
 			<accordion>
 				<accordion-group heading="Phone Numbers">
-					<!-- NOTE: Again, not sure how to handle embedded entities -->
 					<div class="list-group clearfix" ng-repeat="phoneNumber in user._phoneNumbers">
-						<isa-form-input
+						<isa-form-field
 							class="col-sm-6"
+							ng-model='phoneNumber.number'
 							title="Number"
-							input-type="text"
 							input-placeholder='+44 7668 492301'
 							input-name='phoneNumber_{{ $index }}'
-							model='phoneNumber.number'
-							form='userForm'
 							validation-model='{
 								"phoneNumber": "Must be a valid phone number.",
 								"required": "A number is required."
 							}'>
-						</isa-form-input>
-						<isa-form-input
+						</isa-form-field>
+						<isa-form-field
 							class="col-sm-6"
+							ng-model='phoneNumber.type'
 							title="Type"
-							input-type="text"
 							input-placeholder='Mobile'
-							input-name='type_{{ $index }}'
-							model='phoneNumber.type'
-							form='userForm'>
-						</isa-form-input>
+							input-name='type_{{ $index }}'>
+						</isa-form-field>
 					</div>
 					<div ng-if="!user._phoneNumbers.length">
 						<p>
@@ -109,22 +87,19 @@
 					</a>
 				</accordion-group>
 				<accordion-group heading="User Admin">
-					<isa-form-input
+					<isa-form-field
+						ng-model='user.type'
 						title="Type of Person"
-						input-type="text"
 						input-placeholder='Admin'
-						input-name='userType'
-						model='user.type'
-						form='userForm'>
-					</isa-form-input>
-					<!-- Does not link to a model at the moment. Not sure how to handle
+						input-name='userType'>
+					</isa-form-field>
+					<!-- NOTE: oes not link to a model at the moment. Not sure how to handle
 						 user reset password -->
-					<isa-form-input
+					<isa-form-field
 						title="Password*"
 						input-type="password"
 						input-placeholder='Password'
 						input-name='password'
-						form='userForm'
 						validation-model='{
 							minlength: {
 								value: 6,
@@ -132,36 +107,31 @@
 							},
 							containsNumber: "Must contain both letters and numbers."
 						}'>
-					</isa-form-input>
+					</isa-form-field>
 				</accordion-group>
 				<accordion-group heading="Call Tree">
-					<!-- NOTE: Again, not sure how to handle embedded entities -->
 					<div class="list-group clearfix" ng-repeat="contact in user._callTreeContacts">
-						<isa-form-input
+						<isa-form-field
 							class="col-sm-6"
+							ng-model='contact.name'
 							title="Name"
-							input-type="text"
 							input-placeholder='Joe Bloggs'
 							input-name='contact_{{ $index }}'
-							model='contact.name'
-							form='userForm'
 							validation-model='{
 								"required": "A name is required."
 							}'>
-						</isa-form-input>
-						<isa-form-input
+						</isa-form-field>
+						<isa-form-field
 							class="col-sm-6"
+							ng-model='contact._phoneNumber.number'
 							title="Type"
-							input-type="text"
 							input-placeholder='+44 7668 492301'
 							input-name='type_{{ $index }}'
-							model='contact._phoneNumber.number'
-							form='userForm'
 							validation-model='{
 								"phoneNumber": "Must be a valid phone number.",
 								"required": "A number is required."
 							}'>
-						</isa-form-input>
+						</isa-form-field>
 					</div>
 					<div ng-if="!user._callTreeContacts.length">
 						<p>
