@@ -47,11 +47,12 @@
 				title="Password*"
 				input-placeholder='Password'
 				input-name='password'
+				input-type='password'
 				validation-model='{
 					"required": "A password is required.",
 					"minlength": {
-						value: 6,
-						message: "Must be > 6 characters long."
+						value: 8,
+						message: "Must be > 8 characters long."
 					},
 					"containsNumber": "Must contain both letters and numbers."
 				}'>

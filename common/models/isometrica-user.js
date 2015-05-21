@@ -58,9 +58,9 @@ module.exports = function(IsometricaUser) {
 	//		 this needs proper attention.
 	//
 	IsometricaUser.validatesLengthOf('password', {
-		min: 6,
+		min: 8,
 		message: {
-			min: 'Password must be > 6 characters long'
+			min: 'Password must be > 8 characters long'
 		}
 	});
 	IsometricaUser.validatesFormatOf('password', {
