@@ -64,8 +64,12 @@ module.exports = function(IsometricaUser) {
 		}
 	});
 	IsometricaUser.validatesFormatOf('password', {
-		with: /^(?=.*[a-zA-Z])(?=.*[0-9])/,
-		message: 'Password must contain numbers and letters'
+		with: /\d/,
+		message: 'Password must contain at least one number.'
+	});
+	IsometricaUser.validatesFormatOf('password', {
+		with: /[a-zA-Z]/,
+		message: 'Password must contain at least one letter.'
 	});
 
 };
