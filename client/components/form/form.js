@@ -93,31 +93,44 @@ app.directive('isaValidationMessages', function() {
 				scope.form = ctrl[1];
 
 				/**
-				 * Setup bindings for child elements, transclusion, etc.
+				 * This function takes a block and validation model and transcludes the validation
+				 * messages into it as well as setting up its bindings using $watch
+				 *
+				 * @param	block			Object
+				 * @param	valModel		Object
+				 * @param	isValidation	Boolean
+				 * @private
 				 */
+				var setupBlock = function(block, valModel, isValidation) {
+
+					angular.forEach(valModel, function(val, name) {
+
+						var tScope = scope.$new();
+						tScope.name = name;
+						tScope.message = typeof val === 'object' ? val.message : val;
+
+						var watchErr = function(valName, tClone) {
+							var formModelMessages = (isValidation ? '$error' : '$pending');
+							scope.$watch('form[inputName].' + formModelMessages + '.' + valName, function(newValue, oldValue) {
+								tClone[ !newValue ? 'addClass' : 'removeClass' ]('ng-hide');
+							});
+						};
+
+						transcludeFn(tScope, function(clone) {
+							var tClone = angular.element(clone);
+							block.append(tClone);
+							watchErr(name, tClone);
+						});
+					});
+				};
+
 				var valQuery = elm[0].querySelector('div.isa-validation-messages');
 				var penQuery = elm[0].querySelector('div.isa-pending-messages');
 				var validationBlock = angular.element(valQuery);
 				var pendingBlock = angular.element(penQuery);
 
-				angular.forEach(scope.$parent.validationModel, function(val, name) {
-
-					var tScope = scope.$new();
-					tScope.name = name;
-					tScope.message = typeof val === 'object' ? val.message : val;
-
-					var watchErr = function(valName, tClone) {
-						scope.$watch('form[inputName].$error["' + valName + '"]', function(newValue, oldValue) {
-							tClone[ !newValue ? 'addClass' : 'removeClass' ]('ng-hide');
-						});
-					};
-
-					transcludeFn(tScope, function(clone) {
-						var tClone = angular.element(clone);
-						validationBlock.append(tClone);
-						watchErr(name, tClone);
-					});
-				});
+				setupBlock(validationBlock, scope.$parent.validationModel, true);
+				setupBlock(pendingBlock, scope.$parent.pendingModel, false);
 
 			};
 		},
