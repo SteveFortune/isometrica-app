@@ -56,7 +56,7 @@
 			</isa-form-field>
 			<accordion>
 				<isa-form-group title="Phone Numbers">
-					<div class="list-group clearfix" ng-repeat="phoneNumber in user._phoneNumbers">
+					<isa-group-row delete="deletePhoneNumber($index)" ng-repeat="phoneNumber in user._phoneNumbers">
 						<isa-form-field
 							class="col-sm-6"
 							ng-model='phoneNumber.number'
@@ -75,7 +75,7 @@
 							input-placeholder='Mobile'
 							input-name='type_{{ $index }}'>
 						</isa-form-field>
-					</div>
+					</isa-group-row>
 					<div ng-if="!user._phoneNumbers.length">
 						<p>
 							No phone numbers.
@@ -111,7 +111,7 @@
 					</isa-form-field>
 				</isa-form-group>
 				<isa-form-group title="Call Tree">
-					<div class="list-group clearfix" ng-repeat="contact in user._callTreeContacts">
+					<isa-group-row delete="deleteContact($index)" ng-repeat="contact in user._callTreeContacts">
 						<isa-form-field
 							class="col-sm-6"
 							ng-model='contact.name'
@@ -133,7 +133,7 @@
 								"required": "A number is required."
 							}'>
 						</isa-form-field>
-					</div>
+					</isa-group-row>
 					<div ng-if="!user._callTreeContacts.length">
 						<p>
 							No contacts in call tree.

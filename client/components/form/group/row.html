@@ -1,6 +1,4 @@
-<div>
-	<ng-transclude></ng-transclude>
-	<a ng-click="delete">
-		<i class="fa fa-minus"/>
-	</a>
+<div class="list-group clearfix">
+	<div class="col-sm-11" ng-transclude></div>
+	<a ng-click="delete()" class="col-sm-1 btn btn-danger fa fa-minus"></a>
 </div>

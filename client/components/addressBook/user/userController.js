@@ -253,6 +253,24 @@ app.controller('ModalAddressBookUserController',
 	};
 
 	/**
+	 * Deletes a contact from the user at a given index.
+	 *
+	 * @protected
+	 */
+	$scope.deleteContact = function(at) {
+		$scope.user._callTreeContacts.splice(at, 1);
+	};
+
+	/**
+	 * Deletes a phone number from the user at a given index.
+	 *
+	 * @protected
+	 */
+	$scope.deletePhoneNumber = function(at) {
+		$scope.user._phoneNumbers.splice(at, 1);
+	};
+
+	/**
 	 * Creates a new empty phone number associated with the user.
 	 *
 	 * @protected
