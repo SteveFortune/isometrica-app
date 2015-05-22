@@ -55,19 +55,23 @@
     "dataSource": "mongodb",
     "public": true
   },
-  "Comment" : {
-    "dataSource" : "transient",
-    "public" : false
+  "Comment": {
+    "dataSource": "transient",
+    "public": false
   },
-  "Signature" : {
-    "dataSource" : "transient",
-    "public" : false
+  "Signature": {
+    "dataSource": "transient",
+    "public": false
   },
   "PhoneNumber": {
     "dataSource": "mongodb",
     "public": false
   },
   "Contact": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "CallTreeContact": {
     "dataSource": "mongodb",
     "public": true
   }

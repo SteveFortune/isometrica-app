@@ -28,9 +28,9 @@
       "default": false
     },
     "inTrash": {
-      "type" : "boolean",
-      "default" : false
-    } 
+      "type": "boolean",
+      "default": false
+    }
   },
   "validations": [],
   "relations": {

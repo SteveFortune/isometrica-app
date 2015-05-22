@@ -1,0 +1,23 @@
+{
+  "name": "CallTreeContact",
+  "plural": "CallTreeContacts",
+  "base": "PersistedModelExt",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "phoneNumber": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
