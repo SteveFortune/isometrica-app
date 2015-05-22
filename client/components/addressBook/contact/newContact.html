@@ -17,7 +17,7 @@
 				}'>
 			</isa-form-field>
 			<isa-form-field
-				ng-model='user.email'
+				ng-model='contact.email'
 				title="Email*"
 				input-type="email"
 				input-placeholder='joe.bloggs@ibm.com'
@@ -28,22 +28,22 @@
 				}'>
 			</isa-form-field>
 			<isa-form-field
-				class="col-sm-6"
-				ng-model='contact._phoneNumber.number'
-				title="Number"
-				input-placeholder='+44 7668 492301'
-				input-name='phoneNumber'
+				ng-model='contact.type'
+				title="Type*"
+				input-placeholder='Staff'
+				input-name='type'
 				validation-model='{
-					"phoneNumber": "Must be a valid phone number.",
-					"required": "A number is required."
+					"required": "A type is required."
 				}'>
 			</isa-form-field>
 			<isa-form-field
-				class="col-sm-6"
-				ng-model='contact._phoneNumber.type'
-				title="Type"
-				input-placeholder='Mobile'
-				input-name='phoneNumberType'>
+				ng-model='contact.organisation'
+				title="Organisation*"
+				input-placeholder='IBM'
+				input-name='organsiation'
+				validation-model='{
+					"required": "An organisation is required."
+				}'>
 			</isa-form-field>
 		</form>
 	</div>
