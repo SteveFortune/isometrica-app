@@ -1364,6 +1364,16 @@ body.desktop.has-bootcards-navbar-double {
   .resilify-user-activity .resilify-user-activity-time {
     text-align: left; } }
 
+.isa-address-book-page .guidance-bar {
+  position: static;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto; }
+
+.isa-address-book-container {
+  margin-top: 20px; }
+
 /*docwiki styles*/
 .docwiki {
   margin-top: 20px;
