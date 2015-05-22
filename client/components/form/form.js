@@ -1,6 +1,8 @@
 'use strict';
 
-var app = angular.module('isa.form', []);
+var app = angular.module('isa.form', [
+	'isa.form.group'
+]);
 
 
 /**

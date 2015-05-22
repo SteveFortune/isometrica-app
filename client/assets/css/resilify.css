@@ -1512,4 +1512,9 @@ body.desktop.has-bootcards-navbar-double {
     margin: 0;
     opacity: 1; }
 
+.isa-chevron {
+  line-height: 20px;
+  font-size: 24px;
+  color: #337ab7; }
+
 /*# sourceMappingURL=resilify.css.map */

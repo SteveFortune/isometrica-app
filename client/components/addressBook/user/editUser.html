@@ -55,7 +55,7 @@
 				input-name='address'>
 			</isa-form-field>
 			<accordion>
-				<accordion-group heading="Phone Numbers">
+				<isa-form-group title="Phone Numbers">
 					<div class="list-group clearfix" ng-repeat="phoneNumber in user._phoneNumbers">
 						<isa-form-field
 							class="col-sm-6"
@@ -85,8 +85,8 @@
 						<i class="fa fa-plus"></i>
 						New Number
 					</a>
-				</accordion-group>
-				<accordion-group heading="User Admin">
+				</isa-form-group>
+				<isa-form-group title="User Admin">
 					<isa-form-field
 						ng-model='user.type'
 						title="Type of Person"
@@ -109,8 +109,8 @@
 							"containsLetter": "Must contain at least one letter."
 						}'>
 					</isa-form-field>
-				</accordion-group>
-				<accordion-group heading="Call Tree">
+				</isa-form-group>
+				<isa-form-group title="Call Tree">
 					<div class="list-group clearfix" ng-repeat="contact in user._callTreeContacts">
 						<isa-form-field
 							class="col-sm-6"
@@ -143,7 +143,7 @@
 						<i class="fa fa-plus"></i>
 						New Contact
 					</a>
-				</accordion-group>
+				</isa-form-group>
 			</accordion>
 		</form>
 	</div>
