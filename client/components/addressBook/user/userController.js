@@ -63,23 +63,6 @@ app.directive('existsEmail', ['$q', 'UserFactory', function($q, UserFactory) {
 
 
 /**
- * @author Steve Fortune
- */
-app.directive('isaAddressBookModalHeader', function() {
-	return {
-		templateUrl: '/components/addressBook/user/modalHeader.html',
-		restrict: 'AE',
-		scope: {
-			onSave: '&',
-			onCancel: '&',
-			canSave: '=',
-			title: '@'
-		}
-	};
-});
-
-
-/**
  * Validates that password contains at least 1 number
  *
  * @author Steve Fortune

@@ -131,6 +131,7 @@ app.controller('AddressBookController',
 
 }]);
 
+
 /**
  * @author Steve Fortune
  */
@@ -141,6 +142,23 @@ app.directive('isaAddressBookHeader', function() {
 		scope: {
 			selectState: '=',
 			organisation: '='
+		}
+	};
+});
+
+
+/**
+ * @author Steve Fortune
+ */
+app.directive('isaAddressBookModalHeader', function() {
+	return {
+		templateUrl: '/components/addressBook/modalHeader.html',
+		restrict: 'AE',
+		scope: {
+			onSave: '&',
+			onCancel: '&',
+			canSave: '=',
+			title: '@'
 		}
 	};
 });

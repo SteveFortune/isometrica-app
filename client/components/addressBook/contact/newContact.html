@@ -1,0 +1,50 @@
+<div class="panel panel-default bootcards-wiki-panel">
+	<isa-address-book-modal-header
+		can-save="contactForm.$valid"
+		on-save="createContact()"
+		on-cancel="cancel()"
+		title="New Contact">
+	</isa-address-book-modal-header>
+	<div class="modal-body">
+		<form class="form-horizontal" name="contactForm" novalidate>
+			<isa-form-field
+				ng-model='contact.name'
+				title="Name*"
+				input-placeholder='Joe Bloggs'
+				input-name='name'
+				validation-model='{
+					"required": "A name is required.",
+				}'>
+			</isa-form-field>
+			<isa-form-field
+				ng-model='user.email'
+				title="Email*"
+				input-type="email"
+				input-placeholder='joe.bloggs@ibm.com'
+				input-name='email'
+				validation-model='{
+					"required": "An email address is required.",
+					"email": "Must be a valid email address."
+				}'>
+			</isa-form-field>
+			<isa-form-field
+				class="col-sm-6"
+				ng-model='contact._phoneNumber.number'
+				title="Number"
+				input-placeholder='+44 7668 492301'
+				input-name='phoneNumber'
+				validation-model='{
+					"phoneNumber": "Must be a valid phone number.",
+					"required": "A number is required."
+				}'>
+			</isa-form-field>
+			<isa-form-field
+				class="col-sm-6"
+				ng-model='contact._phoneNumber.type'
+				title="Type"
+				input-placeholder='Mobile'
+				input-name='phoneNumberType'>
+			</isa-form-field>
+		</form>
+	</div>
+</div>
