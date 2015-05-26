@@ -70,9 +70,5 @@
   "Contact": {
     "dataSource": "mongodb",
     "public": true
-  },
-  "CallTreeContact": {
-    "dataSource": "mongodb",
-    "public": true
   }
 }
