@@ -77,10 +77,11 @@ module.exports = function(grunt) {
 
     watch : {
       scripts: {
-        files: ['**/*.scss'],
+        files: ['**/*.scss', 'client/**/*.js'],
         tasks: ['default'],
         options: {
           spawn: false,
+          debounceDelay: 1000
         }
       }
     },
@@ -108,18 +109,26 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-loopback-sdk-angular');
   grunt.loadNpmTasks('grunt-karma');
 
-  //note: cssmin disabled for now
-  grunt.registerTask('default', [
+  grunt.registerTask('prod', [
     'concat',
     'sass',
-    'clean:build'
+    'clean:build',
+    'loopback_sdk_angular'
   ]);
 
   grunt.registerTask('lbAngular', [
     'loopback_sdk_angular'
   ])
+  grunt.registerTask('generateCSS', [
+    'concat',
+    'sass',
+    'clean:build'
+  ]);
 
   grunt.registerTask('default', [
+      'concat',
+      'sass',
+      'clean:build',
       'karma'
   ]);
 
