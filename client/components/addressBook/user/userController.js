@@ -268,7 +268,9 @@ app.controller('ModalAddressBookUserController',
 	 * @protected
 	 */
 	$scope.addCallTreeContact = function() {
-		$scope.user._callTreeContacts.push({});
+		$scope.user._callTreeContacts.push({
+			isCallTree: true
+		});
 	};
 
 }]);
