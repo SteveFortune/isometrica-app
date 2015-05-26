@@ -193,8 +193,12 @@ $docwiki-hover-color: #F5F5F5;
 	    display: block;
 	} 
 
-	/*comments */
+	/* tags color */
+	tags-input .tags .tag-item {
+		background: #337ab7;
+	}
 
+	/* comments styling */
 	.comments .panel-body {
 		padding: 0;
 	}
@@ -214,6 +218,7 @@ $docwiki-hover-color: #F5F5F5;
 		opacity: 1;
 	}
 
+	/* signatures styling */
 	.signatures ul {
 		margin-bottom:0;
 	}

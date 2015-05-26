@@ -9,7 +9,8 @@ var app = angular.module('isa.docwiki', [
 	'textAngular',
 	'ngAnimate',
 	'ngTouch',
-	'angularFileUpload'
+	'angularFileUpload',
+	'ngTagsInput'
 
 ]);
 
@@ -155,6 +156,6 @@ app.filter('timeAgo', function() {
 
 app.filter('list', function() {
     return function(list) {
-    	return (list ? list.join("") : "");
+    	return (list ? list.join(", ") : "");
     };
 });

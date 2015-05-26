@@ -17,7 +17,9 @@ app.controller('PageEditBaseController', [ '$scope', '$modal', '$http', '$state'
 	$scope.editPage = function(page) {
 
 		if (typeof page == 'undefined') {
-			page = {};
+			page = {
+				documentId : $scope.moduleId
+			};
 			isNew = true;
 		} else {
 			page = angular.copy(page);
@@ -61,17 +63,13 @@ app.controller('PageEditBaseController', [ '$scope', '$modal', '$http', '$state'
 	
 		$scope.submitted = true;
 
-		//convert tags to array (if it's a string)
-		if (typeof pageObject.tags === 'string') {
-			pageObject.tags = (pageObject.tags.length>0 ? pageObject.tags.split(',') : []);
-		}
+		//convert tags object array to array of strings
+		pageObject.tags = tagObjectsToStringArray( pageObject.tags);
 
 		pageObject.updatedBy = CurrentUser.getCurrentUser().name;
 
 		if (isNew) {
 
-			//set current documentId on page
-			pageObject.documentId = $scope.moduleId;
 			pageObject.createdBy = CurrentUser.getCurrentUser().name;
 
 			Page.create(pageObject).$promise
@@ -123,6 +121,9 @@ app.controller('PageEditBaseController', [ '$scope', '$modal', '$http', '$state'
 
 	};
 
+	/*
+	 * Retrieve a list of files from the GridFS for a specific parent ID
+	 */
 	var _readRelatedFiles = function(parentId) {
 		$http.get('/files/' + parentId).then( function(res) {
 			var files = res.data;
@@ -135,5 +136,22 @@ app.controller('PageEditBaseController', [ '$scope', '$modal', '$http', '$state'
 		});
 	};
 
+	/*
+	 * used for tags: converts an array of tag objects:
+	 * [ { text : 'tag 1'}, { text : 'tag 2'} ]
+	 * to an array of strings: 
+	 * [ 'tag 1', 'tag 2' ]
+	 */
+
+	var tagObjectsToStringArray = function(tagsObjArray) {
+		var tagsArray = [];
+
+		tagsObjArray.forEach( function(tag) {
+			tagsArray.push( tag.text);
+		});
+
+		return tagsArray;
+
+	};
 
 }]);

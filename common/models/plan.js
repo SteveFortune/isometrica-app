@@ -89,8 +89,71 @@ module.exports = function(Plan) {
 		}
 	);
 
+	/* remote method to get a list of all used tags on all pages in an instance of the docwiki
+	 * 
+	 * @author Mark Leusink
+	 */
+	Plan.tags = function(documentId, cb) {
+
+		var loopback = require('loopback');
+		var Page = loopback.findModel('Page');
+
+		/*
+		 * Find all tags in all current pages ('current' is a Page scope) in the docwiki and collect the tags.
+		 *
+		 * Note that we only retrieve the 'tags' field.
+		 */
+		Page.current( { where : { documentId : documentId}, fields : {'tags' : true} }, function(err, pages) {
+
+			var tags = [];
+			var tagsMap = {};		//the map is used to quickly check if a tag was added already
+
+			try {
+				if (err) {
+					console.error(err);
+				}
+
+				//add all tags found to a unique list
+				pages.forEach( function(page) {
+
+					page.tags.forEach( function(tag) {
+
+						if ( !tagsMap[tag] ) {
+							tagsMap[tag] = tag;
+							tags.push( tag  );
+						}
+					});
+
+				});
+				
+				cb(null, tags);
+
+			} catch (e) {
+				console.error(e);
+			}
+
+		});
+
+	};
+
+	Plan.remoteMethod(
+		'tags',
+		{
+			'accepts': [
+   				{arg: 'documentId', type: 'string', required: true}
+   			],
+   			'returns' : [
+   				{ arg: 'tags', type : 'object'}
+   			],
+			'description' : 'Get a list of all tags used in a DocumentWiki'
+		}
+	);
+
 };
 
+/*
+ * Duplicates a DocWiki, including all pages and attached files
+ */
 function copyDocument(model, plan, Page, db, cb) {
 
 	plan = plan.toObject();
