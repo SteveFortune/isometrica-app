@@ -23,6 +23,9 @@
       "type": "string",
       "required": true
     },
+    "isCallTree": {
+      "type": "boolean"
+    },
     "role": {
       "type": "string"
     },
@@ -35,6 +38,16 @@
   },
   "validations": [],
   "relations": {
+    "primaryPhoneNumber": {
+      "type": "embedsOne",
+      "model": "PhoneNumber",
+      "property": "primaryPhoneNumber",
+      "options": {
+          "validate": true,
+          "forceId": true,
+          "persistent": true
+      }
+    },
     "phoneNumbers": {
       "type": "embedsMany",
       "model": "PhoneNumber",

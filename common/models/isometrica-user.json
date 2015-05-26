@@ -38,7 +38,7 @@
     },
     "callTreeContacts": {
       "type": "embedsMany",
-      "model": "CallTreeContact",
+      "model": "Contact",
       "property": "callTreeContacts",
       "options": {
         "validate": true,
