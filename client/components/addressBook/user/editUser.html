@@ -2,15 +2,15 @@
 
 	<isa-address-book-modal-header
 		can-save="userForm.$valid"
-		on-save="updateUser()"
+		on-save="updateEntity()"
 		on-cancel="cancel()"
-		title="{{ user.name }}">
+		title="{{ entity.name }}">
 	</isa-address-book-modal-header>
 
 	<div class="modal-body">
 		<form class="form-horizontal" name="userForm" novalidate>
 			<isa-form-field
-				ng-model='user.firstName'
+				ng-model='entity.firstName'
 				title="First Name*"
 				input-placeholder='Joe'
 				input-name='firstName'
@@ -19,7 +19,7 @@
 				}'>
 			</isa-form-field>
 			<isa-form-field
-				ng-model='user.lastName'
+				ng-model='entity.lastName'
 				title="Last Name*"
 				input-placeholder='Bloggs'
 				input-name='lastName'
@@ -28,13 +28,13 @@
 				}'>
 			</isa-form-field>
 			<isa-form-field
-				ng-model='user.role'
+				ng-model='entity.role'
 				title="Title or Role"
 				input-placeholder='VP of Sales'
 				input-name='role'>
 			</isa-form-field>
 			<isa-form-field
-				ng-model='user.email'
+				ng-model='entity.email'
 				title="Email*"
 				input-type="email"
 				input-placeholder='joe.bloggs@ibm.com'
@@ -49,14 +49,14 @@
 				}'>
 			</isa-form-field>
 			<isa-form-field
-				ng-model='user.address'
+				ng-model='entity.address'
 				title="Address"
 				input-placeholder='10 King St, Nailsworth, GL5 0NN'
 				input-name='address'>
 			</isa-form-field>
 			<accordion>
 				<isa-form-group title="Phone Numbers">
-					<isa-group-row delete="deletePhoneNumber($index)" ng-repeat="phoneNumber in user._phoneNumbers">
+					<isa-group-row delete="deletePhoneNumber($index)" ng-repeat="phoneNumber in entity._phoneNumbers">
 						<isa-form-field
 							class="col-sm-6"
 							ng-model='phoneNumber.number'
@@ -76,7 +76,7 @@
 							input-name='type_{{ $index }}'>
 						</isa-form-field>
 					</isa-group-row>
-					<div ng-if="!user._phoneNumbers.length">
+					<div ng-if="!entity._phoneNumbers.length">
 						<p>
 							No phone numbers.
 						</p>
@@ -88,7 +88,7 @@
 				</isa-form-group>
 				<isa-form-group title="User Admin">
 					<isa-form-field
-						ng-model='user.type'
+						ng-model='entity.type'
 						title="Type of Person"
 						input-placeholder='Admin'
 						input-name='userType'>
@@ -111,7 +111,7 @@
 					</isa-form-field>
 				</isa-form-group>
 				<isa-form-group title="Call Tree">
-					<isa-group-row delete="deleteContact($index)" ng-repeat="contact in user._callTreeContacts">
+					<isa-group-row delete="deleteContact($index)" ng-repeat="contact in entity._callTreeContacts">
 						<isa-form-field
 							class="col-sm-6"
 							ng-model='contact.name'
@@ -134,7 +134,7 @@
 							}'>
 						</isa-form-field>
 					</isa-group-row>
-					<div ng-if="!user._callTreeContacts.length">
+					<div ng-if="!entity._callTreeContacts.length">
 						<p>
 							No contacts in call tree.
 						</p>

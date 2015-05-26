@@ -9,22 +9,14 @@
 
 	<div class="modal-body">
 		<form class="form-horizontal" name="contactForm" novalidate>
+			
 			<isa-form-field
-				ng-model='contact.firstName'
-				title="First Name*"
-				input-placeholder='Joe'
-				input-name='firstName'
+				ng-model='contact.name'
+				title="Name*"
+				input-placeholder='Joe Bloggs'
+				input-name='name'
 				validation-model='{
-					"required": "A first name is required.",
-				}'>
-			</isa-form-field>
-			<isa-form-field
-				ng-model='contact.lastName'
-				title="Last Name*"
-				input-placeholder='Bloggs'
-				input-name='lastName'
-				validation-model='{
-					"required": "A last name is required.",
+					"required": "A name is required."
 				}'>
 			</isa-form-field>
 			<isa-form-field
@@ -34,6 +26,24 @@
 				input-name='role'>
 			</isa-form-field>
 			<isa-form-field
+				ng-model='contact.organisation'
+				title="Organisation*"
+				input-placeholder='IBM'
+				input-name='organsiation'
+				validation-model='{
+					"required": "An organisation is required."
+				}'>
+			</isa-form-field>
+			<isa-form-field
+				ng-model='contact.type'
+				title="Type*"
+				input-placeholder='Staff'
+				input-name='type'
+				validation-model='{
+					"required": "A type is required."
+				}'>
+			</isa-form-field>
+			<isa-form-field
 				ng-model='contact.email'
 				title="Email*"
 				input-type="email"
@@ -41,19 +51,10 @@
 				input-name='email'
 				validation-model='{
 					"required": "An email address is required.",
-					"email": "Must be a valid email address.",
-					"existsEmail": "A contact already exists with this email address."
-				}'
-				pending-model='{
-					"existsEmail": "Checking email..."
+					"email": "Must be a valid email address."
 				}'>
 			</isa-form-field>
-			<isa-form-field
-				ng-model='contact.address'
-				title="Address"
-				input-placeholder='10 King St, Nailsworth, GL5 0NN'
-				input-name='address'>
-			</isa-form-field>
+
 			<accordion>
 				<isa-form-group title="Phone Numbers">
 					<isa-group-row delete="deletePhoneNumber($index)" ng-repeat="phoneNumber in contact._phoneNumbers">
@@ -87,6 +88,14 @@
 					</a>
 				</isa-form-group>
 			</accordion>
+
+			<isa-form-field
+				ng-model='contact.address'
+				title="Address"
+				input-placeholder='10 King St, Nailsworth, GL5 0NN'
+				input-name='address'>
+			</isa-form-field>
+
 		</form>
 	</div>
 </div>

@@ -2,6 +2,7 @@
 
 var app = angular.module('isa.addressbook', [
 	'isa.addressbook.factories',
+	'isa.addressbook.base',
 	'isa.addressbook.user',
 	'ui.router',
 	'ui.bootstrap',
@@ -70,7 +71,7 @@ app.controller('AddressBookController',
 				items.length > 0
 			) {
 				$state.transitionTo('addressbook.user', {
-					userId: items[0].id
+					id: items[0].id
 				});
 			}
 			$scope.addressBookCollection = $scope.addressBookCollection.concat(items);
@@ -88,7 +89,7 @@ app.controller('AddressBookController',
 	$scope.registerUser = function() {
 		$modal.open({
 			templateUrl: '/components/addressBook/user/newUser.html',
-			controller : 'ModalAddressBookUserController',
+			controller : 'AddressBookEditUserController',
 			resolve: {
 				user: function() {
 					return null;
@@ -112,7 +113,7 @@ app.controller('AddressBookController',
 	$scope.editUser = function(user) {
 		$modal.open({
 			templateUrl: '/components/addressBook/user/editUser.html',
-			controller : 'ModalAddressBookUserController',
+			controller : 'AddressBookEditUserController',
 			resolve: {
 				user: function() {
 					return user;

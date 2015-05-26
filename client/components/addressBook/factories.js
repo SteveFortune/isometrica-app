@@ -4,6 +4,23 @@ var app = angular.module('isa.addressbook.factories', []);
 
 
 /**
+ * Service responsible for CRUD operations on users.
+ *
+ * @author Steve Fortune
+ */
+app.factory('ContactFactory' ['$injector', 'PersistentFactoryNameResolver',
+	function($injector, PersistentFactoryNameResolver) {
+		return $injector.get(PersistentFactoryNameResolver.resolveFactory('ContactFactory'));
+	}]);
+
+app.factory('_ContactFactoryRemote', ['Contact', '$q', function(Contact, $q) {
+
+}]);
+
+app.factory('_ContactFactoryLocal', function() {});
+
+
+/**
  * Basic service responsible for CRUD operations on users.
  *
  * @note Could we use a provider here somehow? It seems a lot cleaner.

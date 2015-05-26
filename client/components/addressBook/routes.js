@@ -14,8 +14,8 @@ app.config(['$stateProvider', function($stateProvider) {
 		})
 	$stateProvider
 		.state('addressbook.user', {
-			url: '/user/:userId',
+			url: '/user/:id',
 			templateUrl: '/components/addressBook/user/viewUser.html',
-			controller: 'AddressBookUserController'
+			controller: 'AddressBookReadUserController'
 		});
 }]);

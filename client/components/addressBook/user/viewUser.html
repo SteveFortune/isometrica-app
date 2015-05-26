@@ -2,7 +2,7 @@
 
 	<div class="panel-heading clearfix">
 		<div class="btn-group pull-right">
-			<a class="btn btn-default" ng-click="editUser(user)">
+			<a class="btn btn-default" ng-click="editUser(entity)">
 				<i class="fa fa-pencil"></i>
 				Edit
 			</a>
@@ -13,27 +13,27 @@
 	<div class="list-group">
 
 		<div class="list-group-item">
-			<isa-profile-img user="user"></isa-profile-img>
+			<isa-profile-img user="entity"></isa-profile-img>
 			<h4 class="list-group-item-heading">Name</h4>
-			<p class="list-group-item-text">{{ user.firstName + ' ' + user.lastName }}</p>
+			<p class="list-group-item-text">{{ entity.firstName + ' ' + entity.lastName }}</p>
 		</div>
 
 		<div class="list-group-item">
 			<h4 class="list-group-item-heading">Role</h4>
-			<p class="list-group-item-text">{{ user.role || "Unknown" }}</p>
+			<p class="list-group-item-text">{{ entity.role || "Unknown" }}</p>
 		</div>
 
 		<div class="list-group-item">
 			<h4 class="list-group-item-heading">Email</h4>
-			<a href="mailto:"><p class="list-group-item-text">{{ user.email }}</p></a>
+			<a href="mailto:"><p class="list-group-item-text">{{ entity.email }}</p></a>
 		</div>
 
 		<div class="list-group-item">
 			<h4 class="list-group-item-heading">Phone Numbers</h4>
 			<div
 				class="row"
-				ng-if="user._phoneNumbers && user._phoneNumbers.length > 0"
-				ng-repeat="number in user._phoneNumbers">
+				ng-if="entity._phoneNumbers && entity._phoneNumbers.length > 0"
+				ng-repeat="number in entity._phoneNumbers">
 				<div class="col-sm-6">
 					<h4 class="list-group-item-heading"><a href="tel:">{{ number.number }}</a></h4>
 				</div>
@@ -41,7 +41,7 @@
 					<h4 class="list-group-item-heading">{{ number.type }}</h4>
 				</div>
 			</div>
-			<div ng-if="!user._phoneNumbers || user._phoneNumbers.length === 0" class="row">
+			<div ng-if="!entity._phoneNumbers || entity._phoneNumbers.length === 0" class="row">
 				<div class="col-sm-11">
 					No numbers.
 				</div>
