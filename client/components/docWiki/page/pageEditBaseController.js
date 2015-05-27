@@ -18,7 +18,8 @@ app.controller('PageEditBaseController', [ '$scope', '$modal', '$http', '$state'
 
 		if (typeof page == 'undefined') {
 			page = {
-				documentId : $scope.moduleId
+				documentId : $scope.moduleId,
+				isDraft : false
 			};
 			isNew = true;
 		} else {

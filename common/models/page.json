@@ -33,6 +33,10 @@
       "type": [
         "string"
       ]
+    },
+    "isDraft": {
+      "type": "boolean",
+      "default": false
     }
   },
   "validations": [],

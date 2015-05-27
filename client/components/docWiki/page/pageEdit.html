@@ -28,8 +28,30 @@
 
 				<label class="col-sm-3 control-label">Section number</label>
 			
-				<div class="col-sm-9">
+				<div class="col-sm-3">
 					<input name="section" class="form-control" ng-model="page.section" autofocus />
+				</div>
+
+				<label class="col-sm-3 control-label">Draft?</label>
+			
+				<div class="col-sm-3">
+
+					<div class="btn-group" role="group" aria-label="..." data-toggle="buttons">
+					  <label class="btn"
+					  	ng-class="(page.isDraft ? 'btn-primary active' : 'btn-default')">
+					    <input type="radio" name="draft" id="option1" autocomplete="off"
+					    	ng-model="page.isDraft"
+					    	ng-value="true"> Yes 
+					  </label>
+					  <label class="btn"
+					  ng-class="( !page.isDraft ? 'btn-primary active' : 'btn-default')">
+					    <input type="radio" name="draft" id="option1" autocomplete="off"
+					    	ng-model="page.isDraft"
+					    	ng-value="false"> No
+					  </label>
+					</div>
+
+					
 				</div>
 
 			</div>
@@ -37,7 +59,7 @@
 			<div class="form-group" ng-class="{ 'has-error' : submitted && pageForm.title.$invalid }">
 
 				<label class="col-sm-3 control-label">Subject</label>
-			
+
 				<div class="col-sm-9">
 					<input name="title" class="form-control" ng-model="page.title" required />
 				</div>
