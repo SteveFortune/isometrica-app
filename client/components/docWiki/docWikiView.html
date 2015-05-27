@@ -88,6 +88,10 @@
                   <ng-include src="'/components/docWiki/docWikiListCategory.html'"></ng-include>
                 </div>
 
+                <div ng-show="tagsList.length==0" style="padding:10px">
+                  No pages have been signed yet
+                </div>
+
               </accordion-group>
 
               <!--signers-->
@@ -99,6 +103,10 @@
                 <!--list with signers in this wiki-->
                 <div ng-repeat="subCat in signersList">
                   <ng-include src="'/components/docWiki/docWikiListCategory.html'"></ng-include>
+                </div>
+
+                <div ng-show="signersList.length==0" style="padding:10px">
+                  No pages have been signed yet
                 </div>
 
               </accordion-group>
