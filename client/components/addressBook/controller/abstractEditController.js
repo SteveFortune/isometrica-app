@@ -1,75 +1,16 @@
 'use strict';
 
-var app = angular.module('isa.addressbook.base', [
-	'isa.addressbook.factories',
-	'ui.bootstrap'
-]);
-
-
-/**
- * Utility services that assembles the name of an event.
- *
- * @param	entityType		String
- * @param	id				String | Number
- * @param	operationType	String
- * @author 	Steve Fortune
- */
-app.service('EventNameAssembler', function() {
-	return function(entityType, operationType, id) {
-		var eventName = entityType + '.';
-		if (typeof id !== 'undefined') {
-			eventName += id + '.';
-		}
-		eventName += operationType;
-		return eventName;
-	};
-});
-
-
-/**
- * Non-modal controller for rendering a readonly-view on an entity.
- *
- * @author Steve Fortune
- */
-app.controller('AddressBookReadController',
-	['$stateParams', '$scope', '$rootScope', 'EventNameAssembler', 'factory', 'type',
-	function($stateParams, $scope, $rootScope, EventNameAssembler, factory, type) {
-
-	/**
-	 * @var String
-	 */
-	var id = $stateParams.id;
-
-	factory.findOneBy({
-		id: id
-	}).then(function(entity) {
-		$scope.entity = entity;
-	}, function(error) {
-		// TODO: Error handling
-	});
-
-	/**
-	 * Listen to udpate events and refresh our entity to avoid rendering
-	 * old data.
-	 *
-	 * @private
-	 */
-	$rootScope.$on(EventNameAssembler(type, 'update', id), function(event, newEntity) {
-		$scope.entity = newEntity;
-	});
-
-}]);
-
+var app = angular.module('isa.addressbook');
 
 /**
  * Abstract modal controller that deals with entity persistence and communicating back
  * to the owner of the modal dialog.
  *
- * @param	factory			Object		A persistent factory that has the following methods:
- *										all, findBy, insert, deleteById, updateById.
  * @note 	Because the entities that we're mutating might be in use else where
  * 		 	in the application, we emit `{type}.new`, `{type}.update` and
  *		 	`{type}.{id}.update` events.
+ * @param	factory			Object		A persistent factory that has the following methods:
+ *										all, findBy, insert, deleteById, updateById.
  * @param	entity			Object		The object to make a copy of and manipulate.
  * @param	type			String		String identifying the type of the entity.
  * @author 	Steve Fortune

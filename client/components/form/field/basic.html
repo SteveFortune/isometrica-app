@@ -6,14 +6,13 @@
 			{{ title }}
 		</label>
 		<div class="col-xs-9">
-			<input
-				isa-input
+			<isa-input
 				type="{{ inputType }}"
 				name="{{ inputName }}"
 				class="form-control"
 				placeholder="{{ inputPlaceholder || 'Enter...' }}"
 				ng-model="ngModel"
-				ng-model-options="{ debounce: 500, allowInvalid: true }"/>
+				ng-model-options="{ debounce: 500, allowInvalid: true }">
 		</div>
 	</div>
 

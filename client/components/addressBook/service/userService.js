@@ -1,24 +1,6 @@
 'use strict';
 
-var app = angular.module('isa.addressbook.factories', []);
-
-
-/**
- * Service responsible for CRUD operations on users.
- *
- * @author Steve Fortune
- */
-app.factory('ContactFactory' ['$injector', 'PersistentFactoryNameResolver',
-	function($injector, PersistentFactoryNameResolver) {
-		return $injector.get(PersistentFactoryNameResolver.resolveFactory('ContactFactory'));
-	}]);
-
-app.factory('_ContactFactoryRemote', ['Contact', '$q', function(Contact, $q) {
-
-}]);
-
-app.factory('_ContactFactoryLocal', function() {});
-
+var app = angular.module('isa.addressbook');
 
 /**
  * Basic service responsible for CRUD operations on users.
@@ -29,12 +11,9 @@ app.factory('_ContactFactoryLocal', function() {});
  * 		 from it here.
  * @author Steve Fortune
  */
-app.factory('UserFactory', ['$injector', 'PersistentFactoryNameResolver',
-	function($injector, PersistentFactoryNameResolver) {
-		return $injector.get(PersistentFactoryNameResolver.resolveFactory('UserFactory'));
-	}]);
+isa.persistentService(app, 'UserService');
 
-app.factory('_UserFactoryRemote', ['IsometricaUser', '$q', function(IsometricaUser, $q) {
+app.factory('_UserServiceRemote', ['IsometricaUser', '$q', function(IsometricaUser, $q) {
 
 	/**
 	 * The size of the result pages
@@ -133,7 +112,7 @@ app.factory('_UserFactoryRemote', ['IsometricaUser', '$q', function(IsometricaUs
 	}
 }]);
 
-app.factory('_UserFactoryLocal', ['$q', function($q) {
+app.factory('_UserServiceLocal', ['$q', function($q) {
 	return {
 		all: function() {
 			return $q(function(resolve, reject) {

@@ -1,14 +1,6 @@
 'use strict';
 
-var app = angular.module('isa.addressbook', [
-	'isa.addressbook.factories',
-	'isa.addressbook.base',
-	'isa.addressbook.user',
-	'ui.router',
-	'ui.bootstrap',
-	'infinite-scroll'
-]);
-
+var app = angular.module('isa.addressbook');
 
 /**
  * Main controller for address book UI.
@@ -17,8 +9,8 @@ var app = angular.module('isa.addressbook', [
  * @author Steve Fortune
  */
 app.controller('AddressBookController',
-	['UserFactory', '$scope', '$state', '$modal',
-	function(UserFactory, $scope, $state, $modal){
+	['UserService', '$scope', '$rootScope', '$state', '$modal',
+	function(UserService, $scope, $rootScope, $state, $modal){
 
 	/**
 	 * The select filter state.
@@ -38,32 +30,24 @@ app.controller('AddressBookController',
 	 * A map of select states to config objects. These objects contain the
 	 * following properties:
 	 *
-	 * - `route`		String		The nested state
-	 * - `factory`		Object		An object responsible for make data access calls.
-	 *								to execute a query. Returns the resulting promise.
-	 * - `collection` 	Array		Array of loaded objects.
+	 * - `route`				String		The nested state
+	 * - `factory`				Object		An object responsible for make data access calls.
+	 *										to execute a query. Returns the resulting promise.
+	 * - `collection` 			Array		Array of loaded objects.
+	 * - `modalControllerConf`	Object		Config used to initialise a modal controller to
+	 *										create a new instance of the entity.
 	 *
 	 * @const Dictionary
 	 */
 	var selectStates = {
 		'Users': {
 			route: 'addressbook.user',
-			factory: UserFactory,
+			factory: UserService,
 			collection: [],
 			modalControllerConf: {
-				templateUrl: '/components/addressBook/user/newUser.html',
+				templateUrl: '/components/addressBook/view/newUser.html',
 				controller : 'AddressBookEditUserController'
 			}
-		},
-		'Contacts': {
-			route: 'addressbook.contact',
-			factory: null,
-			collection: []
-		},
-		'Organisation': {
-			route: 'addressbook.organsation',
-			factory: null,
-			collection: []
 		}
 	};
 
@@ -131,7 +115,8 @@ app.controller('AddressBookController',
 	 * @protected
 	 */
 	$scope.add = function() {
-		var controllerConf = angular.extend(currentSelectState().modalControllerConf, {
+		var currentState = currentSelectState();
+		var controllerConf = angular.extend(currentState.modalControllerConf, {
 			resolve: {
 				entity: function() {
 					return null;
@@ -139,7 +124,7 @@ app.controller('AddressBookController',
 			}
 		});
 		$modal.open(controllerConf).result.then(function(user) {
-			$scope.addressBookCollection.unshift(user);
+			currentState.collection.unshift(user);
 		}, function(error) {
 			if (error) {
 				// TODO Handle
@@ -157,55 +142,25 @@ app.controller('AddressBookController',
 	});
 
 	/**
+	 * Listens for model changes and updates the controller's local collections
+	 *
+	 * @protected
+	 */
+	$rootScope.$on('user.update', function(ev, updatedUser) {
+		updateCollection('Users', updatedUser);
+	});
+
+	/**
+	 * Updates a select state collection based on a given key.
+	 *
+	 * @param	selectState		String
+	 * @param	entity			Object
 	 * @private
 	 */
-	var updateCollection = function(entity, collection) {
-		isa.utils.replace(collection, null, entity, function(prop) {
+	var updateCollection = function(selectState, entity) {
+		isa.utils.replace(selectStates[selectState].collection, null, entity, function(prop) {
 			return prop.id === entity.id;
 		});
 	};
 
-	$scope.$on('user.update', function(ev, updatedUser) {
-		updateCollection(selectStates['Users'], updatedUser);
-	});
-	$scope.$on('contact.update', function(ev, updatedUser) {
-		updateCollection(selectStates['Contacts'], updatedUser);
-	});
-	$scope.$on('organisation.update', function(ev, updatedUser) {
-		updateCollection(selectStates['Organisations'], updatedUser);
-	});
-
-
 }]);
-
-
-/**
- * @author Steve Fortune
- */
-app.directive('isaAddressBookHeader', function() {
-	return {
-		templateUrl: '/components/addressBook/header.html',
-		restrict: 'AE',
-		scope: {
-			selectState: '=',
-			organisation: '='
-		}
-	};
-});
-
-
-/**
- * @author Steve Fortune
- */
-app.directive('isaAddressBookModalHeader', function() {
-	return {
-		templateUrl: '/components/addressBook/modalHeader.html',
-		restrict: 'AE',
-		scope: {
-			onSave: '&',
-			onCancel: '&',
-			canSave: '=',
-			title: '@'
-		}
-	};
-});
