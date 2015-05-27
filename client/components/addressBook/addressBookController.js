@@ -21,24 +21,6 @@ app.controller('AddressBookController',
 	function(UserFactory, $scope, $state, $modal){
 
 	/**
-	 * @const Array
-	 */
-	$scope.loadingStates = [
-		'loading',
-		'loaded',
-		'failed'
-	];
-
-	/**
-	 * @const Array
-	 */
-	$scope.selectStates = [
-		'Users',
-		'Contacts',
-		'Organisations'
-	];
-
-	/**
 	 * The select filter state.
 	 *
 	 * @var String
@@ -53,11 +35,61 @@ app.controller('AddressBookController',
 	$scope.loadingState = 'loading';
 
 	/**
-	 * The collection of users, contacts and organisations to render.
+	 * A map of select states to config objects. These objects contain the
+	 * following properties:
 	 *
-	 * @var Array
+	 * - `route`		String		The nested state
+	 * - `factory`		Object		The data access object
+	 * - `collection` 	Array		Array of loaded objects.
+	 *
+	 * @const Dictionary
 	 */
-	$scope.addressBookCollection = [];
+	var selectStates = {
+		'Users': {
+			route: 'addressbook.user',
+			factory: UserFactory,
+			collection: []
+		},
+		'Contacts': {
+			route: 'addressbook.contact',
+			factory: null,//ContactFactory,
+			collection: []
+		},
+		'Organisation': {
+			route: 'addressbook.organsation',
+			factory: null,//OrganisationFactory,
+			collection: []
+		},
+		'In call tree': {
+			route: 'addressbook.contact',
+			factory: null,//ContactFactory,
+			collection: []
+		},
+		'Not in call tree': {
+			route: 'addressbook.contact',
+			factory: null,//ContactFactory,
+			collection: []
+		},
+	};
+
+	/**
+	 * Convenience method. Returns the current collection based on the select state.
+	 *
+	 * @return 	Array
+	 */
+	$scope.addressBookCollection = function() {
+		return currentSelectState().collection;
+	};
+
+	/**
+	 * Returns the config object for the current select state.
+	 *
+	 * @private
+	 * @return Object
+	 */
+	var currentSelectState = function() {
+		return selectStates[$scope.selectState];
+	};
 
 	/**
 	 * Constructs a guery and loads more from our service
@@ -65,16 +97,15 @@ app.controller('AddressBookController',
 	 * @protected
 	 */
 	$scope.loadMore = function() {
-		UserFactory.all($scope.addressBookCollection.length).then(function(items) {
-			if (
-				$scope.addressBookCollection.length === 0 &&
-				items.length > 0
-			) {
+		var currentState = currentSelectState();
+		var collection = currentState.collection;
+		currentState.factory.all(collection.length).then(function(items) {
+			if (collection.length === 0 && items.length > 0) {
 				$state.transitionTo('addressbook.user', {
 					id: items[0].id
 				});
 			}
-			$scope.addressBookCollection = $scope.addressBookCollection.concat(items);
+			currentState.collection = collection.concat(items);
 			$scope.loadingState = 'loaded';
 		}, function() {
 			$scope.loadingState = 'failed';
@@ -87,7 +118,7 @@ app.controller('AddressBookController',
 	 * @protected
 	 */
 	$scope.registerUser = function() {
-		$modal.open({
+		/*$modal.open({
 			templateUrl: '/components/addressBook/user/newUser.html',
 			controller : 'AddressBookEditUserController',
 			resolve: {
@@ -101,7 +132,7 @@ app.controller('AddressBookController',
 			if (error) {
 				// TODO Handle
 			}
-		});
+		});*/
 	};
 
 	/**
@@ -111,7 +142,7 @@ app.controller('AddressBookController',
 	 * @protected
 	 */
 	$scope.editUser = function(user) {
-		$modal.open({
+		/*$modal.open({
 			templateUrl: '/components/addressBook/user/editUser.html',
 			controller : 'AddressBookEditUserController',
 			resolve: {
@@ -127,8 +158,17 @@ app.controller('AddressBookController',
 			if (error) {
 				// TODO Handle
 			}
-		});
+		});*/
 	};
+
+	/**
+	 * Watches the state of the select box to trigger the first load.
+	 *
+	 * @protected
+	 */
+	$scope.$watch('selectState', function(newState, oldState) {
+		$scope.loadMore();
+	});
 
 }]);
 
