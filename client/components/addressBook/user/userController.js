@@ -12,8 +12,8 @@ var app = angular.module('isa.addressbook.user', [
  * @author 	Steve Fortune
  */
 app.controller('AddressBookReadUserController',
-	['$stateParams', '$scope', '$rootScope', 'EventNameAssembler', '$controller', 'UserFactory',
-	function($stateParams, $scope, $rootScope, EventNameAssembler, $controller, UserFactory) {
+	['$stateParams', '$scope', '$rootScope', 'EventNameAssembler', '$controller', 'UserFactory', '$modal',
+	function($stateParams, $scope, $rootScope, EventNameAssembler, $controller, UserFactory, $modal) {
 
 	$controller('AddressBookReadController', {
 		$stateParams: $stateParams,
@@ -24,6 +24,21 @@ app.controller('AddressBookReadUserController',
 		type: 'user'
 	});
 
+	/**
+	 *
+	 */
+	$scope.editUser = function() {
+		$modal.open({
+			templateUrl: '/components/addressBook/user/editUser.html',
+			controller : 'AddressBookEditUserController',
+			resolve: {
+				entity: function() {
+					return $scope.entity;
+				}
+			}
+		});
+	};
+
 }]);
 
 
@@ -32,8 +47,8 @@ app.controller('AddressBookReadUserController',
  * @author 	Steve Fortune
  */
 app.controller('AddressBookEditUserController',
-	['UserFactory', '$scope', '$rootScope', '$modalInstance', 'EventNameAssembler', '$controller', 'user',
-	function(UserFactory, $scope, $rootScope, $modalInstance, EventNameAssembler, $controller, user) {
+	['UserFactory', '$scope', '$rootScope', '$modalInstance', 'EventNameAssembler', '$controller', 'entity',
+	function(UserFactory, $scope, $rootScope, $modalInstance, EventNameAssembler, $controller, entity) {
 
 	$controller('AddressBookEditController', {
 		$scope: $scope,
@@ -41,7 +56,7 @@ app.controller('AddressBookEditUserController',
 		$modalInstance: $modalInstance,
 		factory: UserFactory,
 		EventNameAssembler: EventNameAssembler,
-		entity: user,
+		entity: entity,
 		type: 'user'
 	});
 

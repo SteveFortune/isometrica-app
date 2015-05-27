@@ -51,14 +51,14 @@ app.factory('_UserFactoryRemote', ['IsometricaUser', '$q', function(IsometricaUs
 		 * Find all users.
 		 *
 		 * @public
-		 * @param	page		Number	The offset for the result set
+		 * @param	offet		Number	The offset for the result set
 		 * @return 	Promise
 		 */
-		all: function(offer) {
+		all: function(offet) {
 			return $q(function(resolve, reject) {
 				IsometricaUser.find({
 					filter: {
-						offset: offer,
+						offset: offet,
 						order: "created DESC",
 						limit: PAGE_SIZE
 					}

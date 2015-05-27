@@ -88,7 +88,6 @@ app.directive('isaInput', ['$compile', function($compile) {
 		restrict: 'E',
 	    priority: 1000,
         transclude: true,
-		replace: true,
 		require: '^isaFormField',
 		templateUrl: '/components/form/input.html',
 		link: function(scope, inputElm, attrs, isaFormField) {

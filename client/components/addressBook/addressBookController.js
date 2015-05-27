@@ -39,7 +39,8 @@ app.controller('AddressBookController',
 	 * following properties:
 	 *
 	 * - `route`		String		The nested state
-	 * - `factory`		Object		The data access object
+	 * - `factory`		Object		An object responsible for make data access calls.
+	 *								to execute a query. Returns the resulting promise.
 	 * - `collection` 	Array		Array of loaded objects.
 	 *
 	 * @const Dictionary
@@ -48,28 +49,22 @@ app.controller('AddressBookController',
 		'Users': {
 			route: 'addressbook.user',
 			factory: UserFactory,
-			collection: []
+			collection: [],
+			modalControllerConf: {
+				templateUrl: '/components/addressBook/user/newUser.html',
+				controller : 'AddressBookEditUserController'
+			}
 		},
 		'Contacts': {
 			route: 'addressbook.contact',
-			factory: null,//ContactFactory,
+			factory: null,
 			collection: []
 		},
 		'Organisation': {
 			route: 'addressbook.organsation',
-			factory: null,//OrganisationFactory,
+			factory: null,
 			collection: []
-		},
-		'In call tree': {
-			route: 'addressbook.contact',
-			factory: null,//ContactFactory,
-			collection: []
-		},
-		'Not in call tree': {
-			route: 'addressbook.contact',
-			factory: null,//ContactFactory,
-			collection: []
-		},
+		}
 	};
 
 	/**
@@ -79,6 +74,24 @@ app.controller('AddressBookController',
 	 */
 	$scope.addressBookCollection = function() {
 		return currentSelectState().collection;
+	};
+
+	/**
+	 * Convenience method. Returns the current route based on the select state.
+	 *
+	 * @return 	Array
+	 */
+	$scope.addressBookRoute = function() {
+		return currentSelectState().route;
+	};
+
+	/**
+	 * Retrieves the keys from our selectState object.
+	 *
+	 * @return Array
+	 */
+	$scope.selectOptions = function() {
+		return Object.keys(selectStates);
 	};
 
 	/**
@@ -117,48 +130,21 @@ app.controller('AddressBookController',
 	 *
 	 * @protected
 	 */
-	$scope.registerUser = function() {
-		/*$modal.open({
-			templateUrl: '/components/addressBook/user/newUser.html',
-			controller : 'AddressBookEditUserController',
+	$scope.add = function() {
+		var controllerConf = angular.extend(currentSelectState().modalControllerConf, {
 			resolve: {
-				user: function() {
+				entity: function() {
 					return null;
 				}
 			}
-		}).result.then(function(user) {
+		});
+		$modal.open(controllerConf).result.then(function(user) {
 			$scope.addressBookCollection.unshift(user);
 		}, function(error) {
 			if (error) {
 				// TODO Handle
 			}
-		});*/
-	};
-
-	/**
-	 * Opens a new dialog to edit an existing user.
-	 *
-	 * @param		user	Object		The user object to edit.
-	 * @protected
-	 */
-	$scope.editUser = function(user) {
-		/*$modal.open({
-			templateUrl: '/components/addressBook/user/editUser.html',
-			controller : 'AddressBookEditUserController',
-			resolve: {
-				user: function() {
-					return user;
-				}
-			}
-		}).result.then(function(updatedUser) {
-			isa.utils.replace($scope.addressBookCollection, null, updatedUser, function(prop) {
-				return prop.id === user.id;
-			});
-		}, function(error) {
-			if (error) {
-				// TODO Handle
-			}
-		});*/
+		});
 	};
 
 	/**
@@ -169,6 +155,26 @@ app.controller('AddressBookController',
 	$scope.$watch('selectState', function(newState, oldState) {
 		$scope.loadMore();
 	});
+
+	/**
+	 * @private
+	 */
+	var updateCollection = function(entity, collection) {
+		isa.utils.replace(collection, null, entity, function(prop) {
+			return prop.id === entity.id;
+		});
+	};
+
+	$scope.$on('user.update', function(ev, updatedUser) {
+		updateCollection(selectStates['Users'], updatedUser);
+	});
+	$scope.$on('contact.update', function(ev, updatedUser) {
+		updateCollection(selectStates['Contacts'], updatedUser);
+	});
+	$scope.$on('organisation.update', function(ev, updatedUser) {
+		updateCollection(selectStates['Organisations'], updatedUser);
+	});
+
 
 }]);
 
