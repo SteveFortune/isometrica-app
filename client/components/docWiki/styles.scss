@@ -116,6 +116,9 @@ $docwiki-hover-color: #F5F5F5;
 		.list-group-item-text {
 			font-weight: normal;
 		}
+		.list-group-item:last-child {
+			border-radius: 0;
+		}
 
 		/*expand/ collapse in the list*/
 		.fa-chevron-circle-down, .fa-chevron-circle-right {

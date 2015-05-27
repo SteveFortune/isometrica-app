@@ -28,6 +28,29 @@ app.factory('_PageRemote', [ 'Page', function(Page) {
 			  }
 			);
 
+		},
+
+		/* return a list of all pages from a docwiki
+		 * in which the specified tag is used
+		 */
+		byTag : function(documentId, tag) {
+
+			return Page.__get__current(
+			  { filter: { 
+			  	where : {
+			  		and : [
+			  			{ documentId : documentId },
+			  			{ tags : {inq : [tag] } }
+			  		]
+			  	},
+			  	order : 'section ASC' }
+			  },
+			  function(list) { },
+			  function(errorResponse) {
+			  	console.error(errorResponse);
+			  }
+			);
+
 		}
 
 	};
@@ -46,6 +69,11 @@ app.factory('_PageLocal', [ function() {
 			return [
 				{ title : 'from local', section : ''}
 			];
+		},
+
+		byTag : function(documentId, tag) {
+			//talk to local datastore here
+			console.info('TODO: implement');
 		}
 	};
 

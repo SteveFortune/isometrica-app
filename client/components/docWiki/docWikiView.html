@@ -32,6 +32,8 @@
           <div class="nav">
 
             <accordion close-others="true">
+
+              <!--section-->
               <accordion-group is-open="page.open">
                 <accordion-heading class="hiero">
                   <i class="fa" ng-class="{'fa-chevron-circle-down': page.open, 'fa-chevron-circle-right': !page.open}"></i>Section
@@ -51,6 +53,7 @@
 
               </accordion-group>
 
+              <!--recent-->
               <accordion-group is-open="recent.open">
                 <accordion-heading>
                   <i class="fa" ng-class="{'fa-chevron-circle-down': recent.open, 'fa-chevron-circle-right': !recent.open}"></i>Recently modified
@@ -66,62 +69,37 @@
 
               </accordion-group>
 
-         <!--      <accordion-group is-open="history.open">
-                <accordion-heading>
-                  <i class="fa" ng-class="{'fa-chevron-circle-down': history.open, 'fa-chevron-circle-right': !history.open}"></i>Document history
-                </accordion-heading>
-              </accordion-group> -->
-
-             <!--  <accordion-group is-open="drafts.open">
+              <!--drafts-->
+              <accordion-group is-open="drafts.open">
                 <accordion-heading>
                   <i class="fa" ng-class="{'fa-chevron-circle-down': drafts.open, 'fa-chevron-circle-right': !drafts.open}"></i>Drafts
                 </accordion-heading>
-              </accordion-group> -->
+              </accordion-group>
 
-              <accordion-group is-open="tags.open">
+              <!--tags-->
+              <accordion-group is-open="tags.open"
+                >
                 <accordion-heading>
                   <i class="fa" ng-class="{'fa-chevron-circle-down': tags.open, 'fa-chevron-circle-right': !tags.open}"></i>Tags
                 </accordion-heading>
 
-                <a ng-repeat="tag in tagsList" 
-                  class="list-group-item"
-                  
-                  ui-sref-active="active">
-                  <h4 class="list-group-item-heading">{{tag}}</h4>
-                </a>
+                <!--list with tags used in this wiki-->
+                <div ng-repeat="subCat in tagsList">
+                  <ng-include src="'/components/docWiki/docWikiListCategory.html'"></ng-include>
+                </div>
 
               </accordion-group>
 
+              <!--signers-->
               <accordion-group is-open="signed.open">
                 <accordion-heading>
                   <i class="fa" ng-class="{'fa-chevron-circle-down': signed.open, 'fa-chevron-circle-right': !signed.open}"></i>Signed by
                 </accordion-heading>
 
-                <a ng-repeat="sig in signersList" 
-                  class="list-group-item"
-                  >
-                    <h4 class="list-group-item-heading">{{sig}}</h4>
-                </a>
-
-                <!-- <accordion id="signersList">
-
-                  <accordion-group ng-repeat="signer in signersList">
-                    <accordion-heading>
-                      <i class="fa" 
-                      ng-class="{'fa-chevron-circle-down': signed.open, 'fa-chevron-circle-right': !signed.open}"></i>{{signer}}
-                    </accordion-heading>
-
-   ui-sref="docwiki.page({ pageId : signer.pageId})" 
-                    <a ng-repeat="page in signer.pages" 
-                      class="list-group-item"
-                      ui-sref="docwiki.page({ pageId : page.id})"
-                      ui-sref-active="active">
-                        <h4 class="list-group-item-heading">{{page.section + " " + page.title}}</h4>
-                        <p class="list-group-item-text">{{page.updated | timeAgo}} by {{page.updatedBy}}</p>
-                    </a>-->
-                  </accordion-group>
-
-                </accordion>
+                <!--list with signers in this wiki-->
+                <div ng-repeat="subCat in signersList">
+                  <ng-include src="'/components/docWiki/docWikiListCategory.html'"></ng-include>
+                </div>
 
               </accordion-group>
 

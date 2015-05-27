@@ -32,33 +32,96 @@ app.controller( 'DocWikiController',
 	$scope.moduleId = $stateParams.planId;
 	$scope.docWiki = Plan.findById( { 'id' : $stateParams.planId } );	
 
-	//default open the first menu item ('Pages')
+	//open the first menu item ('Sections') by default
 	$scope.page = { open : true };
 
 	var _readPages = function() {
 
-		//load pages for this document, order by section ascending
+		//load all pages for this docwiki, order by section ascending
 		PageFactory.all($scope.moduleId).$promise.then( function(pages) {
 
-			//get all signers and tags
+			//get all signers and tags, these are stored in a variable
+			//to be referenced in the nav menu
+			var signersMap = {};
 			var signersList = [];
+
 			var tagsList = [];
+			var tagsMap = {};
 
 			angular.forEach( pages, function(page) {
-				angular.forEach(page._signatures, function(sig) {
-					signersList.push(sig.createdBy);
+				angular.forEach(page.signatures, function(sig) {
+					if ( !signersList[sig.createdBy] ) {
+						signersList[sig.createdBy] = sig.createdBy;
+						signersList.push( {name: sig.createdBy, isCollapsed: true, pages : null, type : 'signer'} );
+					}
 				});
 				angular.forEach(page.tags, function(tag) {
-					tagsList.push( tag );
+					if ( !tagsMap[tag] ) {
+						tagsMap[tag] = tag;
+						tagsList.push( {name: tag, isCollapsed: true, pages : null, type : 'tag'} );
+					}
 				});
 			} );
 
-			$scope.signersList = signersList.makeArrayUnique();
-			$scope.tagsList = tagsList.makeArrayUnique();
-
+			$scope.signersList = signersList;
+			$scope.tagsList = tagsList;
 			$scope.pages = pages;
 
 		});
+	};
+
+	//opens/ closes a sub-category in the navigation menu
+	$scope.toggleSubCategory = function(subCat) {
+
+		var _otherCats = (subCat.type === 'tag' ? $scope.tagsList : $scope.signersList);
+
+		//close other tags (if opened)
+		angular.forEach( _otherCats, function(t) {
+			if ( subCat.name !== t.name) { t.isCollapsed = true; }
+		});
+
+		//open tags (and optionally load content)
+		if (subCat.isCollapsed) {
+
+			if (subCat.pages) {
+				subCat.isCollapsed = false;
+			} else {
+
+				subCat.isLoading = true;
+
+				var factory = (subCat.type === 'tag' ? PageFactory.byTag : PageFactory.all);
+
+				factory($scope.moduleId, subCat.name).$promise.then( function(pages) {
+					
+					subCat.isCollapsed = false;
+					subCat.isLoading = false;
+
+					if (subCat.type === 'signer') {
+						//filter pages by signer name
+
+						var filteredPages = [];
+						angular.forEach( pages, function(page) {
+							angular.forEach( page.signatures, function(sig) {
+								if (sig.createdBy === subCat.name) {
+									filteredPages.push(page);
+								}
+							});
+						});
+
+						subCat.pages = filteredPages;
+					} else {
+						subCat.pages = pages;
+					}
+
+				});
+
+			}
+
+		} else {
+			subCat.isCollapsed = true;
+
+		}
+
 	};
 
 	_readPages();
