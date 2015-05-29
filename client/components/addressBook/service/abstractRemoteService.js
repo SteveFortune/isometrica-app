@@ -20,119 +20,125 @@
  *
  * @author Steve Fortune
  */
-isa.AbstractRemoteService = function(lbModel, $q) {
+(function(angular, isa) {
 
-	/**
-	 * The main loopback model we use to interact with our backend service.
-	 *
-	 * @var Object
-	 */
-	this.lbModel = lbModel;
+	var AbstractRemoteService = function(lbModel, $q) {
 
-	/**
-	 * Angular's $q service
-	 *
-	 * @var Object
-	 */
-	this.$q = $q;
+		/**
+		 * The main loopback model we use to interact with our backend service.
+		 *
+		 * @var Object
+		 */
+		this.lbModel = lbModel;
 
-	/**
-	 * Size of the pages to load in `all`
-	 *
-	 * @var Number
-	 */
-	this.pageSize = 10;
+		/**
+		 * Angular's $q service
+		 *
+		 * @var Object
+		 */
+		this.$q = $q;
 
-};
+		/**
+		 * Size of the pages to load in `all`
+		 *
+		 * @var Number
+		 */
+		this.pageSize = 10;
 
-angular.extend(isa.AbstractRemoteService.prototype, {
+	};
 
-	/**
-	 * Finds a all entities. Result sets are limited to the pageSize.
-	 *
-	 * @public
-	 * @param	offet		Number	The offset for the result set
-	 * @return 	Promise
-	 */
-	all: function(offset) {
-		var self = this;
-		return self.$q(function(resolve, reject) {
-			self.lbModel.find({
-				filter: {
-					offset: offset,
-					order: "created DESC",
-					limit: self.pageSize
-				}
-			}, resolve, reject);
-		});
-	},
+	angular.extend(AbstractRemoteService.prototype, {
 
-	/**
-	 * Finds an individual entity by a given predicate (e.g. a hash of attributes to
-	 * match against).
-	 *
-	 * @public
-	 * @param	predicate	Object	Hash of attribute-value pairs to match against
-	 * @return 	Promise
-	 */
-	findOneBy: function(predicate) {
-		var self = this;
-		return self.$q(function(resolve, reject) {
-			self.lbModel.findOne({
-				filter: {
-					where: predicate
-				}
-			}, resolve, reject);
-		});
-	},
+		/**
+		 * Finds a all entities. Result sets are limited to the pageSize.
+		 *
+		 * @public
+		 * @param	offet		Number	The offset for the result set
+		 * @return 	Promise
+		 */
+		all: function(offset) {
+			var self = this;
+			return self.$q(function(resolve, reject) {
+				self.lbModel.find({
+					filter: {
+						offset: offset,
+						order: "created DESC",
+						limit: self.pageSize
+					}
+				}, resolve, reject);
+			});
+		},
 
-	/**
-	 * Creates a new entity. Should _not_ perform any validation.
-	 *
-	 * @public
-	 * @param	newEntity		Object	The entity's attribute/values
-	 * @return 	Promise
-	 */
-	insert: function(newEntity) {
-		var self = this;
-		return self.$q(function(resolve, reject) {
-			self.lbModel.create(null, newEntity, resolve, reject);
-		});
-	},
+		/**
+		 * Finds an individual entity by a given predicate (e.g. a hash of attributes to
+		 * match against).
+		 *
+		 * @public
+		 * @param	predicate	Object	Hash of attribute-value pairs to match against
+		 * @return 	Promise
+		 */
+		findOneBy: function(predicate) {
+			var self = this;
+			return self.$q(function(resolve, reject) {
+				self.lbModel.findOne({
+					filter: {
+						where: predicate
+					}
+				}, resolve, reject);
+			});
+		},
 
-	/**
-	 * Deletes an entity by a given id.
-	 *
-	 * @public
-	 * @param	id			Number | String		The id of the entity to delete
-	 * @return 	Promise
-	 */
-	deleteById: function(id) {
-		var self = this;
-		return self.$q(function(resolve, reject) {
-			self.lbModel.deleteById({
-				id: id
-			}, resolve, reject);
-		});
-	},
+		/**
+		 * Creates a new entity. Should _not_ perform any validation.
+		 *
+		 * @public
+		 * @param	newEntity		Object	The entity's attribute/values
+		 * @return 	Promise
+		 */
+		insert: function(newEntity) {
+			var self = this;
+			return self.$q(function(resolve, reject) {
+				self.lbModel.create(null, newEntity, resolve, reject);
+			});
+		},
 
-	/**
-	 * Updates an entity by a given id.
-	 *
-	 * @public
-	 * @param	id			Number | String		The id of the entity to update
-	 * @param	entity		Object				Attributes / values for the entity
-	 * @return 	Promise
-	 */
-	updateById: function(id, attrs) {
-		var self = this;
-		return self.$q(function(resolve, reject) {
-			self.lbModel.update({
-				where: {
+		/**
+		 * Deletes an entity by a given id.
+		 *
+		 * @public
+		 * @param	id			Number | String		The id of the entity to delete
+		 * @return 	Promise
+		 */
+		deleteById: function(id) {
+			var self = this;
+			return self.$q(function(resolve, reject) {
+				self.lbModel.deleteById({
 					id: id
-				}
-			}, attrs, resolve, reject);
-		});
-	}
+				}, resolve, reject);
+			});
+		},
 
-});
+		/**
+		 * Updates an entity by a given id.
+		 *
+		 * @public
+		 * @param	id			Number | String		The id of the entity to update
+		 * @param	entity		Object				Attributes / values for the entity
+		 * @return 	Promise
+		 */
+		updateById: function(id, attrs) {
+			var self = this;
+			return self.$q(function(resolve, reject) {
+				self.lbModel.update({
+					where: {
+						id: id
+					}
+				}, attrs, resolve, reject);
+			});
+		}
+
+	});
+
+	isa.AbstractRemoteService = AbstractRemoteService;
+
+})(angular, isa);
