@@ -15,11 +15,6 @@ module.exports = function(IsometricaUser) {
 			user = context.data;
 		}
 		user.name = computeFullName(user);
-		console.log('Updated user');
-		console.log('Context instance:');
-		console.log(context.instance);
-		console.log('Context data:');
-		console.log(context.data);
 	  	next();
 	});
 
