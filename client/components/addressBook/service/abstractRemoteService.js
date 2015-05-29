@@ -10,17 +10,17 @@
  *
  * Here is how to declare a remote service using this base class:
  *
- *		var _ExampleServiceRemote = funtion(Example, ...) {
- *			AbstractRemoteService.call(this, Example, ...); // Example is out lbModel
+ *		var _ExampleServiceRemote = funtion(Example, $q, ...) {
+ *			isa.AbstractRemoteService.call(this, Example, $q, ...); // Example is out lbModel
  * 		};
- *		ExampleService.$inject = [ 'Example', ... ];
- *		ExampleService.prototype = AbstractRemoteService;
+ *		ExampleService.$inject = [ 'Example', '$q', ... ];
+ *		ExampleService.prototype = Object.create(isa.AbstractRemoteService.prototype);
  *
  *		app.service('_ExampleServiceRemote', ExampleService);
  *
  * @author Steve Fortune
  */
-var AbstractRemoteService = function(lbModel) {
+isa.AbstractRemoteService = function(lbModel, $q) {
 
 	/**
 	 * The main loopback model we use to interact with our backend service.
@@ -29,6 +29,12 @@ var AbstractRemoteService = function(lbModel) {
 	 */
 	this.lbModel = lbModel;
 
+	/**
+	 * Angular's $q service
+	 *
+	 * @var Object
+	 */
+	this.$q = $q;
 
 	/**
 	 * Size of the pages to load in `all`
@@ -39,7 +45,7 @@ var AbstractRemoteService = function(lbModel) {
 
 };
 
-angular.extend(AbstractRemoteService.prototype, {
+angular.extend(isa.AbstractRemoteService.prototype, {
 
 	/**
 	 * Finds a all entities. Result sets are limited to the pageSize.
@@ -50,7 +56,7 @@ angular.extend(AbstractRemoteService.prototype, {
 	 */
 	all: function(offset) {
 		var self = this;
-		return $q(function(resolve, reject) {
+		return self.$q(function(resolve, reject) {
 			self.lbModel.find({
 				filter: {
 					offset: offset,
@@ -71,7 +77,7 @@ angular.extend(AbstractRemoteService.prototype, {
 	 */
 	findOneBy: function(predicate) {
 		var self = this;
-		return $q(function(resolve, reject) {
+		return self.$q(function(resolve, reject) {
 			self.lbModel.findOne({
 				filter: {
 					where: predicate
@@ -89,7 +95,7 @@ angular.extend(AbstractRemoteService.prototype, {
 	 */
 	insert: function(newEntity) {
 		var self = this;
-		return $q(function(resolve, reject) {
+		return self.$q(function(resolve, reject) {
 			self.lbModel.create(null, newEntity, resolve, reject);
 		});
 	},
@@ -103,7 +109,7 @@ angular.extend(AbstractRemoteService.prototype, {
 	 */
 	deleteById: function(id) {
 		var self = this;
-		return $q(function(resolve, reject) {
+		return self.$q(function(resolve, reject) {
 			self.lbModel.deleteById({
 				id: id
 			}, resolve, reject);
@@ -120,7 +126,7 @@ angular.extend(AbstractRemoteService.prototype, {
 	 */
 	updateById: function(id, attrs) {
 		var self = this;
-		return $q(function(resolve, reject) {
+		return self.$q(function(resolve, reject) {
 			self.lbModel.update({
 				where: {
 					id: id
