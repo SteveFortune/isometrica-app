@@ -3504,43 +3504,6 @@ module.factory(
           method: "POST"
         },
 
-        /**
-         * @ngdoc method
-         * @name lbServices.Plan#tags
-         * @methodOf lbServices.Plan
-         *
-         * @description
-         *
-         * Get a list of all tags used in a DocumentWiki
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         *  - `documentId` – `{string}` - 
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `tags` – `{object=}` - 
-         */
-        "tags": {
-          url: urlBase + "/Plans/tags",
-          method: "POST"
-        },
-
         // INTERNAL. Use CanvasItem.plan() instead.
         "::get::CanvasItem::plan": {
           url: urlBase + "/CanvasItems/:id/plan",
@@ -5075,18 +5038,18 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__findById__commentsRel
+         * @name lbServices.Page#prototype$__findById__comments
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Find a related item by id for commentsRel.
+         * Find a related item by id for comments.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModelExt id
          *
-         *  - `fk` – `{*}` - Foreign key for commentsRel
+         *  - `fk` – `{*}` - Foreign key for comments
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -5103,25 +5066,25 @@ module.factory(
          * This usually means the response is a `Page` object.)
          * </em>
          */
-        "prototype$__findById__commentsRel": {
-          url: urlBase + "/Pages/:id/commentsRel/:fk",
+        "prototype$__findById__comments": {
+          url: urlBase + "/Pages/:id/comments/:fk",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__destroyById__commentsRel
+         * @name lbServices.Page#prototype$__destroyById__comments
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Delete a related item by id for commentsRel.
+         * Delete a related item by id for comments.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModelExt id
          *
-         *  - `fk` – `{*}` - Foreign key for commentsRel
+         *  - `fk` – `{*}` - Foreign key for comments
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -5135,25 +5098,25 @@ module.factory(
          *
          * This method returns no data.
          */
-        "prototype$__destroyById__commentsRel": {
-          url: urlBase + "/Pages/:id/commentsRel/:fk",
+        "prototype$__destroyById__comments": {
+          url: urlBase + "/Pages/:id/comments/:fk",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__updateById__commentsRel
+         * @name lbServices.Page#prototype$__updateById__comments
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Update a related item by id for commentsRel.
+         * Update a related item by id for comments.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModelExt id
          *
-         *  - `fk` – `{*}` - Foreign key for commentsRel
+         *  - `fk` – `{*}` - Foreign key for comments
          *
          * @param {Object} postData Request data.
          *
@@ -5174,25 +5137,25 @@ module.factory(
          * This usually means the response is a `Page` object.)
          * </em>
          */
-        "prototype$__updateById__commentsRel": {
-          url: urlBase + "/Pages/:id/commentsRel/:fk",
+        "prototype$__updateById__comments": {
+          url: urlBase + "/Pages/:id/comments/:fk",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__findById__signaturesRel
+         * @name lbServices.Page#prototype$__findById__signatures
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Find a related item by id for signaturesRel.
+         * Find a related item by id for signatures.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModelExt id
          *
-         *  - `fk` – `{*}` - Foreign key for signaturesRel
+         *  - `fk` – `{*}` - Foreign key for signatures
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -5209,25 +5172,25 @@ module.factory(
          * This usually means the response is a `Page` object.)
          * </em>
          */
-        "prototype$__findById__signaturesRel": {
-          url: urlBase + "/Pages/:id/signaturesRel/:fk",
+        "prototype$__findById__signatures": {
+          url: urlBase + "/Pages/:id/signatures/:fk",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__destroyById__signaturesRel
+         * @name lbServices.Page#prototype$__destroyById__signatures
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Delete a related item by id for signaturesRel.
+         * Delete a related item by id for signatures.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModelExt id
          *
-         *  - `fk` – `{*}` - Foreign key for signaturesRel
+         *  - `fk` – `{*}` - Foreign key for signatures
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -5241,25 +5204,25 @@ module.factory(
          *
          * This method returns no data.
          */
-        "prototype$__destroyById__signaturesRel": {
-          url: urlBase + "/Pages/:id/signaturesRel/:fk",
+        "prototype$__destroyById__signatures": {
+          url: urlBase + "/Pages/:id/signatures/:fk",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__updateById__signaturesRel
+         * @name lbServices.Page#prototype$__updateById__signatures
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Update a related item by id for signaturesRel.
+         * Update a related item by id for signatures.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModelExt id
          *
-         *  - `fk` – `{*}` - Foreign key for signaturesRel
+         *  - `fk` – `{*}` - Foreign key for signatures
          *
          * @param {Object} postData Request data.
          *
@@ -5280,154 +5243,19 @@ module.factory(
          * This usually means the response is a `Page` object.)
          * </em>
          */
-        "prototype$__updateById__signaturesRel": {
-          url: urlBase + "/Pages/:id/signaturesRel/:fk",
+        "prototype$__updateById__signatures": {
+          url: urlBase + "/Pages/:id/signatures/:fk",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#__get__current
+         * @name lbServices.Page#prototype$__get__comments
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Queries current of Page.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - 
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Page` object.)
-         * </em>
-         */
-        "__get__current": {
-          isArray: true,
-          url: urlBase + "/Pages/current",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Page#__create__current
-         * @methodOf lbServices.Page
-         *
-         * @description
-         *
-         * Creates a new instance in current of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Page` object.)
-         * </em>
-         */
-        "__create__current": {
-          url: urlBase + "/Pages/current",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Page#__delete__current
-         * @methodOf lbServices.Page
-         *
-         * @description
-         *
-         * Deletes all current of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        "__delete__current": {
-          url: urlBase + "/Pages/current",
-          method: "DELETE"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Page#__count__current
-         * @methodOf lbServices.Page
-         *
-         * @description
-         *
-         * Counts current of Page.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        "__count__current": {
-          url: urlBase + "/Pages/current/count",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Page#prototype$__get__commentsRel
-         * @methodOf lbServices.Page
-         *
-         * @description
-         *
-         * Queries commentsRel of Page.
+         * Queries comments of Page.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -5450,20 +5278,20 @@ module.factory(
          * This usually means the response is a `Page` object.)
          * </em>
          */
-        "prototype$__get__commentsRel": {
+        "prototype$__get__comments": {
           isArray: true,
-          url: urlBase + "/Pages/:id/commentsRel",
+          url: urlBase + "/Pages/:id/comments",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__create__commentsRel
+         * @name lbServices.Page#prototype$__create__comments
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Creates a new instance in commentsRel of this model.
+         * Creates a new instance in comments of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -5488,19 +5316,19 @@ module.factory(
          * This usually means the response is a `Page` object.)
          * </em>
          */
-        "prototype$__create__commentsRel": {
-          url: urlBase + "/Pages/:id/commentsRel",
+        "prototype$__create__comments": {
+          url: urlBase + "/Pages/:id/comments",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__delete__commentsRel
+         * @name lbServices.Page#prototype$__delete__comments
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Deletes all commentsRel of this model.
+         * Deletes all comments of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -5518,19 +5346,19 @@ module.factory(
          *
          * This method returns no data.
          */
-        "prototype$__delete__commentsRel": {
-          url: urlBase + "/Pages/:id/commentsRel",
+        "prototype$__delete__comments": {
+          url: urlBase + "/Pages/:id/comments",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__count__commentsRel
+         * @name lbServices.Page#prototype$__count__comments
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Counts commentsRel of Page.
+         * Counts comments of Page.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -5552,19 +5380,19 @@ module.factory(
          *
          *  - `count` – `{number=}` - 
          */
-        "prototype$__count__commentsRel": {
-          url: urlBase + "/Pages/:id/commentsRel/count",
+        "prototype$__count__comments": {
+          url: urlBase + "/Pages/:id/comments/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__get__signaturesRel
+         * @name lbServices.Page#prototype$__get__signatures
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Queries signaturesRel of Page.
+         * Queries signatures of Page.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -5587,20 +5415,20 @@ module.factory(
          * This usually means the response is a `Page` object.)
          * </em>
          */
-        "prototype$__get__signaturesRel": {
+        "prototype$__get__signatures": {
           isArray: true,
-          url: urlBase + "/Pages/:id/signaturesRel",
+          url: urlBase + "/Pages/:id/signatures",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__create__signaturesRel
+         * @name lbServices.Page#prototype$__create__signatures
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Creates a new instance in signaturesRel of this model.
+         * Creates a new instance in signatures of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -5625,19 +5453,19 @@ module.factory(
          * This usually means the response is a `Page` object.)
          * </em>
          */
-        "prototype$__create__signaturesRel": {
-          url: urlBase + "/Pages/:id/signaturesRel",
+        "prototype$__create__signatures": {
+          url: urlBase + "/Pages/:id/signatures",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__delete__signaturesRel
+         * @name lbServices.Page#prototype$__delete__signatures
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Deletes all signaturesRel of this model.
+         * Deletes all signatures of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -5655,19 +5483,19 @@ module.factory(
          *
          * This method returns no data.
          */
-        "prototype$__delete__signaturesRel": {
-          url: urlBase + "/Pages/:id/signaturesRel",
+        "prototype$__delete__signatures": {
+          url: urlBase + "/Pages/:id/signatures",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Page#prototype$__count__signaturesRel
+         * @name lbServices.Page#prototype$__count__signatures
          * @methodOf lbServices.Page
          *
          * @description
          *
-         * Counts signaturesRel of Page.
+         * Counts signatures of Page.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -5689,8 +5517,8 @@ module.factory(
          *
          *  - `count` – `{number=}` - 
          */
-        "prototype$__count__signaturesRel": {
-          url: urlBase + "/Pages/:id/signaturesRel/count",
+        "prototype$__count__signatures": {
+          url: urlBase + "/Pages/:id/signatures/count",
           method: "GET"
         },
 
@@ -6075,78 +5903,6 @@ module.factory(
           url: urlBase + "/Pages/sign",
           method: "POST"
         },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Page#createNewVersion
-         * @methodOf lbServices.Page
-         *
-         * @description
-         *
-         * Create a new version of a page in the DocumentWiki
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         *  - `pageId` – `{string}` - 
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `pageCopyId` – `{string=}` - 
-         */
-        "createNewVersion": {
-          url: urlBase + "/Pages/createNewVersion",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Page#rollback
-         * @methodOf lbServices.Page
-         *
-         * @description
-         *
-         * Rollback to another version of a page
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         *  - `pageId` – `{string}` - 
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        "rollback": {
-          url: urlBase + "/Pages/rollback",
-          method: "POST"
-        },
       }
     );
 
@@ -6314,12 +6070,12 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Contact#prototype$__get__phoneNumber
+         * @name lbServices.Contact#prototype$__get__primaryPhoneNumber
          * @methodOf lbServices.Contact
          *
          * @description
          *
-         * Fetches hasOne relation phoneNumber.
+         * Fetches hasOne relation primaryPhoneNumber.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -6342,19 +6098,19 @@ module.factory(
          * This usually means the response is a `Contact` object.)
          * </em>
          */
-        "prototype$__get__phoneNumber": {
-          url: urlBase + "/Contacts/:id/phoneNumber",
+        "prototype$__get__primaryPhoneNumber": {
+          url: urlBase + "/Contacts/:id/primaryPhoneNumber",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Contact#prototype$__create__phoneNumber
+         * @name lbServices.Contact#prototype$__create__primaryPhoneNumber
          * @methodOf lbServices.Contact
          *
          * @description
          *
-         * Creates a new instance in phoneNumber of this model.
+         * Creates a new instance in primaryPhoneNumber of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -6379,19 +6135,19 @@ module.factory(
          * This usually means the response is a `Contact` object.)
          * </em>
          */
-        "prototype$__create__phoneNumber": {
-          url: urlBase + "/Contacts/:id/phoneNumber",
+        "prototype$__create__primaryPhoneNumber": {
+          url: urlBase + "/Contacts/:id/primaryPhoneNumber",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Contact#prototype$__update__phoneNumber
+         * @name lbServices.Contact#prototype$__update__primaryPhoneNumber
          * @methodOf lbServices.Contact
          *
          * @description
          *
-         * Update phoneNumber of this model.
+         * Update primaryPhoneNumber of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -6416,19 +6172,19 @@ module.factory(
          * This usually means the response is a `Contact` object.)
          * </em>
          */
-        "prototype$__update__phoneNumber": {
-          url: urlBase + "/Contacts/:id/phoneNumber",
+        "prototype$__update__primaryPhoneNumber": {
+          url: urlBase + "/Contacts/:id/primaryPhoneNumber",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Contact#prototype$__destroy__phoneNumber
+         * @name lbServices.Contact#prototype$__destroy__primaryPhoneNumber
          * @methodOf lbServices.Contact
          *
          * @description
          *
-         * Deletes phoneNumber of this model.
+         * Deletes primaryPhoneNumber of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -6446,9 +6202,252 @@ module.factory(
          *
          * This method returns no data.
          */
-        "prototype$__destroy__phoneNumber": {
-          url: urlBase + "/Contacts/:id/phoneNumber",
+        "prototype$__destroy__primaryPhoneNumber": {
+          url: urlBase + "/Contacts/:id/primaryPhoneNumber",
           method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Contact#prototype$__findById__phoneNumbers
+         * @methodOf lbServices.Contact
+         *
+         * @description
+         *
+         * Find a related item by id for phoneNumbers.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModelExt id
+         *
+         *  - `fk` – `{*}` - Foreign key for phoneNumbers
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Contact` object.)
+         * </em>
+         */
+        "prototype$__findById__phoneNumbers": {
+          url: urlBase + "/Contacts/:id/phoneNumbers/:fk",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Contact#prototype$__destroyById__phoneNumbers
+         * @methodOf lbServices.Contact
+         *
+         * @description
+         *
+         * Delete a related item by id for phoneNumbers.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModelExt id
+         *
+         *  - `fk` – `{*}` - Foreign key for phoneNumbers
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "prototype$__destroyById__phoneNumbers": {
+          url: urlBase + "/Contacts/:id/phoneNumbers/:fk",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Contact#prototype$__updateById__phoneNumbers
+         * @methodOf lbServices.Contact
+         *
+         * @description
+         *
+         * Update a related item by id for phoneNumbers.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModelExt id
+         *
+         *  - `fk` – `{*}` - Foreign key for phoneNumbers
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Contact` object.)
+         * </em>
+         */
+        "prototype$__updateById__phoneNumbers": {
+          url: urlBase + "/Contacts/:id/phoneNumbers/:fk",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Contact#prototype$__get__phoneNumbers
+         * @methodOf lbServices.Contact
+         *
+         * @description
+         *
+         * Queries phoneNumbers of Contact.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModelExt id
+         *
+         *  - `filter` – `{object=}` - 
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Contact` object.)
+         * </em>
+         */
+        "prototype$__get__phoneNumbers": {
+          isArray: true,
+          url: urlBase + "/Contacts/:id/phoneNumbers",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Contact#prototype$__create__phoneNumbers
+         * @methodOf lbServices.Contact
+         *
+         * @description
+         *
+         * Creates a new instance in phoneNumbers of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModelExt id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Contact` object.)
+         * </em>
+         */
+        "prototype$__create__phoneNumbers": {
+          url: urlBase + "/Contacts/:id/phoneNumbers",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Contact#prototype$__delete__phoneNumbers
+         * @methodOf lbServices.Contact
+         *
+         * @description
+         *
+         * Deletes all phoneNumbers of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModelExt id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "prototype$__delete__phoneNumbers": {
+          url: urlBase + "/Contacts/:id/phoneNumbers",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Contact#prototype$__count__phoneNumbers
+         * @methodOf lbServices.Contact
+         *
+         * @description
+         *
+         * Counts phoneNumbers of Contact.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModelExt id
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
+        "prototype$__count__phoneNumbers": {
+          url: urlBase + "/Contacts/:id/phoneNumbers/count",
+          method: "GET"
         },
 
         /**

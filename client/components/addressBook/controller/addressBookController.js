@@ -9,8 +9,8 @@ var app = angular.module('isa.addressbook');
  * @author Steve Fortune
  */
 app.controller('AddressBookController',
-	['UserService', '$scope', '$rootScope', '$state', '$modal',
-	function(UserService, $scope, $rootScope, $state, $modal){
+	['UserService', 'ContactService', '$scope', '$rootScope', '$state', '$modal',
+	function(UserService, ContactService, $scope, $rootScope, $state, $modal){
 
 	/**
 	 * The select filter state.
@@ -30,22 +30,31 @@ app.controller('AddressBookController',
 	 * A map of select states to config objects. These objects contain the
 	 * following properties:
 	 *
-	 * - `route`				String		The nested state
-	 * - `factory`				Object		An object responsible for make data access calls.
-	 *										to execute a query. Returns the resulting promise.
-	 * - `collection` 			Array		Array of loaded objects.
-	 * - `modalControllerConf`	Object		Config used to initialise a modal controller to
-	 *										create a new instance of the entity.
+	 * - `route`				String					The nested state
+	 * - `service`				AbstractRemoteService	An object responsible for make data access calls.
+	 *													to execute a query. Returns the resulting promise.
+	 * - `collection` 			Array					Array of loaded objects.
+	 * - `modalControllerConf`	Object					Config used to initialise a modal controller to
+	 *													create a new instance of the entity.
 	 *
 	 * @const Dictionary
 	 */
 	var selectStates = {
 		'Users': {
 			route: 'addressbook.user',
-			factory: UserService,
+			service: UserService,
 			collection: [],
 			modalControllerConf: {
 				templateUrl: '/components/addressBook/view/newUser.html',
+				controller : 'AddressBookEditUserController'
+			}
+		},
+		'Contacts': {
+			route: 'addressbook.contact',
+			service: ContactService,
+			collection: [],
+			modalControllerConf: {
+				templateUrl: '/components/addressBook/view/newContact.html',
 				controller : 'AddressBookEditUserController'
 			}
 		}
@@ -96,7 +105,7 @@ app.controller('AddressBookController',
 	$scope.loadMore = function() {
 		var currentState = currentSelectState();
 		var collection = currentState.collection;
-		currentState.factory.all(collection.length).then(function(items) {
+		currentState.service.all(collection.length).then(function(items) {
 			if (collection.length === 0 && items.length > 0) {
 				$state.transitionTo('addressbook.user', {
 					id: items[0].id
