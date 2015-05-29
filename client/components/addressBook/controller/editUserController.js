@@ -7,8 +7,8 @@ var app = angular.module('isa.addressbook');
  * @author 	Steve Fortune
  */
 app.controller('AddressBookEditUserController',
-	['UserService', '$scope', '$rootScope', '$modalInstance', 'EventNameAssembler', '$controller', 'entity',
-	function(UserService, $scope, $rootScope, $modalInstance, EventNameAssembler, $controller, entity) {
+	['UserService', 'ContactService', '$scope', '$rootScope', '$modalInstance', 'EventNameAssembler', '$controller', 'entity',
+	function(UserService, ContactService, $scope, $rootScope, $modalInstance, EventNameAssembler, $controller, entity) {
 
 	$controller('AddressBookEditController', {
 		$scope: $scope,
@@ -18,6 +18,15 @@ app.controller('AddressBookEditUserController',
 		EventNameAssembler: EventNameAssembler,
 		entity: entity,
 		type: 'user'
+	});
+
+	/**
+	 * Load contacts for the user asynchronously
+	 */
+	ContactService.allForUser(entity).then(function(contacts) {
+		$scope.callTreeContacts = contacts;
+	}, function() {
+		// TODO: Handle error
 	});
 
 	/**
