@@ -41,7 +41,7 @@
     "phoneNumbers": {
       "type": "embedsMany",
       "model": "PhoneNumber",
-      "foreignKey": "userId",
+      "property": "phoneNumbers",
       "options": {
         "validate": true,
         "forceId": true,

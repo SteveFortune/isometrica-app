@@ -7,8 +7,10 @@ var app = angular.module('isa.addressbook');
  * @author 	Steve Fortune
  */
 app.controller('AddressBookEditUserController',
-	['UserService', 'ContactService', '$scope', '$rootScope', '$modalInstance', '$modal', 'EventNameAssembler', '$controller', 'entity',
-	function(UserService, ContactService, $scope, $rootScope, $modalInstance, $modal, EventNameAssembler, $controller, entity) {
+	['UserService', 'ContactService', '$scope', '$rootScope', '$modalInstance', '$modal', 'EventNameAssembler', 'PhoneNumberViewModel', '$controller', 'entity',
+	function(UserService, ContactService, $scope, $rootScope, $modalInstance, $modal, EventNameAssembler, PhoneNumberViewModel, $controller, entity) {
+
+	PhoneNumberViewModel($scope);
 
 	$controller('AddressBookEditController', {
 		$scope: $scope,
@@ -104,24 +106,6 @@ app.controller('AddressBookEditUserController',
 		}, function() {
 			// TODO: Error handling
 		});
-	};
-
-	/**
-	 * Deletes a phone number from the user at a given index.
-	 *
-	 * @protected
-	 */
-	$scope.deletePhoneNumber = function(at) {
-		$scope.entity._phoneNumbers.splice(at, 1);
-	};
-
-	/**
-	 * Creates a new empty phone number associated with the user.
-	 *
-	 * @protected
-	 */
-	$scope.addPhoneNumber = function() {
-		$scope.entity._phoneNumbers.push({});
 	};
 
 }]);

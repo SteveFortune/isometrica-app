@@ -7,8 +7,10 @@ var app = angular.module('isa.addressbook');
  * @author 	Steve Fortune
  */
 app.controller('AddressBookEditContactController',
-	['ContactService', '$scope', '$rootScope', '$modalInstance', 'EventNameAssembler', '$controller', 'entity', 'callTree',
-	function(ContactService, $scope, $rootScope, $modalInstance, EventNameAssembler, $controller, entity, callTree) {
+	['ContactService', '$scope', '$rootScope', '$modalInstance', 'EventNameAssembler', 'PhoneNumberViewModel', '$controller', 'entity', 'callTree',
+	function(ContactService, $scope, $rootScope, $modalInstance, EventNameAssembler, PhoneNumberViewModel, $controller, entity, callTree) {
+
+	PhoneNumberViewModel($scope);
 
 	$controller('AddressBookEditController', {
 		$scope: $scope,
