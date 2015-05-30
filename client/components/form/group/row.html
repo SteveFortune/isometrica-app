@@ -1,4 +1,7 @@
 <div class="list-group clearfix">
 	<div class="col-sm-11" ng-transclude></div>
-	<a ng-click="delete()" class="col-sm-1 btn btn-danger fa fa-minus"></a>
+	<div class="btn-group">
+		<a ng-if="create" ng-click="create()" class="btn btn-success fa fa-plus"></a>
+		<a ng-click="delete()" class="btn btn-danger fa fa-minus"></a>
+	</div>
 </div>

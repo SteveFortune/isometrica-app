@@ -21,15 +21,6 @@ app.controller('AddressBookEditUserController',
 	});
 
 	/**
-	 * Load contacts for the user asynchronously
-	 */
-	ContactService.allForUser(entity).then(function(contacts) {
-		$scope.callTreeContacts = contacts;
-	}, function() {
-		// TODO: Handle error
-	});
-
-	/**
 	 * Strips sensative fields from the user entity before sending to the rest of the
 	 * application. Namely the `password` value.
 	 *
@@ -41,12 +32,34 @@ app.controller('AddressBookEditUserController',
 	};
 
 	/**
+	 * Load contacts for the user asynchronously
+	 */
+	ContactService.allForUser(entity).then(function(contacts) {
+		$scope.callTreeContacts = contacts;
+	}, function() {
+		// TODO: Handle error
+	});
+
+	/**
 	 * Deletes a contact from the user at a given index.
 	 *
 	 * @protected
 	 */
 	$scope.deleteContact = function(at) {
-		$scope.entity._callTreeContacts.splice(at, 1);
+		ContactService.deleteById($scope.callTreeContacts[at].id).then(function() {
+			$scope.callTreeContacts.splice(at, 1);
+		}, function() {
+			// TODO: Handle error
+		});
+	};
+
+	/**
+	 * Opens a modal dialog for adding a new contact
+	 *
+	 * @protected
+	 */
+	$scope.addContact = function() {
+
 	};
 
 	/**
@@ -65,17 +78,6 @@ app.controller('AddressBookEditUserController',
 	 */
 	$scope.addPhoneNumber = function() {
 		$scope.entity._phoneNumbers.push({});
-	};
-
-	/**
-	 * Creates a new empty contact associated with the user's call tree.
-	 *
-	 * @protected
-	 */
-	$scope.addCallTreeContact = function() {
-		$scope.entity._callTreeContacts.push({
-			isCallTree: true
-		});
 	};
 
 }]);
