@@ -23,4 +23,10 @@ app.config(['$stateProvider', function($stateProvider) {
 			templateUrl: '/components/addressBook/view/viewUser.html',
 			controller: 'AddressBookReadUserController'
 		});
+	$stateProvider
+		.state('addressbook.contact', {
+			url: '/contact/:id',
+			templateUrl: '/components/addressBook/view/viewContact.html',
+			controller: 'AddressBookReadContactController'
+		});
 }]);

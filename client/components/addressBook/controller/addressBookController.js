@@ -138,12 +138,12 @@ app.controller('AddressBookController',
 		var currentState = currentSelectState();
 		var collection = currentState.collection;
 		currentState.service.all(collection.length).then(function(items) {
+			currentState.collection = collection.concat(items);
 			if (collection.length === 0 && items.length > 0) {
-				$state.transitionTo('addressbook.user', {
+				$state.transitionTo(currentState.route, {
 					id: items[0].id
 				});
 			}
-			currentState.collection = collection.concat(items);
 			$scope.loadingState = 'loaded';
 		}, function() {
 			$scope.loadingState = 'failed';
