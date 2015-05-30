@@ -111,7 +111,7 @@
 					</isa-form-field>
 				</isa-form-group>
 				<isa-form-group title="Call Tree">
-					<isa-group-row delete="deleteContact($index)" create="addContact()" ng-repeat="contact in callTreeContacts">
+					<isa-group-row delete="deleteContact($index)" ng-repeat="contact in callTreeContacts">
 						<isa-form-field
 							class="col-sm-6"
 							ng-model='contact.name'
@@ -139,7 +139,7 @@
 							No contacts in call tree.
 						</p>
 					</div>
-					<a class="btn btn-primary pull-right" ng-click="addCallTreeContact()">
+					<a class="btn btn-primary pull-right" ng-click="addContact()">
 						<i class="fa fa-plus"></i>
 						New Contact
 					</a>

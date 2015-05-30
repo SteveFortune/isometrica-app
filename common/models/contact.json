@@ -38,25 +38,20 @@
   },
   "validations": [],
   "relations": {
-    "primaryPhoneNumber": {
-      "type": "embedsOne",
-      "model": "PhoneNumber",
-      "property": "primaryPhoneNumber",
-      "options": {
-          "validate": true,
-          "forceId": true,
-          "persistent": true
-      }
-    },
     "phoneNumbers": {
       "type": "embedsMany",
       "model": "PhoneNumber",
-      "property": "phoneNumbers",
+      "foreignKey": "userId",
       "options": {
         "validate": true,
         "forceId": true,
         "persistent": true
       }
+    },
+    "callTree": {
+      "type": "belongsTo",
+      "model": "IsometricaUser",
+      "foreignKey": "userId"
     }
   },
   "acls": [],

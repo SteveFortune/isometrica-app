@@ -36,20 +36,20 @@
       "type": "hasAndBelongsToMany",
       "model": "Account"
     },
-    "callTreeContacts": {
+    "phoneNumbers": {
       "type": "embedsMany",
-      "model": "Contact",
-      "property": "callTreeContacts",
+      "model": "PhoneNumber",
+      "property": "phoneNumbers",
       "options": {
         "validate": true,
         "forceId": true,
         "persistent": true
       }
     },
-    "phoneNumbers": {
-      "type": "embedsMany",
-      "model": "PhoneNumber",
-      "property": "phoneNumbers",
+    "callTreeContacts": {
+      "type": "hasMany",
+      "model": "Contact",
+      "foreignKey": "userId",
       "options": {
         "validate": true,
         "forceId": true,

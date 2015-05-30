@@ -7,8 +7,8 @@ var app = angular.module('isa.addressbook');
  * @author 	Steve Fortune
  */
 app.controller('AddressBookEditUserController',
-	['UserService', 'ContactService', '$scope', '$rootScope', '$modalInstance', 'EventNameAssembler', '$controller', 'entity',
-	function(UserService, ContactService, $scope, $rootScope, $modalInstance, EventNameAssembler, $controller, entity) {
+	['UserService', 'ContactService', '$scope', '$rootScope', '$modalInstance', '$modal', 'EventNameAssembler', '$controller', 'entity',
+	function(UserService, ContactService, $scope, $rootScope, $modalInstance, $modal, EventNameAssembler, $controller, entity) {
 
 	$controller('AddressBookEditController', {
 		$scope: $scope,
@@ -34,11 +34,13 @@ app.controller('AddressBookEditUserController',
 	/**
 	 * Load contacts for the user asynchronously
 	 */
-	ContactService.allForUser(entity).then(function(contacts) {
-		$scope.callTreeContacts = contacts;
-	}, function() {
-		// TODO: Handle error
-	});
+	if (!$scope.isNew) {
+		ContactService.allForUser(entity).then(function(contacts) {
+			$scope.callTreeContacts = contacts || [];
+		}, function() {
+			// TODO: Handle error
+		});
+	}
 
 	/**
 	 * Deletes a contact from the user at a given index.
@@ -59,7 +61,19 @@ app.controller('AddressBookEditUserController',
 	 * @protected
 	 */
 	$scope.addContact = function() {
-
+		$modal.open({
+			templateUrl: '/components/addressBook/view/newContact.html',
+			controller : 'AddressBookEditContactController',
+			resolve: {
+				entity: function() {
+					return null;
+				}
+			}
+		}).result.then(function(newContact) {
+			$scope.callTreeContacts.push(newContact);
+		}, function() {
+			// TODO: Error handling
+		});
 	};
 
 	/**

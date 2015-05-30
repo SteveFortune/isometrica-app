@@ -6,9 +6,12 @@
 (function(angular, isa) {
 
 	var app = angular.module('isa.addressbook');
-	var _ContactServiceRemote = function(Contact, $q, IsometricaUser) {
+	var _ContactServiceRemote = function(Contact, $q) {
 		isa.AbstractRemoteService.call(this, Contact, $q);
 	};
+
+	_ContactServiceRemote.$inject = [ 'Contact', '$q' ];
+	_ContactServiceRemote.prototype = Object.create(isa.AbstractRemoteService.prototype);
 
 	/**
 	 * Finds all the contacts associated with a given user.
@@ -21,8 +24,11 @@
 	 * @return 	Promise
 	 */
 	_ContactServiceRemote.prototype.allForUser = function(user) {
-		return this.$q(function(resolve, reject) {
-			user.callTreeContacts({}, function(err, contacts) {
+		var self = this;
+		return self.$q(function(resolve, reject) {
+			self.lbModel.find({
+				userId: user.id
+			}, function(err, contacts) {
 				if (err) {
 					reject(err);
 				} else {
@@ -39,7 +45,7 @@
 	 * @param	contact	Object
 	 * @return 	Promise
 	 */
-	_ContactServiceRemote.prototype.createForUser = function(user, contact) {
+	_ContactServiceRemote.prototype.insertForUser = function(user, contact) {
 		return this.$q(function(resolve, reject) {
 			user.callTreeContacts.create(contact, function(err, contact) {
 				if (err) {
@@ -50,9 +56,6 @@
 			})
 		});
 	};
-
-	_ContactServiceRemote.$inject = [ 'Contact', '$q', 'IsometricaUser' ];
-	_ContactServiceRemote.prototype = Object.create(isa.AbstractRemoteService.prototype);
 
 	app.service('_ContactServiceRemote', _ContactServiceRemote);
 	app.service('_ContactServiceLocal', ['$q', function($q) {}]);
