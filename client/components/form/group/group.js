@@ -32,7 +32,8 @@ app.directive('isaGroupRow', function() {
 		templateUrl: '/components/form/group/row.html',
 		scope: {
 			delete: '&',
-			edit: '&'
+			edit: '&',
+			canEdit: '@'
 		}
 	};
 });

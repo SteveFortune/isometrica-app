@@ -54,6 +54,12 @@
 					"email": "Must be a valid email address."
 				}'>
 			</isa-form-field>
+			<isa-form-field
+				ng-model='entity.address'
+				title="Address"
+				input-placeholder='10 King St, Nailsworth, GL5 0NN'
+				input-name='address'>
+			</isa-form-field>
 
 			<accordion>
 				<isa-form-group title="Phone Numbers">
@@ -88,13 +94,6 @@
 					</a>
 				</isa-form-group>
 			</accordion>
-
-			<isa-form-field
-				ng-model='entity.address'
-				title="Address"
-				input-placeholder='10 King St, Nailsworth, GL5 0NN'
-				input-name='address'>
-			</isa-form-field>
 
 		</form>
 	</div>

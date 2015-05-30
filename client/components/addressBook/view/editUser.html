@@ -114,28 +114,27 @@
 					<isa-group-row
 						delete="deleteContact($index)"
 						edit="editContact(contact)"
+						can-edit="true"
 						ng-repeat="contact in callTreeContacts">
-						<isa-form-field
-							class="col-sm-6"
-							ng-model='contact.name'
-							title="Name"
-							input-placeholder='Joe Bloggs'
-							input-name='contact_{{ $index }}'
-							validation-model='{
-								"required": "A name is required."
-							}'>
-						</isa-form-field>
-						<isa-form-field
-							class="col-sm-6"
-							ng-model='contact._primaryPhoneNumber.number'
-							title="Type"
-							input-placeholder='+44 7668 492301'
-							input-name='type_{{ $index }}'
-							validation-model='{
-								"phoneNumber": "Must be a valid phone number.",
-								"required": "A number is required."
-							}'>
-						</isa-form-field>
+						<div class="col-sm-6">
+							<label class="col-xs-3 control-label">
+								Name:
+							</label>
+							<p class="col-xs-9 h5">
+								{{ contact.name }}
+							</p>
+						</div>
+						<div class="col-sm-6">
+							<label class="col-xs-3 control-label">
+								Phone:
+							</label>
+							<p ng-if="!contact._phoneNumbers.length" class="col-xs-9 h5">
+								<em>None</em>
+							</p>
+							<p ng-if="contact._phoneNumbers.length" class="col-xs-9 h5">
+								{{ contact._phoneNumbers[0].number }}
+							</p>
+						</div>
 					</isa-group-row>
 					<div ng-if="!callTreeContacts.length">
 						<p>
