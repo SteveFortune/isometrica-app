@@ -111,7 +111,10 @@
 					</isa-form-field>
 				</isa-form-group>
 				<isa-form-group title="Call Tree">
-					<isa-group-row delete="deleteContact($index)" ng-repeat="contact in callTreeContacts">
+					<isa-group-row
+						delete="deleteContact($index)"
+						edit="editContact(contact)"
+						ng-repeat="contact in callTreeContacts">
 						<isa-form-field
 							class="col-sm-6"
 							ng-model='contact.name'
@@ -134,7 +137,7 @@
 							}'>
 						</isa-form-field>
 					</isa-group-row>
-					<div ng-if="!entity._callTreeContacts.length">
+					<div ng-if="!callTreeContacts.length">
 						<p>
 							No contacts in call tree.
 						</p>

@@ -88,6 +88,19 @@ isa.utils = {
 		}
 	},
 
+	/**
+	 * Convenient function that replaces an object in an array with
+	 * another object by matching against its `id` property.
+	 *
+	 * @param	haystack		Array
+	 * @param	replacement		Object
+	 */
+	replaceEntity: function(haystack, replacement) {
+		this.replace(haystack, null, replacement, function(prop) {
+			return prop.id === replacement.id;
+		});
+	},
+
 	htmlCleanup : function( htmlIn ) {
 		//cleans up (pasted) HTML code from (for instance) MS Word:
 		//removing all font/ changed size information

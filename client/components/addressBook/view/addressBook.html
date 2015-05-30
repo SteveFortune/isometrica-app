@@ -41,17 +41,35 @@
 					<div class="list-group" infinite-scroll="loadMore()">
 						<a
 							ng-if="loadingState === 'loaded' && addressBookCollection().length > 0"
-							ng-repeat="user in addressBookCollection() | filter : query"
-							ui-sref="{{ addressBookRoute() }}({ id: user.id })"
+							ng-repeat="entity in addressBookCollection() | filter : query"
+							ui-sref="{{ addressBookRoute() }}({ id: entity.id })"
 							class="list-group-item">
 
-							<isa-profile-img user="user"></isa-profile-img>
-							<h4 class="list-group-item-heading">
-								{{ user.firstName + ' ' + user.lastName }}
-							</h4>
-							<p class="list-group-item-text">
-								{{ user.role || 'Unknown' }}
-							</p>
+							<div ng-if="isSelectUsers()">
+								<isa-profile-img user="entity"></isa-profile-img>
+								<h4 class="list-group-item-heading">
+									{{ entity.firstName + ' ' + entity.lastName }}
+								</h4>
+								<p class="list-group-item-text">
+									{{ entity.role || 'Unknown' }}
+								</p>
+							</div>
+
+							<div ng-if="isSelectContacts()">
+								<isa-profile-img user="entity"></isa-profile-img>
+								<h4 class="list-group-item-heading">
+									{{ entity.name }}
+								</h4>
+								<p class="list-group-item-text">
+									{{ entity.type || 'Unknown' }}
+								</p>
+							</div>
+
+							<div ng-if="isSelectOrganisations()">
+								<h4 class="list-group-item-heading">
+									{{ entity.name }}
+								</h4>
+							</div>
 
 						</a>
 						<div

@@ -88,6 +88,35 @@ app.controller('AddressBookController',
 	};
 
 	/**
+	 * Are we selecting contact entities?
+	 *
+	 * @return Boolean
+	 */
+	$scope.isSelectContacts = function() {
+		return $scope.selectState === 'Contacts' ||
+			$scope.selectState === 'In call tree' ||
+			$scope.selectState === 'Not in call tree';
+	};
+
+	/**
+	 * Are we selecting user entities?
+	 *
+	 * @return Boolean
+	 */
+	$scope.isSelectUsers = function() {
+		return $scope.selectState === 'Users';
+	};
+
+	/**
+	 * Are we selecting organisation entities?
+	 *
+	 * @return Boolean
+	 */
+	$scope.isSelectOrgansiations = function() {
+		return $scope.selectState === 'Organsiations';
+	};
+
+	/**
 	 * Returns the config object for the current select state.
 	 *
 	 * @private
@@ -167,9 +196,7 @@ app.controller('AddressBookController',
 	 * @private
 	 */
 	var updateCollection = function(selectState, entity) {
-		isa.utils.replace(selectStates[selectState].collection, null, entity, function(prop) {
-			return prop.id === entity.id;
-		});
+		isa.utils.replaceEntity(selectStates[selectState].collection, entity);
 	};
 
 }]);

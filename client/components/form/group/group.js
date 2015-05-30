@@ -31,7 +31,8 @@ app.directive('isaGroupRow', function() {
 		transclude: true,
 		templateUrl: '/components/form/group/row.html',
 		scope: {
-			'delete': '&'
+			delete: '&',
+			edit: '&'
 		}
 	};
 });

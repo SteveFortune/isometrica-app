@@ -32,11 +32,18 @@ app.controller('AddressBookEditUserController',
 	};
 
 	/**
+	 * An array of call tree contacts loaded asynchronously if we're editing the user.
+	 *
+	 * @var Array | null
+	 */
+	$scope.callTreeContacts = [];
+
+	/**
 	 * Load contacts for the user asynchronously
 	 */
 	if (!$scope.isNew) {
 		ContactService.allForUser(entity).then(function(contacts) {
-			$scope.callTreeContacts = contacts || [];
+			$scope.callTreeContacts = contacts;
 		}, function() {
 			// TODO: Handle error
 		});
@@ -71,6 +78,27 @@ app.controller('AddressBookEditUserController',
 			}
 		}).result.then(function(newContact) {
 			$scope.callTreeContacts.push(newContact);
+		}, function() {
+			// TODO: Error handling
+		});
+	};
+
+	/**
+	 * Opens a modal dialog for editting a contact
+	 *
+	 * @protected
+	 */
+	$scope.editContact = function(contact) {
+		$modal.open({
+			templateUrl: '/components/addressBook/view/editContact.html',
+			controller : 'AddressBookEditContactController',
+			resolve: {
+				entity: function() {
+					return contact;
+				}
+			}
+		}).result.then(function(updatedContact) {
+			isa.utils.replaceEntity($scope.callTreeContacts, updatedContact);
 		}, function() {
 			// TODO: Error handling
 		});
