@@ -7,8 +7,8 @@ var app = angular.module('isa.addressbook');
  * @author 	Steve Fortune
  */
 app.controller('AddressBookEditContactController',
-	['ContactService', '$scope', '$rootScope', '$modalInstance', 'EventNameAssembler', '$controller', 'entity',
-	function(ContactService, $scope, $rootScope, $modalInstance, EventNameAssembler, $controller, entity) {
+	['ContactService', '$scope', '$rootScope', '$modalInstance', 'EventNameAssembler', '$controller', 'entity', 'callTree',
+	function(ContactService, $scope, $rootScope, $modalInstance, EventNameAssembler, $controller, entity, callTree) {
 
 	$controller('AddressBookEditController', {
 		$scope: $scope,
@@ -19,5 +19,13 @@ app.controller('AddressBookEditContactController',
 		entity: entity,
 		type: 'contact'
 	});
+
+	/**
+	 * If we're creating a new contact associated with a calltree, append the user
+	 * id to the entity.
+	 */
+	if ($scope.isNew && callTree) {
+		$scope.entity.userId = callTree.id;
+	}
 
 }]);

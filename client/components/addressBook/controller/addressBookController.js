@@ -54,6 +54,9 @@ app.controller('AddressBookController',
 			service: ContactService,
 			collection: [],
 			modalControllerConf: {
+				callTree: function() {
+					return null;
+				},
 				templateUrl: '/components/addressBook/view/newContact.html',
 				controller : 'AddressBookEditUserController'
 			}
@@ -156,9 +159,7 @@ app.controller('AddressBookController',
 		var currentState = currentSelectState();
 		var controllerConf = angular.extend(currentState.modalControllerConf, {
 			resolve: {
-				entity: function() {
-					return null;
-				}
+				entity: angular.noop
 			}
 		});
 		$modal.open(controllerConf).result.then(function(user) {

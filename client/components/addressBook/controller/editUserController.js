@@ -44,7 +44,7 @@ app.controller('AddressBookEditUserController',
 	if (!$scope.isNew) {
 		ContactService.allForUser(entity).then(function(contacts) {
 			$scope.callTreeContacts = contacts;
-		}, function() {
+		}, function(err) {
 			// TODO: Handle error
 		});
 	}
@@ -72,6 +72,7 @@ app.controller('AddressBookEditUserController',
 			templateUrl: '/components/addressBook/view/newContact.html',
 			controller : 'AddressBookEditContactController',
 			resolve: {
+				callTree: angular.noop,
 				entity: function() {
 					return null;
 				}
@@ -93,6 +94,7 @@ app.controller('AddressBookEditUserController',
 			templateUrl: '/components/addressBook/view/editContact.html',
 			controller : 'AddressBookEditContactController',
 			resolve: {
+				callTree: angular.noop,
 				entity: function() {
 					return contact;
 				}
