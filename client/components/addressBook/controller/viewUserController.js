@@ -14,26 +14,14 @@ app.controller('AddressBookReadUserController',
 		$stateParams: $stateParams,
 		$scope: $scope,
 		$rootScope, $rootScope,
+		$modal: $modal,
 		EventNameAssembler: EventNameAssembler,
 		factory: UserService,
-		type: 'user'
-	});
-
-	/**
-	 * Opens an edit user modal controller
-	 *
-	 * @protected
-	 */
-	$scope.editUser = function() {
-		$modal.open({
+		type: 'user',
+		editControllerConf: {
 			templateUrl: '/components/addressBook/view/editUser.html',
-			controller : 'AddressBookEditUserController',
-			resolve: {
-				entity: function() {
-					return $scope.entity;
-				}
-			}
-		});
-	};
+			controller : 'AddressBookEditUserController'
+		}
+	});
 
 }]);

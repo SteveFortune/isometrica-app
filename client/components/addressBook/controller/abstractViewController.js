@@ -5,14 +5,15 @@ var app = angular.module('isa.addressbook');
 /**
  * Non-modal controller for rendering a readonly-view on an entity.
  *
- * @param	factory			Object		A persistent factory.
- * @param	type			String		String identifying the type of the entity.
- * @param	$stateParams	Object		Requires an `id` key.
+ * @param	factory				Object		A persistent factory.
+ * @param	type				String		String identifying the type of the entity.
+ * @param	editControllerConf	Object		Configuration for a modal dialog to display on edit.
+ * @param	$stateParams		Object		Requires an `id` key.
  * @author 	Steve Fortune
  */
 app.controller('AddressBookViewController',
-	['$stateParams', '$scope', '$rootScope', 'EventNameAssembler', 'factory', 'type',
-	function($stateParams, $scope, $rootScope, EventNameAssembler, factory, type) {
+	['$stateParams', '$modal', '$scope', '$rootScope', 'EventNameAssembler', 'factory', 'type', 'editControllerConf',
+	function($stateParams, $modal, $scope, $rootScope, EventNameAssembler, factory, type, editControllerConf) {
 
 	/**
 	 * @var String
@@ -36,5 +37,24 @@ app.controller('AddressBookViewController',
 	$rootScope.$on(EventNameAssembler(type, 'update', id), function(event, newEntity) {
 		$scope.entity = newEntity;
 	});
+
+	/**
+	 * Simple convenience method that opens an abstractEditController-derived controller.
+	 *
+	 * @note Couldn't make use of angular.merge because of our target angular vn
+	 */
+	$scope.editEntity = function() {
+		var srcResolveConf = {
+			entity: function() {
+				return $scope.entity;
+			}
+		};
+		var mergedConf = angular.extend(editControllerConf, {
+			resolve: editControllerConf.resolve ?
+				angular.extend(editControllerConf.resolve, srcResolveConf) :
+				srcResolveConf
+		});
+		$modal.open(mergedConf);
+	};
 
 }]);

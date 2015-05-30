@@ -2,7 +2,7 @@
 
 	<div class="panel-heading clearfix">
 		<div class="btn-group pull-right">
-			<a class="btn btn-default">
+			<a class="btn btn-default" ng-click="editEntity()">
 				<i class="fa fa-pencil"></i>
 				Edit
 			</a>
@@ -30,12 +30,12 @@
 
 		<div class="list-group-item">
 			<h4 class="list-group-item-heading">Role</h4>
-			<p class="list-group-item-text">{{ entity.role }}</p>
+			<p class="list-group-item-text">{{ entity.role || 'No role' }}</p>
 		</div>
 
 		<div class="list-group-item">
 			<h4 class="list-group-item-heading">Address</h4>
-			<p class="list-group-item-text">{{ entity.address }}</p>
+			<p class="list-group-item-text">{{ entity.address || 'No address' }}</p>
 		</div>
 
 		<div class="list-group-item">

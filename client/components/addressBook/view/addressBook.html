@@ -74,12 +74,12 @@
 						</a>
 						<div
 							ng-if="loadingState === 'loaded' && addressBookCollection().length === 0"
-							class="list-group">
+							class="list-group-item">
 							<h4>None found. Try <a ng-click="add()">adding some.</a></h4>
 						</div>
 						<div
 							ng-if="loadingState === 'failed'"
-							class="list-group">
+							class="list-group-item">
 							<a>Error</a>
 						</div>
 					</div>

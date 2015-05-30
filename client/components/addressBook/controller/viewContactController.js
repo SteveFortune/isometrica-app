@@ -14,9 +14,17 @@ app.controller('AddressBookReadContactController',
 		$stateParams: $stateParams,
 		$scope: $scope,
 		$rootScope, $rootScope,
+		$modal: $modal,
 		EventNameAssembler: EventNameAssembler,
 		factory: ContactService,
-		type: 'contact'
+		type: 'contact',
+		editControllerConf: {
+			templateUrl: '/components/addressBook/view/editContact.html',
+			controller : 'AddressBookEditContactController',
+			resolve: {
+				callTree: angular.noop
+			}
+		}
 	});
 
 }]);

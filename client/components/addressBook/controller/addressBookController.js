@@ -177,6 +177,7 @@ app.controller('AddressBookController',
 	 * @protected
 	 */
 	$scope.$watch('selectState', function(newState, oldState) {
+		$scope.loadingState = 'loading';
 		$scope.loadMore();
 	});
 
