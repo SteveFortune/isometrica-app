@@ -28,6 +28,10 @@
       "type": "hasAndBelongsToMany",
       "model": "Account"
     },
+    "organizations": {
+      "type": "hasAndBelongsToMany",
+      "model": "Organization"
+    },
     "callTreeContacts": {
         "type": "embedsMany",
         "model": "Contact",

@@ -1,12 +1,8 @@
 {
-  "name": "Account",
+  "name": "Organization",
   "base": "PersistedModelExt",
   "idInjection": true,
   "properties": {
-    "subscriptionType": {
-      "type": "string",
-      "required": true
-    },
     "name": {
       "type": "string",
       "required": true
@@ -14,7 +10,7 @@
   },
   "validations": [],
   "relations": {
-    "owners": {
+    "users": {
       "type": "hasAndBelongsToMany",
       "model": "IsometricaUser"
     }
