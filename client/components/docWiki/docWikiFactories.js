@@ -18,16 +18,19 @@ app.factory('_PageRemote', [ 'Page', function(Page) {
 
 	return {
 
-		/* return a list of all pages belonging to a single document */
+		/* return a list of all pages belonging to a single document
+  		 * we're using a scope (see page.js model) here to return only
+  		 * current version pages (currentVersion=true)
+		  */
 		all : function(documentId) {
 
-			return Page.find(
+			return Page.__get__current(
 			  { filter: { where: { documentId : documentId }, order : 'section ASC' } },
 			  function(list) { },
 			  function(errorResponse) {
 			  	console.error(errorResponse);
 			  }
-			);
+      );
 
 		},
 
@@ -58,7 +61,7 @@ app.factory('_PageLocal', [ '$lowla', '$lowlaArray', '$lowlaDocument', '$lowlaDe
 	return {
 
 		all : function(documentId, scope) {
-      return $lowlaArray(pages.find({documentId: documentId}), scope);
+      return $lowlaArray(pages.find({documentId: documentId, currentVersion: true}, ['section', 1]), scope);
 		},
 
     findById: function(id, scope) {

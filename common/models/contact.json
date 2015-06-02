@@ -1,0 +1,30 @@
+{
+  "name": "Contact",
+  "plural": "Contacts",
+  "base": "PersistedModelExt",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+      "phoneNumber": {
+        "type": "embedsOne",
+        "model": "PhoneNumber",
+        "property": "phoneNumber",
+        "options": {
+          "validate": true,
+          "forceId": true,
+          "persistent": true
+        }
+      }
+  },
+  "acls": [],
+  "methods": []
+}

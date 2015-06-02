@@ -3,9 +3,13 @@
   "base": "PersistedModelExt",
   "idInjection": true,
   "properties": {
-    "documentId" : {
+    "documentId": {
       "type": "string",
       "required": true
+    },
+    "pageId" : {
+      "type": "string",
+      "defaultFn": "guid"
     },
     "title": {
       "type": "string",
@@ -15,17 +19,43 @@
       "type": "string"
     },
     "version": {
-      "type": "number"
+      "type": "number",
+      "default": 1
     },
-    "contents" : {
+    "currentVersion": {
+      "type": "boolean",
+      "default": true
+    },
+    "contents": {
       "type": "string"
     },
-    "tags" :{
-      "type": ["string"]
+    "tags": {
+      "type": [
+        "string"
+      ]
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "commentsRel": {
+      "type": "embedsMany",
+      "model": "Comment",
+      "property": "comments",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "signaturesRel": {
+      "type": "embedsMany",
+      "model": "Signature",
+      "property": "signatures",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",
@@ -40,5 +70,9 @@
       "permission": "ALLOW"
     }
   ],
-  "methods": []
+  "methods": [],
+  "scopes": {
+    "current": {"where": {"currentVersion": true}}
+  }
+
 }

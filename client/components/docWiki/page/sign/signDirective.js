@@ -1,0 +1,39 @@
+var app = angular.module('isa.docwiki.sign', [
+
+	'lbServices',
+	'angular-growl'
+
+]);
+
+/*
+ * Sign a page in the docwiki and show a list of page signers
+ *
+ * @author Mark Leusink
+ */
+
+app.directive('isaDocwikiPageSigning', ['$state', 'Page', 'CurrentUser', 'growl', function($state, Page, CurrentUser, growl){
+	
+	return {
+		
+		controller: function($scope, $element, $attrs, $transclude) {
+	 
+			 $scope.signDocument = function() {
+			 
+			 	Page.sign( {pageId : $scope.page.id , userName: CurrentUser.getCurrentUser().name}).$promise
+				.then(function(res) {
+					growl.success('You have succesfully signed this page');
+					$state.reload();
+				}, function(err) {
+					alert('An error occurred.\n\n' + err.data.error.message);
+				});
+
+			 };
+
+		},
+		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+		restrict: 'AE', 
+		templateUrl: '/components/docWiki/page/sign/sign.html',
+		replace: true,
+	};
+
+}]);

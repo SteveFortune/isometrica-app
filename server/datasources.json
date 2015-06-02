@@ -4,6 +4,10 @@
     "name": "mongodb",
     "connector": "mongodb"
   },
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
+  },
   "email": {
     "name": "email",
     "connector": "mail",

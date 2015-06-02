@@ -13,14 +13,12 @@
     }
   },
   "validations": [],
-
   "relations": {
     "users": {
       "type": "hasAndBelongsToMany",
       "model": "IsometricaUser"
     }
   },
-
   "acls": [
     {
       "accessType": "*",

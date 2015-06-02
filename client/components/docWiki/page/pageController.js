@@ -3,8 +3,16 @@ var app = angular.module('isa.docwiki');
 /*
  * Controller to add/edit a page in a document
  */
-app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', '$http', 'PageFactory', 'isNew', 'FileUploader', 'CurrentUser',
-	function($scope, $state, $stateParams, $modal, $http, PageFactory, isNew, FileUploader, CurrentUser) {
+app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', '$http', '$controller', 'PageFactory', 'isNew', 'CurrentUser',
+	function($scope, $state, $stateParams, $modal, $http, $controller, PageFactory, isNew, CurrentUser) {
+
+	$scope.moduleId = $stateParams.planId;
+
+	//instantiate base controller (used to edit pages in a modal)
+	$controller('PageEditBaseController', { 
+		$scope: $scope, 
+		$modal : $modal
+	} );
 
 	var _readRelatedFiles = function(parentId) {
 		$http.get('/files/' + parentId).then( function(res) {
@@ -16,35 +24,6 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 			});
 			$scope.pageFiles = files;
 		});
-	}
-
-	var _postSave = function(itemId) {
-
-		//delete selected files
-		angular.forEach( $scope.pageFiles, function(file) {
-			if (file.markedForDeletion) {
-				console.info('delete ', file);
-				$http.delete('/file/' + file._id);
-			}
-		});
-
-		//upload all files
-		if (uploader.queue.length>0 ) {
-
-			uploader.onBeforeUploadItem = function(item) {
-			    item.url = '/upload/' + itemId;
-			};
-			uploader.onCompleteAll = function() {
-	            console.info('onCompleteAll');
-	            $state.go('docwiki.page', {pageId: itemId }, {reload: true});
-	        };
-			uploader.uploadAll();
-
-		} else {
-			_readRelatedFiles(itemId);
-			$state.go('docwiki.page', {pageId: itemId }, {reload: true});
-		}
-
 	};
 
 	//init
@@ -53,53 +32,11 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 	$scope.utils = isa.utils;
 	$scope.toDelete = [];
 
-	//setup file uploader object
-	var uploader = $scope.uploader = new FileUploader({
-		url : '/uploads'
-	});
-
-		//read existing page
+	//read existing page
 	if (!isNew) {
 		$scope.page = PageFactory.findById( $stateParams.pageId, $scope );
 		_readRelatedFiles($stateParams.pageId);
 	}
-
-	$scope.save = function(pageForm) {
-		$scope.submitted = true;
-
-		if (!pageForm.$valid) {
-			return;
-		}
-
-		if (typeof $scope.page.tags === 'string') {
-			$scope.page.tags = ($scope.page.tags.length>0 ? [$scope.page.tags] : []);
-		}
-
-		$scope.page.updatedBy = CurrentUser.getCurrentUser().name;
-
-		if (isNew) {
-
-			//set current documentId on page
-			$scope.page.documentId = $stateParams.planId;
-			$scope.page.createdBy = CurrentUser.getCurrentUser().name;
-
-			PageFactory.create($scope.page)
-			.then( function(p) {
-
-				_postSave(p.id);
-
-			});
-
-		} else {
-
-      PageFactory
-        .save($scope.page)
-        .then(function(_saved) {
-          _postSave($scope.page.id);
-        });
-		}
-
-	};
 
 	$scope.delete = function(page) {
 
@@ -108,7 +45,7 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 			controller : 'ConfirmModalController',
 			resolve: {
 				title: function() {
-					return 'Are you sure you want to remove this page?';
+					return 'Are you sure you want to remove this page?<br />This action will remove all versions of this page.';
 				},
 			},
 		}).result.then(function(confirmed) {
@@ -119,15 +56,6 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 				});
 			}
 		});
-
-	};
-
-	/*
-	 * permanently deletes a file
-	 */
-	$scope.deleteFile = function(file) {
-
-		file.markedForDeletion = true;
 
 	};
 

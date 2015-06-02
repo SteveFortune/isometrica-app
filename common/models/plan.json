@@ -16,6 +16,9 @@
     "type": {
       "type": "string"
     },
+    "templateId": {
+      "type": "string"
+    },
     "isTemplate": {
       "type": "boolean",
       "default": false
@@ -23,7 +26,11 @@
     "isArchived": {
       "type": "boolean",
       "default": false
-    }
+    },
+    "inTrash": {
+      "type" : "boolean",
+      "default" : false
+    } 
   },
   "validations": [],
   "relations": {

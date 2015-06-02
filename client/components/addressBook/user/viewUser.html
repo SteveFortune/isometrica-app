@@ -1,19 +1,21 @@
 <div class="panel panel-default bootcards-wiki-panel">
+
 	<div class="panel-heading clearfix">
 		<div class="btn-group pull-right">
-			<a class="btn btn-default">
+			<a class="btn btn-default" ng-click="editUser(user)">
 				<i class="fa fa-pencil"></i>
 				Edit
 			</a>
 		</div>
-		<h3 class="panel-title">{{ error || "User Details" }}</h3>
+		<h3 class="panel-title">User Details</h3>
 	</div>
+
 	<div class="list-group">
 
 		<div class="list-group-item">
 			<isa-profile-img user="user"></isa-profile-img>
 			<h4 class="list-group-item-heading">Name</h4>
-			<p class="list-group-item-text">{{ user.name }}</p>
+			<p class="list-group-item-text">{{ user.firstName + ' ' + user.lastName }}</p>
 		</div>
 
 		<div class="list-group-item">
@@ -23,26 +25,25 @@
 
 		<div class="list-group-item">
 			<h4 class="list-group-item-heading">Email</h4>
-			<p class="list-group-item-text">{{ user.email }}</p>
+			<a href="mailto:"><p class="list-group-item-text">{{ user.email }}</p></a>
 		</div>
 
 		<div class="list-group-item">
-			<h4 class="list-group-item-heading">Role</h4>
-			<p class="list-group-item-text phone-numbers">{{ user.email }}</p>
-			<div class="row">
+			<h4 class="list-group-item-heading">Phone Numbers</h4>
+			<div
+				class="row"
+				ng-if="user._phoneNumbers && user._phoneNumbers.length > 0"
+				ng-repeat="number in user._phoneNumbers">
 				<div class="col-sm-6">
-					<h4 class="list-group-item-heading"><a href="tel:">+1 750 123 4567</a></h4>
+					<h4 class="list-group-item-heading"><a href="tel:">{{ number.number }}</a></h4>
 				</div>
 				<div class="col-sm-6">
-					<h4 class="list-group-item-heading">Work</h4>
+					<h4 class="list-group-item-heading">{{ number.type }}</h4>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					<h4 class="list-group-item-heading"><a href="tel:">+1 750 123 4567</a></h4>
-				</div>
-				<div class="col-sm-6">
-					<h4 class="list-group-item-heading">Work</h4>
+			<div ng-if="!user._phoneNumbers || user._phoneNumbers.length === 0" class="row">
+				<div class="col-sm-11">
+					No numbers.
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,27 @@
+
+<div class="form-group">
+	<label class="col-xs-3 control-label">
+		{{ title }}
+	</label>
+	<div class="col-xs-9">
+		<input
+			type="{{ inputType }}"
+			class="form-control"
+			ng-model="model"
+			ng-model-options="{ debounce: 500, allowInvalid: true }"
+			name="{{ inputName }}"
+			placeholder="{{ inputPlaceholder || 'Enter...' }}">
+	</div>
+</div>
+
+<div class="form-group">
+	<div class="col-xs-3"></div>
+	<div class="col-xs-9" ng-show="form[inputName].$touched">
+		<p ng-repeat="(name, attr) in validationModel" ng-show="form[inputName].$error[name]">
+			{{ isAttributeObject(attr) ? attr.message : attr }}
+		</p>
+		<p ng-repeat="(name, message) in pendingModel" ng-show="form[inputName].$pending[name]">
+			{{ message }}
+		</p>
+	</div>
+</div>

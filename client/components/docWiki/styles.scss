@@ -13,6 +13,10 @@ $docwiki-hover-color: #F5F5F5;
 	    overflow: hidden;
 	}
 
+	.search-form .btn-primary i {
+		margin-right: 0;
+	}
+
 	.btn-file input[type=file] {
 	    position: absolute;
 	    top: 0;
@@ -105,9 +109,12 @@ $docwiki-hover-color: #F5F5F5;
 		.list-group-item:first-child {
 			border-top: 0;
 		}
-		.list-group-item {
+		.list-group-item h4 {
 			border-radius: 0;
 			font-size: 18px;
+		}
+		.list-group-item-text {
+			font-weight: normal;
 		}
 
 		/*expand/ collapse in the list*/
@@ -132,7 +139,6 @@ $docwiki-hover-color: #F5F5F5;
 	.bootcards-wiki-panel-metadata {
 		background-color: $docwiki-hover-color;
 		border-bottom: 1px solid $docwiki-border-color;
-
 	}
 
 	/*textangular toolbar*/
@@ -140,6 +146,31 @@ $docwiki-hover-color: #F5F5F5;
 		margin-bottom:10px;
 	}
 
+	/* style the list of files on a page*/
+	table.files-list {
+
+		/*remove the default bottom margin on bs tables*/
+		margin-bottom: 0;
+
+		/*remove border on first line in the files list*/
+		tbody > tr:first-child > td {
+			border-top:0;
+			padding-top:0;
+		}
+
+		tbody > tr > td {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+	}
+
+	/*fixing some weird CSS in bootcards-desktop:*/
+	.form-control-static {
+		padding-top: 7px !important;
+  		padding-bottom: 7px !important;
+	}
+	
 	/* styled 'browse' button*/
 	.btn-file {
 	    position: relative;
@@ -161,6 +192,36 @@ $docwiki-hover-color: #F5F5F5;
 	    cursor: inherit;
 	    display: block;
 	} 
+
+	/* tags color */
+	tags-input .tags .tag-item {
+		background: #337ab7;
+	}
+
+	/* comments styling */
+	.comments .panel-body {
+		padding: 0;
+	}
+	.comments li.list-group-item {
+		border: 0;
+		border-top: 1px solid #eee;
+		border-radius: 0;
+		margin-left: 0;
+		padding-left: 15px;
+	}
+	.comments li.list-group-item:first-child {
+		border-top:0;
+	}
+	.comments li.list-group-item i.fa {
+		width: inherit;
+		margin: 0;
+		opacity: 1;
+	}
+
+	/* signatures styling */
+	.signatures ul {
+		margin-bottom:0;
+	}
 
 
 }

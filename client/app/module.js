@@ -61,7 +61,7 @@ app.run(function($window, $rootScope) {
 
   //detect if the user if online or offline
 
-  $rootScope.online = navigator.onLine;
+  $rootScope.online = true;
 
   $window.addEventListener("offline", function () {
     $rootScope.$apply(function() {

@@ -6,7 +6,9 @@
  * POST /uploads 	store a file
  * GET /file/:fileId/:fileName   retrieve a file by id (in GridFS)
  * GET /files/:parentId   retrieve all files (in JSON format) related to a document
-
+ *
+ * TODO (mark leusink): it might be good to settle on a prefix for all operations related to files
+ *
  */
 module.exports = function(app) {
 
@@ -42,7 +44,9 @@ module.exports = function(app) {
                 filename: part.filename,
                 content_type: part.headers["content-type"],
                 metadata : {
-			    	parentId : req.params.parentId
+			    	parentIds : [
+			    		mongo.ObjectID( req.params.parentId )
+			    	]
 			    }	
             });
             
@@ -93,7 +97,7 @@ module.exports = function(app) {
 		var db = app.datasources.mongodb.connector.db;
 		var gfs = Grid(db, mongo);
 	 	
-	 	gfs.files.find({ 'metadata.parentId' : req.params.parentId }).toArray(function (err, files) {
+	 	gfs.files.find({ 'metadata.parentIds' : mongo.ObjectID( req.params.parentId) }).toArray(function (err, files) {
 	    if (err) {
 	    	res.json(err);
 	    }

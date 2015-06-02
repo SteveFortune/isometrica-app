@@ -28,31 +28,21 @@ app.factory('_UserFactoryRemote', ['IsometricaUser', '$q', function(IsometricaUs
 	 */
 	var PAGE_SIZE = 10;
 
-	/**
-	 * Computes the collection offset for a given page index.
-	 *
-	 * @private
-	 * @return 	Number
-	 */
-	var offsetForPage = function(page) {
-		return page*PAGE_SIZE;
-	};
-
 	return {
 
 		/**
 		 * Find all users.
 		 *
 		 * @public
-		 * @param	page		Number	The result page offset of the results to query for
+		 * @param	page		Number	The offset for the result set
 		 * @return 	Promise
 		 */
-		all: function(page) {
-			page = page || 0;
+		all: function(offer) {
 			return $q(function(resolve, reject) {
 				IsometricaUser.find({
 					filter: {
-						offset: offsetForPage(page),
+						offset: offer,
+						order: "created DESC",
 						limit: PAGE_SIZE
 					}
 				}, resolve, reject);

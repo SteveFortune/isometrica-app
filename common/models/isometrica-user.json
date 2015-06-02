@@ -3,19 +3,22 @@
   "base": "User",
   "idInjection": true,
   "properties": {
-    "firstName" : {
-      "type" : "string"
+    "firstName": {
+      "type": "string"
     },
-    "lastName" : {
-      "type" : "string"
+    "lastName": {
+      "type": "string"
     },
     "name": {
+      "type": "string"
+    },
+    "address": {
       "type": "string"
     },
     "created": {
       "type": "date"
     },
-    "updated" : {
+    "updated": {
       "type": "date"
     }
   },
@@ -24,6 +27,26 @@
     "accounts": {
       "type": "hasAndBelongsToMany",
       "model": "Account"
+    },
+    "callTreeContacts": {
+        "type": "embedsMany",
+        "model": "Contact",
+        "property": "callTreeContacts",
+        "options": {
+          "validate": true,
+          "forceId": true,
+          "persistent": true
+        }
+    },
+    "phoneNumbers": {
+      "type": "embedsMany",
+      "model": "PhoneNumber",
+      "property": "phoneNumbers",
+      "options": {
+        "validate": true,
+        "forceId": true,
+        "persistent": true
+      }
     }
   },
   "acls": [
@@ -42,7 +65,7 @@
     {
       "accessType": "WRITE",
       "principalType": "ROLE",
-      "principalId": "$owner",
+      "principalId": "$authenticated",
       "permission": "ALLOW"
     }
   ],

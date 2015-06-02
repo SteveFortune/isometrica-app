@@ -17,11 +17,12 @@ app.controller( 'OverviewController',
 			filter : {
 				where : {
 					isTemplate: false,
-			  		isArchived : false
+			  		isArchived : false,
+			  		inTrash : false
 				  }
 			}
 		  },
-		  function(plans) { 
+		  function(plans) {
 		  	$scope.plans = _attachMockUsers(plans);
 		  },
 		  function(errorResponse) { /* error */ }
@@ -31,11 +32,12 @@ app.controller( 'OverviewController',
 			filter : {
 				where : {
 					isTemplate: true,
-			  		isArchived : false
+			  		isArchived : false,
+			  		inTrash : false
 				  }
-			} 
+			}
 		  },
-		  function(plans) { 
+		  function(plans) {
 		  	 console.log('found' + plans.length + 't');
 		  	$scope.templates = _attachMockUsers(plans);
 		  },
@@ -43,10 +45,16 @@ app.controller( 'OverviewController',
 		);
 
 		Plan.find(
-		  { filter: { where: { isArchived: true } } },
+		  {
+		  filter : {
+				where : {
+			  		inTrash : true
+				  }
+			}
+		  },
 		  function(plans) {
-		  console.log('found' + plans.length + 'a'); 
-		  	$scope.archived = _attachMockUsers(plans);
+		  console.log('found' + plans.length + ' in trash');
+		  	$scope.modulesTrash = _attachMockUsers(plans);
 		  },
 		  function(errorResponse) { /* error */ }
 		);
@@ -85,6 +93,9 @@ app.controller( 'OverviewController',
 			case 'docwiki':
 				state = 'docwiki';
 				break;
+			case 'addressbook':
+				state = 'addressbook';
+				break;
 			default :
 				state = 'canvas';
 				break;
@@ -109,13 +120,16 @@ app.controller( 'OverviewController',
 				},
 				isNew : function() {
 					return true;
+				},
+				docTemplates : function() {
+					return $scope.templates;
 				}
 			}
 		});
 
 		modalInstance.result.then( function(plan) {
 			loadPlans();
-			growl.success('Your plan has been created');
+			growl.success('The module has been added');
 		});
 
 	};
@@ -131,6 +145,9 @@ app.controller( 'OverviewController',
 				},
 				isNew : function() {
 					return false;
+				},
+				docTemplates : function() {
+					return [];
 				}
 			}
 		});

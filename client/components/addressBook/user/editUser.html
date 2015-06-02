@@ -1,0 +1,179 @@
+<div class="panel panel-default bootcards-wiki-panel">
+
+	<isa-address-book-modal-header
+		can-save="userForm.$valid"
+		on-save="updateUser()"
+		on-cancel="cancel()"
+		title="{{ user.name }}">
+	</isa-address-book-modal-header>
+
+	<div class="modal-body">
+		<form class="form-horizontal" name="userForm" novalidate>
+			<!-- Basic user fields -->
+			<isa-form-input
+				title="First Name*"
+				input-type="text"
+				input-placeholder='Joe'
+				input-name='firstName'
+				model='user.firstName'
+				form='userForm'
+				validation-model='{
+					"required": "A first name is required."
+				}'>
+			</isa-form-input>
+			<isa-form-input
+				title="Last Name*"
+				input-type="text"
+				input-placeholder='Bloggs'
+				input-name='lastName'
+				model='user.lastName'
+				form='userForm'
+				validation-model='{
+					"required": "A last name is required."
+				}'>
+			</isa-form-input>
+			<isa-form-input
+				title="Title or Role"
+				input-type="text"
+				input-placeholder='VP of Sales'
+				input-name='role'
+				model='user.role'
+				form='userForm'>
+			</isa-form-input>
+			<isa-form-input
+				title="Email*"
+				input-type="email"
+				input-placeholder='joe.bloggs@ibm.com'
+				input-name='email'
+				model='user.email'
+				form='userForm'
+				validation-model='{
+					"required": "An email address is required.",
+					"email": "Must be a valid email address.",
+					"existsEmail": "A user already exists with this email address."
+				}'
+				pending-model='{
+					"existsEmail": "..."
+				}'>
+			</isa-form-input>
+			<isa-form-input
+				title="Address"
+				input-type="address"
+				input-placeholder='10 King Stree, Nailsworth, GL5 0NN'
+				input-name='address'
+				model='user.address'
+				form='userForm'
+				validation-model='{
+					"minlength": "Must be a valid email address.",
+					"existsEmail": "A user already exists with this email address."
+				}'
+				pending-model='{
+					"existsEmail": "..."
+				}'>
+			</isa-form-input>
+			<accordion>
+				<accordion-group heading="Phone Numbers">
+					<!-- NOTE: Again, not sure how to handle embedded entities -->
+					<div class="list-group clearfix" ng-repeat="phoneNumber in user._phoneNumbers">
+						<isa-form-input
+							class="col-sm-6"
+							title="Number"
+							input-type="text"
+							input-placeholder='+44 7668 492301'
+							input-name='phoneNumber_{{ $index }}'
+							model='phoneNumber.number'
+							form='userForm'
+							validation-model='{
+								"phoneNumber": "Must be a valid phone number.",
+								"required": "A number is required."
+							}'>
+						</isa-form-input>
+						<isa-form-input
+							class="col-sm-6"
+							title="Type"
+							input-type="text"
+							input-placeholder='Mobile'
+							input-name='type_{{ $index }}'
+							model='phoneNumber.type'
+							form='userForm'>
+						</isa-form-input>
+					</div>
+					<div ng-if="!user._phoneNumbers.length">
+						<p>
+							No phone numbers.
+						</p>
+					</div>
+					<a class="btn btn-primary pull-right" ng-click="addPhoneNumber()">
+						<i class="fa fa-plus"></i>
+						New Number
+					</a>
+				</accordion-group>
+				<accordion-group heading="User Admin">
+					<isa-form-input
+						title="Type of Person"
+						input-type="text"
+						input-placeholder='Admin'
+						input-name='userType'
+						model='user.type'
+						form='userForm'>
+					</isa-form-input>
+					<!-- Does not link to a model at the moment. Not sure how to handle
+						 user reset password -->
+					<isa-form-input
+						title="Password*"
+						input-type="password"
+						input-placeholder='Password'
+						input-name='password'
+						form='userForm'
+						validation-model='{
+							minlength: {
+								value: 6,
+								message: "Must be > 6 characters long."
+							},
+							containsNumber: "Must contain both letters and numbers."
+						}'>
+					</isa-form-input>
+				</accordion-group>
+				<accordion-group heading="Call Tree">
+					<!-- NOTE: Again, not sure how to handle embedded entities -->
+					<div class="list-group clearfix" ng-repeat="contact in user._callTreeContacts">
+						<isa-form-input
+							class="col-sm-6"
+							title="Name"
+							input-type="text"
+							input-placeholder='Joe Bloggs'
+							input-name='contact_{{ $index }}'
+							model='contact.name'
+							form='userForm'
+							validation-model='{
+								"required": "A name is required."
+							}'>
+						</isa-form-input>
+						<isa-form-input
+							class="col-sm-6"
+							title="Type"
+							input-type="text"
+							input-placeholder='+44 7668 492301'
+							input-name='type_{{ $index }}'
+							model='contact._phoneNumber.number'
+							form='userForm'
+							validation-model='{
+								"phoneNumber": "Must be a valid phone number.",
+								"required": "A number is required."
+							}'>
+						</isa-form-input>
+					</div>
+					<div ng-if="!user._callTreeContacts.length">
+						<p>
+							No contacts in call tree.
+						</p>
+					</div>
+					<a class="btn btn-primary pull-right" ng-click="addCallTreeContact()">
+						<i class="fa fa-plus"></i>
+						New Contact
+					</a>
+				</accordion-group>
+			</accordion>
+		</form>
+	</div>
+</div>

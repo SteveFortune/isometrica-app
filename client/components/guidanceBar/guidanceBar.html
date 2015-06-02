@@ -7,8 +7,7 @@
   <div class="navbar navbar-inverse guidance-bar" ng-hide="hideBar">
     <div class="container">
       <div class="row">
-        <div class="col-sm-6">
-          <h4>Click on <i class="fa fa-plus-circle"></i> to add a new document or organization. Go to Templates to view example documents. Go to Address Book to add a user.</h4>
+        <div class="col-sm-6" ng-transclude>
         </div>
         <div class="col-sm-6">
           <div class="btn-group btn-group-lg pull-right">
@@ -20,13 +19,13 @@
               <i class="fa fa-support"></i>
               Support
             </a>
-            <a ng-click="hideThis()" 
+            <a ng-click="hideThis()"
               class="btn btn-link">
               <i class="fa fa-times-circle"></i>
             </a>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
   </div>
 </div>

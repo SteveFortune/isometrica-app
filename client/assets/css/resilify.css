@@ -1369,10 +1369,14 @@ body.desktop.has-bootcards-navbar-double {
   margin-top: 20px;
   /* styled 'browse' button*/
   /*textangular toolbar*/
-  /* styled 'browse' button*/ }
+  /* style the list of files on a page*/
+  /* styled 'browse' button*/
+  /*comments */ }
   .docwiki .btn-file {
     position: relative;
     overflow: hidden; }
+  .docwiki .search-form .btn-primary i {
+    margin-right: 0; }
   .docwiki .btn-file input[type=file] {
     position: absolute;
     top: 0;
@@ -1439,9 +1443,11 @@ body.desktop.has-bootcards-navbar-double {
       border-top: 1px solid #dddddd; }
     .docwiki .nav .list-group-item:first-child {
       border-top: 0; }
-    .docwiki .nav .list-group-item {
+    .docwiki .nav .list-group-item h4 {
       border-radius: 0;
       font-size: 18px; }
+    .docwiki .nav .list-group-item-text {
+      font-weight: normal; }
     .docwiki .nav .fa-chevron-circle-down, .docwiki .nav .fa-chevron-circle-right {
       font-size: 18px;
       width: 20px;
@@ -1457,6 +1463,13 @@ body.desktop.has-bootcards-navbar-double {
     border-bottom: 1px solid #dddddd; }
   .docwiki .ta-toolbar {
     margin-bottom: 10px; }
+  .docwiki table.files-list {
+    /*remove the default bottom margin on bs tables*/
+    margin-bottom: 0;
+    /*remove border on first line in the files list*/ }
+    .docwiki table.files-list tbody > tr:first-child > td {
+      border-top: 0;
+      padding-top: 0; }
   .docwiki .btn-file {
     position: relative;
     overflow: hidden; }
@@ -1474,5 +1487,19 @@ body.desktop.has-bootcards-navbar-double {
     background: white;
     cursor: inherit;
     display: block; }
+  .docwiki .comments .panel-body {
+    padding: 0; }
+  .docwiki .comments li.list-group-item {
+    border: 0;
+    border-top: 1px solid #eee;
+    border-radius: 0;
+    margin-left: 0;
+    padding-left: 15px; }
+  .docwiki .comments li.list-group-item:first-child {
+    border-top: 0; }
+  .docwiki .comments li.list-group-item i.fa {
+    width: inherit;
+    margin: 0;
+    opacity: 1; }
 
 /*# sourceMappingURL=resilify.css.map */

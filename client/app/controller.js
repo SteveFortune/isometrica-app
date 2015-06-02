@@ -32,17 +32,17 @@ app.controller('AppController',
         ($scope));
   }
 
-  if (isIOS) {
+  //ML, 18-5-2015: disabled for now, going with the desktop styling on mobile too
+  /*if (isIOS) {
     head.scope().injectedStylesheets.push({href: 'assets/libs/bootcards/dist/css/bootcards-ios.css'});
     body.addClass('ios');
   } else if (isAndroid) {
     head.scope().injectedStylesheets.push({href: 'assets/libs/bootcards/dist/css/bootcards-android.css'});
     body.addClass('android');
-  } else {
+  } else {*/
     head.scope().injectedStylesheets.push({href: 'assets/libs/bootcards/dist/css/bootcards-desktop.css'});
     body.addClass('desktop');
-
-  }
+  //}
 
   //load isometrica css
   head.scope().injectedStylesheets.push({href: "assets/css/resilify.css"});
