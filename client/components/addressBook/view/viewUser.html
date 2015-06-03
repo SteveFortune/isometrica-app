@@ -10,17 +10,17 @@
 		<h3 class="panel-title">User Details</h3>
 	</div>
 
-	<div class="list-group">
+	<div class="list-group" ng-model="entity">
 
 		<div class="list-group-item">
 			<isa-profile-img user="entity"></isa-profile-img>
 			<h4 class="list-group-item-heading">Name</h4>
-			<p class="list-group-item-text">{{ entity.firstName + ' ' + entity.lastName }}</p>
+			<p class="list-group-item-text" loading-attr>{{ entity.firstName + ' ' + entity.lastName }}</p>
 		</div>
 
 		<div class="list-group-item">
 			<h4 class="list-group-item-heading">Role</h4>
-			<p class="list-group-item-text">{{ entity.role || "Unknown" }}</p>
+			<p class="list-group-item-text" loading-attr>{{ entity.role }}</p>
 		</div>
 
 		<div class="list-group-item">
