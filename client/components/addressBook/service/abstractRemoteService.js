@@ -10,10 +10,10 @@
  *
  * Here is how to declare a remote service using this base class:
  *
- *		var _ExampleServiceRemote = funtion(Example, $q, ...) {
- *			isa.AbstractRemoteService.call(this, Example, $q, ...); // Example is out lbModel
+ *		var _ExampleServiceRemote = funtion(Example, ...) {
+ *			isa.AbstractRemoteService.call(this, Example, ...); // Example is out lbModel
  * 		};
- *		ExampleService.$inject = [ 'Example', '$q', ... ];
+ *		ExampleService.$inject = [ 'Example', ... ];
  *		ExampleService.prototype = Object.create(isa.AbstractRemoteService.prototype);
  *
  *		app.service('_ExampleServiceRemote', ExampleService);
@@ -22,7 +22,7 @@
  */
 (function(angular, isa) {
 
-	var AbstractRemoteService = function(lbModel, $q) {
+	var AbstractRemoteService = function(lbModel) {
 
 		/**
 		 * The main loopback model we use to interact with our backend service.
@@ -30,13 +30,6 @@
 		 * @var Object
 		 */
 		this.lbModel = lbModel;
-
-		/**
-		 * Angular's $q service
-		 *
-		 * @var Object
-		 */
-		this.$q = $q;
 
 		/**
 		 * Size of the pages to load in `all`
@@ -57,16 +50,13 @@
 		 * @return 	Promise
 		 */
 		all: function(offset) {
-			var self = this;
-			return self.$q(function(resolve, reject) {
-				self.lbModel.find({
-					filter: {
-						offset: offset,
-						order: "created DESC",
-						limit: self.pageSize
-					}
-				}, resolve, reject);
-			});
+			return this.lbModel.find({
+				filter: {
+					offset: offset,
+					order: "created DESC",
+					limit: self.pageSize
+				}
+			}).$promise;
 		},
 
 		/**
@@ -78,14 +68,11 @@
 		 * @return 	Promise
 		 */
 		findOneBy: function(predicate) {
-			var self = this;
-			return self.$q(function(resolve, reject) {
-				self.lbModel.findOne({
-					filter: {
-						where: predicate
-					}
-				}, resolve, reject);
-			});
+			return this.lbModel.findOne({
+				filter: {
+					where: predicate
+				}
+			}).$promise;
 		},
 
 		/**
@@ -96,10 +83,7 @@
 		 * @return 	Promise
 		 */
 		insert: function(newEntity) {
-			var self = this;
-			return self.$q(function(resolve, reject) {
-				self.lbModel.create(null, newEntity, resolve, reject);
-			});
+			return this.lbModel.create(null, newEntity).$promise;
 		},
 
 		/**
@@ -110,12 +94,9 @@
 		 * @return 	Promise
 		 */
 		deleteById: function(id) {
-			var self = this;
-			return self.$q(function(resolve, reject) {
-				self.lbModel.deleteById({
-					id: id
-				}, resolve, reject);
-			});
+			return this.lbModel.deleteById({
+				id: id
+			}).$promise;
 		},
 
 		/**
@@ -127,14 +108,11 @@
 		 * @return 	Promise
 		 */
 		updateById: function(id, attrs) {
-			var self = this;
-			return self.$q(function(resolve, reject) {
-				self.lbModel.update({
-					where: {
-						id: id
-					}
-				}, attrs, resolve, reject);
-			});
+			return this.lbModel.update({
+				where: {
+					id: id
+				}
+			}, attrs).$promise;
 		}
 
 	});

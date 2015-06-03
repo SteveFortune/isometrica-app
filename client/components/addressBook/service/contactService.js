@@ -6,12 +6,12 @@
 (function(angular, isa) {
 
 	var app = angular.module('isa.addressbook');
-	var _ContactServiceRemote = function(Contact, IsometricaUser, $q) {
-		isa.AbstractRemoteService.call(this, Contact, $q);
+	var _ContactServiceRemote = function(Contact, IsometricaUser) {
+		isa.AbstractRemoteService.call(this, Contact);
 		this.IsometricaUser = IsometricaUser;
 	};
 
-	_ContactServiceRemote.$inject = [ 'Contact', 'IsometricaUser', '$q' ];
+	_ContactServiceRemote.$inject = [ 'Contact', 'IsometricaUser' ];
 	_ContactServiceRemote.prototype = Object.create(isa.AbstractRemoteService.prototype);
 
 	/**
@@ -21,20 +21,13 @@
 	 * @return 	Promise
 	 */
 	_ContactServiceRemote.prototype.allForUser = function(user) {
-		var self = this;
-		return self.$q(function(resolve, reject) {
-			self.IsometricaUser.callTreeContacts({
-				id: user.id
-			}, function(contacts) {
-				resolve(contacts);
-			}, function(err) {
-				reject(err);
-			});
-		});
+		return this.IsometricaUser.callTreeContacts({
+			id: user.id
+		}).$promise;
 	};
 
 	app.service('_ContactServiceRemote', _ContactServiceRemote);
-	app.service('_ContactServiceLocal', ['$q', function($q) {}]);
+	app.service('_ContactServiceLocal', function() {});
 	isa.persistentService(app, 'ContactService');
 
 })(angular, isa);
