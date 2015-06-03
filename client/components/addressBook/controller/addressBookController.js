@@ -9,8 +9,8 @@ var app = angular.module('isa.addressbook');
  * @author Steve Fortune
  */
 app.controller('AddressBookController',
-	['UserService', 'ContactService', '$scope', '$rootScope', '$state', '$modal',
-	function(UserService, ContactService, $scope, $rootScope, $state, $modal){
+	['UserService', 'ContactService', 'Collection', '$scope', '$rootScope', '$state', '$modal',
+	function(UserService, ContactService, Collection, $scope, $rootScope, $state, $modal){
 
 	/**
 	 * The select filter state.
@@ -20,20 +20,12 @@ app.controller('AddressBookController',
 	$scope.selectState = 'Users';
 
 	/**
-	 * The state of the asynchronous UI.
-  	 *
-	 * @var String
-	 */
-	$scope.loadingState = 'loading';
-
-	/**
 	 * A map of select states to config objects. These objects contain the
 	 * following properties:
 	 *
 	 * - `route`				String					The nested state
-	 * - `service`				AbstractRemoteService	An object responsible for make data access calls.
-	 *													to execute a query. Returns the resulting promise.
-	 * - `collection` 			Array					Array of loaded objects.
+	 * - `collection` 			Collection				A collection used to page load items from our
+	 * 													service.
 	 * - `modalControllerConf`	Object					Config used to initialise a modal controller to
 	 *													create a new instance of the entity.
 	 *
@@ -42,8 +34,9 @@ app.controller('AddressBookController',
 	var selectStates = {
 		'Users': {
 			route: 'addressbook.user',
-			service: UserService,
-			collection: [],
+			collection: new Collection(function(length) {
+				return UserService.all(length);
+			}),
 			modalControllerConf: {
 				templateUrl: '/components/addressBook/view/newUser.html',
 				controller : 'AddressBookEditUserController'
@@ -51,8 +44,9 @@ app.controller('AddressBookController',
 		},
 		'Contacts': {
 			route: 'addressbook.contact',
-			service: ContactService,
-			collection: [],
+			collection: new Collection(function(length) {
+				return ContactService.all(length);
+			}),
 			modalControllerConf: {
 				templateUrl: '/components/addressBook/view/newContact.html',
 				controller : 'AddressBookEditContactController',
@@ -64,11 +58,21 @@ app.controller('AddressBookController',
 	};
 
 	/**
-	 * Convenience method. Returns the current collection based on the select state.
+	 * Convenience method. Returns the arr contained the collection of the current
+	 * state.
 	 *
 	 * @return 	Array
 	 */
-	$scope.addressBookCollection = function() {
+	$scope.listItems = function() {
+		return $scope.collection().arr;
+	};
+
+	/**
+	 * Convenience method. Returns the collection of the current state.
+	 *
+	 * @return 	Collection
+	 */
+	$scope.collection =function() {
 		return currentSelectState().collection;
 	};
 
@@ -77,7 +81,7 @@ app.controller('AddressBookController',
 	 *
 	 * @return 	Array
 	 */
-	$scope.addressBookRoute = function() {
+	$scope.route = function() {
 		return currentSelectState().route;
 	};
 
@@ -137,16 +141,12 @@ app.controller('AddressBookController',
 	$scope.loadMore = function() {
 		var currentState = currentSelectState();
 		var collection = currentState.collection;
-		currentState.service.all(collection.length).then(function(items) {
-			currentState.collection = collection.concat(items);
-			if (collection.length === 0 && items.length > 0) {
+		collection.more().then(function(args) {
+			if (args.firstSuccessfulQuery) {
 				$state.transitionTo(currentState.route, {
-					id: items[0].id
+					id: args.items[0].id
 				});
 			}
-			$scope.loadingState = 'loaded';
-		}, function() {
-			$scope.loadingState = 'failed';
 		});
 	};
 
@@ -156,6 +156,8 @@ app.controller('AddressBookController',
 	 * @protected
 	 */
 	$scope.add = function() {
+
+		// TODO: Tidy this up, build a deep merge function
 
 		var currentState = currentSelectState();
 		var dstConf = currentState.modalControllerConf;
@@ -183,7 +185,7 @@ app.controller('AddressBookController',
 	 * @protected
 	 */
 	$scope.$watch('selectState', function(newState, oldState) {
-		$scope.loadingState = 'loading';
+		$scope.collection().refresh();
 		$scope.loadMore();
 	});
 

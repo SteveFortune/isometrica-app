@@ -1,5 +1,5 @@
 
-<div class="isa-address-book-page">
+<div class="isa-address-book-page" infinite-scroll="loadMore()">
 	<isa-address-book-header select-state="selectState"></isa-address-book-header>
 	<isa-guidance-bar>
 		<h4>
@@ -38,11 +38,11 @@
 							</div>
 						</div>
 					</div>
-					<div class="list-group" infinite-scroll="loadMore()">
+					<div class="list-group">
 						<a
-							ng-if="loadingState === 'loaded' && addressBookCollection().length > 0"
-							ng-repeat="entity in addressBookCollection() | filter : query"
-							ui-sref="{{ addressBookRoute() }}({ id: entity.id })"
+							ng-if="collection().loadingState === 'loaded' && listItems().length > 0"
+							ng-repeat="entity in listItems() | filter : query"
+							ui-sref="{{ route() }}({ id: entity.id })"
 							class="list-group-item">
 
 							<div ng-if="isSelectUsers()">
@@ -73,14 +73,19 @@
 
 						</a>
 						<div
-							ng-if="loadingState === 'loaded' && addressBookCollection().length === 0"
+							ng-if="collection().loadingState === 'loaded' && listItems().length === 0"
 							class="list-group-item">
 							<h4>None found. Try <a ng-click="add()">adding some.</a></h4>
 						</div>
 						<div
-							ng-if="loadingState === 'failed'"
+							ng-if="collection().loadingState === 'failed'"
 							class="list-group-item">
-							<a>Error</a>
+							<h4>Error.</h4>
+						</div>
+						<div
+							ng-if="collection().loadingState === 'loading'"
+							class="list-group-item">
+							<h4>Loading.</h4>
 						</div>
 					</div>
 				</div>
