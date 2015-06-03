@@ -117,22 +117,22 @@
 						can-edit="true"
 						ng-repeat="contact in callTreeContacts">
 						<div class="col-sm-6">
-							<label class="col-xs-3 control-label">
+							<p class="h4">
 								Name:
-							</label>
-							<p class="col-xs-9 h5">
-								{{ contact.name }}
+								<span class="label label-default">
+									{{ contact.name }}
+								</span>
 							</p>
 						</div>
 						<div class="col-sm-6">
-							<label class="col-xs-3 control-label">
+							<p class="h4">
 								Phone:
-							</label>
-							<p ng-if="!contact._phoneNumbers.length" class="col-xs-9 h5">
-								<em>None</em>
-							</p>
-							<p ng-if="contact._phoneNumbers.length" class="col-xs-9 h5">
-								{{ contact._phoneNumbers[0].number }}
+								<span class="label label-default" ng-if="!contact._phoneNumbers.length">
+									<em>None</em>
+								</span>
+								<span class="label label-default" ng-if="contact._phoneNumbers.length">
+									{{ contact._phoneNumbers[0].number }}
+								</span>
 							</p>
 						</div>
 					</isa-group-row>
