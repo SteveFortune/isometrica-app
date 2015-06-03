@@ -74,10 +74,10 @@ app.controller('AddressBookEditUserController',
 			templateUrl: '/components/addressBook/view/newContact.html',
 			controller : 'AddressBookEditContactController',
 			resolve: {
-				callTree: angular.noop,
-				entity: function() {
-					return null;
-				}
+				callTree: function() {
+					return $scope.entity
+				},
+				entity: angular.noop
 			}
 		}).result.then(function(newContact) {
 			$scope.callTreeContacts.push(newContact);
@@ -96,7 +96,9 @@ app.controller('AddressBookEditUserController',
 			templateUrl: '/components/addressBook/view/editContact.html',
 			controller : 'AddressBookEditContactController',
 			resolve: {
-				callTree: angular.noop,
+				callTree: function() {
+					return $scope.entity
+				},
 				entity: function() {
 					return contact;
 				}

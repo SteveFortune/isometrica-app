@@ -6,11 +6,12 @@
 (function(angular, isa) {
 
 	var app = angular.module('isa.addressbook');
-	var _ContactServiceRemote = function(Contact, $q) {
+	var _ContactServiceRemote = function(Contact, IsometricaUser, $q) {
 		isa.AbstractRemoteService.call(this, Contact, $q);
+		this.IsometricaUser = IsometricaUser;
 	};
 
-	_ContactServiceRemote.$inject = [ 'Contact', '$q' ];
+	_ContactServiceRemote.$inject = [ 'Contact', 'IsometricaUser', '$q' ];
 	_ContactServiceRemote.prototype = Object.create(isa.AbstractRemoteService.prototype);
 
 	/**
@@ -22,9 +23,13 @@
 	_ContactServiceRemote.prototype.allForUser = function(user) {
 		var self = this;
 		return self.$q(function(resolve, reject) {
-			self.lbModel.find({
-				userId: user.id
-			}, resolve, reject);
+			self.IsometricaUser.callTreeContacts({
+				id: user.id
+			}, function(contacts) {
+				resolve(contacts);
+			}, function(err) {
+				reject(err);
+			});
 		});
 	};
 
