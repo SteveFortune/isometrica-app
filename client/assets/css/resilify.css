@@ -1515,4 +1515,14 @@ body.desktop.has-bootcards-navbar-double {
   .docwiki .signatures ul {
     margin-bottom: 0; }
 
+.isa-address-book-page .guidance-bar {
+  position: static;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto; }
+
+.isa-address-book-container {
+  margin-top: 20px; }
+
 /*# sourceMappingURL=resilify.css.map */
