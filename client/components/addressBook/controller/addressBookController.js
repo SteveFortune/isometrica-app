@@ -54,11 +54,11 @@ app.controller('AddressBookController',
 			service: ContactService,
 			collection: [],
 			modalControllerConf: {
-				callTree: function() {
-					return null;
-				},
 				templateUrl: '/components/addressBook/view/newContact.html',
-				controller : 'AddressBookEditUserController'
+				controller : 'AddressBookEditContactController',
+				resolve: {
+					callTree: angular.noop
+				}
 			}
 		}
 	};
@@ -156,13 +156,19 @@ app.controller('AddressBookController',
 	 * @protected
 	 */
 	$scope.add = function() {
+
 		var currentState = currentSelectState();
-		var controllerConf = angular.extend(currentState.modalControllerConf, {
-			resolve: {
-				entity: angular.noop
-			}
+		var dstConf = currentState.modalControllerConf;
+		var srcResolveConf = {
+			entity: angular.noop
+		};
+		var mergedConf = angular.extend(dstConf, {
+			resolve: dstConf.resolve ?
+				angular.extend(dstConf.resolve, srcResolveConf) :
+				srcResolveConf
 		});
-		$modal.open(controllerConf).result.then(function(user) {
+
+		$modal.open(mergedConf).result.then(function(user) {
 			currentState.collection.unshift(user);
 		}, function(error) {
 			if (error) {
@@ -188,6 +194,9 @@ app.controller('AddressBookController',
 	 */
 	$rootScope.$on('user.update', function(ev, updatedUser) {
 		updateCollection('Users', updatedUser);
+	});
+	$rootScope.$on('contact.update', function(ev, updateContact) {
+		updateCollection('Contacts', updateContact);
 	});
 
 	/**

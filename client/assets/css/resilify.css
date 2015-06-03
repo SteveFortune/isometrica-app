@@ -1364,24 +1364,17 @@ body.desktop.has-bootcards-navbar-double {
   .resilify-user-activity .resilify-user-activity-time {
     text-align: left; } }
 
-.isa-address-book-page .guidance-bar {
-  position: static;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto; }
-
-.isa-address-book-container {
-  margin-top: 20px; }
-
 /*docwiki styles*/
 .docwiki {
   margin-top: 20px;
   /* styled 'browse' button*/
   /*textangular toolbar*/
   /* style the list of files on a page*/
+  /*fixing some weird CSS in bootcards-desktop:*/
   /* styled 'browse' button*/
-  /*comments */ }
+  /* tags color */
+  /* comments styling */
+  /* signatures styling */ }
   .docwiki .btn-file {
     position: relative;
     overflow: hidden; }
@@ -1480,6 +1473,12 @@ body.desktop.has-bootcards-navbar-double {
     .docwiki table.files-list tbody > tr:first-child > td {
       border-top: 0;
       padding-top: 0; }
+    .docwiki table.files-list tbody > tr > td {
+      padding-left: 0;
+      padding-right: 0; }
+  .docwiki .form-control-static {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important; }
   .docwiki .btn-file {
     position: relative;
     overflow: hidden; }
@@ -1497,6 +1496,8 @@ body.desktop.has-bootcards-navbar-double {
     background: white;
     cursor: inherit;
     display: block; }
+  .docwiki tags-input .tags .tag-item {
+    background: #337ab7; }
   .docwiki .comments .panel-body {
     padding: 0; }
   .docwiki .comments li.list-group-item {
@@ -1511,10 +1512,7 @@ body.desktop.has-bootcards-navbar-double {
     width: inherit;
     margin: 0;
     opacity: 1; }
-
-.isa-chevron {
-  line-height: 20px;
-  font-size: 24px;
-  color: #337ab7; }
+  .docwiki .signatures ul {
+    margin-bottom: 0; }
 
 /*# sourceMappingURL=resilify.css.map */
