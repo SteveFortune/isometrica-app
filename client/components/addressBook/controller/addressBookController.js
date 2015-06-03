@@ -13,6 +13,15 @@ app.controller('AddressBookController',
 	function(UserService, ContactService, Collection, $scope, $rootScope, $state, $modal){
 
 	/**
+	 * Was the user redirected to this controller with the id of a specific
+	 * entity in the URL? If so, we need to prevent the initial transition
+	 * to the first user on loadMore.
+	 *
+	 * @var Boolean
+	 */
+	var redirectToFirst = !!$state.params.id;
+
+	/**
 	 * The select filter state.
 	 *
 	 * @var String
@@ -142,7 +151,7 @@ app.controller('AddressBookController',
 		var currentState = currentSelectState();
 		var collection = currentState.collection;
 		collection.more().then(function(args) {
-			if (args.firstSuccessfulQuery) {
+			if (args.firstSuccessfulQuery && !redirectToFirst) {
 				$state.transitionTo(currentState.route, {
 					id: args.items[0].id
 				});
@@ -185,6 +194,9 @@ app.controller('AddressBookController',
 	 * @protected
 	 */
 	$scope.$watch('selectState', function(newState, oldState) {
+		if (newState !== oldState) {
+			redirectToFirst = false;
+		}
 		$scope.collection().refresh();
 		$scope.loadMore();
 	});
