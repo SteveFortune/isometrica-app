@@ -1,0 +1,150 @@
+/* WORKSHEET MODAL */
+
+.resilify-worksheet-modal {
+
+	.modal-dialog {
+		width: auto;
+    
+		.modal-content {	
+  		//border-radius: 0;
+  		
+  		.modal-header {
+    		padding: 5px 15px;
+    		text-align: left;
+    		
+    		.btn-group {
+      		position: absolute;
+      		right: 5px;
+      		top: 5px;
+    		}
+  		}
+  				
+			.modal-body {
+				padding:0;
+
+        .table-responsive {
+        	width: 100%;
+        	margin: 0;
+        	overflow-x: auto;
+        	overflow-y: hidden;
+        	-webkit-overflow-scrolling: touch;
+        	-ms-overflow-style: -ms-autohiding-scrollbar;
+        	border: 0;
+        }
+        
+        .table {
+        	margin: 0;
+        	
+        	thead {
+        		background: #eee;
+        	}
+        	
+        	>thead>tr>th,
+        	>tbody>tr>td {
+        		padding: 10px 15px;
+        	}
+        	
+        	th.narrow,
+        	td.narrow {
+          	width: 60px;
+        	}
+        	        	
+        	.label {
+          	display: block;
+          	padding-top: 6px;
+          	padding-bottom: 6px;
+          	
+            &.impact-vlow { background: #29aa50; }
+            &.impact-low { background: #5cb85c; }
+            &.impact-medium { background: #f0ad4e; }
+            &.impact-high { background: #d9534f; }
+            &.impact-vhigh { background: #c02927; }          	
+        	}
+        	
+        	.arrow {
+          	height: 3px;
+          	background: #ddd;
+          	margin: 9px 0;
+          	position: relative;
+          	margin-right: 5px;
+          	
+          	&:after {
+            	content: '';
+            	position: absolute;
+            	right: 0;
+            	top: 50%;
+            	margin-top: -8px;
+            	margin-right: -13px;
+            	border-style: solid;
+            	border-width: 8px;
+            	border-color: transparent;
+            	border-left-color: #ddd;
+          	}
+        	}
+        	
+        	.extra-border {
+          	border-bottom: 2px solid #ddd;
+        	}
+        	
+        	
+        	
+        	.subheading {
+          	//color: white;
+          	background: #eee;
+          	font-weight: bold;
+          	font-size: 20px;
+          	font-weight: 500;
+          	padding-top: 12px;
+          	padding-bottom: 12px;
+          	color: #777;
+        	}
+        	
+        	.mitigation {
+          	background: #d9edf7 url("../img/bg-diagonal-white.png");
+          	color: #31708f;
+        	}
+        	
+        	td {
+          	&.impact-vlow { background-color: #dff0d8; color: #3c763d; }
+            &.impact-low { background-color: #dff0d8; color: #3c763d; }
+            &.impact-medium { background-color: #fcf8e3; color: #8a6d3b; }
+            &.impact-high { background-color: #f2dede; color: #a94442; }
+            &.impact-vhigh { background-color: #f2dede; color: #a94442; }
+        	}
+        	
+        	
+        	
+        	th.wide,
+        	td.wide {
+          	//min-width: 150px;
+        	}
+        	        	
+        	.subtitle {
+        		//display: block;
+        		//font-size: 12px;
+        		//line-height: 20px;
+        		//color: #999;
+        	}
+        }
+			}
+		}
+	}
+}
+
+.desktop .resilify-worksheet-modal {
+	.modal-dialog {
+  	margin: 30px;
+	}
+}
+
+.ios .resilify-worksheet-modal {
+  .modal-dialog {
+  	margin: 0;
+  }  
+} 
+
+.android .resilify-worksheet-modal {
+  .modal-dialog {
+  	margin: 0;
+  }  
+}

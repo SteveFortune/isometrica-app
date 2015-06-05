@@ -1,0 +1,84 @@
+/* USERS */
+
+.ios .resilify-users-invite {
+  .form-group {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  .btn {
+    padding: 0;
+  }
+}
+
+.android .resilify-users-invite {
+  .btn {
+    background: #99CC00;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.3);
+
+    &:hover,
+    &:active {
+      background: #669900;
+      box-shadow: none;
+    }
+  }
+}
+
+.resilify-existing-users {
+  .list-group-item img {
+    margin-right: 12px;
+  }
+}
+
+
+/* USER ACTIVITY */
+
+.resilify-user-activity {
+  padding-top: 30px;
+  
+  .guidance-bar {
+    .btn-group {
+      margin: -13px 0;
+    }
+  }
+  
+  .bootcards-container {
+    padding-top: 50px;
+  }
+  
+  .bootcards-accordion {
+    .list-group-item.bootcards-list-subheading {
+      padding-left: 65px;
+      
+      &:before {
+        width: 36px;
+        text-align: center;
+      }
+    }
+    
+    a.list-group-item {
+      img {
+        height: 36px;
+        width: 36px;
+      }
+    }
+  }
+  
+  .bootcards-cards {
+    .panel-heading {
+      img {
+        margin-right: 15px;
+        margin-top: 7px;
+      }
+      
+      .text-muted {
+        color: #777 !important;
+      }
+    }
+  }
+}

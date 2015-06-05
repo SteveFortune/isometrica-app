@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  
+  <title>Address Book</title>
+  <!-- 1.0.0 -->
+
+	<!-- Bootstrap and Bootcards JS -->
+	<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../assets/libs/bootcards/dist/js/bootcards.min.js"></script>
+	
+	<!-- Bootcards CSS for desktop: -->
+	<link rel="stylesheet" href="../assets/libs/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/libs/bootstrap/dist/css/bootstrap.min.css">
+	
+	<script>
+	// Platform Detection (testing only)
+	$( document ).ready(function() {
+		if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-ios.min.css'>");
+			$("head").append(cssLink);	
+			$('body').addClass('ios');	
+     	}
+		else if( navigator.userAgent.match(/Android/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-android.min.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('android');
+		}
+		else
+		{
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-desktop.min.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('desktop');
+		}
+	});
+	</script> 
+
+	<link rel="stylesheet" href="css/resilify.css">
+	
+</head>
+<body class="bootcards-fullheight bootcards-nofooter resilify-address-book">
+  
+  <!-- fixed top navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top resilify-navbar-centered" role="navigation">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-left">
+        <li>
+          <a class="btn btn-link icon-only" href="#">
+          	<i class="fa fa-lg fa-arrow-left"></i>
+          </a>
+        </li>
+      </ul>  
+      <div class="navbar-header">
+        <span class="navbar-brand">
+        	Address book - IBM Corp - Users
+        </span>  
+      </div>        
+    </div>
+  </div>   
+
+
+
+
+  <div class="container bootcards-container" id="main">   
+
+    <!-- Guidance Bar -->
+    <div class="navbar navbar-inverse guidance-bar">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9">
+            <h4>Guidance goes here lorem ipsum</h4>
+          </div>
+          <div class="col-sm-3">
+            <div class="btn-group btn-group-lg pull-right">
+              <a href="" class="btn btn-link icon-only">
+                <i class="fa fa-times-circle"></i>
+              </a>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+
+
+		<div class="row">
+
+      <div class="col-sm-5 bootcards-list" id="list">			
+  			<div class="panel panel-default">				
+  				<div class="panel-body">
+  					<div class="search-form">
+  						<div class="row">
+  						    <div class="col-xs-8">
+  						      <div class="form-group">
+  							      <select class="form-control">
+  							        <option>Users</option>
+  							        <option>Contacts</option>
+  							        <option>Organizations</option>
+  							        <option>In call tree</option>
+  							        <option>Not in call tree</option>
+  							      </select>
+  						      </div>
+  						    </div>
+  						    <div class="col-xs-4">
+  								<a class="btn btn-primary btn-block" href="/contacts/add" data-toggle="modal" data-target="#editModal">
+  									<i class="fa fa-plus"></i> 
+  									<span>Add</span>
+  								</a>
+  						    </div>
+  						</div>
+  					</div>
+  				</div>
+  				<div class="panel-body">
+  					<div class="search-form">
+				      <div class="form-group">
+					      <input type="text" class="form-control" placeholder="Search Users...">
+					      <i class="fa fa-search"></i>
+				      </div>
+  					</div>
+  				</div>
+  				<div class="list-group">
+  				  <a class="list-group-item">
+  						<img class="img-circle pull-left" src="img/avatar-jack.gif">
+							<h4 class="list-group-item-heading">Lorna Atkinson</h4>
+							<p class="list-group-item-text">Exec assistant</p>
+						</a>
+						<a class="list-group-item active">
+  						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+							<h4 class="list-group-item-heading">Dan Colbert</h4>
+							<p class="list-group-item-text">VP of Sales</p>
+						</a>
+						<a class="list-group-item">
+  						<img class="img-circle pull-left" src="img/avatar-steve.gif">
+							<h4 class="list-group-item-heading">Helen Molyneaux</h4>
+							<p class="list-group-item-text">Exec assistant</p>
+						</a>
+						<a class="list-group-item">
+  						<img class="img-circle pull-left" src="img/avatar-jack.gif">
+							<h4 class="list-group-item-heading">Lorna Atkinson</h4>
+							<p class="list-group-item-text">Exec assistant</p>
+						</a>
+						<a class="list-group-item">
+  						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+							<h4 class="list-group-item-heading">Dan Colbert</h4>
+							<p class="list-group-item-text">VP of Sales</p>
+						</a>
+						<a class="list-group-item">
+  						<img class="img-circle pull-left" src="img/avatar-steve.gif">
+							<h4 class="list-group-item-heading">Helen Molyneaux</h4>
+							<p class="list-group-item-text">Exec assistant</p>
+						</a>
+						<a class="list-group-item">
+  						<img class="img-circle pull-left" src="img/avatar-jack.gif">
+							<h4 class="list-group-item-heading">Lorna Atkinson</h4>
+							<p class="list-group-item-text">Exec assistant</p>
+						</a>
+						<a class="list-group-item">
+  						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+							<h4 class="list-group-item-heading">Dan Colbert</h4>
+							<p class="list-group-item-text">VP of Sales</p>
+						</a>
+						<a class="list-group-item">
+  						<img class="img-circle pull-left" src="img/avatar-steve.gif">
+							<h4 class="list-group-item-heading">Helen Molyneaux</h4>
+							<p class="list-group-item-text">Exec assistant</p>
+						</a>
+						<a class="list-group-item">
+  						<img class="img-circle pull-left" src="img/avatar-steve.gif">
+							<h4 class="list-group-item-heading">Helen Molyneaux</h4>
+							<p class="list-group-item-text">Exec assistant</p>
+						</a>
+						<a class="list-group-item">
+  						<img class="img-circle pull-left" src="img/avatar-jack.gif">
+							<h4 class="list-group-item-heading">Lorna Atkinson</h4>
+							<p class="list-group-item-text">Exec assistant</p>
+						</a>
+						<a class="list-group-item">
+  						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+							<h4 class="list-group-item-heading">Dan Colbert</h4>
+							<p class="list-group-item-text">VP of Sales</p>
+						</a>
+						<a class="list-group-item">
+  						<img class="img-circle pull-left" src="img/avatar-steve.gif">
+							<h4 class="list-group-item-heading">Helen Molyneaux</h4>
+							<p class="list-group-item-text">Exec assistant</p>
+						</a>
+  				</div>
+  			</div>				
+  		</div>
+
+		
+			<div class="col-sm-7 bootcards-cards hidden-xs">				
+				<div class="panel panel-default bootcards-wiki-panel">
+					<div class="panel-heading clearfix">	
+						<div class="btn-group pull-right">
+							<a class="btn btn-default">
+								<i class="fa fa-pencil"></i>
+								Edit
+							</a>
+						</div>
+						<h3 class="panel-title">User details</h3>
+					</div>         
+          <div class="list-group">
+            <div class="list-group-item">
+              <img class="img-circle pull-left" src="img/avatar-mark.gif">
+              <p class="list-group-item-text">Name</p>
+              <h4 class="list-group-item-heading">Dan Colbert</h4>
+            </div>
+            <div class="list-group-item">
+              <p class="list-group-item-text">Title or Role</p>
+              <h4 class="list-group-item-heading">VP of Sales</h4>
+            </div>
+            <div class="list-group-item">
+              <p class="list-group-item-text">Email</p>
+              <h4 class="list-group-item-heading"><a href="mailto:">dan_colbert@teamstudio.com</a></h4>
+            </div>
+            <div class="list-group-item">
+              <p class="list-group-item-text">Password</p>
+              <h4 class="list-group-item-heading">&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;</h4>
+            </div>
+            <div class="list-group-item phone-numbers">
+              <p class="list-group-item-text">Phone numbers</p>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4 class="list-group-item-heading"><a href="tel:">+1 750 123 4567</a></h4>
+                </div>
+                <div class="col-sm-6">
+                  <h4 class="list-group-item-heading">Work</h4>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4 class="list-group-item-heading"><a href="tel:">+1 609 234 5678</a></h4>
+                </div>
+                <div class="col-sm-6">
+                  <h4 class="list-group-item-heading">Mobile</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+				</div>
+			</div>
+		</div>
+  </div>
+
+<script>
+  $('.btn[data-toggle="collapse"]').click(function(){
+    $(this).toggleClass("active");
+  });
+</script>
+
+</body>
+</html>

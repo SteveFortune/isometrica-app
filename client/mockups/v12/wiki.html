@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  
+  <title>Quality Manual 2015</title>
+  <!-- 1.0.0 -->
+
+	<!-- Bootstrap and Bootcards JS -->
+	<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../assets/libs/bootcards/dist/js/bootcards.min.js"></script>
+	
+	<!-- Bootcards CSS for desktop: -->
+	<link rel="stylesheet" href="../assets/libs/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/libs/bootstrap/dist/css/bootstrap.min.css">
+	
+	<script>
+	// Platform Detection (testing only)
+	$( document ).ready(function() {
+		if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-ios.min.css'>");
+			$("head").append(cssLink);	
+			$('body').addClass('ios');	
+     	}
+		else if( navigator.userAgent.match(/Android/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-android.min.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('android');
+		}
+		else
+		{
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-desktop.min.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('desktop');
+		}
+	});
+	</script> 
+
+	<link rel="stylesheet" href="css/resilify.css">
+	
+</head>
+<body class="bootcards-fullheight bootcards-nofooter bootcards-wiki resilify-wiki">
+  
+  <!-- fixed top navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top resilify-navbar-centered" role="navigation">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-left">
+        <li>
+          <a class="btn btn-link icon-only" href="#">
+          	<i class="fa fa-lg fa-arrow-left"></i>
+          </a>
+        </li>
+      </ul> 
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a class="btn btn-link" href="#">
+          	Actions
+          </a>
+        </li>
+        <li>
+          <a class="btn btn-link icon-only" href="#">
+          	<i class="fa fa-lg fa-info-circle"></i>
+          </a>
+        </li>
+        <li>
+          <a class="btn btn-link icon-only" href="#">
+          	<i class="fa fa-lg fa-refresh"></i>
+          </a>
+        </li>
+      </ul>  
+      <div class="navbar-header">
+        <span class="navbar-brand">
+        	Quality Manual 2015
+        </span>  
+      </div>        
+    </div>
+  </div>   
+
+
+
+  <div class="container bootcards-container" id="main">   
+		<div class="row">
+
+      <div class="col-sm-5 bootcards-list" id="list">			
+  			<div class="panel panel-default">				
+  				<div class="panel-body">
+  					<div class="search-form">
+  						<div class="row">
+  						    <div class="col-xs-9">
+  						      <div class="form-group">
+  							      <input type="text" class="form-control" placeholder="Search...">
+  							      <i class="fa fa-search"></i>
+  						      </div>
+  						    </div>
+  						    <div class="col-xs-3">
+  								<a class="btn btn-primary btn-block" href="/contacts/add" data-toggle="modal" data-target="#editModal">
+  									<i class="fa fa-plus"></i> 
+  									<span>Add</span>
+  								</a>
+  						    </div>
+  						</div>						    
+  					</div>					
+  				</div>
+  				<div class="list-group bootcards-accordion" id="accordion">		
+  					<a class="list-group-item bootcards-list-subheading" data-toggle="collapse" href="#collapse1">
+  						Sections
+  					</a>
+  					<div id="collapse1" class="collapse in">
+  						<a class="list-group-item active">
+  							<h4 class="list-group-item-heading">1. Overview</h4>
+  						</a>
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">2. Quality Management System</h4>
+  						</a>
+  						<a class="list-group-item">
+  							<h5 class="list-group-item-heading">2.1 Our Quality Objectives</h5>
+  						</a>
+  						<a class="list-group-item">
+  							<h5 class="list-group-item-heading">2.2 Control of Documents</h5>
+  						</a>
+  						<a class="list-group-item">
+  							<h5 class="list-group-item-heading">2.3 Control of Records</h5>
+  						</a>
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">3. Management Responsibility</h4>
+  						</a>
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">4. Resources</h4>
+  						</a>
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">5. Another section</h4>
+  						</a>
+  					</div>
+  					<a class="list-group-item bootcards-list-subheading collapsed" data-toggle="collapse" href="#collapse2">
+  						Recently modified
+  					</a>
+  					<div id="collapse2" class="collapse">
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">Lorem ipsum dolor</h4>
+  							<p class="list-group-item-text">Subheading goes here</p>
+  						</a>
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">Lorem ipsum dolor</h4>
+  							<p class="list-group-item-text">Subheading goes here</p>
+  						</a>
+  					</div>
+  					<a class="list-group-item bootcards-list-subheading collapsed" data-toggle="collapse" href="#collapse3">
+  						Document history
+  					</a>
+  					<div id="collapse3" class="collapse">
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">Lorem ipsum dolor</h4>
+  							<p class="list-group-item-text">Subheading goes here</p>
+  						</a>
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">Lorem ipsum dolor</h4>
+  							<p class="list-group-item-text">Subheading goes here</p>
+  						</a>
+  					</div>
+  					<a class="list-group-item bootcards-list-subheading collapsed" data-toggle="collapse" href="#collapse4">
+  						Drafts
+  					</a>
+  					<div id="collapse4" class="collapse">
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">Lorem ipsum dolor</h4>
+  							<p class="list-group-item-text">Subheading goes here</p>
+  						</a>
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">Lorem ipsum dolor</h4>
+  							<p class="list-group-item-text">Subheading goes here</p>
+  						</a>
+  					</div>
+  					<a class="list-group-item bootcards-list-subheading collapsed" data-toggle="collapse" href="#collapse5">
+  						Taps
+  					</a>
+  					<div id="collapse5" class="collapse">
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">Lorem ipsum dolor</h4>
+  							<p class="list-group-item-text">Subheading goes here</p>
+  						</a>
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">Lorem ipsum dolor</h4>
+  							<p class="list-group-item-text">Subheading goes here</p>
+  						</a>
+  					</div>
+  					<a class="list-group-item bootcards-list-subheading collapsed" data-toggle="collapse" href="#collapse6">
+  						Signed by
+  					</a>
+  					<div id="collapse6" class="collapse">
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">Lorem ipsum dolor</h4>
+  							<p class="list-group-item-text">Subheading goes here</p>
+  						</a>
+  						<a class="list-group-item">
+  							<h4 class="list-group-item-heading">Lorem ipsum dolor</h4>
+  							<p class="list-group-item-text">Subheading goes here</p>
+  						</a>
+  					</div>
+  				</div>
+  			</div>				
+  		</div>
+
+		
+			<div class="col-sm-7 bootcards-cards hidden-xs">				
+				<div class="panel panel-default bootcards-wiki-panel">
+					<div class="panel-heading clearfix">
+						<div class="btn-group pull-left">
+							<a class="btn btn-default active" data-toggle="collapse" href="#metadata">
+								<span class="show-text">Show </span>
+								<span class="hide-text">Hide </span>
+								Details
+							</a>
+						</div>	
+						<div class="btn-group pull-right">
+							<a class="btn btn-default" data-toggle="collapse" href="#help">
+								<span class="show-text">Show </span>
+								<span class="hide-text">Hide </span>
+								Tips
+							</a>
+						</div>
+						<h3 class="panel-title text-center">1. Overview</h3>
+					</div>
+          
+          <div class="collapse" id="help">
+            <div class="panel-heading bootcards-panel-tips">
+              <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu justo condimentum, tristique mi eget, volutpat ante. Integer at porttitor purus, sed faucibus enim.</span>
+            </div>
+          </div>
+          
+          <div class="collapse in" id="metadata">
+            <div class="panel-body bootcards-wiki-panel-metadata">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label class="control-label col-sm-3">Subject</label>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control" value="Subject goes here"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-3">Section</label>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control" value="1"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-3">Tag</label>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control" value="Tag goes here"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-3">Files</label>
+                  <div class="col-sm-6">
+                    <button type="button" class="btn btn-primary">Attach Files</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          <div class="panel-heading clearfix bootcards-wiki-panel-controls">
+            <div class="ql-toolbar-container btn-group pull-left" id="formatting-container">
+              <a class="ql-bold btn btn-default icon-only" href="#" title="Bold"><i class="fa fa-bold"></i></a>
+              <a class="ql-italic btn btn-default icon-only" href="#" title="Italic"><i class="fa fa-italic"></i></a>
+              <!--<a class="ql-underline btn btn-default icon-only" href="#" title="Underline"><i class="fa fa-underline"></i></a>-->
+              <!--<a class="ql-strike btn btn-default icon-only" href="#" title="Strikethrough"><i class="fa fa-strikethrough"></i></a>-->
+              <a class="ql-bullet btn btn-default icon-only" href="#" title="Bullet"><i class="fa fa-list-ul"></i></a>
+              <a class="ql-list btn btn-default icon-only" href="#" title="List"><i class="fa fa-list-ol"></i></a>
+              <a class="ql-list btn btn-default icon-only" href="#" title="Table"><i class="fa fa-table"></i></a>
+            </div>            
+          </div>
+          <div class="panel-body bootcards-wiki-panel-editing">
+            <div class="ql-container" id="editor-container">
+              <iframe src="quill.html" frameborder="0" height="100%" width="100%" title="Quill Rich Text Editor" role="presentation"></iframe>
+            </div>
+          </div>	
+          <div class="panel-footer">
+            <small class="pull-left">Created by Jack Herbert</small>
+            <small class="pull-right">Last edited on 21/04/2015 at 15:39 </small>
+          </div>
+				</div>
+			</div>
+		</div>
+  </div>
+
+<script>
+  $('.btn[data-toggle="collapse"]').click(function(){
+    $(this).toggleClass("active");
+  });
+</script>
+
+</body>
+</html>

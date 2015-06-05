@@ -1,0 +1,181 @@
+/* WIKI MODULE */
+
+.resilify-wiki {
+  
+}
+
+.bootcards-wiki {
+  
+  .bootcards-wiki-panel {
+    .panel-heading {
+      .btn {
+        font-size: 14px;
+        line-height: 20px;
+        
+        .hide-text {
+          display: none;
+        }
+        
+        &.active {
+          .show-text {
+            display: none;
+          }
+          
+          .hide-text {
+            display: inline;
+          }          
+        }
+      }
+    }
+    
+    .bootcards-wiki-panel-controls {
+      .btn {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+
+    .bootcards-wiki-panel-editing {
+      //height: 100%;
+      padding: 0;
+      position: relative;
+      font-size: 0;
+      iframe {
+        min-height: 300px;
+      }
+    }
+  }  
+}
+
+.bootcards-wiki-accordion {
+  h5.list-group-item-heading {
+    margin-left: 15px;
+  }
+}
+
+/* Desktop */
+.desktop.bootcards-wiki {
+  
+  .bootcards-container {
+    padding-top: 30px;
+  }
+  
+  .bootcards-wiki-panel-metadata {
+    padding: 10px 15px;  
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    
+    .form-group {
+      margin-bottom: 10px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      .control-label {
+        padding-right: 0;
+      }
+    }
+  }  
+}
+
+/* iOS */
+.ios.bootcards-wiki {
+  
+  .bootcards-container {
+    padding-top: 0;
+  }
+  
+  .bootcards-wiki-panel {
+    .panel-heading {
+      min-height: 44px;
+      
+      .pull-left .btn {
+        margin-left: 0;
+        margin-right: 20px;
+      }
+      
+      .btn {
+        background: transparent !important;
+        box-shadow: none;
+        border-color: transparent;
+        padding: 8px 0;     
+        opacity: 1;
+        color: #007aff;
+      }
+    }
+    
+    .bootcards-wiki-panel-metadata {
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .bootcards-wiki-panel-editing {
+      //border-top: 1px solid #ddd;
+    }   
+    
+    .bootcards-panel-tips {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    } 
+  }
+  
+ 
+}
+
+/* Android */
+.android.bootcards-wiki {
+  
+  .panel-heading {
+    min-height: 44px;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: relative;
+    
+    .pull-left {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    .pull-right {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    
+    .btn {
+      background: transparent !important;
+      box-shadow: none;
+      border-color: transparent;     
+      opacity: 1;
+      color: #999;
+      margin: 0;
+      padding: 10px 15px;
+    }    
+  }
+  
+  .bootcards-panel-tips {
+    padding: 10px 15px;
+  }
+  
+  .bootcards-wiki-panel-metadata {
+    padding-top: 5px;
+    padding-bottom: 5px; 
+    border-bottom: 1px solid #ddd;
+    
+    .form-group {
+      margin-bottom: 5px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      .btn {
+        line-height: 28px;
+      }
+    } 
+  }
+  
+  .bootcards-wiki-panel-editing {
+  } 
+}

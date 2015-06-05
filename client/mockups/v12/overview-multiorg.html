@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  
+  <title>Overview</title>
+  <!-- 1.0.0 -->
+
+	<!-- Bootstrap and Bootcards JS -->
+	<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../assets/libs/bootcards/dist/js/bootcards.min.js"></script>
+	
+	<!-- Bootcards CSS for desktop: -->
+	<link rel="stylesheet" href="../assets/libs/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/libs/bootstrap/dist/css/bootstrap.min.css">
+	
+	<script>
+	// Platform Detection (testing only)
+	$( document ).ready(function() {
+		if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-ios.min.css'>");
+			$("head").append(cssLink);	
+			$('body').addClass('ios');	
+     	}
+		else if( navigator.userAgent.match(/Android/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-android.min.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('android');
+		}
+		else
+		{
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-desktop.min.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('desktop');
+		}
+	});
+	</script> 
+
+	<link rel="stylesheet" href="css/resilify.css">
+	
+	
+</head>
+<body class="bootcards-nofooter bootcards-fullheight resilify-dashboard-page has-bootcards-navbar-double">
+
+  <!-- fixed top navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top bootcards-navbar-double" role="navigation">
+    <div class="container">
+      <ul class="nav navbar-nav navbar-left bootcards-hidden-desktop">
+        <li>
+          <a href="#" class="btn btn-link btn-menu icon-only">
+      			<i class="fa fa-lg fa-bars"></i> 
+      		</a>
+        </li>
+      </ul>   
+      <ul class="nav navbar-nav navbar-right bootcards-hidden-desktop">
+        <li>
+          <a href="#" class="btn btn-link btn-menu icon-only">
+      			<i class="fa fa-lg fa-refresh"></i> 
+      		</a>
+        </li>
+      </ul>        
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <i class="fa fa-bars"></i>
+        </button>      
+        <span class="navbar-brand">Isometrica</span>
+      </div>   
+      <div class="navbar-collapse collapse">
+  	    <ul class="nav navbar-nav navbar-right bootcards-nav-secondary">
+          <li>
+            <a href="#">
+  	        	<i class="fa fa-fw fa-user"></i>
+  	        	Stephen Ives
+  	        	<span class="label label-danger">+ 5</span>
+  	        </a>
+          </li>
+          <li>
+            <a href="#">
+  	        	Account
+  	        </a>
+          </li>	 
+          <li>
+            <a href="#">
+  	        	Help
+  	        </a>
+          </li>
+          <li>
+            <a href="#">
+  	        	Logout
+  	        </a>
+          </li>	   
+  	    </ul>
+        <ul class="nav navbar-nav navbar-right bootcards-nav-primary">
+          <li>
+            <a href="#">
+  	          <i class="fa fa-fw fa-question-circle"></i>
+              Help
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-fw fa-gear"></i>
+              Settings
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-fw fa-refresh"></i>
+              Sync
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>   
+
+  <!-- Guidance Bar -->
+  <div class="navbar navbar-inverse guidance-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-7">
+          <h4>Click on <i class="fa fa-plus-circle"></i> to add a new document or organization. Go to Templates to view example documents. Go to Address Book to add a user.</h4>
+        </div>
+        <div class="col-sm-6 col-md-5">
+          <div class="btn-group btn-group-lg pull-right">
+            <a href="" class="btn btn-link">
+              <i class="fa fa-question-circle"></i>
+              More Help
+            </a>
+            <a href="" class="btn btn-link">
+              <i class="fa fa-support"></i>
+              Support
+            </a>
+            <a href="" class="btn btn-link">
+              <i class="fa fa-times-circle"></i>
+            </a>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  
+  <!-- Tabs -->
+  <div class="resilify-dashboard-tabs">
+    <div class="container">
+      <ul class="nav nav-tabs nav-justified">
+        <li role="presentation" class="active">
+          <a href="#">
+            <i class="fa fa-home visible-xs"></i>
+            <span class="hidden-xs">Workspace</span>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#">
+            <i class="fa fa-files-o visible-xs"></i>
+            <span class="hidden-xs">Templates</span>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#">
+            <i class="fa fa-archive visible-xs"></i>
+            <span class="hidden-xs">Archive</span>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#">
+            <i class="fa fa-trash-o visible-xs"></i>
+            <span class="hidden-xs">Trash</span>
+          </a>
+        </li>
+      </ul> 
+    </div>
+  </div>
+
+  <div class="container scroll">
+  	<div class="resilify-dashboard-items">
+    	<a href="" class="resilify-dashboard-add">
+      	<i class="fa fa-plus-circle"></i>
+      	New document or organization
+    	</a>
+    	
+    	<h2 class="resilify-org-heading">IBM Corp</h2>
+    	
+			<div class="row">
+	
+				<div class="col-sm-6 col-md-4">
+					<div class="panel panel-default resilify-dashboard-item resilify-dashboard-item-system">			
+						<div class="panel-body">
+							<div class="resilify-dashboard-item-heading">
+							  <img class="canvas-icon pull-left" src="img/icon-projects@2x.png" alt="Canvas icon"/>
+                <h3 class="panel-title">Dashboard</h3>
+                <p class="org-name text-muted">IBM Corp</p>
+							</div>
+							<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse lacus nisl.</p>
+						  <p class="status text-muted text-center">27 actions, 5 new</p>			
+							<ul class="users">
+								<li>
+									<img class="img-circle" src="img/avatar-mark.gif" data-toggle="tooltip" title="Mark Leusink" alt="Mark Leusink"/>
+								</li>
+								<li>
+									<img class="img-circle" src="img/avatar-matt.gif" data-toggle="tooltip" title="Matt White" alt="Matt White"/>
+								</li>
+								<li>
+									<a href="users.html" class="add-user" data-toggle="tooltip" title="Add a User">
+										<i class="fa fa-plus"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-6 col-md-4">
+					<div class="panel panel-default resilify-dashboard-item resilify-dashboard-item-system">			
+						<div class="panel-body">
+							<div class="resilify-dashboard-item-heading">
+  							<img class="canvas-icon pull-left" src="img/icon-addressbook@2x.png" alt="Canvas icon"/>
+                <h3 class="panel-title">Address Book</h3>
+                <p class="org-name text-muted">IBM Corp</p>
+							</div>
+							<p class="description">Consectetur adipiscing elit suspendisse.</p>
+							<p class="status text-muted text-center">1 person, 1 new</p>		
+							<div class="text-center">
+  							<button type="button" class="btn btn-primary">
+	  						  Invite users
+                </button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+						
+			<div class="row">
+        
+        <div class="col-sm-6 col-md-4">
+					<div class="panel panel-default resilify-dashboard-item resilify-dashboard-item-document">			
+						<div class="panel-body">
+							<div class="resilify-dashboard-item-heading">
+  							<img class="canvas-icon pull-left" src="img/icon-document@2x.png" alt="Canvas icon"/>
+                <h3 class="panel-title">Quality manual</h3>
+                <p class="org-name text-muted">IBM Corp</p>
+							</div>
+							<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse lacus nisl.</p>
+              <p class="status text-muted text-center">60 pages, 6 new</p>
+							<ul class="users">
+								<li>
+									<img class="img-circle" src="img/avatar-mark.gif" data-toggle="tooltip" title="Mark Leusink" alt="Mark Leusink"/>
+								</li>
+								<li>
+									<img class="img-circle" src="img/avatar-matt.gif" data-toggle="tooltip" title="Matt White" alt="Matt White"/>
+								</li>
+								<li>
+									<a href="users.html" class="add-user" data-toggle="tooltip" title="Add a User">
+										<i class="fa fa-plus"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>				
+
+				<div class="col-sm-6 col-md-4">
+					<div class="panel panel-default resilify-dashboard-item resilify-dashboard-item-document">			
+						<div class="panel-body">
+							<div class="resilify-dashboard-item-heading">
+  							<img class="canvas-icon pull-left" src="img/icon-document@2x.png" alt="Canvas icon"/>
+                <h3 class="panel-title">BCM operations manual</h3>
+                <p class="org-name text-muted">IBM Corp</p>
+							</div>
+							<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse lacus nisl.</p>
+						  <p class="status text-muted text-center">56 pages, 3 new</p>			
+							<span class="no-activity text-muted">No activity yet</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-6 col-md-4">
+					<div class="panel panel-default resilify-dashboard-item resilify-dashboard-item-document">			
+						<div class="panel-body">
+							<div class="resilify-dashboard-item-heading">
+  							<img class="canvas-icon pull-left" src="img/icon-canvas@2x.png" alt="Canvas icon"/>
+                <h3 class="panel-title">Sample BCM workbook</h3>
+                <p class="org-name text-muted">IBM Corp</p>
+							</div>
+							<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse lacus nisl.</p>
+              <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" style="width: 100%;">
+                  100%
+                </div>
+              </div>						
+							<ul class="users">
+								<li>
+									<img class="img-circle" src="img/avatar-mark.gif" data-toggle="tooltip" title="Mark Leusink" alt="Mark Leusink"/>
+								</li>
+								<li>
+									<img class="img-circle" src="img/avatar-matt.gif" data-toggle="tooltip" title="Matt White" alt="Matt White"/>
+								</li>
+								<li>
+									<a href="users.html" class="add-user" data-toggle="tooltip" title="Add a User">
+										<i class="fa fa-plus"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+        
+			</div>	
+			
+			<hr class="resilify-org-divider"/>
+			
+  		<h2 class="resilify-org-heading">Smith Company</h2>
+					
+			<div class="row">
+				<div class="col-sm-6 col-md-4">
+					<div class="panel panel-default resilify-dashboard-item resilify-dashboard-item-system">			
+						<div class="panel-body">
+							<div class="resilify-dashboard-item-heading">
+							  <img class="canvas-icon pull-left" src="img/icon-projects@2x.png" alt="Canvas icon"/>
+                <h3 class="panel-title">Dashboard</h3>
+                <p class="org-name text-muted">Smith Company</p>
+							</div>
+							<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse lacus nisl.</p>
+						  <p class="status text-muted text-center">27 actions, 5 new</p>			
+							<ul class="users">
+								<li>
+									<img class="img-circle" src="img/avatar-mark.gif" data-toggle="tooltip" title="Mark Leusink" alt="Mark Leusink"/>
+								</li>
+								<li>
+									<img class="img-circle" src="img/avatar-matt.gif" data-toggle="tooltip" title="Matt White" alt="Matt White"/>
+								</li>
+								<li>
+									<a href="users.html" class="add-user" data-toggle="tooltip" title="Add a User">
+										<i class="fa fa-plus"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-6 col-md-4">
+					<div class="panel panel-default resilify-dashboard-item resilify-dashboard-item-system">			
+						<div class="panel-body">
+							<div class="resilify-dashboard-item-heading">
+  							<img class="canvas-icon pull-left" src="img/icon-addressbook@2x.png" alt="Canvas icon"/>
+                <h3 class="panel-title">Address Book</h3>
+                <p class="org-name text-muted">Smith Company</p>
+							</div>
+							<p class="description">Consectetur adipiscing elit suspendisse.</p>
+							<p class="status text-muted text-center">1 person, 1 new</p>		
+							<div class="text-center">
+  							<button type="button" class="btn btn-primary">
+	  						  Invite users
+                </button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+						
+			<div class="row">
+        
+        <div class="col-sm-6 col-md-4">
+					<div class="panel panel-default resilify-dashboard-item resilify-dashboard-item-document">			
+						<div class="panel-body">
+							<div class="resilify-dashboard-item-heading">
+  							<img class="canvas-icon pull-left" src="img/icon-document@2x.png" alt="Canvas icon"/>
+                <h3 class="panel-title">Quality manual</h3>
+                <p class="org-name text-muted">Smith Company</p>
+							</div>
+							<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse lacus nisl.</p>
+              <p class="status text-muted text-center">60 pages, 6 new</p>
+							<ul class="users">
+								<li>
+									<img class="img-circle" src="img/avatar-mark.gif" data-toggle="tooltip" title="Mark Leusink" alt="Mark Leusink"/>
+								</li>
+								<li>
+									<img class="img-circle" src="img/avatar-matt.gif" data-toggle="tooltip" title="Matt White" alt="Matt White"/>
+								</li>
+								<li>
+									<a href="users.html" class="add-user" data-toggle="tooltip" title="Add a User">
+										<i class="fa fa-plus"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>				
+
+        
+			</div>	
+							
+    </div>
+  </div>
+  
+  <!-- Edit Item -->
+  <div class="modal fade" id="addUsersModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  	    <div class="modal-header clearfix">
+  		    <div class="btn-group pull-left">
+  			    <button type="button" class="btn btn-danger btn-back" data-dismiss="modal">
+  		      	Cancel
+  		      </button>
+  		    </div>
+  		    <div class="btn-group pull-right">
+  			    <button type="button" class="btn btn-success" data-dismiss="modal">
+  		      	Done
+  		      </button>
+  		    </div>		    
+  	      <h4 class="modal-title">Users</h4>
+  	    </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <h2>Add User(s) to this Plan</h2>
+              <p>Type names or emails to invite people to your team.</p>
+            </div>
+            <div class="col-sm-6">
+              <h2>Existing Plan Users</h2>
+              <p>Anyone on your team will see everything posted to this project. Every message, to-do list, file, event, and text document.</p>
+              <ul class="users">
+                <li>
+                  <img src="img/avatar-mark.gif" class="img-circle pull-left" alt="Mark Leusink"/>
+                  <h4>Mark Leusink</h4>
+                  <p class="text-muted">mark@teamstudio.com</p>
+                </li>
+                <li>
+                  <img src="img/avatar-matt.gif" class="img-circle pull-left" alt="Matt White"/>
+                  <h4>Matt White</h4>
+                  <p class="text-muted">matt@teamstudio.com</p>
+                </li>
+                <li>
+                  <img src="img/avatar-jack.gif" class="img-circle pull-left" alt="Jack Herbert"/>
+                  <h4>Jack Herbert</h4>
+                  <p class="text-muted">jack@teamstudio.com</p>
+                </li>
+                <li>
+                  <img src="img/avatar-steve.gif" class="img-circle pull-left" alt="Steve Ives"/>
+                  <h4>Steve Ives</h4>
+                  <p class="text-muted">steve@teamstudio.com</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+
+  /* Tooltips */
+    
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()  
+  })
+
+  /* Add/Edit Users */
+	
+	/*$( "a.add-user" ).click(function() {
+		$('#addUsersModal').modal('show');
+	});*/	
+	
+</script>
+
+</body>
+</html>

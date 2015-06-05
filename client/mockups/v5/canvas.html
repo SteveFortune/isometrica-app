@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  
+  <title>Canvas</title>
+  <!-- 1.0.0 -->
+
+	<!-- Bootstrap and Bootcards JS -->
+	<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../assets/libs/bootcards/dist/js/bootcards.min.js"></script>
+	
+	<!-- Bootcards CSS for desktop: -->
+	<link rel="stylesheet" href="../assets/libs/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/libs/bootstrap/dist/css/bootstrap.min.css">
+	
+	<script>
+	// Platform Detection (testing only)
+	$( document ).ready(function() {
+		if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-ios.min.css'>");
+			$("head").append(cssLink);	
+			$('body').addClass('ios');	
+     	}
+		else if( navigator.userAgent.match(/Android/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-android.min.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('android');
+		}
+		else
+		{
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-desktop.min.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('desktop');
+		}
+	});
+	</script> 
+
+	<link rel="stylesheet" href="css/resilify.css">
+	
+</head>
+<body class="bootcards-fullheight">
+  
+  <!-- fixed top navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top resilify-navbar-centered" role="navigation">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-left">
+        <li>
+          <a class="btn btn-link icon-only" href="#">
+          	<i class="fa fa-lg fa-calendar"></i>
+          </a>
+        </li>
+      </ul>  
+      <div class="navbar-header">
+        <span class="navbar-brand">
+        	Company Name BC Program
+        </span>  
+      </div>        
+    </div>
+  </div>   
+
+  <div class="row canvas-row">
+    <div class="col-sm-2 canvas-column">
+      <div class="canvas-column-header clearfix">
+        <button class="btn btn-link pull-left">
+          <i class="fa fa-plus"></i>
+        </button>
+        <button class="btn btn-link pull-right">
+          <i class="fa fa-table"></i>
+        </button>
+      </div>
+      <div class="canvas-items">
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Extrusion</h4>
+          <p class="canvas-item-details">3 days</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Thermoforming</h4>
+          <p class="canvas-item-details">3 days</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Delivery &amp; dispatch</h4>
+          <p class="canvas-item-details">3 days</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Customer services</h4>
+          <p class="canvas-item-details">3 days</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Payroll</h4>
+          <p class="canvas-item-details">3 days</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Extrusion</h4>
+          <p class="canvas-item-details">3 days</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Thermoforming</h4>
+          <p class="canvas-item-details">3 days</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Delivery &amp; dispatch</h4>
+          <p class="canvas-item-details">3 days</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Customer services</h4>
+          <p class="canvas-item-details">3 days</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Payroll</h4>
+          <p class="canvas-item-details">3 days</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2 canvas-column">
+      <div class="canvas-column-header clearfix">
+        <button class="btn btn-link pull-left">
+          <i class="fa fa-plus"></i>
+        </button>
+        <button class="btn btn-link pull-right">
+          <i class="fa fa-table"></i>
+        </button>
+      </div>
+      <div class="canvas-items">
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Sales</h4>
+          <p class="canvas-item-details">CHART<br>GOES<br>HERE</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Finance</h4>
+          <p class="canvas-item-details">CHART<br>GOES<br>HERE</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">HR</h4>
+          <p class="canvas-item-details">CHART<br>GOES<br>HERE</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Manufacturing</h4>
+          <p class="canvas-item-details">CHART<br>GOES<br>HERE</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2 canvas-column">
+      <div class="canvas-column-header clearfix">
+        <button class="btn btn-link pull-left">
+          <i class="fa fa-plus"></i>
+        </button>
+        <button class="btn btn-link pull-right">
+          <i class="fa fa-table"></i>
+        </button>
+      </div>
+      <div class="canvas-items">
+        <div class="canvas-item-heading clearfix" data-toggle="collapse" href="#risk-type-1" aria-expanded="true">
+          <h3>Type 1</h3>
+          <i class="fa fa-chevron-down"></i>
+        </div>
+        <div class="collapse in" id="risk-type-1">
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Risk of flooding</h4>
+            <span class="label label-danger">5</span>
+          </div>
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Risk of fire</h4>
+            <span class="label label-warning">3</span>
+          </div> 
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Risk of earthquake</h4>
+            <span class="label label-success">1</span>
+          </div>          
+        </div>
+        <div class="canvas-item-heading clearfix" data-toggle="collapse" href="#risk-type-2" aria-expanded="true">
+          <h3>Type 2</h3>
+          <i class="fa fa-chevron-down"></i>
+        </div>
+        <div class="collapse in" id="risk-type-2">
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Risk of flooding</h4>
+            <span class="label label-danger">5</span>
+          </div>
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Risk of fire</h4>
+            <span class="label label-warning">3</span>
+          </div> 
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Risk of earthquake</h4>
+            <span class="label label-success">1</span>
+          </div>             
+        </div>
+        <div class="canvas-item-heading clearfix" data-toggle="collapse" href="#risk-type-3" aria-expanded="true">
+          <h3>Type 3</h3>
+          <i class="fa fa-chevron-down"></i>
+        </div>
+        <div class="collapse in" id="risk-type-3">
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Risk of flooding</h4>
+            <span class="label label-danger">5</span>
+          </div>
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Risk of fire</h4>
+            <span class="label label-warning">3</span>
+          </div> 
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Risk of earthquake</h4>
+            <span class="label label-success">1</span>
+          </div>              
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2 canvas-column">
+      <div class="canvas-column-header clearfix">
+        <button class="btn btn-link pull-left">
+          <i class="fa fa-plus"></i>
+        </button>
+        <button class="btn btn-link pull-right">
+          <i class="fa fa-table"></i>
+        </button>
+      </div>
+      <div class="canvas-items">
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Loss of building</h4>
+          <p class="canvas-item-details">3 strategies</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Loss of people</h4>
+          <p class="canvas-item-details">3 strategies</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Loss of IT</h4>
+          <p class="canvas-item-details">3 strategies</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Loss of communications</h4>
+          <p class="canvas-item-details">3 strategies</p>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Loss of documents</h4>
+          <p class="canvas-item-details">3 strategies</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2 canvas-column">
+      <div class="canvas-column-header clearfix">
+        <button class="btn btn-link pull-left">
+          <i class="fa fa-plus"></i>
+        </button>
+        <button class="btn btn-link pull-right">
+          <i class="fa fa-table"></i>
+        </button>
+      </div>
+      <div class="canvas-items">
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Purpose</h4>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Objective</h4>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Invocation / activation criteria</h4>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Implemented procedure</h4>
+        </div>
+        <div class="canvas-item">
+          <h4 class="canvas-item-title">Roles &amp; responsibilities</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2 canvas-column">
+      <div class="canvas-column-header clearfix">
+        <button class="btn btn-link pull-left">
+          <i class="fa fa-plus"></i>
+        </button>
+        <button class="btn btn-link pull-right">
+          <i class="fa fa-table"></i>
+        </button>
+      </div>
+      <div class="canvas-items">
+        <div class="canvas-item-heading clearfix" data-toggle="collapse" href="#exercises-type-1" aria-expanded="true">
+          <h3>2015 exercises</h3>
+          <i class="fa fa-chevron-down"></i>
+        </div>
+        <div class="collapse in" id="exercises-type-1">
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Flood in plant room</h4>
+            <p class="canvas-item-details">25/11/14</p>
+          </div>
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Flood in store room</h4>
+            <p class="canvas-item-details">17/11/14</p>
+          </div> 
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Flood in basement</h4>
+            <p class="canvas-item-details">03/09/14</p>
+          </div>              
+        </div>
+        <div class="canvas-item-heading clearfix" data-toggle="collapse" href="#exercises-type-2" aria-expanded="true">
+          <h3>2015 incidents</h3>
+          <i class="fa fa-chevron-down"></i>
+        </div>
+        <div class="collapse in" id="exercises-type-2">
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Flood in plant room</h4>
+            <p class="canvas-item-details">25/11/14</p>
+          </div>
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Flood in store room</h4>
+            <p class="canvas-item-details">17/11/14</p>
+          </div> 
+          <div class="canvas-item">
+            <h4 class="canvas-item-title">Flood in basement</h4>
+            <p class="canvas-item-details">03/09/14</p>
+          </div>              
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- fixed bottom footer -->
+  <div class="navbar navbar-inverse navbar-fixed-bottom canvas-footer">
+    <div class="row">
+      <div class="col-sm-2">
+        <h4>1. Business impact analysis part 1</h4>
+      </div>
+      <div class="col-sm-2">
+        <h4>2. Business impact analysis part 2</h4>
+      </div>
+      <div class="col-sm-2">
+        <h4>3. Define risks</h4>
+      </div>
+      <div class="col-sm-2">
+        <h4>4. Strategy options</h4>
+      </div>
+      <div class="col-sm-2">
+        <h4>5. Create BC plan</h4>
+      </div>
+      <div class="col-sm-2">
+        <h4>6. Exercises, incidents &amp; reports</h4>
+      </div>
+    </div> 
+  </div> 
+
+</body>
+</html>

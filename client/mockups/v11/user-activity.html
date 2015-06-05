@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  
+  <title>User Activity - IBM Group</title>
+  <!-- 1.0.0 -->
+
+	<!-- Bootstrap and Bootcards JS -->
+	<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../assets/libs/bootcards/dist/js/bootcards.min.js"></script>
+	
+	<!-- Bootcards CSS for desktop: -->
+	<link rel="stylesheet" href="../assets/libs/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/libs/bootstrap/dist/css/bootstrap.min.css">
+	
+	<script>
+	// Platform Detection (testing only)
+	$( document ).ready(function() {
+		if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-ios.min.css'>");
+			$("head").append(cssLink);	
+			$('body').addClass('ios');	
+     	}
+		else if( navigator.userAgent.match(/Android/i) ) {
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-android.min.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('android');
+		}
+		else
+		{
+			var cssLink = $("<link rel='stylesheet' type='text/css' href='../assets/libs/bootcards/dist/css/bootcards-desktop.min.css'>");
+			$("head").append(cssLink);
+			$('body').addClass('desktop');
+		}
+	});
+	</script> 
+
+	<link rel="stylesheet" href="css/resilify.css">
+	
+</head>
+<body class="bootcards-fullheight bootcards-nofooter">
+  
+  <!-- fixed top navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top resilify-navbar-centered" role="navigation">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-left">
+        <li>
+          <a class="btn btn-link icon-only" href="#">
+          	<i class="fa fa-lg fa-arrow-left"></i>
+          </a>
+        </li>
+      </ul> 
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a class="btn btn-link" href="#">
+          	Actions
+          </a>
+        </li>
+        <li>
+          <a class="btn btn-link icon-only" href="#">
+          	<i class="fa fa-lg fa-info-circle"></i>
+          </a>
+        </li>
+      </ul>  
+      <div class="navbar-header">
+        <span class="navbar-brand">
+        	User Activity - IBM Group
+        </span>  
+      </div>        
+    </div>
+  </div>   
+
+  <div class="resilify-user-activity">
+
+    <!-- Guidance Bar -->
+    <div class="navbar navbar-inverse guidance-bar">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9">
+            <h4>Guidance goes here lorem ipsum</h4>
+          </div>
+          <div class="col-sm-3">
+            <div class="btn-group btn-group-lg pull-right">
+              <a href="" class="btn btn-link">
+                <i class="fa fa-times-circle"></i>
+              </a>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  
+    <div class="container bootcards-container" id="main">   
+  		<div class="row">
+  
+        <div class="col-sm-5 bootcards-list" id="list">			
+    			<div class="panel panel-default">				
+    				<div class="panel-body">
+    					<div class="search-form">
+    						<div class="row">
+    						    <div class="col-xs-9">
+    						      <div class="form-group">
+    							      <input type="text" class="form-control" placeholder="Search Users...">
+    							      <i class="fa fa-search"></i>
+    						      </div>
+    						    </div>
+    						    <div class="col-xs-3">
+    								<a class="btn btn-primary btn-block" href="/contacts/add" data-toggle="modal" data-target="#editModal">
+    									<i class="fa fa-plus"></i> 
+    									<span>Add</span>
+    								</a>
+    						    </div>
+    						</div>						    
+    					</div>					
+    				</div>
+    				<div class="list-group bootcards-accordion" id="accordion">		
+    					<a class="list-group-item bootcards-list-subheading" data-toggle="collapse" href="#collapse1">
+    						<h4 class="list-group-item-heading">Dan Colbert</h4>
+    						<p class="list-group-item-text">16 activities this week</p>
+    					</a>
+    					<div id="collapse1" class="collapse in">
+    						<a class="list-group-item active">
+      						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+    							<h5 class="list-group-item-heading">Added new documents</h5>
+    							<p class="list-group-item-text">Apr 14th 4:13pm</p>
+    						</a>
+    						<a class="list-group-item">
+      						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+    							<h5 class="list-group-item-heading">Added a worksheet item</h5>
+    							<p class="list-group-item-text">Apr 12th 10:05am</p>
+    						</a>
+    						<a class="list-group-item">
+      						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+    							<h5 class="list-group-item-heading">Edited a document</h5>
+    							<p class="list-group-item-text">Apr 12th 10:01am</p>
+    						</a>
+    						<a class="list-group-item">
+      						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+    							<h5 class="list-group-item-heading">Posted a message</h5>
+    							<p class="list-group-item-text">Apr 7th 11:15am</p>
+    						</a>
+    					</div>
+    					<a class="list-group-item bootcards-list-subheading collapsed" data-toggle="collapse" href="#collapse2">
+    						<h4 class="list-group-item-heading">Helen Molyneaux</h4>
+    						<p class="list-group-item-text">8 activities this week</p>
+    					</a>
+    					<div id="collapse2" class="collapse">
+    						<a class="list-group-item active">
+      						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+    							<h5 class="list-group-item-heading">Added new documents</h5>
+    							<p class="list-group-item-text">Apr 14th 4:13pm</p>
+    						</a>
+    						<a class="list-group-item">
+      						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+    							<h5 class="list-group-item-heading">Added a worksheet item</h5>
+    							<p class="list-group-item-text">Apr 12th 10:05am</p>
+    						</a>
+    						<a class="list-group-item">
+      						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+    							<h5 class="list-group-item-heading">Edited a document</h5>
+    							<p class="list-group-item-text">Apr 12th 10:01am</p>
+    						</a>
+    						<a class="list-group-item">
+      						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+    							<h5 class="list-group-item-heading">Posted a message</h5>
+    							<p class="list-group-item-text">Apr 7th 11:15am</p>
+    						</a>
+    					</div>
+    					<a class="list-group-item bootcards-list-subheading collapsed" data-toggle="collapse" href="#collapse3">
+    						<h4 class="list-group-item-heading">Jack Herbert</h4>
+    						<p class="list-group-item-text">5 activities this week</p>
+    					</a>
+    					<div id="collapse3" class="collapse">
+    						<a class="list-group-item active">
+      						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+    							<h5 class="list-group-item-heading">Added new documents</h5>
+    							<p class="list-group-item-text">Apr 14th 4:13pm</p>
+    						</a>
+    						<a class="list-group-item">
+      						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+    							<h5 class="list-group-item-heading">Added a worksheet item</h5>
+    							<p class="list-group-item-text">Apr 12th 10:05am</p>
+    						</a>
+    						<a class="list-group-item">
+      						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+    							<h5 class="list-group-item-heading">Edited a document</h5>
+    							<p class="list-group-item-text">Apr 12th 10:01am</p>
+    						</a>
+    						<a class="list-group-item">
+      						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+    							<h5 class="list-group-item-heading">Posted a message</h5>
+    							<p class="list-group-item-text">Apr 7th 11:15am</p>
+    						</a>
+    					</div>
+    					
+    				</div>
+    			</div>				
+    		</div>
+  
+  		
+  			<div class="col-sm-7 bootcards-cards hidden-xs">				
+  				<div class="panel panel-default">
+  					<div class="panel-heading">	
+  						<img class="img-circle pull-left" src="img/avatar-mark.gif">
+  						<h4 class="panel-title text-muted">User Activity</h4>
+  						<h4 class="panel-title">Dan Colbert</h4>
+  					</div>
+            <div class="list-group">
+              <div class="list-group-item">
+                <p class="list-group-item-text">Date &amp; time</p>
+                <h4 class="list-group-item-heading">Wed April 14th 4:13pm</h4>
+              </div>
+              <div class="list-group-item">
+                <p class="list-group-item-text">You edited a document in</p>
+                <h4 class="list-group-item-heading">IBM Corp Project: Quality Manual</h4>
+              </div>
+              <div class="list-group-item">
+                <p class="list-group-item-text">Title</p>
+                <h4 class="list-group-item-heading">Roles &amp; Responsibilities</h4>
+              </div>
+              <div class="list-group-item">
+                <p class="list-group-item-text">Section</p>
+                <h4 class="list-group-item-heading">2.2</h4>
+              </div>
+              <div class="list-group-item">
+                <p class="list-group-item-text">Latest text content is displayed here lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit turpis dui, varius dignissim diam commodo vitae. Fusce non fringilla est. Aliquam erat volutpat. Proin lobortis, magna sed euismod aliquet, felis mauris scelerisque ante, non sagittis nibh lacus sit amet urna. </p>
+              </div>
+            </div>
+  				</div>
+  			</div>
+  		</div>
+    </div>
+    
+  </div>
+
+<script>
+  $('.btn[data-toggle="collapse"]').click(function(){
+    $(this).toggleClass("active");
+  });
+</script>
+
+</body>
+</html>

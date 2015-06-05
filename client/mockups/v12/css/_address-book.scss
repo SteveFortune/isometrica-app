@@ -1,0 +1,63 @@
+/* ADDRESS BOOK */
+
+.resilify-address-book {
+  
+  .bootcards-container {
+    padding-top: 80px;
+  }
+  
+  
+  .guidance-bar {
+    height: 52px;
+    overflow: hidden;
+    
+    .btn-group {
+      margin: -13px 0;
+    }
+  }
+  
+  .resilify-address-book-select {
+    border-bottom: 1px solid #ddd;
+    
+    .list-group-item {
+      i {
+        position: absolute;
+        left: 0;
+        width: auto;
+      }
+      
+      .list-group-item-heading {
+        padding-left: 34px;
+        position: relative;
+      }
+    }     
+    
+    .collapse {
+      .list-group-item {
+        &:before {
+          display: none; /* Hide disclosure indicators */
+        }
+      }
+    } 
+  }
+
+  .panel-body:first-child {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .phone-numbers {
+    .list-group-item-text {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.ios.resilify-address-book {
+  .bootcards-container {
+    padding-top: 52px;
+    
+    select {
+      padding-left: 12px;
+    }
+  }
+}
