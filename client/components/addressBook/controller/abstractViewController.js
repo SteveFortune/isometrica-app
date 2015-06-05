@@ -16,6 +16,13 @@ app.controller('AddressBookViewController',
 	function($stateParams, $modal, $scope, $rootScope, EventNameAssembler, factory, type, editControllerConf) {
 
 	/**
+	 * Has the load complete.
+	 *
+	 * @var Boolean
+	 */
+	$scope.hasLoaded = false;
+
+	/**
 	 * @var String
 	 */
 	var id = $stateParams.id;
@@ -26,6 +33,8 @@ app.controller('AddressBookViewController',
 		$scope.entity = entity;
 	}, function(error) {
 		// TODO: Error handling
+	}).finally(function() {
+		$scope.hasLoaded = true;
 	});
 
 	/**
