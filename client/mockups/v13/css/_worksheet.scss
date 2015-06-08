@@ -7,6 +7,7 @@
     
 		.modal-content {	
   		//border-radius: 0;
+  		overflow: hidden;
   		
   		.modal-header {
     		padding: 5px 15px;
@@ -44,22 +45,29 @@
         		padding: 10px 15px;
         	}
         	
-        	th.narrow,
-        	td.narrow {
-          	width: 60px;
+        	th, td {
+          	&.narrow { width: 60px; }
+          	&.width-100 { width: 100px; }
+          	&.width-30 { width: 30px; }          	
         	}
+
         	        	
         	.label {
-          	display: block;
           	padding-top: 6px;
           	padding-bottom: 6px;
+          	
+          	&.impact { display: block; }
           	
             &.impact-vlow { background: #29aa50; }
             &.impact-low { background: #5cb85c; }
             &.impact-medium { background: #f0ad4e; }
             &.impact-high { background: #d9534f; }
-            &.impact-vhigh { background: #c02927; }          	
+            &.impact-vhigh { background: #c02927; } 
+            
+            &.ref { font-size: 14px; }         	
         	}
+        	
+        	
         	
         	.arrow {
           	height: 3px;
@@ -89,13 +97,19 @@
         	
         	
         	.subheading {
-          	//color: white;
           	background: #eee;
           	font-weight: bold;
           	font-size: 20px;
           	font-weight: 500;
           	padding-top: 12px;
           	padding-bottom: 12px;
+          	color: #777;
+        	}
+        	
+        	.subsubheading {
+          	background: #eee;
+          	font-weight: bold;
+          	font-weight: 500;
           	color: #777;
         	}
         	
@@ -110,9 +124,22 @@
             &.impact-medium { background-color: #fcf8e3; color: #8a6d3b; }
             &.impact-high { background-color: #f2dede; color: #a94442; }
             &.impact-vhigh { background-color: #f2dede; color: #a94442; }
+
+          	&.text-green { color: #3c763d; }
+            &.text-amber { color: #8a6d3b; }
+            &.text-red { color: #a94442; }
+            
+            &.bg-green { background-color: #dff0d8; }
+            &.bg-amber { background-color: #fcf8e3; }
+            &.bg-red { background-color: #f2dede;}
+            
+            &.text-green-inverse { background-color: #5cb85c; color: white; }
+            &.text-amber-inverse { background-color: #f0ad4e; color: white; }
+            &.text-red-inverse { background-color: #d9534f; color: white; }
+            
+            &.text-middle { vertical-align: middle; }
+            
         	}
-        	
-        	
         	
         	th.wide,
         	td.wide {

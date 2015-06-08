@@ -258,7 +258,7 @@
         <button class="btn btn-link pull-left" data-toggle="modal" data-target="#strategyEvaluationModal">
           <i class="fa fa-plus"></i>
         </button>
-        <button class="btn btn-link pull-right">
+        <button class="btn btn-link pull-right" data-toggle="modal" data-target="#strategyEvaluationWorksheetModal">
           <i class="fa fa-table"></i>
         </button>
       </div>
@@ -313,7 +313,7 @@
     </div>
     <div class="col-sm-2 canvas-column">
       <div class="canvas-column-header clearfix">
-        <button class="btn btn-link pull-left">
+        <button class="btn btn-link pull-left" data-toggle="modal" data-target="#recoveryProcedureModal">
           <i class="fa fa-plus"></i>
         </button>
         <button class="btn btn-link pull-right">
@@ -327,7 +327,7 @@
           </div>
         </div>
         <div class="collapse" id="recovery-type-1">        
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#recoveryProcedureModal">
             <h4 class="canvas-item-title">Invocation procedure</h4>
             <div class="canvas-item-progress progress">
               <div class="progress-bar progress-bar-info" role="progressbar" style="width: 60%;">
@@ -335,7 +335,7 @@
               </div>
             </div>
           </div>
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#recoveryProcedureModal">
             <h4 class="canvas-item-title">Loss of building</h4>
             <div class="canvas-item-progress progress">
               <div class="progress-bar progress-bar-info" role="progressbar" style="width: 100%;">
@@ -343,7 +343,7 @@
               </div>
             </div>
           </div>
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#recoveryProcedureModal">
             <h4 class="canvas-item-title">Loss of communications</h4>
             <div class="canvas-item-progress progress">
               <div class="progress-bar progress-bar-info" role="progressbar" style="width: 75%;">
@@ -351,7 +351,7 @@
               </div>
             </div>
           </div>
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#recoveryProcedureModal">
             <h4 class="canvas-item-title">Loss of IT</h4>
             <div class="canvas-item-progress progress">
               <div class="progress-bar progress-bar-info" role="progressbar" style="width: 40%;">
@@ -366,7 +366,7 @@
           </div>
         </div>
         <div class="collapse in" id="recovery-type-2">        
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#recoveryProcedureModal">
             <h4 class="canvas-item-title">Invocation procedure</h4>
             <div class="canvas-item-progress progress">
               <div class="progress-bar progress-bar-info" role="progressbar" style="width: 60%;">
@@ -374,7 +374,7 @@
               </div>
             </div>
           </div>
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#recoveryProcedureModal">
             <h4 class="canvas-item-title">Loss of building</h4>
             <div class="canvas-item-progress progress">
               <div class="progress-bar progress-bar-info" role="progressbar" style="width: 100%;">
@@ -382,7 +382,7 @@
               </div>
             </div>
           </div>
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#recoveryProcedureModal">
             <h4 class="canvas-item-title">Loss of communications</h4>
             <div class="canvas-item-progress progress">
               <div class="progress-bar progress-bar-info" role="progressbar" style="width: 75%;">
@@ -390,7 +390,7 @@
               </div>
             </div>
           </div>
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#recoveryProcedureModal">
             <h4 class="canvas-item-title">Loss of IT</h4>
             <div class="canvas-item-progress progress">
               <div class="progress-bar progress-bar-info" role="progressbar" style="width: 40%;">
@@ -403,10 +403,10 @@
     </div>
     <div class="col-sm-2 canvas-column">
       <div class="canvas-column-header clearfix">
-        <button class="btn btn-link pull-left">
+        <button class="btn btn-link pull-left" data-toggle="modal" data-target="#logEntryModal">
           <i class="fa fa-plus"></i>
         </button>
-        <button class="btn btn-link pull-right">
+        <button class="btn btn-link pull-right" data-toggle="modal" data-target="#logEntryWorksheetModal">
           <i class="fa fa-table"></i>
         </button>
       </div>
@@ -417,19 +417,19 @@
           </div>
         </div>
         <div class="collapse" id="exercises-type-1">
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#logEntryModal">
             <h4 class="canvas-item-title">Flood in plant room</h4>
             <div class="canvas-item-checkbox text-success">
               <i class="fa fa-check"></i>
             </div>
           </div>
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#logEntryModal">
             <h4 class="canvas-item-title">Flood in store room</h4>
             <div class="canvas-item-checkbox">
               0
             </div>
           </div> 
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#logEntryModal">
             <h4 class="canvas-item-title">Flood in basement</h4>
             <div class="canvas-item-checkbox text-danger">
               5
@@ -442,19 +442,19 @@
           </div>
         </div>
         <div class="collapse" id="exercises-type-2">
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#logEntryModal">
             <h4 class="canvas-item-title">Flood in plant room</h4>
             <div class="canvas-item-checkbox text-success">
               <i class="fa fa-check"></i>
             </div>
           </div>
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#logEntryModal">
             <h4 class="canvas-item-title">Flood in store room</h4>
             <div class="canvas-item-checkbox">
               0
             </div>
           </div> 
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#logEntryModal">
             <h4 class="canvas-item-title">Flood in basement</h4>
             <div class="canvas-item-checkbox text-danger">
               5
@@ -467,19 +467,19 @@
           </div>
         </div>
         <div class="collapse in" id="exercises-type-3">
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#logEntryModal">
             <h4 class="canvas-item-title">Flood in plant room</h4>
             <div class="canvas-item-checkbox text-success">
               <i class="fa fa-check"></i>
             </div>
           </div>
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#logEntryModal">
             <h4 class="canvas-item-title">Flood in store room</h4>
             <div class="canvas-item-checkbox">
               0
             </div>
           </div> 
-          <div class="canvas-item panel panel-default">
+          <div class="canvas-item panel panel-default" data-toggle="modal" data-target="#logEntryModal">
             <h4 class="canvas-item-title">Flood in basement</h4>
             <div class="canvas-item-checkbox text-danger">
               5
@@ -521,7 +521,7 @@
           </form>
         </div>
         <div class="modal-body">
-          <h4 class="resilify-canvas-modal-subheading">Individual Impact Analysis</h4>
+          <h4 class="resilify-canvas-modal-subheading text-center">Individual Impact Analysis</h4>
 
           <div class="panel panel-default bootcards-panel-collapsing">
             <div class="panel-heading clearfix" href="#bia1-impacts-1" data-toggle="collapse">
@@ -634,7 +634,7 @@
           </div>
         </div>
         <div class="modal-body overall-analysis">
-          <h4 class="resilify-canvas-modal-subheading">Overall analysis</h4>
+          <h4 class="resilify-canvas-modal-subheading text-center">Overall analysis</h4>
           <form class="form-horizontal">
             <div class="form-group">
               <i class="fa fa-question-circle resilify-canvas-modal-help-icon"></i>
@@ -799,24 +799,24 @@
     								Customer service
   								</td>
   								<td><strong>Finance</strong></td>
-  								<td><div class="label impact-high">&nbsp;</div></td>
+  								<td><div class="label impact impact-high">&nbsp;</div></td>
   								<td colspan="7"><div class="arrow"></div></td>
   								<td rowspan="6" class="text-center">4 hrs</td>
   								<td rowspan="6" class="text-center">2 hrs</td>
   							</tr>
   							<tr>
   								<td><strong>Reputation</strong></td>
-  								<td><div class="label impact-medium">&nbsp;</div></td>
-  								<td><div class="label impact-high">&nbsp;</div></td>
+  								<td><div class="label impact impact-medium">&nbsp;</div></td>
+  								<td><div class="label impact impact-high">&nbsp;</div></td>
   								<td colspan="6"><div class="arrow"></div></td>
   							</tr>
   							<tr>
   								<td><strong>Legal &amp; regulatory</strong></td>
   								<td><div class="label impact-low">&nbsp;</div></td>
   								<td><div class="arrow"></div></td>
-  								<td><div class="label impact-medium">&nbsp;</div></td>
+  								<td><div class="label impact impact-medium">&nbsp;</div></td>
   								<td><div class="arrow"></div></td>
-  								<td><div class="label impact-high">&nbsp;</div></td>
+  								<td><div class="label impact impact-high">&nbsp;</div></td>
   								<td colspan="3"><div class="arrow"></div></td>
   							</tr>
   							<tr>
@@ -826,17 +826,17 @@
   							</tr>
   							<tr>
   								<td><strong>Operational</strong></td>
-  								<td><div class="label impact-medium">&nbsp;</div></td>
-  								<td><div class="label impact-high">&nbsp;</div></td>
+  								<td><div class="label impact impact-medium">&nbsp;</div></td>
+  								<td><div class="label impact impact-high">&nbsp;</div></td>
   								<td colspan="6"><div class="arrow"></div></td>
   							</tr>
   							<tr>
   								<td><strong>Other</strong></td>
-  								<td><div class="label impact-low">&nbsp;</div></td>
+  								<td><div class="label impact impact-low">&nbsp;</div></td>
   								<td><div class="arrow"></div></td>
-  								<td><div class="label impact-medium">&nbsp;</div></td>
+  								<td><div class="label impact impact-medium">&nbsp;</div></td>
   								<td><div class="arrow"></div></td>
-  								<td><div class="label impact-high">&nbsp;</div></td>
+  								<td><div class="label impact impact-high">&nbsp;</div></td>
   								<td colspan="3"><div class="arrow"></div></td>
   							</tr>
   						</tbody>
@@ -894,7 +894,7 @@
           </form>
         </div>
         <div class="modal-body">
-          <h4 class="resilify-canvas-modal-subheading">Individual resource analysis</h4>
+          <h4 class="resilify-canvas-modal-subheading text-center">Individual resource analysis</h4>
 
           <div class="panel panel-default bootcards-panel-collapsing">
             <div class="panel-heading clearfix" href="#bia2-resource-1" data-toggle="collapse">
@@ -1204,7 +1204,7 @@
           </form>
         </div>
         <div class="modal-body">
-          <h4 class="resilify-canvas-modal-subheading">Mitigation opportunity 1: Special shielding of solvents</h4>
+          <h4 class="resilify-canvas-modal-subheading text-center">Mitigation opportunity 1: Special shielding of solvents</h4>
           <form class="form-horizontal">
             <div class="form-group risk-analysis-impacts">
               <label class="control-label col-sm-4">Impacts</label>
@@ -1515,6 +1515,306 @@
             </div>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strategy evaluation: Worksheet -->
+  <div class="modal fade resilify-worksheet-modal" id="strategyEvaluationWorksheetModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  	    <div class="modal-header">
+  		    <div class="btn-group pull-right">
+  			    <button class="btn btn-link icon-only" data-dismiss="modal">
+  		      	<i class="fa fa-lg fa-times"></i>
+  		      </button>
+  		    </div>
+  		    <h4 class="modal-title">Risk register</h4>
+  	    </div>
+        <div class="modal-body">				          
+  				<div class="table-responsive">
+  					<table class="table resilify-table">
+  						<thead>
+  							<tr>
+  								<th rowspan="2">Activity</th>
+  								<th rowspan="2">Risks to consider</th>
+  								<th rowspan="2">Dependencies</th>
+  								<th colspan="3" class="text-center">Evaluation</th>
+  								<th rowspan="2" class="text-center width-100">Score</th>
+  								<th rowspan="2" class="text-center width-30"><i class="fa fa-check"></i></th>
+  							</tr>
+  							<tr>
+  								<th class="narrow text-center width-100">Finance</th>
+  								<th class="narrow text-center width-100">Operations</th>
+  								<th class="narrow text-center width-100">Reputation</th>
+  							</tr>
+  						</thead>
+  						<tbody>
+    						<tr>
+      						<th colspan="8" class="subheading extra-border">Extrusion</th>
+    						</tr>
+    						<tr>
+      						<td rowspan="8">
+    								<p><strong>MTPD =</strong> 2 days</p>
+    								<p><strong>RTO =</strong> 1 day</p>
+  								</td>
+  								<td colspan="7" class="subsubheading">Strategy option: Spare machine</td>
+    						</tr>
+  							<tr>
+    							<td>Fire in building</td>
+  								<td>Extrusion</td>
+  								<td rowspan="3" class="narrow text-center text-middle text-green bg-green"><strong>5</strong></td>
+  								<td rowspan="3" class="narrow text-center text-middle text-amber bg-amber"><strong>3</strong></td>
+  								<td rowspan="3" class="narrow text-center text-middle text-red bg-red"><strong>1</strong></td>
+                  <td rowspan="3" class="narrow text-center text-middle text-amber-inverse"><strong>9/15</strong></td>
+                  <td rowspan="3" class="text-center text-middle text-green"></td>
+  							</tr>
+  							<tr>
+    							<td>Flood</td>
+  								<td>Raw materials</td>
+  							</tr>
+  							<tr>
+    							<td>Severe weather</td>
+  								<td>Supply</td>
+  							</tr>
+  							<tr>
+    							<td colspan="7" class="subsubheading">Strategy option: Dual site operations</td>
+    						</tr>
+  							<tr>
+    							<td>Fire in building</td>
+  								<td>Extrusion</td>
+  								<td rowspan="3" class="narrow text-center text-middle text-green bg-green"><strong>4</strong></td>
+  								<td rowspan="3" class="narrow text-center text-middle text-green bg-green"><strong>5</strong></td>
+  								<td rowspan="3" class="narrow text-center text-middle text-amber bg-amber"><strong>3</strong></td>
+                  <td rowspan="3" class="narrow text-center text-middle text-green-inverse"><strong>12/15</strong></td>
+                  <td rowspan="3" class="text-center text-middle text-green"><i class="fa fa-check"></i></td>
+  							</tr>
+  							<tr>
+    							<td>Flood</td>
+  								<td>Raw materials</td>
+  							</tr>
+  							<tr>
+    							<td>Severe weather</td>
+  								<td>Supply</td>
+  							</tr>
+  						</tbody>
+  					</table>
+  				</div>				
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Recovery procedure -->
+  <div class="modal fade resilify-canvas-modal" id="recoveryProcedureModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  	    <div class="modal-header clearfix">
+  		    <div class="btn-group pull-left">
+  			    <button type="button" class="btn btn-danger btn-back" data-dismiss="modal">
+  		      	Cancel
+  		      </button>
+  		    </div>
+  		    <div class="btn-group pull-right">
+  			    <button type="button" class="btn btn-success" data-dismiss="modal">
+  		      	Save
+  		      </button>
+  		    </div>		    
+  	      <h4 class="modal-title">Recovery procedure</h4>
+  	    </div>
+  	    <div class="modal-header subheader">
+          <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu justo condi mentum, tristique mi eget, volutpat ante.</span>
+        </div>
+        <form class="form-horizontal">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="control-label col-sm-4">Scenario name</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" value=""/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-4">Team</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control typeahead" value="Business Continuity"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-4">Files</label>
+              <div class="col-sm-8">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><i class="fa fa-file-o"></i> File name goes here</button>
+                  <button type="button" class="btn btn-info"><i class="fa fa-times-circle no-margin"></i></button>
+                </div>
+                <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Add File</button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-body resilify-rich-text-control">
+            <div class="resilify-rich-text-controls clearfix">
+              <div class="ql-toolbar-container" id="formatting-container">
+                <a class="ql-bold btn btn-default icon-only" href="#" title="Bold"><i class="fa fa-bold"></i></a>
+                <a class="ql-italic btn btn-default icon-only" href="#" title="Italic"><i class="fa fa-italic"></i></a>
+                <a class="ql-bullet btn btn-default icon-only" href="#" title="Bullet"><i class="fa fa-list-ul"></i></a>
+                <a class="ql-list btn btn-default icon-only" href="#" title="List"><i class="fa fa-list-ol"></i></a>
+                <a class="ql-link btn btn-default icon-only" href="#" title="Link"><i class="fa fa-link"></i></a>
+              </div>            
+            </div>
+            <div class="ql-container resilify-rich-text-input" id="editor-container">
+              <iframe src="quill.html" frameborder="0" height="100%" width="100%" title="Quill Rich Text Editor" role="presentation"></iframe>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <small class="pull-left">Last updated by A.Jones</small>
+            <small class="pull-right">12 Apr 2015</small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Log entry -->
+  <div class="modal fade resilify-canvas-modal" id="logEntryModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  	    <div class="modal-header clearfix">
+  		    <div class="btn-group pull-left">
+  			    <button type="button" class="btn btn-danger btn-back" data-dismiss="modal">
+  		      	Cancel
+  		      </button>
+  		    </div>
+  		    <div class="btn-group pull-right">
+  			    <button type="button" class="btn btn-success" data-dismiss="modal">
+  		      	Save
+  		      </button>
+  		    </div>		    
+  	      <h4 class="modal-title">Log entry</h4>
+  	    </div>
+  	    <div class="modal-header subheader">
+          <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu justo condi mentum, tristique mi eget, volutpat ante.</span>
+        </div>
+        <form class="form-horizontal">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="control-label col-sm-4">Description</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" value=""/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-4">Type</label>
+              <div class="col-sm-8">
+                <select class="form-control">
+                  <option>Select type</option>
+                  <option>Incident</option>
+                  <option>Exercise</option>
+                  <option>Report</option>
+                  <option>Suggestion</option>
+                  <option>Communication</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12 text-center">
+                <small>Logged by John Smith 23 Mar 2015</small>
+              </div>
+            </div>             
+          </div>         
+          <div class="modal-body resilify-rich-text-control">
+            <div class="resilify-rich-text-controls clearfix">
+              <div class="ql-toolbar-container" id="formatting-container">
+                <a class="ql-bold btn btn-default icon-only" href="#" title="Bold"><i class="fa fa-bold"></i></a>
+                <a class="ql-italic btn btn-default icon-only" href="#" title="Italic"><i class="fa fa-italic"></i></a>
+                <a class="ql-bullet btn btn-default icon-only" href="#" title="Bullet"><i class="fa fa-list-ul"></i></a>
+                <a class="ql-list btn btn-default icon-only" href="#" title="List"><i class="fa fa-list-ol"></i></a>
+                <a class="ql-image btn btn-default icon-only" href="#" title="Image"><i class="fa fa-image"></i></a>
+              </div>            
+            </div>
+            <div class="ql-container resilify-rich-text-input" id="editor-container">
+              <iframe src="quill.html" frameborder="0" height="100%" width="100%" title="Quill Rich Text Editor" role="presentation"></iframe>
+            </div>
+          </div>
+          <div class="modal-body clearfix problems-nonconformities">
+            <h4 class="resilify-canvas-modal-subheading text-left pull-left">Identified problems/non-conformities</h4>
+            <button type="button" class="btn btn-link pull-right">
+              <i class="fa fa-plus-circle fa-lg no-margin"></i>
+            </button>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Ref</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="label label-info">503</span></td>
+                <td>Car park too near building</td>
+              </tr>
+              <tr>
+                <td><span class="label label-info">504</span></td>
+                <td>Response time too long</td>
+              </tr>
+            </tbody>
+          </table>          
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Log entry: Worksheet -->
+  <div class="modal fade resilify-worksheet-modal" id="logEntryWorksheetModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  	    <div class="modal-header">
+  		    <div class="btn-group pull-right">
+  			    <button class="btn btn-link icon-only" data-dismiss="modal">
+  		      	<i class="fa fa-lg fa-times"></i>
+  		      </button>
+  		    </div>
+  		    <h4 class="modal-title">Log entries</h4>
+  	    </div>
+        <div class="modal-body">				          
+  				<div class="table-responsive">
+  					<table class="table resilify-table">
+  						<thead>
+  							<tr>
+  								<th>Event description</th>
+  								<th>Type</th>
+  								<th>Date</th>
+  								<th>Identified problem/non-conformity</th>
+  								<th class="text-right">Ref link</th>
+  							</tr>
+  						</thead>
+  						<tbody>
+  							<tr>
+    							<td rowspan="2"><strong>Fire in building</strong></td>
+  								<td rowspan="2">Exercise</td>
+  								<td rowspan="2">12 Mar 15</td>
+  								<td>1. Car park too near building</td>
+  								<td class="text-right"><span class="label label-info ref">508</span></td>
+  							</tr>
+  							<tr>
+  								<td>2. Response took too long</td>
+  								<td class="text-right"><span class="label label-info ref">504</span></td>
+  							</tr>
+  							<tr>
+    							<td rowspan="2"><strong>Flood in the basement carpark</strong></td>
+  								<td rowspan="2">Incident</td>
+  								<td rowspan="2">12 Mar 15</td>
+  								<td>1. Car park too near building</td>
+  								<td class="text-right"><span class="label label-info ref">508</span></td>
+  							</tr>
+  							<tr>
+  								<td>2. Response took too long</td>
+  								<td class="text-right"><span class="label label-info ref">504</span></td>
+  							</tr>
+  						</tbody>
+  					</table>
+  				</div>				
+        </div>
       </div>
     </div>
   </div>
