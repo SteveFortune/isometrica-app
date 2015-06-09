@@ -6,7 +6,8 @@ var app = angular.module('isa.docwiki.comments', []);
  * @author Mark Leusink
  */
 
-app.directive('isaPageComments', [ 'CurrentUser', 'CommentFactory', function(CurrentUser, CommentFactory){
+app.directive('isaPageComments', [ 'CurrentUser', 'CommentFactory', '$modal', 
+	function(CurrentUser, CommentFactory, $modal) {
 
 	return {
 
@@ -14,9 +15,10 @@ app.directive('isaPageComments', [ 'CurrentUser', 'CommentFactory', function(Cur
 			parentId : '@'
 
 		},
+
 		controller: function($scope, $element, $attrs, $transclude) {
 
-
+			$scope.loading = true;
 			$scope.add = false;
 			$scope.comment = {};
 	
@@ -44,32 +46,42 @@ app.directive('isaPageComments', [ 'CurrentUser', 'CommentFactory', function(Cur
 
 			$scope.deleteComment = function(comment) {
 
-				if (!confirm('Are you sure?')) {
-					return;
-				}
+				$modal.open({
+					templateUrl: 'components/coreSystem/confirm/confirmModal.html',
+					controller : 'ConfirmModalController',
+					resolve: {
+						title: function() {
+							return 'Are you sure you want to remove this comment?';
+						},
+					},
+				}).result.then(function(confirmed) {
+					if (confirmed) {
+						CommentFactory.delete(comment.id).then( function(res) {
+							//comment has been removed remotely, remove it from the UI
+							$scope.comments.forEach(function(comm, index, array){
+					          if(comm.id === comment.id){
+					              $scope.comments.splice(index, 1);
+					          }
+					        });
 
-				CommentFactory.delete(comment.id).then( function(res) {
-					//comment has been removed remotely, remove it from the UI
-					$scope.comments.forEach(function(comm, index, array){
-			          if(comm.id === comment.id){
-			              $scope.comments.splice(index, 1);
-			          }
-			        });
-
+						});
+					}
 				});
 
 			};
-			
 
 		},
-		restrict: 'AE', // E = Element, A = Attribute, C = Class, M = Comment
+		restrict: 'AE',
 		templateUrl: 'components/docWiki/page/comments/comments.html',
 		link: function($scope, iElm, iAttrs, controller) {
 
 			//load the comments once we have a parent id
 			 iAttrs.$observe('parentId', function(value){
                 if(value){
-                	$scope.comments = CommentFactory.all(value);
+                	CommentFactory.all(value).$promise.then( function(res) {
+                		$scope.comments = res;
+                		$scope.loading = false;
+                	});
                 }
             });
 		}
