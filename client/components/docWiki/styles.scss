@@ -141,7 +141,12 @@ $docwiki-hover-color: #F5F5F5;
 
 	.bootcards-wiki-panel-metadata {
 		background-color: $docwiki-hover-color;
+	}
+	.border-bottom {
 		border-bottom: 1px solid $docwiki-border-color;
+	}
+	.border-top {
+		border-top: 1px solid $docwiki-border-color;
 	}
 
 	/*textangular toolbar*/

@@ -24,7 +24,16 @@
 			
 		</div>
 
-		<div class="panel-body form-horizontal bootcards-wiki-panel-metadata">
+		<div class="panel-body">
+
+			<span style="font-style:italic;" ng-if="page.contents == null || page.contents.length == 0">(this page doesn't have any contents)</span>
+
+			<div ng-bind-html="page.contents" style="overflow-x:auto"></div>
+
+		</div>
+
+
+		<div class="panel-body form-horizontal bootcards-wiki-panel-metadata border-top">
 
 			<div class="form-group">
 
@@ -81,14 +90,7 @@
 
 		</div>
 
-		<div class="panel-body">
-
-			<span style="font-style:italic;" ng-if="page.contents == null || page.contents.length == 0">(this page doesn't have any contents)</span>
-
-			<div ng-bind-html="page.contents" style="overflow-x:auto"></div>
-
-		</div>
-
+		
 		<div class="panel-footer">
 
 			<small class="pull-left">Created by {{page.createdBy}}</small>
