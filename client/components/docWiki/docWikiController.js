@@ -35,11 +35,7 @@ app.controller( 'DocWikiController',
 	//open the first menu item ('Sections') by default
 	$scope.page = { open : true };
 
-    $scope.pages = [];
-    $scope.$watchCollection('pages', function(newVal, oldVal) {
-      console.log('new pages: ' + JSON.stringify(newVal));
-      _updatePages(newVal);
-    });
+	$scope.pages = [];
 
 	//load all pages for this docwiki, order by section ascending
 	PageFactory.all($scope.moduleId).$promise.then( function(pages) {
