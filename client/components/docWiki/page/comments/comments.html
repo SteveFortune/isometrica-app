@@ -1,5 +1,4 @@
-<div ng-controller="CommentsController"
-	class="comments panel panel-default">
+<div class="comments panel panel-default">
 
 	<div class="panel-heading clearfix">
 
@@ -15,7 +14,7 @@
 	
 		<h3 class="panel-title text-center">
 			Comments 
-			<span ng-show="page.comments.length > 0">({{page.comments.length}})</span></h3>
+			<span ng-show="comments.length > 0">({{comments.length}})</span></h3>
 	</div>
 
 	<div>
@@ -56,7 +55,7 @@
 				</li>
 
             	<li class="list-group-item"
-            	ng-show="!page.comments || page.comments.length==0">
+            	ng-show="!comments || comments.length==0">
 
             		<div class="row">
 						<div class="col-sm-12">
@@ -67,7 +66,7 @@
 
 				<!-- list of comments, ordered descending by created data -->
 				<li class="list-group-item"
-				ng-repeat="comment in page.comments | orderBy : 'created' : true">
+				ng-repeat="comment in comments | orderBy : 'created' : true">
 		    		<div class="row">
 						<div class="col-sm-12">
 

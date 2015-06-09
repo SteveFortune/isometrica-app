@@ -41,15 +41,6 @@
   },
   "validations": [],
   "relations": {
-    "commentsRel": {
-      "type": "embedsMany",
-      "model": "Comment",
-      "property": "comments",
-      "options": {
-        "validate": true,
-        "forceId": false
-      }
-    },
     "signaturesRel": {
       "type": "embedsMany",
       "model": "Signature",

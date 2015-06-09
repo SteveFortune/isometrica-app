@@ -61,8 +61,8 @@
     "public": true
   },
   "Comment" : {
-    "dataSource" : "transient",
-    "public" : false
+    "dataSource" : "mongodb",
+    "public" : true
   },
   "Signature" : {
     "dataSource" : "transient",

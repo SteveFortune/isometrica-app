@@ -3,6 +3,7 @@ var app = angular.module('isa.docwiki', [
 	'isa.docwiki.factories',
 	'isa.docwiki.sign',
 	'isa.docwiki.versions',
+	'isa.docwiki.comments',
 
 	'ui.router',
 
