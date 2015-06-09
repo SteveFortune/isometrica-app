@@ -1,5 +1,18 @@
 var isa = isa || {};
 
+/**
+ * Convenient function for registering a persistent service.
+ *
+ * @param	module			Object
+ * @param	name			String
+ */
+isa.persistentService = function(module, name) {
+	module.factory(name, ['$injector', 'PersistentFactoryNameResolver',
+		function($injector, PersistentFactoryNameResolver) {
+			return $injector.get(PersistentFactoryNameResolver.resolveFactory(name));
+	}]);
+};
+
 isa.utils = {
 
 	getIconClassForFile : function(fileName) {
@@ -73,6 +86,19 @@ isa.utils = {
 		if (!!~index) {
 			haystack[index] = replacement;
 		}
+	},
+
+	/**
+	 * Convenient function that replaces an object in an array with
+	 * another object by matching against its `id` property.
+	 *
+	 * @param	haystack		Array
+	 * @param	replacement		Object
+	 */
+	replaceEntity: function(haystack, replacement) {
+		this.replace(haystack, null, replacement, function(prop) {
+			return prop.id === replacement.id;
+		});
 	},
 
 	htmlCleanup : function( htmlIn ) {

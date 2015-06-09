@@ -6,15 +6,15 @@
 module.exports = function(IsometricaUser) {
 
 	IsometricaUser.observe('before save', function(context, next) {
-		console.log(context.instance);
+		var user;
 		if (context.instance) {
 			var user = context.instance;
-			user.name = computeFullName(user);
 			user.created = new Date();
 			user.updated = new Date();
 		} else {
-			context.data.name = computeFullName(context.data);
+			user = context.data;
 		}
+		user.name = computeFullName(user);
 	  	next();
 	});
 
@@ -58,14 +58,18 @@ module.exports = function(IsometricaUser) {
 	//		 this needs proper attention.
 	//
 	IsometricaUser.validatesLengthOf('password', {
-		min: 6,
+		min: 8,
 		message: {
-			min: 'Password must be > 6 characters long'
+			min: 'Password must be > 8 characters long'
 		}
 	});
 	IsometricaUser.validatesFormatOf('password', {
-		with: /^(?=.*[a-zA-Z])(?=.*[0-9])/,
-		message: 'Password must contain numbers and letters'
+		with: /\d/,
+		message: 'Password must contain at least one number.'
+	});
+	IsometricaUser.validatesFormatOf('password', {
+		with: /[a-zA-Z]/,
+		message: 'Password must contain at least one letter.'
 	});
 
 };

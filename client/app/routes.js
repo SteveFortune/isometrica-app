@@ -8,7 +8,7 @@ app.config( function($provide, $stateProvider, $urlRouterProvider) {
 
 		.state('welcome', {
 			url: '/welcome',
-			templateUrl : '/components/home/home.html',
+			templateUrl : 'components/home/home.html',
 			controller : 'HomeController',
 			data : {
 				anonymous : true
@@ -37,7 +37,7 @@ app.config( function($provide, $stateProvider, $urlRouterProvider) {
 
 	  	.state('overview', {
 		    url: '/overview',
-		    templateUrl: '/components/overview/overviewView.html',
+		    templateUrl: 'components/overview/overviewView.html',
 		    controller : 'OverviewController',
 		    data : {
 				anonymous : false
@@ -46,7 +46,7 @@ app.config( function($provide, $stateProvider, $urlRouterProvider) {
 
 		.state('planUsers', {
 			url : '/plan/:planId/users',
-			templateUrl : '/components/planUsers/planUsersView.html',
+			templateUrl : 'components/planUsers/planUsersView.html',
 			controller : 'PlanUsersController',
 			data : {
 				anonymous : false
@@ -55,7 +55,7 @@ app.config( function($provide, $stateProvider, $urlRouterProvider) {
 
 		.state('canvas', {
 		    url: '/canvas/:planId',
-		    templateUrl: '/components/canvas/canvasView.html',
+		    templateUrl: 'components/canvas/canvasView.html',
 		    controller : 'CanvasController',
 		    data : {
 				anonymous : false
@@ -64,7 +64,7 @@ app.config( function($provide, $stateProvider, $urlRouterProvider) {
 
 		.state('core-system', {
 			url: '/core-system/:planId',
-			templateUrl: '/components/coreSystem/coreSystemView.html',
+			templateUrl: 'components/coreSystem/coreSystemView.html',
 			controller: 'CoreSystemController',
 			data : {
 				anonymous : false
@@ -73,7 +73,7 @@ app.config( function($provide, $stateProvider, $urlRouterProvider) {
 
 		.state('userActivity', {
 		    url: '/user/:userId/activity',
-		    templateUrl: '/components/userActivity/userActivityView.html',
+		    templateUrl: 'components/userActivity/userActivityView.html',
 		    controller : 'UserActivityController',
 		    data : {
 				anonymous : false
@@ -82,14 +82,14 @@ app.config( function($provide, $stateProvider, $urlRouterProvider) {
 
 		.state('login', {
 		    url: '/login',
-		    templateUrl: '/components/login/loginView.html',
+		    templateUrl: 'components/login/loginView.html',
 		    controller : 'LoginController',
 		    data : {
 				anonymous : true
 			}
 		});
 
-	$urlRouterProvider.otherwise('/welcome');
+	$urlRouterProvider.otherwise('/overview');
 
 	//use a decorator here to always insert the accountId for certain routes
     $provide.decorator('$state', function($delegate, CurrentUser) {

@@ -13,7 +13,7 @@ app.directive('isaHeader',
 		replace : true,
 		restrict : 'E',
 		templateUrl: function(elem,attrs) {
-			return '/components/header/' + (attrs.multiLine === 'true' ? 'headerViewMulti.html' : 'headerView.html');
+			return 'components/header/' + (attrs.multiLine === 'true' ? 'headerViewMulti.html' : 'headerView.html');
 		},
 		transclude : true,
 

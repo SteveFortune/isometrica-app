@@ -4,22 +4,30 @@
   "idInjection": true,
   "properties": {
     "firstName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
       "type": "string"
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "address": {
       "type": "string"
     },
     "created": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "updated": {
-      "type": "date"
+      "type": "date",
+      "required": true
     }
   },
   "validations": [],
@@ -32,20 +40,20 @@
       "type": "hasAndBelongsToMany",
       "model": "Organization"
     },
-    "callTreeContacts": {
-        "type": "embedsMany",
-        "model": "Contact",
-        "property": "callTreeContacts",
-        "options": {
-          "validate": true,
-          "forceId": true,
-          "persistent": true
-        }
-    },
     "phoneNumbers": {
       "type": "embedsMany",
       "model": "PhoneNumber",
       "property": "phoneNumbers",
+      "options": {
+        "validate": true,
+        "forceId": true,
+        "persistent": true
+      }
+    },
+    "callTreeContacts": {
+      "type": "hasMany",
+      "model": "Contact",
+      "foreignKey": "userId",
       "options": {
         "validate": true,
         "forceId": true,

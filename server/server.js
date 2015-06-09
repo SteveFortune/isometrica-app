@@ -17,5 +17,6 @@ app.start = function() {
 
 // start the server if `$ node server.js`
 if (require.main === module) {
-  app.start();
+  app.server = app.start();
+  require('./lowla').configureRoutes(app);
 }

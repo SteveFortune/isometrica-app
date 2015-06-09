@@ -43,7 +43,11 @@ module.exports = function(grunt) {
 
     concat : {
       dist: {
-        src: ['client/assets/css/resilify.scss', 'client/components/docWiki/styles.scss'],
+        src: [
+            'client/assets/css/resilify.scss',
+            'client/components/docWiki/styles.scss',
+            'client/components/addressBook/styles.scss'
+        ],
         dest: 'client/assets/css/build.scss'
       }
     },

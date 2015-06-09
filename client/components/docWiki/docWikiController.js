@@ -19,55 +19,67 @@ var app = angular.module('isa.docwiki', [
  *
  * @author Mark Leusink
  */
-app.controller( 'DocWikiController', 
-	['$rootScope', '$scope', '$stateParams', '$state', '$controller', '$modal', 'Plan', 'PageFactory', 'growl',
-	function($rootScope, $scope, $stateParams, $state, $controller, $modal, Plan, PageFactory, growl) {
+app.controller( 'DocWikiController',
+	['$rootScope', '$scope', '$stateParams', '$state', '$controller', '$modal', 'PlanFactory', 'PageFactory', 'growl',
+	function($rootScope, $scope, $stateParams, $state, $controller, $modal, PlanFactory, PageFactory, growl) {
 
 	//instantiate base controller (used to edit pages in a modal)
-	$controller('PageEditBaseController', { 
-		$scope : $scope, 
+	$controller('PageEditBaseController', {
+		$scope : $scope,
 		$modal : $modal
 	} );
 
 	$scope.moduleId = $stateParams.planId;
-	$scope.docWiki = Plan.findById( { 'id' : $stateParams.planId } );	
+	$scope.docWiki = PlanFactory.findById( $stateParams.planId, $scope );
 
 	//open the first menu item ('Sections') by default
 	$scope.page = { open : true };
 
+    $scope.pages = [];
+    $scope.$watchCollection('pages', function(newVal, oldVal) {
+      console.log('new pages: ' + JSON.stringify(newVal));
+      _updatePages(newVal);
+    });
+
+	//load all pages for this docwiki, order by section ascending
+	PageFactory.all($scope.moduleId).$promise.then( function(pages) {
+		_updatePages(pages);
+	});
+
+    var _updatePages = function(pages) {
+
+      	//get all signers and tags, these are stored in a variable
+		//to be referenced in the nav menu
+		var signersMap = {};
+		var signersList = [];
+
+		var tagsList = [];
+		var tagsMap = {};
+
+		angular.forEach( pages, function(page) {
+			angular.forEach(page.signatures, function(sig) {
+				if ( !signersList[sig.createdBy] ) {
+					signersList[sig.createdBy] = sig.createdBy;
+					signersList.push( {name: sig.createdBy, isCollapsed: true, pages : null, type : 'signer'} );
+				}
+			});
+			angular.forEach(page.tags, function(tag) {
+				if ( !tagsMap[tag] ) {
+					tagsMap[tag] = tag;
+					tagsList.push( {name: tag, isCollapsed: true, pages : null, type : 'tag'} );
+				}
+			});
+		} );
+
+		$scope.signersList = signersList;
+		$scope.tagsList = tagsList;
+		$scope.pages = pages;
+
+    };
+
 	var _readPages = function() {
-
-		//load all pages for this docwiki, order by section ascending
-		PageFactory.all($scope.moduleId).$promise.then( function(pages) {
-
-			//get all signers and tags, these are stored in a variable
-			//to be referenced in the nav menu
-			var signersMap = {};
-			var signersList = [];
-
-			var tagsList = [];
-			var tagsMap = {};
-
-			angular.forEach( pages, function(page) {
-				angular.forEach(page.signatures, function(sig) {
-					if ( !signersList[sig.createdBy] ) {
-						signersList[sig.createdBy] = sig.createdBy;
-						signersList.push( {name: sig.createdBy, isCollapsed: true, pages : null, type : 'signer'} );
-					}
-				});
-				angular.forEach(page.tags, function(tag) {
-					if ( !tagsMap[tag] ) {
-						tagsMap[tag] = tag;
-						tagsList.push( {name: tag, isCollapsed: true, pages : null, type : 'tag'} );
-					}
-				});
-			} );
-
-			$scope.signersList = signersList;
-			$scope.tagsList = tagsList;
-			$scope.pages = pages;
-
-		});
+		//load pages for this document, order by section ascending
+		$scope.pages = PageFactory.all($scope.moduleId, $scope);
 	};
 
 	//opens/ closes a sub-category in the navigation menu

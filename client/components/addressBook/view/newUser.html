@@ -2,42 +2,37 @@
 
 	<isa-address-book-modal-header
 		can-save="userForm.$valid"
-		on-save="createUser()"
+		on-save="createEntity()"
 		on-cancel="cancel()"
 		title="New User">
 	</isa-address-book-modal-header>
 
 	<div class="modal-body">
 		<form class="form-horizontal" name="userForm" novalidate>
-			<isa-form-input
+			<isa-form-field
+				ng-model='entity.firstName'
 				title="First Name*"
-				input-type="text"
 				input-placeholder='Joe'
 				input-name='firstName'
-				model='user.firstName'
-				form='userForm'
 				validation-model='{
-					"required": "A first name is required."
+					"required": "A first name is required.",
 				}'>
-			</isa-form-input>
-			<isa-form-input
+			</isa-form-field>
+			<isa-form-field
+				ng-model='entity.lastName'
 				title="Last Name*"
-				input-type="text"
 				input-placeholder='Bloggs'
 				input-name='lastName'
-				model='user.lastName'
-				form='userForm'
 				validation-model='{
-					"required": "A last name is required."
+					"required": "A last name is required.",
 				}'>
-			</isa-form-input>
-			<isa-form-input
+			</isa-form-field>
+			<isa-form-field
+				ng-model='entity.email'
 				title="Email*"
 				input-type="email"
 				input-placeholder='joe.bloggs@ibm.com'
 				input-name='email'
-				model='user.email'
-				form='userForm'
 				validation-model='{
 					"required": "An email address is required.",
 					"email": "Must be a valid email address.",
@@ -46,23 +41,24 @@
 				pending-model='{
 					"existsEmail": "Checking email..."
 				}'>
-			</isa-form-input>
-			<isa-form-input
+			</isa-form-field>
+			<isa-form-field
+				ng-model='entity.password'
 				title="Password*"
-				input-type="password"
 				input-placeholder='Password'
 				input-name='password'
-				model='user.password'
-				form='userForm'
+				input-type='password'
 				validation-model='{
 					"required": "A password is required.",
 					"minlength": {
-						value: 6,
-						message: "Must be > 6 characters long."
+						value: 8,
+						message: "Must be > 8 characters long."
 					},
-					"containsNumber": "Must contain both letters and numbers."
+					"containsNumber": "Must contain at least one number.",
+					"containsLetter": "Must contain at least one letter."
 				}'>
-			</isa-form-input>
+			</isa-form-field>
 		</form>
 	</div>
+
 </div>

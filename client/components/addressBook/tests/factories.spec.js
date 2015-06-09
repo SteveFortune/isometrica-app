@@ -47,7 +47,8 @@ describe("_UserFactoryRemote", function() {
 				_UserFactoryRemote.all(3);
 				expect(IsometricaUser.find).toHaveBeenCalledWith({
 					filter: {
-						offset: 30,
+						offset: 3,
+						order: "created DESC",
 						limit: 10
 					}
 				}, jasmine.any(Function), jasmine.any(Function));

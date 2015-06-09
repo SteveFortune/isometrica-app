@@ -3,8 +3,8 @@ var app = angular.module('isa.docwiki');
 /*
  * Controller to add/edit a page in a document
  */
-app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', '$http', '$controller', 'Page', 'isNew', 'CurrentUser',
-	function($scope, $state, $stateParams, $modal, $http, $controller, Page, isNew, CurrentUser) {
+app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', '$http', '$controller', 'PageFactory', 'isNew', 'CurrentUser',
+	function($scope, $state, $stateParams, $modal, $http, $controller, PageFactory, isNew, CurrentUser) {
 
 	$scope.moduleId = $stateParams.planId;
 
@@ -34,14 +34,14 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 
 	//read existing page
 	if (!isNew) {
-		$scope.page = Page.findById( { id: $stateParams.pageId });
+		$scope.page = PageFactory.findById( $stateParams.pageId, $scope );
 		_readRelatedFiles($stateParams.pageId);
 	}
 
 	$scope.delete = function(page) {
 
 		$modal.open({
-			templateUrl: '/components/coreSystem/confirm/confirmModal.html',
+			templateUrl: 'components/coreSystem/confirm/confirmModal.html',
 			controller : 'ConfirmModalController',
 			resolve: {
 				title: function() {
@@ -50,7 +50,7 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 			},
 		}).result.then(function(confirmed) {
 			if (confirmed) {
-				Page.delete( { id : page.id } ).$promise
+				PageFactory.delete( page.id )
 				.then( function(deletedPlan) {
 					$state.go('docwiki', {}, {reload: true});
 				});
@@ -65,7 +65,7 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 	$scope.lightbox = function(file) {
 
 		$modal.open({
-	      templateUrl: '/components/lightbox/lightboxModal.html',
+	      templateUrl: 'components/lightbox/lightboxModal.html',
 			controller : 'LightboxModalController',
 			size : 'lg',
 			resolve: {
