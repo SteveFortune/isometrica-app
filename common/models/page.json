@@ -8,8 +8,7 @@
       "required": true
     },
     "pageId" : {
-      "type": "string",
-      "defaultFn": "guid"
+      "type": "string"
     },
     "title": {
       "type": "string",

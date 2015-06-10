@@ -59,6 +59,7 @@ app.controller('PageEditModalController',
 		$modalInstance.dismiss('cancel');
 	};
 
+	//saves a new or updated page
 	$scope.save = function(form) {
 
 		//validate the input
