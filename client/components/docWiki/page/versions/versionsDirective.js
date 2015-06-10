@@ -11,47 +11,43 @@ var app = angular.module('isa.docwiki.versions', [
  * @author Mark Leusink
  */
 
-app.directive('isaDocwikiPageVersions', 
-	['$state', 'Page', 'CurrentUser', '$modal', 'growl', 
+app.directive('isaDocwikiPageVersions',
+	['$state', 'Page', 'CurrentUser', '$modal', 'growl',
 	function($state, Page, CurrentUser, $modal, growl){
 
 		return {
 
-			restrict: 'AE', 
-			templateUrl: '/components/docWiki/page/versions/versions.html',
-			replace: true,
+			restrict: 'A',
+      link : function($scope, elem) {
 
-			controller: function($scope, $element, $attrs, $transclude) {
+        elem.bind('click', function () {
 
-				$scope.listPreviousVersions = function() {
+          var modalInstance = $modal.open({
+            templateUrl: '/components/docWiki/page/versions/listVersions.html',
+            controller: 'VersionsListController',
+            windowClass : 'docwiki',
+            resolve: {
+              currentPageId : function () {
+                return $scope.page.pageId;
+              },
+            }
+          });
 
-					var modalInstance = $modal.open({
-						templateUrl: '/components/docWiki/page/versions/listVersions.html',
-						controller: 'VersionsListController',
-						windowClass : 'docwiki',
-						resolve: {
-							currentPageId : function () {
-								return $scope.page.pageId;
-							},
-						}
-					});
+          modalInstance.result.then(function (data) {
+            /*if (data.reason == 'save') {
+             savePage(data.page, data.pageFiles);
+             } else if (data.reason == 'delete') {
+             console.log('delete')
+             //$scope.deleteItem(data.item);
+             }*/
+          }, function () {
 
-					modalInstance.result.then(function (data) {
-						/*if (data.reason == 'save') {
-							savePage(data.page, data.pageFiles);
-						} else if (data.reason == 'delete') {
-							console.log('delete')
-							//$scope.deleteItem(data.item);
-						}*/
-				    }, function () {
-				      
-				    });
+          });
 
-				};
-
-			},
+        });
+      }
 
 		};
 
+
 }]);
-	

@@ -16,12 +16,33 @@
 
 				<button class="btn btn-default" ng-click="editPage(page)">
 					<i class="fa fa-pencil"></i>Edit
-				</button>				
-				
+				</button>
+
+        <div class="btn-group" dropdown is-open="status.isopen">
+          <button title="More actions" type="button" class="btn btn-default dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+            <i class="fa fa-ellipsis-h"></i>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu pull-right" role="menu">
+            <li>
+              <a ng-click="signDocument()">
+                <i class="fa fa-fw fa-check-square-o"></i>
+                Sign page
+              </a></li>
+            <li>
+              <a isa-docwiki-page-versions>
+                <i class="fa fa-fw fa-reply"></i>
+                Rollback
+              </a>
+            </li>
+            <li><a href="#">Re-issue</a></li>
+          </ul>
+        </div>
+
 			</div>
-			
+
 			<h3 class="panel-title text-center">{{page.section + ' ' + page.title}}</h3>
-			
+
 		</div>
 
 		<div class="panel-body">
@@ -40,7 +61,7 @@
 				<label class="col-sm-2 control-label">Status</label>
 				<div class="col-sm-10">
 
-					<isa-docwiki-page-signing></isa-docwiki-page-signing>
+          <ng-include src="'components/docWiki/page/sign/sign.html'"></ng-include>
 
 				</div>
 			</div>
@@ -50,7 +71,9 @@
 				<label class="col-sm-2 control-label">Version</label>
 				<div class="col-sm-10">
 
-					<isa-docwiki-page-versions></isa-docwiki-page-versions>
+          <div class="form-control-static">
+            {{page.version}}
+          </div>
 
 				</div>
 			</div>
@@ -90,7 +113,7 @@
 
 		</div>
 
-		
+
 		<div class="panel-footer">
 
 			<small class="pull-left">Created by {{page.createdBy}}</small>

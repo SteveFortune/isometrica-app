@@ -3,14 +3,15 @@ var app = angular.module('isa.docwiki');
 /*
  * Controller to add/edit a page in a document
  */
-app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal', '$http', '$controller', 'PageFactory', 'isNew', 'CurrentUser',
-	function($scope, $state, $stateParams, $modal, $http, $controller, PageFactory, isNew, CurrentUser) {
+app.controller('PageController',
+  [ '$scope', '$state', '$stateParams', '$modal', '$http', '$controller', 'Page', 'PageFactory', 'isNew', 'CurrentUser', 'growl',
+	function($scope, $state, $stateParams, $modal, $http, $controller, Page, PageFactory, isNew, CurrentUser, growl) {
 
 	$scope.moduleId = $stateParams.planId;
 
 	//instantiate base controller (used to edit pages in a modal)
-	$controller('PageEditBaseController', { 
-		$scope: $scope, 
+	$controller('PageEditBaseController', {
+		$scope: $scope,
 		$modal : $modal
 	} );
 
@@ -58,6 +59,18 @@ app.controller('PageController', [ '$scope', '$state', '$stateParams', '$modal',
 		});
 
 	};
+
+    $scope.signDocument = function() {
+
+      Page.sign( {pageId : $scope.page.id , userName: CurrentUser.getCurrentUser().name}).$promise
+        .then(function(res) {
+          growl.success('You have successfully signed this page');
+          $state.reload();
+        }, function(err) {
+          alert('An error occurred.\n\n' + err.data.error.message);
+        });
+
+    };
 
 	/*
 	 * shows a modal to display an image
