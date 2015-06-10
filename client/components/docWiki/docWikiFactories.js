@@ -38,7 +38,7 @@ app.factory('_PageRemote', [ 'Page', function(Page) {
 	      return Page.findById( { id: id });
 	    },
 
-		/* 
+		/*
 		 * Return a list of all pages from a docwiki
 		 * in which the specified tag is used
 		 * This function uses the remote getCurrent method to only retrieve 'current' pages (not older versions)
@@ -46,7 +46,7 @@ app.factory('_PageRemote', [ 'Page', function(Page) {
 		byTag : function(documentId, tag) {
 
 			return Page.__get__current(
-			  { filter: { 
+			  { filter: {
 			  	where : {
 			  		and : [
 			  			{ documentId : documentId },
@@ -74,6 +74,12 @@ app.factory('_PageRemote', [ 'Page', function(Page) {
 	    save: function(page) {
 	      var page = new Page(page);
 	      return page.$save();
+	    },
+
+	    update : function(id, attrs) {
+	    	//update specifc properties only
+	    	return Page.prototype$updateAttributes({ id: id }, attrs)
+  				.$promise;
 	    }
 	};
 
@@ -107,6 +113,10 @@ app.factory('_PageLocal', [ '$lowla', '$lowlaArray', '$lowlaDocument', '$lowlaDe
 
 	    save: function(page) {
 	      return $lowlaDefer(pages.findAndModify({ id: page.id }, page));
+	    },
+
+	    update : function(id, attrs) {
+        return $lowlaDefer(pages.findAndModify({ _id: id }, { $set: attrs });
 	    }
 
 	};
