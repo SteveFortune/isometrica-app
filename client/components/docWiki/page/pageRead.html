@@ -18,26 +18,28 @@
 					<i class="fa fa-pencil"></i>Edit
 				</button>
 
-        <div class="btn-group" dropdown is-open="status.isopen">
-          <button title="More actions" type="button" class="btn btn-default dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-            <i class="fa fa-ellipsis-h"></i>
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu pull-right" role="menu">
-            <li>
-              <a ng-click="signDocument()">
-                <i class="fa fa-fw fa-check-square-o"></i>
-                Sign page
-              </a></li>
-            <li>
-              <a isa-docwiki-page-versions>
-                <i class="fa fa-fw fa-reply"></i>
-                Rollback
-              </a>
-            </li>
-            <li><a href="#">Re-issue</a></li>
-          </ul>
-        </div>
+		        <div class="btn-group" dropdown is-open="status.isopen">
+		          <button title="More actions" type="button" class="btn btn-default dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+		            <i class="fa fa-ellipsis-h"></i>
+		            <span class="caret"></span>
+		          </button>
+		          <ul class="dropdown-menu pull-right" role="menu">
+		            <li>
+		              <a ng-click="signDocument()">
+		                <i class="fa fa-fw fa-check-square-o"></i>
+		                Sign page
+		              </a></li>
+		            <li>
+		              <a isa-docwiki-page-versions>
+		                <i class="fa fa-fw fa-reply"></i>
+		                Rollback
+		              </a>
+		            </li>
+		            <li>
+		            	<a isa-docwiki-reissue module-id="{{moduleId}}">Re-issue</a>
+		            </li>
+		          </ul>
+		        </div>
 
 			</div>
 

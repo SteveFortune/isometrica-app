@@ -3,6 +3,7 @@ var app = angular.module('isa.docwiki', [
 	'isa.docwiki.factories',
 	'isa.docwiki.versions',
 	'isa.docwiki.comments',
+	'isa.docwiki.reissue',
 
 	'ui.router',
 
@@ -20,8 +21,8 @@ var app = angular.module('isa.docwiki', [
  * @author Mark Leusink
  */
 app.controller( 'DocWikiController',
-	['$rootScope', '$scope', '$stateParams', '$state', '$controller', '$modal', 'PlanFactory', 'PageFactory', 'growl',
-	function($rootScope, $scope, $stateParams, $state, $controller, $modal, PlanFactory, PageFactory, growl) {
+	['$rootScope', '$scope', '$stateParams', '$state', '$controller', '$modal', 'PlanFactory', 'PageFactory', 'IssueFactory', 'growl',
+	function($rootScope, $scope, $stateParams, $state, $controller, $modal, PlanFactory, PageFactory, IssueFactory, growl) {
 
 	//instantiate base controller (used to edit pages in a modal)
 	$controller('PageEditBaseController', {
@@ -70,6 +71,7 @@ app.controller( 'DocWikiController',
 		$scope.signersList = signersList;
 		$scope.tagsList = tagsList;
 		$scope.pages = pages;
+      	$scope.issues = IssueFactory.all($scope.moduleId);
 
     };
 

@@ -231,5 +231,10 @@ $docwiki-hover-color: #F5F5F5;
 		margin-bottom:0;
 	}
 
+	/*pointer on clickable issue rows*/
+	.table-hover tbody tr {
+		cursor: pointer;
+	}
+
 
 }
