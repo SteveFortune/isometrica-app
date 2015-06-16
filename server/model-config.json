@@ -64,6 +64,10 @@
     "dataSource" : "mongodb",
     "public" : true
   },
+  "DocumentIssue" : {
+    "dataSource" : "mongodb",
+    "public" : true
+  },
   "Signature" : {
     "dataSource" : "transient",
     "public" : false
