@@ -23,13 +23,13 @@ app.directive('isaDocwikiPageVersions',
         elem.bind('click', function () {
 
           var modalInstance = $modal.open({
-            templateUrl: '/components/docWiki/page/versions/listVersions.html',
+            templateUrl: 'components/docWiki/page/versions/listVersions.html',
             controller: 'VersionsListController',
             windowClass : 'docwiki',
             resolve: {
               currentPageId : function () {
                 return $scope.page.pageId;
-              },
+              }
             }
           });
 
