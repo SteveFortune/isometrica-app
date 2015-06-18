@@ -1,6 +1,6 @@
 {
   "name": "CanvasItem",
-  "base": "PersistedModel",
+  "base": "PersistedModelExt",
   "idInjection": true,
   "properties": {
     "type": {
@@ -23,27 +23,18 @@
     "showOnCanvas": {
       "type": "boolean"
     },
-    "created": {
-      "type": "date"
-    },
-    "updated": {
-      "type": "date"
-    },
-
     "location": {
       "type": "string"
     },
-
     "mtpdDays": {
       "type": "number"
     },
     "rtoDays": {
       "type": "number"
     },
-    "rpo" : {
+    "rpo": {
       "type": "string"
     },
-
     "potentialEvent": {
       "type": "string"
     },

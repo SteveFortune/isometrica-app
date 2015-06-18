@@ -1,0 +1,29 @@
+<div ng-class="{
+	'has-error': form[inputName].$touched && form[inputName].$invalid
+}">
+	<div class="form-group">
+		<label class="col-xs-3 control-label">
+			{{ title }}
+		</label>
+		<div class="col-xs-9">
+			<isa-input
+				type="{{ inputType }}"
+				name="{{ inputName }}"
+				class="form-control"
+				placeholder="{{ inputPlaceholder || 'Enter...' }}"
+				ng-model="ngModel"
+				ng-model-options="{ debounce: 500, allowInvalid: true }">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-xs-3"></div>
+		<isa-validation-messages
+			show-pending-messages="true"
+			show-validation-messages="true"
+			input-name="{{ inputName }}"
+			class="col-xs-9">
+			<p class="text-danger">{{ $message }}</p>
+		</isa-validation-messages>
+	</div>
+</div>

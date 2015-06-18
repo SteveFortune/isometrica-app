@@ -1,6 +1,6 @@
 {
-  "name": "resilify",
-  "version": "0.0.0",
+  "name": "Isometrica",
+  "version": "0.0.1",
   "authors": [
     "Mark Leusink <m.leusink@gmail.com>"
   ],
@@ -14,23 +14,25 @@
   ],
   "dependencies": {
     "bootcards": "master",
-    "angular": "~1.3.13",
+    "angular": "~1.3.15",
+    "angular-resource": "~1.3.15",
+    "angular-sanitize": "~1.3.15",
+    "angular-animate": "~1.3.15",
+    "angular-touch": "~1.3.15",
     "angular-ui-router": "~0.2.13",
-    "angular-resource": "~1.3.13",
     "angular-bootstrap": "~0.12.0",
     "angular-growl-2": "~0.7.3",
-    "angular-animate": "~1.3.15",
-    "angular-touch": "~1.3.13",
     "xcomponents": "master",
-    "angular-sanitize": "~1.3.15",
     "textAngular": "~1.3.11",
     "momentjs": "~2.10.2",
-    "ui-select": "angular-ui/ui-select#~0.11.2"
+    "angular-file-upload": "~1.1.5",
+    "lowladb": "~0.1.0",
+    "lowladb-angular": "~0.0.1",
+    "ngInfiniteScroll": "~1.2.1",
+    "ng-tags-input": "2.3.0"
   },
   "resolutions": {
-    "angular": ">=1",
-    "bootcards": ">=1",
-    "angular-animate": "~1.3.15",
-    "font-awesome": "^4.0.x"
+    "angular": "~1.3.15",
+    "bootcards": "master"
   }
 }

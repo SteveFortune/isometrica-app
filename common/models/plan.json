@@ -1,6 +1,6 @@
 {
   "name": "Plan",
-  "base": "PersistedModel",
+  "base": "PersistedModelExt",
   "idInjection": true,
   "properties": {
     "title": {
@@ -16,12 +16,21 @@
     "type": {
       "type": "string"
     },
-    "created": {
-      "type": "date"
+    "templateId": {
+      "type": "string"
     },
-    "updated": {
-      "type": "date"
-    }
+    "isTemplate": {
+      "type": "boolean",
+      "default": false
+    },
+    "isArchived": {
+      "type": "boolean",
+      "default": false
+    },
+    "inTrash": {
+      "type" : "boolean",
+      "default" : false
+    } 
   },
   "validations": [],
   "relations": {

@@ -7,35 +7,53 @@
 					<i class="fa fa-lg fa-arrow-left"></i>
 				</a>
 			</li>
-			<li style="padding: 10px 0">
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li>
 
 				<!--dropdown with actions-->
 				<div class="btn-group" dropdown is-open="status.isopen">
-				      <button type="button" class="btn btn-default dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+				      <a class="btn btn-link dropdown-toggle" dropdown-toggle ng-disabled="disabled">
 				        Actions <span class="caret"></span>
-				      </button>
+				      </a>
 				      <ul class="dropdown-menu" role="menu">
-				        <li><a href="#"><i class="fa fa-copy fa-fw"></i>Duplicate</a></li>
-				        <li><a href="#"><i class="fa fa-archive fa-fw"></i>Archive</a></li>
-				        <li class="divider"></li>
-				        <li><a href="#"><i class="fa fa-paste fa-fw"></i>Save as template</a></li>
+				        <li>
+				        	<a ng-show="!docWiki.inTrash" 
+				        	ng-click="duplicateDoc()"><i class="fa fa-copy fa-fw"></i>Duplicate</a></li>
+				        <li>
+				        	<a ng-show="!docWiki.inTrash && !docWiki.isArchived" 
+				        	ng-click="saveInArchive()"><i class="fa fa-archive fa-fw"></i>Archive</a></li>
+				        <li>
+				        	<a ng-show="!docWiki.inTrash && docWiki.isArchived" 
+				        	ng-click="unArchive()"><i class="fa fa-archive fa-fw"></i>Un-archive</a></li>
+				        <li>
+				        	<a ng-show="!docWiki.inTrash && !docWiki.isTemplate" 
+				        	ng-click="saveAsTemplate()"><i class="fa fa-paste fa-fw"></i>Save as template</a></li>
+				        <li>
+				        	<a ng-show="!docWiki.inTrash" 
+				        	ng-click="removeDoc()"><i class="fa fa-trash fa-fw"></i>Delete document</a></li>
+				        <li>
+				        	<a ng-show="docWiki.inTrash" 
+				        	ng-click="restoreDoc()"><i class="fa fa-check fa-fw"></i>Restore document</a></li>
 				      </ul>
 				 </div>
 
-				
 			</li>
+
+			<!--show sync button only if the user is offline-->
+			<li ng-if="!$root.online">
+	          <a class="btn btn-link icon-only" href="#">
+	          	<i class="fa fa-lg fa-refresh"></i>
+	          </a>
+	        </li>
+
 		</ul>
-		<!-- <ul class="nav navbar-nav navbar-right">
-			<li>
-				<a class="btn btn-link icon-only" href="#">
-					<i class="fa fa-lg fa-file-text"></i>
-				</a>
-			</li>
-		</ul> -->
 
 		<div class="navbar-header">
 			<span class="navbar-brand">
-				{{title}}
+				{{docWiki.title}}
+				<span ng-show="docWiki.isArchive">(archived)</span>
+				<span ng-show="!docWiki.isArchive && docWiki.isTemplate">(template)</span>
 			</span>
 		</div>
 	</div>

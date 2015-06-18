@@ -1,0 +1,59 @@
+{
+  "name": "Contact",
+  "plural": "Contacts",
+  "base": "PersistedModelExt",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "organisation": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "isCallTree": {
+      "type": "boolean"
+    },
+    "role": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "details": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "phoneNumbers": {
+      "type": "embedsMany",
+      "model": "PhoneNumber",
+      "property": "phoneNumbers",
+      "options": {
+        "validate": true,
+        "forceId": true,
+        "persistent": true
+      }
+    },
+    "callTree": {
+      "type": "belongsTo",
+      "model": "IsometricaUser",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

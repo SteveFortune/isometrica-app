@@ -1,0 +1,152 @@
+<div class="panel panel-default bootcards-wiki-panel">
+
+	<isa-address-book-modal-header
+		can-save="userForm.$valid"
+		on-save="updateEntity()"
+		on-cancel="cancel()"
+		title="{{ entity.firstName + ' ' + entity.lastName }}">
+	</isa-address-book-modal-header>
+
+	<div class="modal-body">
+		<form class="form-horizontal" name="userForm" novalidate>
+			<isa-form-field
+				ng-model='entity.firstName'
+				title="First Name*"
+				input-placeholder='Joe'
+				input-name='firstName'
+				validation-model='{
+					"required": "A first name is required.",
+				}'>
+			</isa-form-field>
+			<isa-form-field
+				ng-model='entity.lastName'
+				title="Last Name*"
+				input-placeholder='Bloggs'
+				input-name='lastName'
+				validation-model='{
+					"required": "A last name is required.",
+				}'>
+			</isa-form-field>
+			<isa-form-field
+				ng-model='entity.role'
+				title="Title or Role"
+				input-placeholder='VP of Sales'
+				input-name='role'>
+			</isa-form-field>
+			<isa-form-field
+				ng-model='entity.email'
+				title="Email*"
+				input-type="email"
+				input-placeholder='joe.bloggs@ibm.com'
+				input-name='email'
+				validation-model='{
+					"required": "An email address is required.",
+					"email": "Must be a valid email address.",
+					"existsEmail": "A user already exists with this email address."
+				}'
+				pending-model='{
+					"existsEmail": "Checking email..."
+				}'>
+			</isa-form-field>
+			<isa-form-field
+				ng-model='entity.address'
+				title="Address"
+				input-placeholder='10 King St, Nailsworth, GL5 0NN'
+				input-name='address'>
+			</isa-form-field>
+			<accordion>
+				<isa-form-group title="Phone Numbers">
+					<isa-group-row delete="deletePhoneNumber($index)" ng-repeat="phoneNumber in entity._phoneNumbers">
+						<isa-form-field
+							class="col-sm-6"
+							ng-model='phoneNumber.number'
+							title="Number"
+							input-placeholder='+44 7668 492301'
+							input-name='phoneNumber_{{ $index }}'
+							validation-model='{
+								"phoneNumber": "Must be a valid phone number.",
+								"required": "A number is required."
+							}'>
+						</isa-form-field>
+						<isa-form-field
+							class="col-sm-6"
+							ng-model='phoneNumber.type'
+							title="Type"
+							input-placeholder='Mobile'
+							input-name='type_{{ $index }}'>
+						</isa-form-field>
+					</isa-group-row>
+					<div ng-if="!entity._phoneNumbers.length">
+						<p>
+							No phone numbers.
+						</p>
+					</div>
+					<a class="btn btn-primary pull-right" ng-click="addPhoneNumber()">
+						<i class="fa fa-plus"></i>
+						New Number
+					</a>
+				</isa-form-group>
+				<isa-form-group title="User Admin">
+					<isa-form-field
+						ng-model='entity.type'
+						title="Type of Person"
+						input-placeholder='Admin'
+						input-name='userType'>
+					</isa-form-field>
+					<!-- NOTE: oes not link to a model at the moment. Not sure how to handle
+						 user reset password -->
+					<isa-form-field
+						title="Password*"
+						input-type="password"
+						input-placeholder='Password'
+						input-name='password'
+						validation-model='{
+							minlength: {
+								value: 8,
+								message: "Must be > 8 characters long."
+							},
+							"containsNumber": "Must contain at least one number.",
+							"containsLetter": "Must contain at least one letter."
+						}'>
+					</isa-form-field>
+				</isa-form-group>
+				<isa-form-group title="Call Tree">
+					<isa-group-row
+						delete="deleteContact($index)"
+						edit="editContact(contact)"
+						can-edit="true"
+						ng-repeat="contact in callTreeContacts">
+						<div class="col-sm-6">
+							<p class="h4">
+								Name:
+								<span class="label label-default">
+									{{ contact.name }}
+								</span>
+							</p>
+						</div>
+						<div class="col-sm-6">
+							<p class="h4">
+								Phone:
+								<span class="label label-default" ng-if="!contact._phoneNumbers.length">
+									<em>None</em>
+								</span>
+								<span class="label label-default" ng-if="contact._phoneNumbers.length">
+									{{ contact._phoneNumbers[0].number }}
+								</span>
+							</p>
+						</div>
+					</isa-group-row>
+					<div ng-if="!callTreeContacts.length">
+						<p>
+							No contacts in call tree.
+						</p>
+					</div>
+					<a class="btn btn-primary pull-right" ng-click="addContact()">
+						<i class="fa fa-plus"></i>
+						New Contact
+					</a>
+				</isa-form-group>
+			</accordion>
+		</form>
+	</div>
+</div>

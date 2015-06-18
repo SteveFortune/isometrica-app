@@ -11,6 +11,15 @@
     "dataSource": "mongodb",
     "public": false
   },
+  "Account": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Organization": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+
   "AccessToken": {
     "dataSource": "mongodb",
     "public": false
@@ -35,21 +44,40 @@
     "dataSource": "mongodb",
     "public": true
   },
-  "ResilifyUser": {
-    "dataSource": "mongodb"
+  "IsometricaUser": {
+    "dataSource": "mongodb",
+    "public": true
   },
   "Email": {
     "dataSource": "email",
     "public": false
   },
-  "DataObject" : {
+  "DataObject": {
     "dataSource": "mongodb",
     "public": true
   },
-
-  "Page" : {
+  "Page": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Comment" : {
     "dataSource" : "mongodb",
+    "public" : true
+  },
+  "DocumentIssue" : {
+    "dataSource" : "mongodb",
+    "public" : true
+  },
+  "Signature" : {
+    "dataSource" : "transient",
+    "public" : false
+  },
+  "PhoneNumber": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "Contact": {
+    "dataSource": "mongodb",
     "public": true
   }
-
 }

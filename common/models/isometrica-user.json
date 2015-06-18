@@ -1,0 +1,85 @@
+{
+  "name": "IsometricaUser",
+  "base": "User",
+  "idInjection": true,
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "string"
+    },
+    "created": {
+      "type": "date",
+      "required": true
+    },
+    "updated": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "accounts": {
+      "type": "hasAndBelongsToMany",
+      "model": "Account"
+    },
+    "organizations": {
+      "type": "hasAndBelongsToMany",
+      "model": "Organization"
+    },
+    "phoneNumbers": {
+      "type": "embedsMany",
+      "model": "PhoneNumber",
+      "property": "phoneNumbers",
+      "options": {
+        "validate": true,
+        "forceId": true,
+        "persistent": true
+      }
+    },
+    "callTreeContacts": {
+      "type": "hasMany",
+      "model": "Contact",
+      "foreignKey": "userId",
+      "options": {
+        "validate": true,
+        "forceId": true,
+        "persistent": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": []
+}

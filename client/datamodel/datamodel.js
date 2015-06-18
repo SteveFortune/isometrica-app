@@ -1,7 +1,8 @@
 xcomponents.appVersion = '0.1';
 xcomponents.menuOptions = [
     
-    { label : 'Data objects', url : '/', icon : 'fa-dashboard' }
+    { label : 'By module/ scope', url : '/datamodel/index.html', icon : 'fa-indent' },
+    { label : 'All objects', url : '/datamodel/all.html', icon : 'fa-list' }
     
   ];
 

@@ -1,77 +1,159 @@
 module.exports = function(app) {
 
-  console.log('set up default users');
+  console.log('Create sample models');
 
-  var User = app.models.ResilifyUser;
+  var User = app.models.IsometricaUser;
+  var Organization = app.models.Organization;
   var Role = app.models.Role;
   var RoleMapping = app.models.RoleMapping;
+  var Account = app.models.Account;
 
-  //var Team = app.models.Team;
+  /*
+   * Set up some sample accounts & organizations:
+   * 
+   * Mark is owner for the LinQed account and has a LinQed org
+   * Steve and Jack are owners for the ZetaComm account and have a ZetaComm org
+  */
 
-  var createIfNotExists = function(Model, user, callback) {
+  createAccount( 
+      { 'subscriptionType' : 'free', 'name' : 'LinQed'},
+      [
+        {firstName : 'Mark', lastName : 'Leusink', name : 'Mark Leusink',
+          username: 'mark@isometrica.com', email: 'mark@isometrica.com', password: 'isometrica'},
+      ]
+  );
+  createAccount( 
+    { 'subscriptionType' : 'paid', 'name' : 'ZetaComm'},
+    [
+        {firstName : 'Steve', lastName : 'Ives', name : 'Steve Ives', 
+          username: 'steve@isometrica.com', email: 'steve@isometrica.com', password: 'isometrica'},
+        {firstName : 'Jack', lastName : 'Herbert', name : 'Jack Herbert',
+          username: 'jack@isometrica.com', email: 'jack@isometrica.com', password: 'isometrica'}
+    ] 
+  );
 
-    Model.find( {where: {username : user.username}}, function(err, res) {
 
-      if (res.length===0) {
-        Model.create(user, function(err, user) {
-          console.log('created:', user);
 
-          if (callback) { callback.call(user); }
+   function createAccount( account, owners ) {
+
+    Account.find( {
+        where : { name : account.name }
+      }, function(err, res) {
+      
+        if (res.length === 1 ) {
+
+          console.log('Sample account for ' + account.name + ' already exist');
+          createOrganization( res[0], owners);
+
+        } else if (res.length === 0 ) {
+
+          //sample account doesn't exist yet: create sample account & users
+          
+          Account.create( account , function(err, acc) {
+              if (err) throw err;
+
+              createOrganization( acc, owners);
+
+          });
+
+        }
+      });
+
+  }
+
+  function createAccountOwners( account, org, users) {
+    for (var i=0; i<users.length; i++) {
+      createUser( account, org, users[i] );
+    }
+  }
+
+  function createUser( account, org, user) {
+
+      //check to see if the user (user) already exists in the system
+      User.find( {
+        where : { email : user.email }
+      }, function(err, res) {
+        if (err) throw err;        
+
+        if (res.length === 0) {
+
+          console.log('user ' + user.email + ' doesn\'t exist yet: create');
+
+          //user doesn't exist yet: create it and add it to the account and org
+          User.create( user, function(err, res) {
+            console.log('user ' + res.firstName + ' created');
+
+            addToOrg(org, res);
+            addToAccount(account, res);
+
+          });
+
+        } else {
+
+          addToOrg(org, res[0]);
+          addToAccount(account, res[0]);
+
+        }
+
+      } );
+
+  }
+
+  function addToOrg(org, user) {
+    org.users( {
+      where : {email : user.email}
+    }, function(err, res) {
+      
+      if (res.length==0) {
+        console.log('adding ' + user.email + ' to organization ' + org.name);
+        org.users.add(user);
+      } else {
+       // console.log('user ' + user.email + ' already exists in ' + org.name);
+      }
+    })
+  }
+  function addToAccount(account, user) {
+    account.owners( {
+      where : { email : user.email }
+    }, function(err, res) {
+
+      if (res.length == 0 ) {
+        console.log('adding ' + user.email + ' to ' + account.name);
+        account.owners.add( user);
+      } else {
+        //console.log(owner.email + 'already linked to ' + account.name);
+      }
+
+    })
+  }
+
+  function createOrganization( account, users) {
+
+    //create the organization, add th
+    Organization.find( {
+      where : { name : account.name }
+    }, function(err, res) {
+
+      if (res.length == 0) {
+
+        console.log('org ' + account.name + ' doesn\'t exist yet');
+
+        //create org, add users to it
+
+        Organization.create( { name : account.name} , function (err, res) {
+
+          console.log('org ' + res.name + ' created, adding users');
+          createAccountOwners( account, res, users);
+
         });
+
       } else {
 
-          if (callback) { callback.call(user); }
+        createAccountOwners( account, res[0], users);
+
       }
-    });
 
-  };
+    } );
+  }
 
-  createIfNotExists(User, {name : 'Steve', username: 'Steve', email: 'steve@resilify.com', password: 'resilify'});
-  createIfNotExists(User, {name : 'Jack', username: 'Jack', email: 'jack@resilify.com', password: 'resilify'});
-  createIfNotExists(User, {name : 'Mark', username: 'Mark', email: 'mark@resilify.com', password: 'resilify'});
-  
-/*
-    // create project 1 and make john the owner
-    users[0].projects.create({
-      name: 'project1',
-      balance: 100
-    }, function(err, project) {
-      if (err) throw err;
-
-      console.log('Created project:', project);
-
-      // add team members
-      Team.create([
-        {ownerId: project.ownerId, memberId: users[0].id},
-        {ownerId: project.ownerId, memberId: users[1].id}
-      ], function(err, team) {
-        if (err) throw err;
-
-        console.log('Created team:', team);
-      });
-    });*/
-  /*
-
-    //create project 2 and make jane the owner
-    users[1].projects.create({
-      name: 'project2',
-      balance: 100
-    }, function(err, project) {
-      if (err) throw err;
-
-      console.log('Created project:', project);
-
-      //add team members
-      Team.create({
-        ownerId: project.ownerId,
-        memberId: users[1].id
-      }, function(err, team) {
-        if (err) throw err;
-
-        console.log('Created team:', team);
-      });
-    });
-*/
-
-  createIfNotExists( Role, {name: 'admin'} );
 };

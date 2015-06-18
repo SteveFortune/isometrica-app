@@ -1,0 +1,73 @@
+<div class="panel panel-default bootcards-wiki-panel" ng-cloak>
+
+  <div class="panel-heading">
+
+    <div class="pull-left">
+      <button class="btn btn-default" ng-click="cancelEdit()">
+        <i class="fa fa-times"></i>Cancel
+      </button>
+    </div>
+
+    <div class="pull-right">
+      <button class="btn btn-primary" ng-click="save(reissueForm)">
+        <i class="fa fa-check"></i>Save
+      </button>
+    </div>
+
+    <h3 class="panel-title text-center">Re-issue</h3>
+
+  </div>
+
+  <div class="panel-body">
+
+    <form class="form-horizontal" name="reissueForm" novalidate>
+
+      <isa-form-field
+        ng-model='issue.issueNo'
+        title="Issue No.*"
+        input-placeholder='Issue No.'
+        input-name='no'
+        validation-model='{
+            "required": "Issue number is required."
+          }'
+        >
+      </isa-form-field>
+
+      <isa-form-field
+        ng-model='issue.contents'
+        title="Amendment*"
+        input-placeholder='Amendment'
+        input-name='amendment'
+        validation-model='{
+            "required": "Amendment is required."
+          }'
+        >
+      </isa-form-field>
+
+      <isa-form-field
+        ng-model='issue.issueDate'
+        title="Date"
+        input-placeholder='Date'
+        input-name='issueDate'>
+      </isa-form-field>
+
+      <!--<p class="input-group">-->
+      <!--<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened"-->
+      <!--datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />-->
+      <!--<span class="input-group-btn">-->
+      <!--<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+      <!--</span>-->
+      <!--</p>-->
+
+      <isa-form-field
+        ng-model='issue.authorisedBy'
+        title="Authorised by"
+        input-placeholder='Authorised by'
+        input-name='authorisedBy'>
+      </isa-form-field>
+
+    </form>
+
+  </div>
+
+</div>

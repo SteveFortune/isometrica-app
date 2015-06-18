@@ -8,4 +8,9 @@ Isometrica requires the following software:
 
 After cloning this project run a **npm install** and **bower install** to load all required libraries.
 
-When developing you can start the Loopback server with **nodemon** using **npm run dev**
+When developing you can start the Loopback server with **nodemon** using **npm run dev**. This of course requires that you have nodemon installed.
+
+## Grunt
+
+grunt watch : check for SASS changes, compile into resilify.css
+grunt lbAngular : regenerate AngularJS services for Loopback

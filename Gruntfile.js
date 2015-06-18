@@ -1,9 +1,11 @@
 module.exports = function(grunt) {
+        grunt.loadNpmTasks('grunt-karma');
+        grunt.registerTask('default', ['karma']);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     banner: '/* <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-    
+
     //clean the output folder and unused css files
     // clean: {
     //   output : {
@@ -41,7 +43,11 @@ module.exports = function(grunt) {
 
     concat : {
       dist: {
-        src: ['client/assets/css/resilify.scss', 'client/components/docWiki/styles.scss'],
+        src: [
+            'client/assets/css/resilify.scss',
+            'client/components/docWiki/styles.scss',
+            'client/components/addressBook/styles.scss'
+        ],
         dest: 'client/assets/css/build.scss'
       }
     },
@@ -75,11 +81,23 @@ module.exports = function(grunt) {
 
     watch : {
       scripts: {
-        files: ['**/*.scss'],
+        files: ['**/*.scss', 'client/**/*.js'],
         tasks: ['default'],
         options: {
           spawn: false,
+          debounceDelay: 1000
         }
+      }
+    },
+
+    /*
+     * @note Just for client side tests for now. I'm sure there will be server side
+     * karma in the future.
+     *
+     **/
+    karma: {
+      unit: {
+        configFile: 'client/karma.conf.js'
       }
     }
 
@@ -93,16 +111,29 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-loopback-sdk-angular');
+  grunt.loadNpmTasks('grunt-karma');
 
-  //note: cssmin disabled for now
-  grunt.registerTask('default', [
+  grunt.registerTask('prod', [
     'concat',
     'sass',
-    'clean:build'
+    'clean:build',
+    'loopback_sdk_angular'
   ]);
 
   grunt.registerTask('lbAngular', [
     'loopback_sdk_angular'
   ])
+  grunt.registerTask('generateCSS', [
+    'concat',
+    'sass',
+    'clean:build'
+  ]);
+
+  grunt.registerTask('default', [
+      'concat',
+      'sass',
+      'clean:build',
+      'karma'
+  ]);
 
 };
